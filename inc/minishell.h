@@ -6,7 +6,7 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-// # include "../lib/libft/libft.h"
+# include "../lib/libft/libft.h"
 
 typedef struct s_token
 {
@@ -25,4 +25,8 @@ typedef struct s_all
     t_token *token;
 }   t_all;
 
+void    start_all(t_all *all);
+void    lexer(t_all *all);
+int    create_token(t_all *all, char *str, int type);
+char *is_comma(char *str, char c);
 #endif

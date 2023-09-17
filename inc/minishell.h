@@ -8,7 +8,14 @@
 # include <readline/history.h>
 # include "../lib/libft/libft.h"
 
-# define PIPE 00
+# define TEXT 00
+# define PIPE 01
+# define COMMA_S 21
+# define COMMA_D 22
+# define BIG 31
+# define BIG_2 32
+# define LITTLE 41
+# define LITTLE_2 42
 
 typedef struct s_token
 {

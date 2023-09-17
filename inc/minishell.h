@@ -12,10 +12,11 @@
 # define PIPE 01
 # define COMMA_S 21
 # define COMMA_D 22
-# define BIG 31
-# define BIG_2 32
-# define LITTLE 41
-# define LITTLE_2 42
+# define RDOUT 31
+# define RDAP 32
+# define RDIN 41
+# define RDHD 42
+# define EXP 05
 
 typedef struct s_token
 {

@@ -8,6 +8,8 @@
 # include <readline/history.h>
 # include "../lib/libft/libft.h"
 
+# define PIPE 00
+
 typedef struct s_token
 {
     int             type;
@@ -27,6 +29,6 @@ typedef struct s_all
 
 void    start_all(t_all *all);
 void    lexer(t_all *all);
-int    create_token(t_all *all, char *str, int type);
-char *is_comma(char *str, char c);
+int     create_token(t_all *all, char *str, int type);
+char    *is_comma(char *str, char c);
 #endif

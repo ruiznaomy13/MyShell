@@ -18,6 +18,23 @@
 # define RDHD 42
 # define EXP 05
 
+// char **construct_cmd_argv(s_token)
+// {
+//     // Hacer un malloc con el numero de tokens + 1
+// }
+
+// int echo(char **argv)
+// {
+//     int i;
+//     i = 1;
+//     while(argv[i]){
+//         ft_printf("");
+//         i++;
+//     }
+// }
+
+// ls | export a="hola" | ls | ls | cat ls
+
 typedef struct s_token
 {
     int             type;

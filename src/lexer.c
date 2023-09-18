@@ -106,7 +106,7 @@ void    lexer(t_all *all)
         else if (all->line[i] == '>' && all->line[i + 1] == '>')
             i += create_token(all, &all->line[i], RDAP);
         else if (all->line[i] == '<' && all->line[i + 1] == '<')
-            i += create_token(all, &all->line[i], RDHD);
+            i += create_token(all, &all->line[i], RDHD); 
         else if (all->line[i] == '>')
             i += create_token(all, &all->line[i], RDOUT);
         else if (all->line[i] == '<')

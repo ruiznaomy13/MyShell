@@ -12,6 +12,13 @@ int main(int ac, char **av, char **env)
         add_history(all.line);
         printf("%s\n", all.line);
         lexer(&all);
+        while (all.token != NULL) 
+        {
+            t_token* temp = all.token;
+            all.token = all.token->next;
+            free(temp);
+        }
+        start_all(&all);
     }
     return (0);
 }

@@ -22,9 +22,9 @@ typedef struct s_token
 {
     int             type;
     char            *wrd;
-    int             len;
+    // int             len;
     struct s_token  *next;
-    struct s_token  *prev;
+    // struct s_token  *prev;
 }   t_token;
 
 typedef struct s_all

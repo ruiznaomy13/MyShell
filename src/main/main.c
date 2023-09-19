@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 15:35:30 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:17:07 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av, char **env)
 		all.line = readline("myshell🌞> ");
 		add_history(all.line);
 		printf("%s\n", all.line);
+		// ft_errors(); TODO
 		lexer(&all);
 		// printf("abans create proces\n");
 		//create_proces(&all);

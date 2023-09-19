@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 16:44:23 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:36:48 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	add_token(t_token *tkn, t_all *all);
 //separadors 
 char	*is_comma(char *str, char c);
 int		delimiter(char c);
-char	*is_text_maria(char *str);
+char	*is_text(char *str);
 char	*is_text_first(char *str);
 
 // MOSTRA EL NODE

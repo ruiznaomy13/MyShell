@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   separadors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:04:54 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 17:32:03 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:23:57 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,25 @@ char	*is_comma(char *str, char c)
 	return (new);  //  recorremos el array hasta que acabe la ,
 }
 
-// char	*is_text_first(char *str)
-// {
-// 	int		i;
-// 	char	*new;
-// 	int		comma;
+char	*is_text(char *str)
+{
+	int		i;
+	char	*new;
+	int		comma;
 
-// 	i = 0;
-// 	comma = 0;
-// 	if (delimiter(str[i]))
-// 		i++;
-// 	while ((!delimiter(str[i]) && str[i]) && comma == 0)
-// 		i++;
-// 	new = ft_substr(str, 0, i);
-// 	return (new);
-// }
+	i = 0;
+	comma = 0;
+	if (delimiter(str[i]))
+		i++;
+	while ((!delimiter(str[i]) && str[i]) && comma == 0)
+		i++;
+	new = ft_substr(str, 0, i);
+	return (new);
+}
 
 char	*is_text_first(char *str)
 {
 	int		i;
-	char	*new;
 	int		comma;
 
 	i = 0;
@@ -63,15 +62,16 @@ char	*is_text_first(char *str)
 			i++;
 		if ((str[i] == '\'' || str[i] == '\"') && comma == 0)
 			comma = str[i];
-		else if (comma != 0)
+		if (comma != 0)
 		{
-			while (comma != str[i])
+			i++;
+			while (comma != str[i] && str[i])
 				i++;
-			printf("->>>>%s\n", &str[i]);
 			comma = 0;
+			i++;
 		}
-		i++;
 	}
-	new = ft_substr(str, 0, i);
-	return (new);
+	if (!comma)
+        return NULL;
+	return (ft_substr(str, 0, i));
 }

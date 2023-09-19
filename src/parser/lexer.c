@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 16:53:31 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:31:23 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	create_token(t_all *all, char *str, int type)
 	if (!tkn)
 		return (0);
 	// Crea el token segun el tipo de dato que ha encontrado
-	if (type == COMMA_S || type == COMMA_D)
-		tkn->wrd = is_comma(str, str[0]);
-	else if (type == TEXT || type == EXP)
+	// if (type == COMMA_S || type == COMMA_D)
+	// 	tkn->wrd = is_comma(str, str[0]);
+	if (type == TEXT || type == EXP)
 		tkn->wrd = is_text_first(str);
 	else if (type == PIPE)
 		tkn->wrd = "|";
@@ -62,6 +62,8 @@ int	create_token(t_all *all, char *str, int type)
 		tkn->wrd = ">";
 	else if (type == RDIN)
 		tkn->wrd = "<";
+	if (tkn->wrd == NULL)
+		free(tkn);
 	tkn->type = type;
 	// printf("[ ADDRES ] all -> %p\n", all);
 	add_token(tkn, all);

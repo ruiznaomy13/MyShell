@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 16:08:06 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:53:31 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	lexer(t_all *all)
 	i = -1;
 	while (all->line[++i])
 	{
+		if (!delimiter(all->line[i]))
+			i += create_token(all, &all->line[i], TEXT) - 1;
 		// if (all->line[i] == '\'')
 		// 	i += create_token(all, &all->line[i], COMMA_S) + 1;
 		// else if (all->line[i] == '\"')
 		// 	i += create_token(all, &all->line[i], COMMA_D) + 1;
-		if (!delimiter(all->line[i]))
-			i += create_token(all, &all->line[i], TEXT) - 1;
 		// else if (all->line[i] == '$')
 		// 	i += create_token(all, &all->line[i], EXP) - 1;
 		else if (all->line[i] == '|')
@@ -47,11 +47,11 @@ int	create_token(t_all *all, char *str, int type)
 	tkn = (t_token *)ft_calloc(sizeof(t_token), 1);
 	if (!tkn)
 		return (0);
-	// Crea el token segun ell tipo de dato que ha encontrado
+	// Crea el token segun el tipo de dato que ha encontrado
 	if (type == COMMA_S || type == COMMA_D)
 		tkn->wrd = is_comma(str, str[0]);
 	else if (type == TEXT || type == EXP)
-		tkn->wrd = is_text_maria(str);
+		tkn->wrd = is_text_first(str);
 	else if (type == PIPE)
 		tkn->wrd = "|";
 	else if (type == RDAP)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   separadors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:04:54 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 19:23:57 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:29:38 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,9 @@ int	delimiter(char c)
 	return (0);
 }
 
-char	*is_comma(char *str, char c)
-{
-	int		i;
-	char	*new;
-
-	i = 1;
-	while (str[i] != c && str[i])
-		i++;
-	new = ft_substr(str, 1, i - 1);
-	return (new);  //  recorremos el array hasta que acabe la ,
-}
-
 char	*is_text(char *str)
 {
 	int		i;
-	char	*new;
 	int		comma;
 
 	i = 0;
@@ -43,8 +30,7 @@ char	*is_text(char *str)
 		i++;
 	while ((!delimiter(str[i]) && str[i]) && comma == 0)
 		i++;
-	new = ft_substr(str, 0, i);
-	return (new);
+	return (ft_substr(str, 0, i));
 }
 
 char	*is_text_first(char *str)

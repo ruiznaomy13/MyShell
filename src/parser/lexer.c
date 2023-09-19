@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 13:46:20 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:08:06 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	lexer(t_all *all)
 	i = -1;
 	while (all->line[++i])
 	{
-		if (all->line[i] == '\'')
-			i += create_token(all, &all->line[i], COMMA_S) + 1;
-		else if (all->line[i] == '\"')
-			i += create_token(all, &all->line[i], COMMA_D) + 1;
-		else if (!delimiter(all->line[i]))
+		// if (all->line[i] == '\'')
+		// 	i += create_token(all, &all->line[i], COMMA_S) + 1;
+		// else if (all->line[i] == '\"')
+		// 	i += create_token(all, &all->line[i], COMMA_D) + 1;
+		if (!delimiter(all->line[i]))
 			i += create_token(all, &all->line[i], TEXT) - 1;
-		else if (all->line[i] == '$')
-			i += create_token(all, &all->line[i], EXP) - 1;
+		// else if (all->line[i] == '$')
+		// 	i += create_token(all, &all->line[i], EXP) - 1;
 		else if (all->line[i] == '|')
 			i += create_token(all, &all->line[i], PIPE) - 1;
 		else if (all->line[i] == '>' && all->line[i + 1] == '>')
@@ -51,7 +51,7 @@ int	create_token(t_all *all, char *str, int type)
 	if (type == COMMA_S || type == COMMA_D)
 		tkn->wrd = is_comma(str, str[0]);
 	else if (type == TEXT || type == EXP)
-		tkn->wrd = is_text(str);
+		tkn->wrd = is_text_maria(str);
 	else if (type == PIPE)
 		tkn->wrd = "|";
 	else if (type == RDAP)
@@ -83,7 +83,7 @@ void	add_token(t_token *tkn, t_all *all)
 		aux->next = tkn;
 	}
 }
-
+/*
 void create_proces(t_all *all)
 {
 	t_proces *current_proces = NULL;
@@ -127,5 +127,5 @@ void create_proces(t_all *all)
 	}
 
 	// Ahora 'first_proces' contiene la lista de procesos creada
-}
+}*/
 

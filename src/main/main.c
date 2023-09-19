@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 13:34:46 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:35:30 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	main(int ac, char **av, char **env)
 		add_history(all.line);
 		printf("%s\n", all.line);
 		lexer(&all);
-		printf("abans create proces\n");
-		create_proces(&all);
-		printf("despres create proces\n");
+		// printf("abans create proces\n");
+		//create_proces(&all);
+		// printf("despres create proces\n");
 		mostra_tokens(&all);
-		mostra_proces(&all);
+		//mostra_proces(&all);
 		ft_free(&all);
 	}
 	return (0);
@@ -67,7 +67,7 @@ void	mostra_proces(t_all *all)
 void	ft_free(t_all *all)
 {
 	t_token		*tkn;
-	t_proces	*prc;
+	// t_proces	*prc;
 
 	while (all->token != NULL)
 	{
@@ -75,10 +75,10 @@ void	ft_free(t_all *all)
 		all->token = all->token->next;
 		free(tkn);
 	}
-	while (all->procesos != NULL)
-	{
-		prc = all->procesos;
-		all->procesos = all->procesos->next;
-		free(tkn);
-	}
+	// while (all->procesos != NULL)
+	// {
+	// 	prc = all->procesos;
+	// 	all->procesos = all->procesos->next;
+	// 	free(tkn);
+	// }
 }

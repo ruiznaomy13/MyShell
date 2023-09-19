@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 13:47:01 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:08:14 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ typedef struct s_all
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
-void	create_proces(t_all *all);
+// void	create_proces(t_all *all);
 
 //separadors 
 char	*is_comma(char *str, char c);
 int		delimiter(char c);
-char	*is_text(char *str);
+char	*is_text_maria(char *str);
 
 // MOSTRA EL NODE
 void	mostra_tokens(t_all *all);

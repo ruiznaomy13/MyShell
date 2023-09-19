@@ -1,16 +1,21 @@
 NAME = minishell
-CFLAGS = -Wall -Wextra -Werror -MMD 
-FILES = main.c lexer.c
+CFLAGS = -Wall -Wextra -Werror -MMD -fsanitize=address
+FILES = main/main.c \
+		parser/lexer.c parser/separadors.c
+
 SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(FILES))
+
 OBJ_DIR = objects/
 OBJS = $(addprefix $(OBJ_DIR), $(FILES:.c=.o))
 DEPS = $(addprefix $(OBJ_DIR), $(FILES:.c=.d))
 RM = rm -rf
 LIB = lib/libft/libft.a lib/readline/libreadline.a lib/readline/libhistory.a
+
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -DREADLINE_LIBRARY=1 -I./ -I lib/readline -c $< -o $@
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -DREADLINE_LIBRARY=1 -I./ -I lib/readline -c $< -o $@
+
 all:
 	@$(MAKE) -C lib/libft --no-print-directory
 	@if ! [ -f lib/readline/libreadline.a ]; then \
@@ -18,18 +23,25 @@ all:
 		$(MAKE) --no-print-directory &> /dev/null; \
 	fi
 	@$(MAKE) $(NAME) --no-print-directory
+
 $(NAME):: $(OBJS)
 	@$(CC) -ltermcap $(CFLAGS) $(OBJS) $(LIB) -o $@
+
 $(NAME)::
 	@echo -n
+
 clean:
 	@$(RM) $(OBJ_DIR) --no-print-directory
 	@$(MAKE) clean -C lib/libft --no-print-directory 
 	@$(MAKE) clean -C lib/readline --no-print-directory &> /dev/null
+
 fclean: clean
 	@$(RM) $(NAME) $(LIB)
+
 re: fclean all
+
 .PHONY: all clean fclean re bonus
+
 -include $(DEPS)
 
 

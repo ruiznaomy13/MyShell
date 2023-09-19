@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
+/*   Updated: 2023/09/19 13:47:01 by mmonpeat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -37,23 +49,46 @@
 
 typedef struct s_token
 {
-    int             type;
-    char            *wrd;
-    // int             len;
-    struct s_token  *next;
-    // struct s_token  *prev;
-}   t_token;
+	int				type;
+	char			*wrd;
+	// int             len;
+	struct s_token	*next;
+	// struct s_token  *prev;
+}	t_token;
+
+typedef struct s_proces
+{
+	char			*proces;
+	struct s_proces	*next;
+	// t_token			*token;
+}	t_proces;
 
 typedef struct s_all
 {
-    char    *line;
-    int     size;
-    // char    **env;
-    t_token *token;
-}   t_all;
+	char		*line;
+	int			size;
+	// char    **env;
+	t_token		*token;
+	t_proces	*procesos;
+}	t_all;
 
-void    start_all(t_all *all);
-void    lexer(t_all *all);
-int     create_token(t_all *all, char *str, int type);
-char    *is_comma(char *str, char c);
+//----------PARSER------------
+//lexer creem tokens
+void	lexer(t_all *all);
+int		create_token(t_all *all, char *str, int type);
+void	add_token(t_token *tkn, t_all *all);
+void	create_proces(t_all *all);
+
+//separadors 
+char	*is_comma(char *str, char c);
+int		delimiter(char c);
+char	*is_text(char *str);
+
+// MOSTRA EL NODE
+void	mostra_tokens(t_all *all);
+void	mostra_proces(t_all *all);
+
+//free de les llistes
+void	ft_free(t_all *all);
+
 #endif

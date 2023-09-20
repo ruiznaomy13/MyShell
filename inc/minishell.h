@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 19:29:51 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:46:02 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,6 @@
 # define RDHD 42
 # define EXP 05
 
-// char **construct_cmd_argv(s_token)
-// {
-//     // Hacer un malloc con el numero de tokens + 1
-// }
-
-// int echo(char **argv)
-// {
-//     int i;
-//     i = 1;
-//     while(argv[i]){
-//         ft_printf("");
-//         i++;
-//     }
-// }
-
-// ls | export a="hola" | ls | ls | cat ls
-
 typedef struct s_token
 {
 	int				type;
@@ -58,7 +41,8 @@ typedef struct s_token
 
 typedef struct s_proces
 {
-	char			*proces;
+	char			*proces; //lo que ejecutaremos
+	t_token			*tkns; // la lista de tokens de la ejecució
 	struct s_proces	*next;
 	// t_token			*token;
 }	t_proces;
@@ -77,6 +61,7 @@ typedef struct s_all
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
+void    create_process(t_all all);
 // void	create_proces(t_all *all);
 
 //separadors 

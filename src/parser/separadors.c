@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:04:54 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 19:29:38 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:18:39 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ char	*is_text_first(char *str)
 		i++;
 	while (str[i] && ((!delimiter(str[i]) && comma == 0) || comma != 0))
 	{
-		if ((!delimiter(str[i]) && comma == 0) && (str[i] != '\'' && str[i] != '\"'))
+		if ((!delimiter(str[i]) && comma == 0) && \
+			(str[i] != '\'' && str[i] != '\"'))
 			i++;
 		if ((str[i] == '\'' || str[i] == '\"') && comma == 0)
 			comma = str[i];
@@ -57,7 +58,5 @@ char	*is_text_first(char *str)
 			i++;
 		}
 	}
-	if (!comma)
-        return NULL;
 	return (ft_substr(str, 0, i));
 }

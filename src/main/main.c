@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 19:17:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:55:56 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,20 @@ void	mostra_tokens(t_all *all)
 	}
 }
 
-void	mostra_proces(t_all *all)
-{
-	int			i;
-	t_proces	*aux;
+// void	mostra_proces(t_all *all)
+// {
+// 	int			i;
+// 	t_proces	*aux;
 
-	i = 1;
-	aux = all->procesos;
-	while (aux != NULL)
-	{
-		printf("%d = %s\n", i, aux->proces);
-		aux = aux->next;
-		i++;
-	}
-}
+// 	i = 1;
+// 	aux = all->procesos;
+// 	while (aux != NULL)
+// 	{
+// 		printf("%d = %s\n", i, aux->proces);
+// 		aux = aux->next;
+// 		i++;
+// 	}
+// }
 
 void	ft_free(t_all *all)
 {

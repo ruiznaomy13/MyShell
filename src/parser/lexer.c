@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 18:31:23 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:19:49 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	create_token(t_all *all, char *str, int type)
 		tkn->wrd = ">";
 	else if (type == RDIN)
 		tkn->wrd = "<";
-	if (tkn->wrd == NULL)
-		free(tkn);
+	// if (tkn->wrd == NULL)
+	// 	return (0);
 	tkn->type = type;
 	// printf("[ ADDRES ] all -> %p\n", all);
 	add_token(tkn, all);
@@ -81,7 +81,6 @@ void	add_token(t_token *tkn, t_all *all)
 		aux = all->token;
 		while (aux->next != NULL)
 			aux = aux->next;
-		printf("token: %s\n", aux->wrd);
 		aux->next = tkn;
 	}
 }

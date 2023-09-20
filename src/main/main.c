@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/20 16:55:56 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:42:59 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av, char **env)
 {
 	t_all		all;
+	int			coma;
 
 	(0 || (ac = 0) || (av = 0) || (env = 0));
 	ft_bzero(&all, sizeof(t_all));
@@ -23,6 +24,12 @@ int	main(int ac, char **av, char **env)
 		all.line = readline("myshell🌞> ");
 		add_history(all.line);
 		printf("%s\n", all.line);
+		coma = check_cometes(all.line);
+		if (coma != 0)
+		{
+			printf("error %i\n", coma);
+			exit (1);
+		}
 		// ft_errors(); TODO
 		lexer(&all);
 		// printf("abans create proces\n");

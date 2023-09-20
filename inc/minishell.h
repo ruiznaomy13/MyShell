@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/19 19:29:51 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:40:24 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_all
 
 //----------PARSER------------
 //lexer creem tokens
+int		check_cometes(char *str);
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);

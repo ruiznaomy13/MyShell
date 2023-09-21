@@ -6,34 +6,11 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/20 19:52:43 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:31:59 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
-
-// int	check_cometes(char *str)
-// {
-// 	int		i;
-// 	int		coma;
-
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if (str[i] == '\'' || str[i] == '\"')
-// 			coma = str[i];
-// 		while (str[i] != coma)
-// 		{
-// 			if (coma == '\'' || str[i] == '\"')
-// 				return (1);
-// 			else
-// 				return (coma);
-// 			i++;
-// 		}
-// 		i++;
-// 	}
-// 	return (coma);
-// }
 
 //nit, no probat
 int	check_cometes(char *str)
@@ -43,24 +20,25 @@ int	check_cometes(char *str)
 	int		flag;
 
 	i = 0;
+	coma = 0;
+	flag = 0;
 	while (str[i])
 	{
-		if (str[i] == '\'' || str[i] == '\"')
+		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
 		{
 			coma = str[i];
 			flag = 1;
 		}
-		if (coma == str[i] && flag == 1)
-		{
+		else if (coma == str[i] && flag == 1)
 			flag = 0;
-			return (0);
-		}
-		else
-			return (coma);
 		i++;
 	}
-	return (0);
+	if (flag == 1)
+		return (coma);
+	else
+		return (flag);
 }
+
 
 void	lexer(t_all *all)
 {

@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/20 18:40:24 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:02:29 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ typedef struct s_all
 
 //----------PARSER------------
 //lexer creem tokens
+void	loop(t_all *all);
+void	checker(t_all *all);
 int		check_cometes(char *str);
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
@@ -91,5 +93,6 @@ void	mostra_proces(t_all *all);
 
 //free de les llistes
 void	ft_free(t_all *all);
+void	ft_error(int error);
 
 #endif

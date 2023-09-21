@@ -6,39 +6,44 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 13:31:59 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:02:34 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-//nit, no probat
-int	check_cometes(char *str)
+void	loop(t_all *all)
 {
-	int		i;
-	int		coma;
-	int		flag;
-
-	i = 0;
-	coma = 0;
-	flag = 0;
-	while (str[i])
+	while (42)
 	{
-		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
-		{
-			coma = str[i];
-			flag = 1;
-		}
-		else if (coma == str[i] && flag == 1)
-			flag = 0;
-		i++;
+		all->line = readline("myshell🌞> ");
+		add_history(all->line);
+		printf("%s\n", all->line);
+		checker(all);
+		ft_free(all);
 	}
-	if (flag == 1)
-		return (coma);
-	else
-		return (flag);
 }
 
+void	checker(t_all *all)
+{
+	int			coma;
+
+	coma = check_cometes(all->line);
+	if (coma == 34 || coma == 39)
+	{
+		ft_error(coma);
+		printf("ERROR %i\n", coma);
+		exit (1);
+	}
+	else
+	{
+		printf("Funca teoricament\n");
+		lexer(all);
+		//create_proces(&all);
+		mostra_tokens(all);
+		//mostra_proces(&all);
+	}
+}
 
 void	lexer(t_all *all)
 {

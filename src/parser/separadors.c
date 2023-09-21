@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:04:54 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/20 17:18:39 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:55:49 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,30 @@ char	*is_text_first(char *str)
 		}
 	}
 	return (ft_substr(str, 0, i));
+}
+
+int	check_cometes(char *str)
+{
+	int		i;
+	int		coma;
+	int		flag;
+
+	i = 0;
+	coma = 0;
+	flag = 0;
+	while (str[i])
+	{
+		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
+		{
+			coma = str[i];
+			flag = 1;
+		}
+		else if (coma == str[i] && flag == 1)
+			flag = 0;
+		i++;
+	}
+	if (flag == 1)
+		return (coma);
+	else
+		return (flag);
 }

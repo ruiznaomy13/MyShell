@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 11:26:12 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:05:01 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct s_token
 
 typedef struct s_process
 {
-	char			**process; //lo que ejecutaremos
-	t_token			*tkns; // la lista de tokens de la ejecució
+	char				**process; //lo que ejecutaremos
+	t_token				*rd; // la lista de tokens de la ejecució
 	struct s_process	*next;
 	// t_token			*token;
 }	t_process;

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 10:58:33 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:19:39 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av, char **env)
 	{
 		all.line = readline("myshell🌞> ");
 		add_history(all.line);
-		printf("%s\n", all.line);
+		// printf("%s\n", all.line);
 		// ft_errors(); TODO
 		lexer(&all);
 		// printf("abans create proces\n");
@@ -45,7 +45,7 @@ void	mostra_tokens(t_all *all)
 	aux = all->token;
 	while (aux != NULL)
 	{
-		printf("%d = %s\n", i, aux->wrd);
+		printf("%d = %s -> %d\n", i, aux->wrd, aux->type);
 		aux = aux->next;
 		i++;
 	}

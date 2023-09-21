@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 11:01:16 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:36:28 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,7 @@ int	create_token(t_all *all, char *str, int type)
 		tkn->wrd = ">";
 	else if (type == RDIN)
 		tkn->wrd = "<";
-	// if (tkn->wrd == NULL)
-	// 	return (0);
 	tkn->type = type;
-	// printf("[ ADDRES ] all -> %p\n", all);
 	add_token(tkn, all);
 	return (ft_strlen(tkn->wrd));
 }

@@ -35,6 +35,32 @@
 // 	return (coma);
 // }
 
+//nit, no probat
+int	check_cometes(char *str)
+{
+	int		i;
+	int		coma;
+	int		flag;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\'' || str[i] == '\"')
+		{
+			coma = str[i];
+			flag = 1;
+		}
+		if (coma == str[i] && flag == 1)
+		{
+			flag = 0;
+			return (0);
+		}
+		else
+			return (coma);
+		i++;
+	}
+	return (0);
+}
 
 void	lexer(t_all *all)
 {

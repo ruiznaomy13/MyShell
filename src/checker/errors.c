@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 15:00:24 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:29:31 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_error(int error)
 {
-    (void)error;
-    printf("ARRIBA\n");
+	if (error == '\'' || error == '\"')
+		printf("Sintax error missing %c\n", error);
 }

@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 15:02:34 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:26:20 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,10 @@ void	checker(t_all *all)
 	if (coma == 34 || coma == 39)
 	{
 		ft_error(coma);
-		printf("ERROR %i\n", coma);
 		exit (1);
 	}
 	else
 	{
-		printf("Funca teoricament\n");
 		lexer(all);
 		//create_proces(&all);
 		mostra_tokens(all);

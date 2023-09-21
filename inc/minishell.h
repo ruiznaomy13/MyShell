@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 16:21:30 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:16:14 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,28 @@ typedef struct s_all
 }	t_all;
 
 //----------PARSER------------
-//lexer creem tokens
+// lexer 
 void	loop(t_all *all);
 void	checker(t_all *all);
-int		check_cometes(char *str);
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
 void    create_process(t_all *all);
-// void	create_proces(t_all *all);
+ 
+// utils
+char	*search_env(char *str, char *env[]);
 
-//separadors 
+// separadors 
+int		check_cometes(char *str);
 int		delimiter(char c);
 char	*is_text(char *str);
 char	*is_text_first(char *str);
 
-// MOSTRA EL NODE
+// MOSTRA EL NODE ----- DELETE
 void	mostra_tokens(t_all *all);
 void	mostra_proces(t_all *all);
 
-//free de les llistes
+// free de les llistes
 void	ft_free(t_all *all);
 void	ft_error(int error);
 

@@ -1,5 +1,5 @@
 PARSER
--comprovar que les cometes estan tancades, abans de crear tokens FET
+-
 -
 
 TREURE LES COMETES ABANS D'EXPANDIR, noo s'expandeix si està entre cometes simples

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 16:20:30 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:51:46 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	lexer(t_all *all)
 		else if (all->line[i] == '<')
 			i += create_token(all, &all->line[i], RDIN) - 1;
 	}
-	create_process(all);
 }
 
 int	create_token(t_all *all, char *str, int type)
@@ -94,7 +93,10 @@ int	create_token(t_all *all, char *str, int type)
 		tkn->wrd = ">";
 	else if (type == RDIN)
 		tkn->wrd = "<";
+	// if (tkn->wrd == NULL)
+	// 	return (0);
 	tkn->type = type;
+	// printf("[ ADDRES ] all -> %p\n", all);
 	add_token(tkn, all);
 	return (ft_strlen(tkn->wrd));
 }

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 15:19:39 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:20:43 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,10 @@ int	main(int ac, char **av, char **env)
 
 	(0 || (ac = 0) || (av = 0));
 	ft_bzero(&all, sizeof(t_all));
-	all.env = env;
-	while (42)
-	{
-		all.line = readline("myshell🌞> ");
-		add_history(all.line);
-		// printf("%s\n", all.line);
-		// ft_errors(); TODO
-		lexer(&all);
-		// printf("abans create proces\n");
-		//create_proces(&all);
-		// printf("despres create proces\n");
-		mostra_tokens(&all);
-		//mostra_proces(&all);
-		ft_free(&all);
-	}
+	loop(&all);
 	return (0);
 }
+
 
 void	mostra_tokens(t_all *all)
 {

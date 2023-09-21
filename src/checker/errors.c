@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 14:15:48 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 15:33:33 by mmonpeat         ###   ########.fr       */
+/*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
+/*   Updated: 2023/09/21 15:29:31 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "inc/minishell.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_error(int error)
 {
-	size_t	i;
-	char	*o;
-
-	i = 0;
-	o = malloc(count * size);
-	if (!o)
-		return (NULL);
-	while (i < (count * size))
-	{
-		o[i] = '\0';
-		i++;
-	}
-	return (o);
+	if (error == '\'' || error == '\"')
+		printf("Sintax error missing %c\n", error);
 }

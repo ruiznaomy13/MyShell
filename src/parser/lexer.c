@@ -6,11 +6,42 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 14:36:28 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:20:30 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
+void	loop(t_all *all)
+{
+	while (42)
+	{
+		all->line = readline("myshell🌞> ");
+		add_history(all->line);
+		printf("%s\n", all->line);
+		checker(all);
+		ft_free(all);
+	}
+}
+
+void	checker(t_all *all)
+{
+	int			coma;
+
+	coma = check_cometes(all->line);
+	if (coma == 34 || coma == 39)
+	{
+		ft_error(coma);
+		exit (1);
+	}
+	else
+	{
+		lexer(all);
+		//create_proces(&all);
+		mostra_tokens(all);
+		//mostra_proces(&all);
+	}
+}
 
 void	lexer(t_all *all)
 {
@@ -82,49 +113,4 @@ void	add_token(t_token *tkn, t_all *all)
 		aux->next = tkn;
 	}
 }
-/*
-void create_proces(t_all *all)
-{
-	t_proces *current_proces = NULL;
-	t_proces *first_proces = NULL;
-	t_proces *new_proces;
-
-	while (all->token != NULL)
-	{
-		if (all->token->type != PIPE)
-		{
-			// Crear un nuevo proceso para el token actual
-			new_proces = (t_proces *)ft_calloc(sizeof(t_proces), 1);
-			if (!new_proces)
-				return;
-			new_proces->proces = all->token->wrd;
-			if (current_proces == NULL)
-			{
-				// Si es el primer proceso, establece 'first_proces' como nuevo proceso
-				first_proces = new_proces;
-				current_proces = new_proces;
-			}
-			else
-			{
-				// Agregar el nuevo proceso a la lista de procesos existente
-				current_proces->next = new_proces;
-				current_proces = new_proces;
-			}
-		}
-		else
-		{
-			// Avanzar al siguiente token
-			all->token = all->token->next;
-			if (current_proces != NULL)
-			{
-				// Cambiar de proceso cuando se encuentra una tubería
-				current_proces = NULL;
-			}
-		}
-		printf("proces: %s\n", new_proces->proces);
-		all->token = all->token->next;
-	}
-
-	// Ahora 'first_proces' contiene la lista de procesos creada
-}*/
 

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/20 18:46:02 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:26:12 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,21 @@ typedef struct s_token
 	// struct s_token  *prev;
 }	t_token;
 
-typedef struct s_proces
+typedef struct s_process
 {
-	char			*proces; //lo que ejecutaremos
+	char			**process; //lo que ejecutaremos
 	t_token			*tkns; // la lista de tokens de la ejecució
-	struct s_proces	*next;
+	struct s_process	*next;
 	// t_token			*token;
-}	t_proces;
+}	t_process;
 
 typedef struct s_all
 {
 	char		*line;
 	int			size;
-	// char    **env;
+	char    	**env;
 	t_token		*token;
-	t_proces	*procesos;
+	t_process	*procesos;
 }	t_all;
 
 //----------PARSER------------
@@ -61,7 +61,7 @@ typedef struct s_all
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
-void    create_process(t_all all);
+void    create_process(t_all *all);
 // void	create_proces(t_all *all);
 
 //separadors 

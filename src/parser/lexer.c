@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/20 17:19:49 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:01:16 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	lexer(t_all *all)
 		else if (all->line[i] == '<')
 			i += create_token(all, &all->line[i], RDIN) - 1;
 	}
+	create_process(all);
 }
 
 int	create_token(t_all *all, char *str, int type)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/20 16:55:56 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:58:33 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	main(int ac, char **av, char **env)
 {
 	t_all		all;
 
-	(0 || (ac = 0) || (av = 0) || (env = 0));
+	(0 || (ac = 0) || (av = 0));
 	ft_bzero(&all, sizeof(t_all));
+	all.env = env;
 	while (42)
 	{
 		all.line = readline("myshell🌞> ");

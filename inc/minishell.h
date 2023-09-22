@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 17:16:14 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:39:56 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,14 @@ typedef struct s_all
 {
 	char		*line;
 	int			size;
-	char    	**env;
+	char		**env;
 	t_token		*token;
 	t_process	*procesos;
 }	t_all;
+
+// MOSTRA EL NODE ----- DELETE
+void	mostra_tokens(t_all *all);
+void	mostra_process(t_all *all);
 
 //----------PARSER------------
 // lexer 
@@ -66,7 +70,7 @@ void	add_token(t_token *tkn, t_all *all);
 void    create_process(t_all *all);
  
 // utils
-char	*search_env(char *str, char *env[]);
+char	**duplicate_env(t_all *all);
 
 // separadors 
 int		check_cometes(char *str);
@@ -74,12 +78,11 @@ int		delimiter(char c);
 char	*is_text(char *str);
 char	*is_text_first(char *str);
 
-// MOSTRA EL NODE ----- DELETE
-void	mostra_tokens(t_all *all);
-void	mostra_proces(t_all *all);
-
 // free de les llistes
 void	ft_free(t_all *all);
 void	ft_error(int error);
+
+//------------EXECUTOR---------------
+void	executor(t_all *all);
 
 #endif

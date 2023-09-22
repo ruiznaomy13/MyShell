@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 16:23:40 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:40:31 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ int	main(int ac, char **av, char **env)
 
 	(0 || (ac = 0) || (av = 0));
 	all.env = env;
-	ft_bzero(&all, sizeof(t_all));
 	loop(&all);
+	// printf("surt");
 	return (0);
 }
-
 
 void	mostra_tokens(t_all *all)
 {
@@ -39,25 +38,25 @@ void	mostra_tokens(t_all *all)
 	}
 }
 
-// void	mostra_proces(t_all *all)
-// {
-// 	int			i;
-// 	t_proces	*aux;
+void	mostra_process(t_all *all)
+{
+	int			i;
+	t_process	*aux;
 
-// 	i = 1;
-// 	aux = all->procesos;
-// 	while (aux != NULL)
-// 	{
-// 		printf("%d = %s\n", i, aux->proces);
-// 		aux = aux->next;
-// 		i++;
-// 	}
-// }
+	i = 1;
+	aux = all->procesos;
+	while (aux != NULL)
+	{
+		printf("%d = %s\n", i, aux->process[i]);
+		aux = aux->next;
+		i++;
+	}
+}
 
 void	ft_free(t_all *all)
 {
 	t_token		*tkn;
-	// t_proces	*prc;
+	t_process	*prc;
 
 	while (all->token != NULL)
 	{
@@ -65,10 +64,10 @@ void	ft_free(t_all *all)
 		all->token = all->token->next;
 		free(tkn);
 	}
-	// while (all->procesos != NULL)
-	// {
-	// 	prc = all->procesos;
-	// 	all->procesos = all->procesos->next;
-	// 	free(tkn);
-	// }
+	while (all->procesos != NULL)
+	{
+		prc = all->procesos;
+		all->procesos = all->procesos->next;
+		free(tkn);
+	}
 }

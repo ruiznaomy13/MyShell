@@ -1,80 +1,35 @@
 #include "inc/minishell.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <xlocale.h>
-#include <stdlib.h>
-
-// #include "inc/minishell.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+//per després
+char	**duplicate_env(t_all *all)
 {
-	char	*save;
-	size_t	len_s;
+	char	**new_env;
+	int		i;
 
-	if (!s)
-		return (NULL);
-	len_s = strlen(s);
-	if (len > len_s - start)
-		len = len_s - start;
-	if (start >= len_s)
+	i = 0;
+	while (all->env[i++])
+		;
+	new_env = (char **)malloc(sizeof(char *) * i + 1);
+	i = 0;
+	while (all->env[i])
 	{
-		save = (char *)malloc(1);
-		if (!save)
-			return (NULL);
-		save[0] = '\0';
-		return (save);
-	}
-	save = (char *)malloc(sizeof(char) * (len + 1));
-	if (!save)
-		return (NULL);
-	while (start--)
-		s++;
-	strlcpy(save, s, len + 1);
-	return (save);
-}
-
-char    *search_env(char *str, char *env[])
-{
-	int i = 0;
-	char *new;
-	char *aux;
-
-	new = strdup(str);
-	aux = NULL;
-	if (new == NULL)
-		return NULL;
-	strcat(new, "=");
-	while (env[i] != NULL)
-	{
-		aux = strnstr(env[i], new, strlen(new));
-		if (aux != NULL)
-		{
-			free(new); // Liberamos la memoria asignada a new
-			return (aux);
-		}
+		new_env[i] = ft_strdup(all->env[i]);
 		i++;
 	}
-	free(new); // Liberamos la memoria asignada a new si no se encuentra
-	return (NULL);
+	new_env[i] = NULL;
+	return (new_env);
 }
 
-char *exp_var(char *str, char *env[])
+char	*exp_var(char *str)
 {
-	char    *new;
-	size_t     i;
+	char	*new;
+	size_t	i;
+
 	i = 0;
-	new = search_env(str, env);
+	new = getenv(str);
 	if (new == NULL)
-		return NULL;
+		return (NULL);
 	while (str[i] != '=')
 		i++;
 	return (ft_substr(new, strlen(str) + 1, strlen(new) - i));
 }
-
-// int main(int ac, char **av, char *env[])
-// {
-// 	if (ac != 2)
-// 		return (-1);
-// 	printf("%s -> %s\n", search_env(av[1], env), exp_var(av[1], env));
-// }

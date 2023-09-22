@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 17:16:14 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:26:03 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_all
 {
 	char		*line;
 	int			size;
+	// int			exit_c;
 	char    	**env;
 	t_token		*token;
 	t_process	*procesos;

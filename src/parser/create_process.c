@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/21 16:11:02 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:42:40 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,25 @@ char **save_arg(t_all *all)
     return (str);
 }
 
-// char    *env_search(char *str, char **env)
-// {
-//     char    *exp;
-//     return (exp);
-// }
+void    expand_var(char *str)
+{
+    int     i;
+    int     flag;
 
+    i = 0;
+    flag = 0;
+    while (str[i])
+    {
+        if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
+        {
+            if (str[i] == '\'')
+                flag = COMMA_S;
+            flag = COMMA_D;
+        }
+        if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
+            str_rep(var_to_exp(&str[i]), getenv(var_to_expand(&str[i])));
+    }
+}
 
 void    create_process(t_all *all)
 {
@@ -69,6 +82,7 @@ void    create_process(t_all *all)
     i = -1;
     pcs = (t_process *)ft_calloc(sizeof(t_token), 1);
     pcs->process = save_arg(all);
+    expand_var(pcs->process);
     printf("ARGUMENTS =");
     while (pcs->process[++i] != NULL)
     {

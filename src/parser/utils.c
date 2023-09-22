@@ -1,11 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
+/*   Updated: 2023/09/22 19:28:41 by ncastell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "inc/minishell.h"
-
-#include <stdio.h>
-#include <string.h>
-#include <xlocale.h>
-#include <stdlib.h>
-
-// #include "inc/minishell.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

@@ -1,4 +1,4 @@
-// #include "inc/minishell.h"
+#include "inc/minishell.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -36,45 +36,45 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 char    *search_env(char *str, char *env[])
 {
-    int i = 0;
-    char *new;
-    char *aux;
+	int i = 0;
+	char *new;
+	char *aux;
 
-    new = strdup(str);
-    aux = NULL;
-    if (new == NULL)
-        return NULL;
-    strcat(new, "=");
-    while (env[i] != NULL)
-    {
-        aux = strnstr(env[i], new, strlen(new));
-        if (aux != NULL)
-        {
-            free(new); // Liberamos la memoria asignada a new
-            return (aux);
-        }
-        i++;
-    }
-    free(new); // Liberamos la memoria asignada a new si no se encuentra
-    return (NULL);
+	new = strdup(str);
+	aux = NULL;
+	if (new == NULL)
+		return NULL;
+	strcat(new, "=");
+	while (env[i] != NULL)
+	{
+		aux = strnstr(env[i], new, strlen(new));
+		if (aux != NULL)
+		{
+			free(new); // Liberamos la memoria asignada a new
+			return (aux);
+		}
+		i++;
+	}
+	free(new); // Liberamos la memoria asignada a new si no se encuentra
+	return (NULL);
 }
 
 char *exp_var(char *str, char *env[])
 {
-    char    *new;
-    size_t     i;
-    i = 0;
-    new = search_env(str, env);
-    if (new == NULL)
-        return NULL;
-    while (str[i] != '=')
-        i++;
-    return (ft_substr(new, strlen(str) + 1, strlen(new) - i));
+	char    *new;
+	size_t     i;
+	i = 0;
+	new = search_env(str, env);
+	if (new == NULL)
+		return NULL;
+	while (str[i] != '=')
+		i++;
+	return (ft_substr(new, strlen(str) + 1, strlen(new) - i));
 }
 
-int main(int ac, char **av, char *env[])
-{
-    if (ac != 2)
-        return (-1);
-    printf("%s -> %s\n", search_env(av[1], env), exp_var(av[1], env));
-}
+// int main(int ac, char **av, char *env[])
+// {
+// 	if (ac != 2)
+// 		return (-1);
+// 	printf("%s -> %s\n", search_env(av[1], env), exp_var(av[1], env));
+// }

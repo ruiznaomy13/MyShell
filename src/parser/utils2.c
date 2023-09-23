@@ -6,13 +6,15 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/22 19:49:52 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/23 14:36:13 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+#include <string.h>
 
-char* str_rep(char* source, char* target, char* replacement) {
+char* str_rep(char* source, char* target, char* replacement)
+{
     int sourceLength = ft_strlen(source);
     int targetLength = ft_strlen(target);
     int replacementLength = ft_strlen(replacement);
@@ -27,13 +29,14 @@ char* str_rep(char* source, char* target, char* replacement) {
             result = (char*)malloc(sourceLength + replacementLength - targetLength + 1);
             if (result == NULL)
                 return (NULL);
-            ft_strncpy(result, source, i);
-            ft_strcpy(result + i, replacement);
-            ft_strcpy(result + i + replacementLength, source + i + targetLength);
+            strncpy(result, source, i);
+            strcpy(result + i, replacement);
+            strcpy(result + i + replacementLength, source + i + targetLength);
             found = 1;
         }
         i++;
     }
+    printf("STR = %s", result);
     if (!found)
         return strdup(source);
     return (result);

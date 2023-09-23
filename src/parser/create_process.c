@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/22 16:42:40 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/23 14:36:26 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,47 @@ int arg_size(t_token *aux)
     return (i);
 }
 
+char    *search_var(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[i] && (ft_isalnum(str[i] || str[i] == '_')))
+        i++;
+    return(ft_substr(str, 1, i));
+}
+
+void    expand_var(char *str)
+{
+    int     i;
+    int     flag;
+    char    *var;
+
+    i = 0;
+    flag = 0;
+    var = NULL;
+    while (str[i])
+    {
+        if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
+        {
+            if (str[i] == '\'')
+                flag = COMMA_S;
+            flag = COMMA_D;
+        }
+        if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
+        {
+            var = search_var(&str[i]);
+            printf("llego aqui 1\n");
+            str = str_rep(str, var, getenv(var));
+            printf("llego aqui 2\n");
+            i += ft_strlen(var);
+            printf("VAR = %s", var);
+            // str_rep(str, );
+        }
+        i++;
+    }
+}
+
 char **save_arg(t_all *all)
 {
     t_token *aux;
@@ -47,31 +88,14 @@ char **save_arg(t_all *all)
             || aux->type == RDIN || aux->type == RDHD)
                 aux = aux->next->next;
         if (aux->wrd != NULL)
+        {
+            // expand_var(aux->wrd);
             str[i++] = aux->wrd;
+        }
         aux = aux->next;
     }
     str[i] = NULL;
     return (str);
-}
-
-void    expand_var(char *str)
-{
-    int     i;
-    int     flag;
-
-    i = 0;
-    flag = 0;
-    while (str[i])
-    {
-        if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
-        {
-            if (str[i] == '\'')
-                flag = COMMA_S;
-            flag = COMMA_D;
-        }
-        if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
-            str_rep(var_to_exp(&str[i]), getenv(var_to_expand(&str[i])));
-    }
 }
 
 void    create_process(t_all *all)
@@ -82,7 +106,7 @@ void    create_process(t_all *all)
     i = -1;
     pcs = (t_process *)ft_calloc(sizeof(t_token), 1);
     pcs->process = save_arg(all);
-    expand_var(pcs->process);
+    // expand_var(pcs->process);
     printf("ARGUMENTS =");
     while (pcs->process[++i] != NULL)
     {

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/24 21:24:12 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:46:52 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char    *search_var(char *str)
     return(ft_substr(str, 1, i-1));
 }
 
-void    expand_var(t_token *tkn)
+void    expand_var(t_token *tkn, char **env)
 {
     int     i;
     int     flag;
@@ -63,12 +63,8 @@ void    expand_var(t_token *tkn)
         {
             var = search_var(&tkn->wrd[i]);
             printf("VAR = %s\n", var);
-            printf("llego aqui 1\n");
-            tkn->wrd = str_rep(str, var, getenv(var));
-            printf("llego aqui 2\n");
+            tkn->wrd = str_rep(tkn->wrd, ft_strjoin("$", var), search_env(var, env));
             i += ft_strlen(var);
-            i++;
-            // str_rep(str, );
         }
         else
             i++;
@@ -95,7 +91,7 @@ char **save_arg(t_all *all)
                 aux = aux->next->next;
         if (aux->wrd != NULL)
         {
-            expand_var(aux);
+            expand_var(aux, all->env);
             str[i++] = aux->wrd;
         }
         aux = aux->next;

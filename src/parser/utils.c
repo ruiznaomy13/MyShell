@@ -6,85 +6,54 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/24 21:24:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:33:07 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "inc/minishell.h"
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "inc/minishell.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+
+char *split_env(char *str)
 {
-	char	*save;
-	size_t	len_s;
-
-	if (!s)
-		return (NULL);
-	len_s = strlen(s);
-	if (len > len_s - start)
-		len = len_s - start;
-	if (start >= len_s)
+	int		j;
+    char	**sep;
+	char	*value;
+	
+	sep = ft_split(str, '=');
+    if (sep != NULL)
 	{
-		save = (char *)malloc(1);
-		if (!save)
-			return (NULL);
-		save[0] = '\0';
-		return (save);
-	}
-	save = (char *)malloc(sizeof(char) * (len + 1));
-	if (!save)
-		return (NULL);
-	while (start--)
-		s++;
-	strlcpy(save, s, len + 1);
-	return (save);
+        value = ft_strdup(sep[1]);
+        j = -1;
+        while (sep[++j] != NULL)
+            free(sep[j]);
+        free(sep);
+        return (value);
+    }
+    return (NULL);
 }
 
-char    *search_env(char *str, char *env[])
-{
-	int i = 0;
-	char *new;
-	char *aux;
+// str = string a buscar en el env
+char *search_env(char *str, char *env[]) {
+    int i;
+    char *new;
+    char *aux;
 
-	new = strdup(str);
-	aux = NULL;
-	if (new == NULL)
-		return NULL;
-	printf("\nEntro - 1\n");
-	strcat(new, "=");
-	printf("\nEntro - 2\n");
-	while (env[i] != NULL)
+	i = -1;
+    new = ft_strdup(str);
+    aux = NULL;
+    if (new == NULL)
+        return NULL;
+    ft_strlcat(new, "=", ft_strlen(new));
+    while (env[++i])
 	{
-		aux = strnstr(env[i], new, strlen(new));
-		if (aux != NULL)
+        aux = ft_strnstr(env[i], new, ft_strlen(new));
+        if (aux != NULL)
 		{
-			free(new); // Liberamos la memoria asignada a new
-			return (aux);
-		}
-		i++;
-	}
-	free(new); // Liberamos la memoria asignada a new si no se encuentra
-	return (NULL);
+            free(new);
+            return (split_env(aux));
+        }
+    }
+    free(new); // Liberamos la memoria asignada a new si no se encuentra
+    return (NULL);
 }
 
-// char *exp_var(char *str, char *env[])
-// {
-// 	char    *new;
-// 	size_t     i;
-// 	i = 0;
-// 	new = search_env(str, env);
-// 	if (new == NULL)
-// 		return NULL;
-// 	while (str[i] != '=')
-// 		i++;
-// 	return (ft_substr(new, strlen(str) + 1, strlen(new) - i));
-// }
-
-// int main(int ac, char **av, char *env[])
-// {
-// 	if (ac != 2)
-// 		return (-1);
-// 	printf("%s\n", search_env(av[1], env));
-// }

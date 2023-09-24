@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/22 15:40:31 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:49:25 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	main(int ac, char **av, char **env)
 {
 	t_all		all;
 
-	(0 || (ac = 0) || (av = 0));
+	(void)ac;
+	(void)av;
 	all.env = env;
 	loop(&all);
 	// printf("surt");

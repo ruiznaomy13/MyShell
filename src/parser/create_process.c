@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/23 14:36:26 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/24 21:00:11 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,45 @@ char    *search_var(char *str)
     int i;
 
     i = 0;
-    while (str[i] && (ft_isalnum(str[i] || str[i] == '_')))
-        i++;
-    return(ft_substr(str, 1, i));
+    while (str[++i] && (ft_isalpha(str[i]) || str[i] == '_'));
+    printf("SEARCH VAR = %s\n", ft_substr(str, 1, i));
+    return(ft_substr(str, 1, i-1));
 }
 
-void    expand_var(char *str)
+void    expand_var(t_all *all)
 {
     int     i;
     int     flag;
     char    *var;
+    char    *str;
 
     i = 0;
     flag = 0;
     var = NULL;
-    while (str[i])
+    str = ft_substr(tkn->wrd, 0, ft_strlen(tkn->wrd));
+    while (tkn->wrd[i])
     {
-        if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
+        if ((tkn->wrd[i] == '\'' || tkn->wrd[i] == '\"') && flag == 0)
         {
-            if (str[i] == '\'')
+            if (tkn->wrd[i] == '\'')
                 flag = COMMA_S;
-            flag = COMMA_D;
+            else
+                flag = COMMA_D;
+            i++;
         }
-        if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
+        else if (tkn->wrd[i] == '$' && (flag == 0 || flag == COMMA_D))
         {
-            var = search_var(&str[i]);
+            var = search_var(&tkn->wrd[i]);
+            printf("VAR = %s\n", var);
             printf("llego aqui 1\n");
-            str = str_rep(str, var, getenv(var));
+            tkn->wrd = str_rep(str, var, search_env(str, ));
             printf("llego aqui 2\n");
             i += ft_strlen(var);
-            printf("VAR = %s", var);
+            i++;
             // str_rep(str, );
         }
-        i++;
+        else
+            i++;
     }
 }
 
@@ -89,7 +95,7 @@ char **save_arg(t_all *all)
                 aux = aux->next->next;
         if (aux->wrd != NULL)
         {
-            // expand_var(aux->wrd);
+            expand_var(aux);
             str[i++] = aux->wrd;
         }
         aux = aux->next;

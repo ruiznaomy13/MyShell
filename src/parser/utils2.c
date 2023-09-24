@@ -6,14 +6,80 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/23 14:36:13 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/24 20:59:16 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 #include <string.h>
 
-char* str_rep(char* source, char* target, char* replacement)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*save;
+	size_t	len_s;
+
+	if (!s)
+		return (NULL);
+	len_s = strlen(s);
+	if (len > len_s - start)
+		len = len_s - start;
+	if (start >= len_s)
+	{
+		save = (char *)malloc(1);
+		if (!save)
+			return (NULL);
+		save[0] = '\0';
+		return (save);
+	}
+	save = (char *)malloc(sizeof(char) * (len + 1));
+	if (!save)
+		return (NULL);
+	while (start--)
+		s++;
+	strlcpy(save, s, len + 1);
+	return (save);
+}
+
+char    *search_env(char *str, char *env[])
+{
+	int i = 0;
+	char *new;
+	char *aux;
+
+	new = strdup(str);
+	aux = NULL;
+	if (new == NULL)
+		return NULL;
+	strcat(new, "=");
+	while (env[i] != NULL)
+	{
+		aux = strnstr(env[i], new, strlen(new));
+		if (aux != NULL)
+		{
+			free(new); // Liberamos la memoria asignada a new
+			return (aux);
+		}
+		i++;
+	}
+	free(new); // Liberamos la memoria asignada a new si no se encuentra
+	return (NULL);
+}
+
+// char *exp_var(char *str, char *env[])
+// {
+// 	char    *new;
+// 	size_t     i;
+    
+// 	i = 0;
+// 	new = search_env(str, env);
+// 	if (new == NULL)
+// 		return NULL;
+// 	while (str[i] != '=')
+// 		i++;
+// 	return (ft_substr(new, strlen(str) + 1, strlen(new) - i));
+// }
+
+char    *str_rep(char* source, char* target, char* replacement)
 {
     int sourceLength = ft_strlen(source);
     int targetLength = ft_strlen(target);
@@ -35,24 +101,9 @@ char* str_rep(char* source, char* target, char* replacement)
             found = 1;
         }
         i++;
-    }
-    printf("STR = %s", result);
+    }   
+    printf("STR = %s\n", result);
     if (!found)
         return strdup(source);
     return (result);
-}
-
-int main() {
-    char    *originalString = "Este es un ejemplo de replace en C. replace esta palabra.";
-    char    *searchString = "replace";
-    char    *replacementString = "reemplazar";
-
-    char    *replacedString = str_rep(originalString, searchString, replacementString);
-
-    printf("Cadena original: %s\n", originalString);
-    printf("Cadena reemplazada: %s\n", replacedString);
-
-    free(replacedString);
-
-    return 0;
 }

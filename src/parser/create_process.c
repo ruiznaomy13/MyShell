@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/24 21:00:11 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/24 21:24:12 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char    *search_var(char *str)
     return(ft_substr(str, 1, i-1));
 }
 
-void    expand_var(t_all *all)
+void    expand_var(t_token *tkn)
 {
     int     i;
     int     flag;
@@ -64,7 +64,7 @@ void    expand_var(t_all *all)
             var = search_var(&tkn->wrd[i]);
             printf("VAR = %s\n", var);
             printf("llego aqui 1\n");
-            tkn->wrd = str_rep(str, var, search_env(str, ));
+            tkn->wrd = str_rep(str, var, getenv(var));
             printf("llego aqui 2\n");
             i += ft_strlen(var);
             i++;

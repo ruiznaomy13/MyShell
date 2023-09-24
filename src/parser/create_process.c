@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/21 16:11:02 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/24 21:00:11 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,53 @@ int arg_size(t_token *aux)
     return (i);
 }
 
+char    *search_var(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[++i] && (ft_isalpha(str[i]) || str[i] == '_'));
+    printf("SEARCH VAR = %s\n", ft_substr(str, 1, i));
+    return(ft_substr(str, 1, i-1));
+}
+
+void    expand_var(t_all *all)
+{
+    int     i;
+    int     flag;
+    char    *var;
+    char    *str;
+
+    i = 0;
+    flag = 0;
+    var = NULL;
+    str = ft_substr(tkn->wrd, 0, ft_strlen(tkn->wrd));
+    while (tkn->wrd[i])
+    {
+        if ((tkn->wrd[i] == '\'' || tkn->wrd[i] == '\"') && flag == 0)
+        {
+            if (tkn->wrd[i] == '\'')
+                flag = COMMA_S;
+            else
+                flag = COMMA_D;
+            i++;
+        }
+        else if (tkn->wrd[i] == '$' && (flag == 0 || flag == COMMA_D))
+        {
+            var = search_var(&tkn->wrd[i]);
+            printf("VAR = %s\n", var);
+            printf("llego aqui 1\n");
+            tkn->wrd = str_rep(str, var, search_env(str, ));
+            printf("llego aqui 2\n");
+            i += ft_strlen(var);
+            i++;
+            // str_rep(str, );
+        }
+        else
+            i++;
+    }
+}
+
 char **save_arg(t_all *all)
 {
     t_token *aux;
@@ -47,19 +94,15 @@ char **save_arg(t_all *all)
             || aux->type == RDIN || aux->type == RDHD)
                 aux = aux->next->next;
         if (aux->wrd != NULL)
+        {
+            expand_var(aux);
             str[i++] = aux->wrd;
+        }
         aux = aux->next;
     }
     str[i] = NULL;
     return (str);
 }
-
-// char    *env_search(char *str, char **env)
-// {
-//     char    *exp;
-//     return (exp);
-// }
-
 
 void    create_process(t_all *all)
 {
@@ -69,6 +112,7 @@ void    create_process(t_all *all)
     i = -1;
     pcs = (t_process *)ft_calloc(sizeof(t_token), 1);
     pcs->process = save_arg(all);
+    // expand_var(pcs->process);
     printf("ARGUMENTS =");
     while (pcs->process[++i] != NULL)
     {

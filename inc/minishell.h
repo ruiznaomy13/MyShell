@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/21 17:16:14 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/23 01:24:04 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_all
 {
 	char		*line;
 	int			size;
+	// int			exit_c;
 	char    	**env;
 	t_token		*token;
 	t_process	*procesos;
@@ -81,5 +82,7 @@ void	mostra_proces(t_all *all);
 // free de les llistes
 void	ft_free(t_all *all);
 void	ft_error(int error);
+
+char	*str_rep(char* source, char* target, char* replacement);
 
 #endif

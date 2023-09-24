@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/22 17:28:45 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/24 13:01:05 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,40 @@ void	executor(t_all *all)
 	char	**path;
 	char	**join = NULL;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	path = ft_split(getenv("PATH"), ':');
+	join = (char **)malloc(sizeof(char *) * (1 + 1));
 	if (path == NULL)
 	{
-		fprintf(stderr, "Error al dividir PATH\n");
+		fprintf(stderr, "Error al dividir PATH\n");//ns com funca
 		exit(1);
 	}
 	while (path[i])
 	{
-		printf("\n%s", path[i]);
-		*join = ft_strjoin(path[i], "ls");
-		if (access(join[0], F_OK) == 0)
+		// printf("\n%s", path[i]);
+		*join = ft_strjoin(path[i], "/");
+		*join = ft_strjoin(*join, all->token->wrd);
+		// exit (1);
+		printf("\n%s", join[0]);
+		if (access(join[0], F_OK) == 0 && access(join[0], X_OK) == 0)
 		{
-			execve(join[0],  "ls -la", all->env);
+			printf("\nentra\n");
+			execve(join[0], &all->token->wrd, all->env);
 			perror("execve"); // Manejo de errores si execve falla
 		}
 		i++;
 	}
+	printf("\n");
+	while (j < 2) 
+	{
+		free(join[j]);
+		j++;
+	}
+	free(join);
+
 	// exit(1);
 }
 //execve("/bin/ls", {ls, -la, src/}, env);

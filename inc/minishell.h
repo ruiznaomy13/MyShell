@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/22 15:39:56 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/24 15:02:49 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ typedef struct s_process
 	char				**process; //lo que ejecutaremos
 	t_token				*rd; // la lista de tokens de la ejecució
 	struct s_process	*next;
-	// t_token			*token;
+	t_token				*token;
+	//num_process
 }	t_process;
 
 typedef struct s_all

@@ -6,33 +6,33 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/22 15:41:38 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/24 16:48:35 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-int arg_size(t_token *aux)
+int	arg_size(t_token *aux)
 {
-	int     i;
+	int		i;
 
 	i = 0;
 	while (aux != NULL && aux->type != PIPE)
 	{
 		if (aux->type == RDOUT || aux->type == RDAP \
 			|| aux->type == RDIN || aux->type == RDHD)
-				aux = aux->next->next;
+			aux = aux->next->next;
 		aux = aux->next;
 		i++;
 	}
 	return (i);
 }
 
-char **save_arg(t_all *all)
+char	**save_arg(t_all *all)
 {
-	t_token *aux;
-	char    **str;
-	int     i;
+	t_token	*aux;
+	char	**str;
+	int		i;
 
 	aux = all->token;
 	i = arg_size(aux);
@@ -45,7 +45,7 @@ char **save_arg(t_all *all)
 	{
 		if (aux->type == RDOUT || aux->type == RDAP \
 			|| aux->type == RDIN || aux->type == RDHD)
-				aux = aux->next->next;
+			aux = aux->next->next;
 		if (aux->wrd != NULL)
 			str[i++] = aux->wrd;
 		aux = aux->next;
@@ -60,21 +60,24 @@ char **save_arg(t_all *all)
 //     return (exp);
 // }
 
-
 void	create_process(t_all *all)
 {
 	int			i;
-	t_process	*pcs;
+	t_process	*pcs = NULL;
 
 	i = -1;
-	pcs = (t_process *)ft_calloc(sizeof(t_token), 1);
-	pcs->process = save_arg(all);
-	printf("ARGUMENTS =");
-	while (pcs->process[++i] != NULL)
+	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
+	if (pcs == NULL)
 	{
-		printf(" %s ", pcs->process[i]);
+		pcs->process = save_arg(all);
+		printf("ARGUMENTS =");
+		while (pcs->process[++i] != NULL)
+		{
+			printf(" %s ", pcs->process[i]);
+		}
+		printf("\n");
 	}
-	printf("\n");
+
 }
 
 // 1. guardarm en el **char todo lo que no sea redirecccion ni su archivo

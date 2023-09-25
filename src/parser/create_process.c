@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/24 21:00:11 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/25 12:52:04 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,111 +14,111 @@
 
 int arg_size(t_token *aux)
 {
-    int     i;
+	int     i;
 
-    i = 0;
-    while (aux != NULL && aux->type != PIPE)
-    {
-        if (aux->type == RDOUT || aux->type == RDAP \
-            || aux->type == RDIN || aux->type == RDHD)
-                aux = aux->next->next;
-        aux = aux->next;
-        i++;
-    }
-    return (i);
+	i = 0;
+	while (aux != NULL && aux->type != PIPE)
+	{
+		if (aux->type == RDOUT || aux->type == RDAP \
+			|| aux->type == RDIN || aux->type == RDHD)
+				aux = aux->next->next;
+		aux = aux->next;
+		i++;
+	}
+	return (i);
 }
 
 char    *search_var(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (str[++i] && (ft_isalpha(str[i]) || str[i] == '_'));
-    printf("SEARCH VAR = %s\n", ft_substr(str, 1, i));
-    return(ft_substr(str, 1, i-1));
+	i = 0;
+	while (str[++i] && (ft_isalpha(str[i]) || str[i] == '_'));
+	printf("SEARCH VAR = %s\n", ft_substr(str, 1, i));
+	return(ft_substr(str, 1, i-1));
 }
 
 void    expand_var(t_all *all)
 {
-    int     i;
-    int     flag;
-    char    *var;
-    char    *str;
+	int     i;
+	int     flag;
+	char    *var;
+	char    *str;
 
-    i = 0;
-    flag = 0;
-    var = NULL;
-    str = ft_substr(tkn->wrd, 0, ft_strlen(tkn->wrd));
-    while (tkn->wrd[i])
-    {
-        if ((tkn->wrd[i] == '\'' || tkn->wrd[i] == '\"') && flag == 0)
-        {
-            if (tkn->wrd[i] == '\'')
-                flag = COMMA_S;
-            else
-                flag = COMMA_D;
-            i++;
-        }
-        else if (tkn->wrd[i] == '$' && (flag == 0 || flag == COMMA_D))
-        {
-            var = search_var(&tkn->wrd[i]);
-            printf("VAR = %s\n", var);
-            printf("llego aqui 1\n");
-            tkn->wrd = str_rep(str, var, search_env(str, ));
-            printf("llego aqui 2\n");
-            i += ft_strlen(var);
-            i++;
-            // str_rep(str, );
-        }
-        else
-            i++;
-    }
+	i = 0;
+	flag = 0;
+	var = NULL;
+	str = ft_substr(tkn->wrd, 0, ft_strlen(tkn->wrd));
+	while (tkn->wrd[i])
+	{
+		if ((tkn->wrd[i] == '\'' || tkn->wrd[i] == '\"') && flag == 0)
+		{
+			if (tkn->wrd[i] == '\'')
+				flag = COMMA_S;
+			else
+				flag = COMMA_D;
+			i++;
+		}
+		else if (tkn->wrd[i] == '$' && (flag == 0 || flag == COMMA_D))
+		{
+			var = search_var(&tkn->wrd[i]);
+			printf("VAR = %s\n", var);
+			printf("llego aqui 1\n");
+			tkn->wrd = str_rep(str, var, search_env(str, ));
+			printf("llego aqui 2\n");
+			i += ft_strlen(var);
+			i++;
+			// str_rep(str, );
+		}
+		else
+			i++;
+	}
 }
 
 char **save_arg(t_all *all)
 {
-    t_token *aux;
-    char    **str;
-    int     i;
+	t_token *aux;
+	char    **str;
+	int     i;
 
-    aux = all->token;
-    i = arg_size(aux);
-    str = (char **)malloc(sizeof(char *) * (i + 1));
-    if (!str)
-        return (NULL);
-    aux = all->token;
-    i = 0;
-    while (aux != NULL && aux->type != PIPE)
-    {
-        if (aux->type == RDOUT || aux->type == RDAP \
-            || aux->type == RDIN || aux->type == RDHD)
-                aux = aux->next->next;
-        if (aux->wrd != NULL)
-        {
-            expand_var(aux);
-            str[i++] = aux->wrd;
-        }
-        aux = aux->next;
-    }
-    str[i] = NULL;
-    return (str);
+	aux = all->token;
+	i = arg_size(aux);
+	str = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!str)
+		return (NULL);
+	aux = all->token;
+	i = 0;
+	while (aux != NULL && aux->type != PIPE)
+	{
+		if (aux->type == RDOUT || aux->type == RDAP \
+			|| aux->type == RDIN || aux->type == RDHD)
+				aux = aux->next->next;
+		if (aux->wrd != NULL)
+		{
+			expand_var(aux);
+			str[i++] = aux->wrd;
+		}
+		aux = aux->next;
+	}
+	str[i] = NULL;
+	return (str);
 }
 
 void    create_process(t_all *all)
 {
-    t_process   *pcs;
-    int         i;
+	t_process   *pcs;
+	int         i;
 
-    i = -1;
-    pcs = (t_process *)ft_calloc(sizeof(t_token), 1);
-    pcs->process = save_arg(all);
-    // expand_var(pcs->process);
-    printf("ARGUMENTS =");
-    while (pcs->process[++i] != NULL)
-    {
-        printf(" %s ", pcs->process[i]);
-    }
-    printf("\n");
+	i = -1;
+	pcs = (t_process *)ft_calloc(sizeof(t_token), 1);
+	pcs->process = save_arg(all);
+	// expand_var(pcs->process);
+	printf("ARGUMENTS =");
+	while (pcs->process[++i] != NULL)
+	{
+		printf(" %s ", pcs->process[i]);
+	}
+	printf("\n");
 }
 
 // 1. guardarm en el **char todo lo que no sea redirecccion ni su archivo

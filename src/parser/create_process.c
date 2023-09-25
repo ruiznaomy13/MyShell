@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/25 15:41:15 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:45:59 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	create_process(t_all *all)
 	t_process	*pcs = NULL;
 
 	i = -1;
-	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
+	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);//num_process
 	if (pcs == NULL)
 		return ;
 	pcs->process = save_arg(all);

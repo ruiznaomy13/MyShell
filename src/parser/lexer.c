@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 15:59:05 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:46:21 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	loop(t_all *all)
 		printf("%s\n", all->line);
 		checker(all);
 		// printf("%s\n", all->env[1]);
-		
 		executor(all);
 		ft_free(all);
 	}

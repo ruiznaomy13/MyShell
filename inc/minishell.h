@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/23 01:24:04 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:47:27 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_all
 	// int			exit_c;
 	char    	**env;
 	t_token		*token;
-	t_process	*procesos;
+	t_process	*process;
 }	t_all;
 
 //----------PARSER------------

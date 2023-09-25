@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/24 21:25:08 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:51:32 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,31 +79,31 @@
 // 	return (ft_substr(new, strlen(str) + 1, strlen(new) - i));
 // }
 
-char    *str_rep(char* source, char* target, char* replacement)
-{
-    int sourceLength = ft_strlen(source);
-    int targetLength = ft_strlen(target);
-    int replacementLength = ft_strlen(replacement);
-    int i;
+// char    *str_rep(char* source, char* target, char* replacement)
+// {
+//     int sourceLength = ft_strlen(source);
+//     int targetLength = ft_strlen(target);
+//     int replacementLength = ft_strlen(replacement);
+//     int i;
 
-    i = 0;
-    char* result = NULL;
-    int found = 0;
-    while (i < sourceLength)
-    {
-        if (ft_strncmp(source + i, target, targetLength) == 0 && !found) {
-            result = (char*)malloc(sourceLength + replacementLength - targetLength + 1);
-            if (result == NULL)
-                return (NULL);
-            strncpy(result, source, i);
-            strcpy(result + i, replacement);
-            strcpy(result + i + replacementLength, source + i + targetLength);
-            found = 1;
-        }
-        i++;
-    }   
-    printf("STR = %s\n", result);
-    if (!found)
-        return strdup(source);
-    return (result);
-}
+//     i = 0;
+//     char* result = NULL;
+//     int found = 0;
+//     while (i < sourceLength)
+//     {
+//         if (ft_strncmp(source + i, target, targetLength) == 0 && !found) {
+//             result = (char*)malloc(sourceLength + replacementLength - targetLength + 1);
+//             if (result == NULL)
+//                 return (NULL);
+//             strncpy(result, source, i);
+//             strcpy(result + i, replacement);
+//             strcpy(result + i + replacementLength, source + i + targetLength);
+//             found = 1;
+//         }
+//         i++;
+//     }   
+//     printf("STR = %s\n", result);
+//     if (!found)
+//         return strdup(source);
+//     return (result);
+// }

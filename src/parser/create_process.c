@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/24 22:46:52 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:49:41 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,14 +106,13 @@ void    create_process(t_all *all)
     int         i;
 
     i = -1;
-    pcs = (t_process *)ft_calloc(sizeof(t_token), 1);
+    pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
     pcs->process = save_arg(all);
+    all->process = pcs;
     // expand_var(pcs->process);
     printf("ARGUMENTS =");
     while (pcs->process[++i] != NULL)
-    {
-        printf(" %s ", pcs->process[i]);
-    }
+        printf("-%s-\n", pcs->process[i]);
     printf("\n");
 }
 

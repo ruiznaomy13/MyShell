@@ -8,6 +8,7 @@ FILES = main/main.c \
 
 SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(FILES))
+CC = cc
 
 OBJ_DIR = objects/
 OBJS = $(addprefix $(OBJ_DIR), $(FILES:.c=.o))

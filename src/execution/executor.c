@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 16:12:08 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:28:30 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_ruta(t_all *all)
 	while (path[i])
 	{
 		tmp = ft_strjoin(path[i], "/");
-		join = ft_strjoin(tmp, all->procesos->process[0]);
+		join = ft_strjoin(tmp, all->process->args[0]);
 		printf("\n%s\n", join);
 		if (access(join, F_OK) == 0 && access(join, X_OK) == 0)
 			return (join);
@@ -43,14 +43,14 @@ char	*get_ruta(t_all *all)
 }
 void	executor(t_all *all)
 {
-	int i;
+	// int i;
 
-	all->procesos->ruta = get_ruta(all);
-	printf("ruta = %s\n", all->procesos->ruta);
-	for (i = 0; all->procesos->process[i]; i++)
-		printf("%s, ", all->procesos->process[i]);
-	printf("\n");
-	execve(all->procesos->ruta, all->procesos->process, all->env);
+	all->process->ruta = get_ruta(all);
+	// printf("ruta = %s\n", all->process->ruta);
+	// for (i = 0; all->process->args[i]; i++)
+	// 	printf("%s, ", all->process->args[i]);
+	// printf("\n");
+	execve(all->process->ruta, all->process->args, all->env);
 	perror("execve");
 }
 //execve("/bin/ls", {ls, -la, src/}, env);

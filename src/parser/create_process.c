@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/25 18:02:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:26:54 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,44 +38,45 @@ char    *search_var(char *str)
 	return(ft_substr(str, 1, i-1));
 }
 
-void    expand_var(t_token *tkn, char **env)
+void	expand_var(t_token *tkn, char **env)
 {
-	int     i;
-	int     flag;
-	char    *var;
-	char    *str;
+	int		i;
+	int		flag;
+	char	*var;
+	char	*str;
 
-    i = 0;
-    flag = 0;
-    var = NULL;
-    str = ft_substr(tkn->wrd, 0, ft_strlen(tkn->wrd));
-    while (tkn->wrd[i])
-    {
-        if ((tkn->wrd[i] == '\'' || tkn->wrd[i] == '\"') && flag == 0)
-        {
-            if (tkn->wrd[i] == '\'')
-                flag = COMMA_S;
-            else
-                flag = COMMA_D;
-            i++;
-        }
-        else if (tkn->wrd[i] == '$' && (flag == 0 || flag == COMMA_D))
-        {
-            var = search_var(&tkn->wrd[i]);
-            printf("VAR = %s\n", var);
-            tkn->wrd = str_rep(tkn->wrd, ft_strjoin("$", var), search_env(var, env));
-            i += ft_strlen(var);
-        }
-        else
-            i++;
-    }
+	i = 0;
+	flag = 0;
+	var = NULL;
+	str = ft_substr(tkn->wrd, 0, ft_strlen(tkn->wrd));
+	while (tkn->wrd[i])
+	{
+		if ((tkn->wrd[i] == '\'' || tkn->wrd[i] == '\"') && flag == 0)
+		{
+			if (tkn->wrd[i] == '\'')
+				flag = COMMA_S;
+			else
+				flag = COMMA_D;
+			i++;
+		}
+		else if (tkn->wrd[i] == '$' && (flag == 0 || flag == COMMA_D))
+		{
+			var = search_var(&tkn->wrd[i]);
+			printf("VAR = %s\n", var);
+			tkn->wrd = str_rep(tkn->wrd, ft_strjoin("$", var), \
+				search_env(var, env));
+			i += ft_strlen(var);
+		}
+		else
+			i++;
+	}
 }
 
-char **save_arg(t_all *all)
+char	**save_arg(t_all *all)
 {
-	t_token *aux;
-	char    **str;
-	int     i;
+	t_token	*aux;
+	char	**str;
+	int		i;
 
 	aux = all->token;
 	i = arg_size(aux);
@@ -88,7 +89,7 @@ char **save_arg(t_all *all)
 	{
 		if (aux->type == RDOUT || aux->type == RDAP \
 			|| aux->type == RDIN || aux->type == RDHD)
-				aux = aux->next->next;
+			aux = aux->next->next;
 		if (aux->wrd != NULL)
 		{
 			expand_var(aux, all->env);
@@ -103,14 +104,14 @@ char **save_arg(t_all *all)
 void	create_process(t_all *all)
 {
 	int			i;
-	t_process	*pcs = NULL;
+	t_process	*pcs;
 
 	i = -1;
 	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);//num_process
 	if (pcs == NULL)
 		return ;
-	pcs->process = save_arg(all);
-	all->procesos = pcs;
+	pcs->args = save_arg(all);
+	all->process = pcs;
 }
 
 // 1. guardarm en el **char todo lo que no sea redirecccion ni su archivo

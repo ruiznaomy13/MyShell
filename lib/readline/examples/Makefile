@@ -32,7 +32,7 @@ datadir = ${datarootdir}
 
 top_srcdir = ..
 #BUILD_DIR = .
-BUILD_DIR = /Users/ncastell/Desktop/myShell/lib/readline
+BUILD_DIR = /Users/mmonpeat/Desktop/myShell/lib/readline
 installdir = $(datadir)/readline
 
 INSTALL = /usr/bin/install -c

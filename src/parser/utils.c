@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/25 17:40:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:06:47 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ char *split_env(char *str)
 }
 
 // str = string a buscar en el env
-char *search_env(char *str, char *env[]) {
+char *search_env(char *str, char *env[])
+{
     int i;
     char *new;
     char *aux;
@@ -103,4 +104,23 @@ char    *str_rep(char *source, char *target, char *replacement)
     if (!found)
         return strdup(source);
     return (result);
+}
+
+char	**duplicate_env(t_all *all)
+{
+	char	**new_env;
+	int		i;
+
+	i = 0;
+	while (all->env[i++])
+		;
+	new_env = (char **)malloc(sizeof(char *) * i + 1);
+	i = 0;
+	while (all->env[i])
+	{
+		new_env[i] = ft_strdup(all->env[i]);
+		i++;
+	}
+	new_env[i] = NULL;
+	return (new_env);
 }

@@ -1,13 +1,15 @@
 NAME = minishell
-CFLAGS = -Wall -Wextra -Werror -MMD -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -MMD #-fsanitize=address
 FILES = main/main.c \
 		parser/lexer.c parser/separadors.c parser/create_process.c \
 		parser/utils.c parser/utils2.c \
 		checker/errors.c \
-		builthings/echo.c
+		builthings/echo.c \
+		execution/executor.c
 
 SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(FILES))
+CC = cc
 
 OBJ_DIR = objects/
 OBJS = $(addprefix $(OBJ_DIR), $(FILES:.c=.o))

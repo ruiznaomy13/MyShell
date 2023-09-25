@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 17:47:27 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:07:22 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,27 @@ typedef struct s_token
 
 typedef struct s_process
 {
+	int					pos_process;
 	char				**process; //lo que ejecutaremos
 	t_token				*rd; // la lista de tokens de la ejecució
 	struct s_process	*next;
-	// t_token			*token;
+	t_token				*token;
+	char				*ruta;
 }	t_process;
 
 typedef struct s_all
 {
 	char		*line;
 	int			size;
-	// int			exit_c;
-	char    	**env;
+	char		**env;
 	t_token		*token;
-	t_process	*process;
+	t_process	*procesos;
+	int			num_process;
 }	t_all;
+
+// MOSTRA EL NODE ----- DELETE
+void	mostra_tokens(t_all *all);
+void	mostra_process(t_all *all);
 
 //----------PARSER------------
 // lexer 
@@ -64,25 +70,25 @@ void	checker(t_all *all);
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
-void    create_process(t_all *all);
+void	create_process(t_all *all);
  
 // utils
-char	*search_env(char *str, char *env[]);
+char	**duplicate_env(t_all *all);
 
-// separadors 
+// separadors
+char	*search_env(char *str, char *env[]);
 int		check_cometes(char *str);
 int		delimiter(char c);
 char	*is_text(char *str);
 char	*is_text_first(char *str);
-
-// MOSTRA EL NODE ----- DELETE
-void	mostra_tokens(t_all *all);
-void	mostra_proces(t_all *all);
 
 // free de les llistes
 void	ft_free(t_all *all);
 void	ft_error(int error);
 
 char	*str_rep(char* source, char* target, char* replacement);
+
+// EXECUTOR
+void	executor(t_all *all);
 
 #endif

@@ -6,22 +6,22 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/25 17:57:16 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:02:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-int arg_size(t_token *aux)
+int	arg_size(t_token *aux)
 {
-	int     i;
+	int		i;
 
 	i = 0;
 	while (aux != NULL && aux->type != PIPE)
 	{
 		if (aux->type == RDOUT || aux->type == RDAP \
 			|| aux->type == RDIN || aux->type == RDHD)
-				aux = aux->next->next;
+			aux = aux->next->next;
 		aux = aux->next;
 		i++;
 	}
@@ -100,21 +100,17 @@ char **save_arg(t_all *all)
 	return (str);
 }
 
-void    create_process(t_all *all)
+void	create_process(t_all *all)
 {
-	t_process   *pcs;
-	int         i;
+	int			i;
+	t_process	*pcs = NULL;
 
 	i = -1;
-	pcs = (t_process *)ft_calloc(sizeof(t_token), 1);
+	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);//num_process
+	if (pcs == NULL)
+		return ;
 	pcs->process = save_arg(all);
-	// expand_var(pcs->process);
-	printf("ARGUMENTS =");
-	while (pcs->process[++i] != NULL)
-	{
-		printf(" %s ", pcs->process[i]);
-	}
-	printf("\n");
+	all->procesos = pcs;
 }
 
 // 1. guardarm en el **char todo lo que no sea redirecccion ni su archivo

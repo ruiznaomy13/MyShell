@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/25 17:52:26 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:57:16 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char **save_arg(t_all *all)
 				aux = aux->next->next;
 		if (aux->wrd != NULL)
 		{
-			expand_var(aux);
+			expand_var(aux, all->env);
 			str[i++] = aux->wrd;
 		}
 		aux = aux->next;

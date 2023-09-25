@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/22 15:39:46 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:59:05 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	loop(t_all *all)
 		printf("%s\n", all->line);
 		checker(all);
 		// printf("%s\n", all->env[1]);
+		
 		executor(all);
 		ft_free(all);
 	}
@@ -39,8 +40,8 @@ void	checker(t_all *all)
 	else
 	{
 		lexer(all);
-		create_process(all);
 		mostra_tokens(all);
+		create_process(all);
 		mostra_process(all);
 	}
 }

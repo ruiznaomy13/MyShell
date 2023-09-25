@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/24 15:02:49 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:55:17 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ typedef struct s_token
 
 typedef struct s_process
 {
+	int					pos_process;
 	char				**process; //lo que ejecutaremos
 	t_token				*rd; // la lista de tokens de la ejecució
 	struct s_process	*next;
 	t_token				*token;
-	//num_process
+	char				*ruta;
 }	t_process;
 
 typedef struct s_all
@@ -55,6 +56,7 @@ typedef struct s_all
 	char		**env;
 	t_token		*token;
 	t_process	*procesos;
+	int			num_process;
 }	t_all;
 
 // MOSTRA EL NODE ----- DELETE
@@ -68,7 +70,7 @@ void	checker(t_all *all);
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
-void    create_process(t_all *all);
+void	create_process(t_all *all);
  
 // utils
 char	**duplicate_env(t_all *all);

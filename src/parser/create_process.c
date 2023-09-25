@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/24 16:48:35 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:41:15 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,9 @@ void	create_process(t_all *all)
 	i = -1;
 	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
 	if (pcs == NULL)
-	{
-		pcs->process = save_arg(all);
-		printf("ARGUMENTS =");
-		while (pcs->process[++i] != NULL)
-		{
-			printf(" %s ", pcs->process[i]);
-		}
-		printf("\n");
-	}
-
+		return ;
+	pcs->process = save_arg(all);
+	all->procesos = pcs;
 }
 
 // 1. guardarm en el **char todo lo que no sea redirecccion ni su archivo

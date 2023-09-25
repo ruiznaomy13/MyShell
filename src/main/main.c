@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/24 16:49:25 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:41:33 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	mostra_process(t_all *all)
 	int			i;
 	t_process	*aux;
 
-	i = 1;
+	i = -1;
 	aux = all->procesos;
-	while (aux != NULL)
+	printf("ARGUMENTS =");
+	while (aux->process[++i] != NULL)
 	{
-		printf("%d = %s\n", i, aux->process[i]);
-		aux = aux->next;
-		i++;
+		printf("<%s>", aux->process[i]);
 	}
+	printf("\n");
 }
 
 void	ft_free(t_all *all)
@@ -69,6 +69,6 @@ void	ft_free(t_all *all)
 	{
 		prc = all->procesos;
 		all->procesos = all->procesos->next;
-		free(tkn);
+		free(prc);
 	}
 }

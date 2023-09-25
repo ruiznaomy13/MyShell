@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 19:23:32 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:45:11 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ char	*str_rep(char* source, char* target, char* replacement);
 
 // EXECUTOR
 void	executor(t_all *all);
+int		count_procesos(char *str);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 18:04:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:46:25 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	loop(t_all *all)
 		add_history(all->line);
 		printf("%s\n", all->line);
 		checker(all);
+		count_procesos(all->line);
+		printf("Numero de processos %i\n", count_procesos(all->line));
 		// printf("%s\n", all->env[1]);
 		executor(all);
 		ft_free(all);

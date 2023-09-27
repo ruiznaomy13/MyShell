@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 16:12:08 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:09:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*get_ruta(t_all *all)
 	{
 		tmp = ft_strjoin(path[i], "/");
 		join = ft_strjoin(tmp, all->procesos->process[0]);
-		printf("\n%s\n", join);
+		// printf("\n%s\n", join);
 		if (access(join, F_OK) == 0 && access(join, X_OK) == 0)
 			return (join);
 		free(join);

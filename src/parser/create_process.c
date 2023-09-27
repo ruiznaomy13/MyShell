@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/25 18:02:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/27 19:30:31 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,37 +38,71 @@ char    *search_var(char *str)
 	return(ft_substr(str, 1, i-1));
 }
 
-void    expand_var(t_token *tkn, char **env)
+char *ft_charjoin(char *s, char c)
 {
-	int     i;
-	int     flag;
-	char    *var;
-	char    *str;
+	size_t	len;
+	char	*str;
+	int		i;
 
-    i = 0;
-    flag = 0;
-    var = NULL;
-    str = ft_substr(tkn->wrd, 0, ft_strlen(tkn->wrd));
-    while (tkn->wrd[i])
-    {
-        if ((tkn->wrd[i] == '\'' || tkn->wrd[i] == '\"') && flag == 0)
-        {
-            if (tkn->wrd[i] == '\'')
-                flag = COMMA_S;
-            else
-                flag = COMMA_D;
-            i++;
-        }
-        else if (tkn->wrd[i] == '$' && (flag == 0 || flag == COMMA_D))
-        {
-            var = search_var(&tkn->wrd[i]);
-            printf("VAR = %s\n", var);
-            tkn->wrd = str_rep(tkn->wrd, ft_strjoin("$", var), search_env(var, env));
-            i += ft_strlen(var);
-        }
-        else
-            i++;
-    }
+	i = -1;
+	len = (s != NULL) ? strlen(s) : 0;
+	str = (char *) malloc(sizeof(char) * (len + 2));
+	if (!str)
+		return (NULL);
+	if (s != NULL)
+	{
+		while (s[++i])
+			str[i] = s[i];
+	}
+	str[i] = c;
+	str[i+1] = '\0';
+	return (str);
+}
+
+char *expand_var(t_token *tkn, char **env)
+{
+	int i;
+	int flag;
+	char *str;
+	char *aux;
+	char *var;
+
+	i = 0;
+	flag = 0;
+	aux = "";
+	var = NULL;
+	str = ft_strdup(tkn->wrd);
+	printf("Mi token es =  %s\n", str);
+	while (str[i])
+	{
+		printf("%c\n", str[i]);
+		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
+		{
+			if (str[i] == '\'')
+				flag = COMMA_S;
+			else
+				flag = COMMA_D;
+			i++;
+		}
+		else if ((str[i] == '\"' && flag == COMMA_D) || (str[i] == '\'' && flag == COMMA_S))
+		{
+			flag = 0;
+			i++;
+		}
+		else if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
+		{
+			printf("------- %d\n", flag);
+			var = search_var(&str[i]);
+			aux = ft_strjoin(aux, search_env(var, env));
+			i += ft_strlen(var) + 1;
+		}
+		else {
+			aux = ft_charjoin(aux, str[i]);
+			i++;
+		}
+	}
+	free(str);
+	return (aux);
 }
 
 char **save_arg(t_all *all)
@@ -91,12 +125,11 @@ char **save_arg(t_all *all)
 				aux = aux->next->next;
 		if (aux->wrd != NULL)
 		{
-			expand_var(aux, all->env);
+			aux->wrd = expand_var(aux, all->env);
 			str[i++] = aux->wrd;
 		}
 		aux = aux->next;
 	}
-	str[i] = NULL;
 	return (str);
 }
 

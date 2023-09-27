@@ -3,37 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 18:38:30 by mmonpeat          #+#    #+#             */
-/*   Updated: 2022/10/10 17:00:45 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:35:09 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	aux;
-	size_t	aux2;
-	char	*s;
+	char	*str;
+	int		i;
+	int		j;
 
-	s = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!s)
+	i = 0;
+	str = (char *) malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
 		return (NULL);
-	aux = 0;
-	aux2 = 0;
-	while (s1[aux])
+	j = 0;
+	while (s1[j] != '\0')
 	{
-		s[aux] = s1[aux];
-		aux++;
+		str[i++] = s1[j++];
 	}
-	while (s2[aux2])
+	j = 0;
+	while (s2[j])
 	{
-		s[aux] = s2[aux2];
-		aux++;
-		aux2++;
+		str[i++] = s2[j++];
 	}
-	s[aux] = '\0';
-	return (s);
+	str[i] = '\0';
+	return (str);
 }

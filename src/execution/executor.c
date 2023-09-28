@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 19:28:30 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:02:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ char	*get_ruta(t_all *all)
 	char	*join;
 	char	*tmp;
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
 	path = ft_split(getenv("PATH"), ':');
 	join = (char *)malloc(sizeof(char) * (2 + 1));//num de processos
+	printf("hola\n");
 	if (path == NULL)
 	{
 		fprintf(stderr, "Error al dividir PATH\n");//funcion prohibida. Usa write.
@@ -46,7 +45,7 @@ void	executor(t_all *all)
 	// int i;
 
 	all->process->ruta = get_ruta(all);
-	// printf("ruta = %s\n", all->process->ruta);
+	printf("ruta = %s\n", all->process->ruta);
 	// for (i = 0; all->process->args[i]; i++)
 	// 	printf("%s, ", all->process->args[i]);
 	// printf("\n");

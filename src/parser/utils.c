@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/25 18:06:47 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:53:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 /* Cambiar a funciones correctas IMPORTANTE*/
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-    size_t	src_len;
     size_t	i;
+    size_t	src_len;
 	
 	i = 0;
 	src_len = strnlen(src, n);
-    if (dest == NULL || src == NULL || n == 0)
+    if (!(dest == NULL || src == NULL || n == 0))
+    {
+        while (i < n)
+        {
+            if (i < src_len)
+                dest[i] = src[i];
+            i++;
+        }
+        dest[i] = '\0';
         return (dest);
-	while (i < n)
-	{
-		if (i < src_len)
-            dest[i] = src[i];
-		i++;
-	}
-    dest[i] = '\0';
+    }
     return (dest);
 }
 

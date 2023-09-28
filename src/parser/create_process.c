@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/25 19:26:54 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:53:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	expand_var(t_token *tkn, char **env)
 	int		i;
 	int		flag;
 	char	*var;
-	char	*str;
+	//char	*str;
 
 	i = 0;
 	flag = 0;
 	var = NULL;
-	str = ft_substr(tkn->wrd, 0, ft_strlen(tkn->wrd));
+	//str = ft_substr(tkn->wrd, 0, ft_strlen(tkn->wrd));
 	while (tkn->wrd[i])
 	{
 		if ((tkn->wrd[i] == '\'' || tkn->wrd[i] == '\"') && flag == 0)
@@ -100,20 +100,20 @@ char	**save_arg(t_all *all)
 	str[i] = NULL;
 	return (str);
 }
-
+/*
 void	create_process(t_all *all)
 {
-	int			i;
+	//int			i;
 	t_process	*pcs;
 
-	i = -1;
+	//i = -1;
 	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);//num_process
 	if (pcs == NULL)
 		return ;
 	pcs->args = save_arg(all);
 	all->process = pcs;
 }
-
+*/
 // 1. guardarm en el **char todo lo que no sea redirecccion ni su archivo
 //    es decir, el siguiente token. [> file.txt]
 // 2. Guardar el tipo texto dentro de un **char

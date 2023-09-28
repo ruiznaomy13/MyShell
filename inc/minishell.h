@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 19:45:11 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:59:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct s_process
 	char				**args; //lo que ejecutaremos
 	t_token				*rd; // la lista de tokens de la ejecució
 	struct s_process	*next;
-	t_token				*token;
 	char				*ruta;
 }	t_process;
 
@@ -71,6 +70,10 @@ void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
 void	create_process(t_all *all);
+int		arg_size(t_token *aux);
+void	*save_args(t_token *tkn, t_process *pcs);
+void	save_redirecions(t_token *tkn, t_process *pcs);
+
  
 // utils
 char	**duplicate_env(t_all *all);
@@ -90,6 +93,6 @@ char	*str_rep(char* source, char* target, char* replacement);
 
 // EXECUTOR
 void	executor(t_all *all);
-int		count_procesos(char *str);
+void	count_procesos(t_all *all, char *str);
 
 #endif

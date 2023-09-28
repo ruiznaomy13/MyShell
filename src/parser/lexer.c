@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 19:46:25 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:06:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void	loop(t_all *all)
 		add_history(all->line);
 		printf("%s\n", all->line);
 		checker(all);
-		count_procesos(all->line);
-		printf("Numero de processos %i\n", count_procesos(all->line));
 		// printf("%s\n", all->env[1]);
-		executor(all);
+		//executor(all);
 		ft_free(all);
 	}
 }
@@ -40,9 +38,12 @@ void	checker(t_all *all)
 	}
 	else
 	{
+		count_procesos(all, all->line);
 		lexer(all);
 		mostra_tokens(all);
+		printf("abans create process\n");
 		create_process(all);
+		printf("després create process\n");
 		mostra_process(all);
 	}
 }
@@ -73,7 +74,7 @@ void	lexer(t_all *all)
 		else if (all->line[i] == '<')
 			i += create_token(all, &all->line[i], RDIN) - 1;
 	}
-	create_process(all);
+	//create_process(all); //suposo que es el de les expacncions s'ha de dir diferent
 }
 
 int	create_token(t_all *all, char *str, int type)

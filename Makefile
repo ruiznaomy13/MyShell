@@ -1,8 +1,8 @@
 NAME = minishell
 CFLAGS = -Wall -Wextra -Werror -MMD #-fsanitize=address
 FILES = main/main.c \
-		parser/lexer.c parser/separadors.c parser/create_process.c \
-		parser/utils.c parser/utils2.c \
+		parser/lexer.c parser/separadors.c parser/create_process.c parser/utils.c\
+		parser/process_and_red.c \
 		checker/errors.c \
 		builthings/echo.c \
 		execution/executor.c
@@ -17,35 +17,32 @@ DEPS = $(addprefix $(OBJ_DIR), $(FILES:.c=.d))
 RM = rm -rf
 LIB = lib/libft/libft.a lib/readline/libreadline.a lib/readline/libhistory.a
 
+
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -DREADLINE_LIBRARY=1 -I./ -I lib/readline -c $< -o $@
+	$(CC) $(CFLAGS) -DREADLINE_LIBRARY=1 -I./ -Ilib/libft -Ilib/readline -c $< -o $@
 
 all:
-	@$(MAKE) -C lib/libft --no-print-directory
-	@if ! [ -f lib/readline/libreadline.a ]; then \
-		cd ./lib/readline/ &> /dev/null && ./configure &> /dev/null && \
-		$(MAKE) --no-print-directory &> /dev/null; \
-	fi
-	@$(MAKE) $(NAME) --no-print-directory
+	@$(MAKE) -C lib/libft
+	@$(MAKE) -C lib/readline &> /dev/null;
+	@$(MAKE) $(NAME)
 
 $(NAME):: $(OBJS)
-	@$(CC) -ltermcap $(CFLAGS) $(OBJS) $(LIB) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) -Llib/libft -lft -Llib/readline/library -lreadline -lhistory -o $@
 
 $(NAME)::
 	@echo -n
 
 clean:
-	@$(RM) $(OBJ_DIR) --no-print-directory
-	@$(MAKE) clean -C lib/libft --no-print-directory 
-	@$(MAKE) clean -C lib/readline --no-print-directory &> /dev/null
+	@$(RM) $(OBJ_DIR)
+	@$(MAKE) clean -C lib/libft  
+	@$(MAKE) clean -C lib/readline &> /dev/null
 
 fclean: clean
-	@$(RM) $(NAME) $(LIB)
+	@$(RM) $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re bonus
 
 -include $(DEPS)
-

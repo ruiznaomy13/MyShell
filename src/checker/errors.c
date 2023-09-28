@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 19:56:22 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:58:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error(int error)
 		printf("syntax error near unexpected token %c\n", error);
 }
 
-int	count_procesos(char *str)
+void	count_procesos(t_all *all, char *str)
 {
 	int	i;
 	int	n_proces;
@@ -32,5 +32,5 @@ int	count_procesos(char *str)
 		i++;
 	}
 	n_proces += 1;
-	return (n_proces);
+	all->num_process = n_proces;
 }

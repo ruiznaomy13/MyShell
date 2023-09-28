@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/27 19:06:03 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:32:12 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	mostra_process(t_all *all)
 	t_process	*aux;
 
 	i = -1;
-	aux = all->procesos;
+	aux = all->prcs;
 	printf("ARGUMENTS =\n");
-	while (aux->process[++i] != NULL)
+	while (aux->args[++i] != NULL)
 	{
-		printf("[%s] \n", aux->process[i]);
+		printf("[%s] \n", aux->args[i]);
 	}
 	printf("\n");
 }
@@ -65,10 +65,10 @@ void	ft_free(t_all *all)
 		all->token = all->token->next;
 		free(tkn);
 	}
-	while (all->procesos != NULL)
+	while (all->prcs != NULL)
 	{
-		prc = all->procesos;
-		all->procesos = all->procesos->next;
+		prc = all->prcs;
+		all->prcs = all->prcs->next;
 		free(prc);
 	}
 }

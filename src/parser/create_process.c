@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/28 15:55:57 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:31:39 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,8 @@ void	create_process(t_all *all)
 	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);//num_process
 	if (pcs == NULL)
 		return ;
-	pcs->process = save_arg(all);
-	all->procesos = pcs;
+	pcs->args = save_arg(all);
+	all->prcs = pcs;
 }
 
 // 1. guardarm en el **char todo lo que no sea redirecccion ni su archivo

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/25 18:07:22 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:58:38 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,20 @@ void	create_process(t_all *all);
  
 // utils
 char	**duplicate_env(t_all *all);
+char	*ft_charjoin(char *s, char c);
+char	*split_env(char *str);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
+char    *search_var(char *str);
 
 // separadors
-char	*search_env(char *str, char *env[]);
 int		check_cometes(char *str);
 int		delimiter(char c);
 char	*is_text(char *str);
 char	*is_text_first(char *str);
+char	**duplicate_env(t_all *all);
+
+// Expansiones
+char	*search_env(char *str, char *env[]);
 
 // free de les llistes
 void	ft_free(t_all *all);

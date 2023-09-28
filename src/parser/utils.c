@@ -6,11 +6,32 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/25 18:06:47 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:56:49 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
+char *ft_charjoin(char *s, char c)
+{
+	size_t	len;
+	char	*str;
+	int		i;
+
+	i = -1;
+	len = (s != NULL) ? strlen(s) : 0;
+	str = (char *) malloc(sizeof(char) * (len + 2));
+	if (!str)
+		return (NULL);
+	if (s != NULL)
+	{
+		while (s[++i])
+			str[i] = s[i];
+	}
+	str[i] = c;
+	str[i+1] = '\0';
+	return (str);
+}
 
 /* Cambiar a funciones correctas IMPORTANTE*/
 char	*ft_strncpy(char *dest, const char *src, size_t n)
@@ -52,58 +73,14 @@ char *split_env(char *str)
     return (NULL);
 }
 
-// str = string a buscar en el env
-char *search_env(char *str, char *env[])
+char    *search_var(char *str)
 {
-    int i;
-    char *new;
-    char *aux;
+	int i;
 
-	i = -1;
-    new = ft_strdup(str);
-    aux = NULL;
-    if (new == NULL)
-        return NULL;
-    ft_strlcat(new, "=", ft_strlen(new));
-    while (env[++i])
-	{
-        aux = ft_strnstr(env[i], new, ft_strlen(new));
-        if (aux != NULL)
-		{
-            free(new);
-            return (split_env(aux));
-        }
-    }
-    free(new); // Liberamos la memoria asignada a new si no se encuentra
-    return (NULL);
-}
-
-/* CREAR FUNCIONES DE LIBFT <<<<<<<<<< IMPORTANT! >>>>>>>>>>>> */
-char    *str_rep(char *source, char *target, char *replacement)
-{
-    size_t		i;
-	char		*result;
-	int			found;
-
-    i = 0;
-    result = NULL;
-    found = 0;
-    while (i < ft_strlen(source))
-    {
-        if (ft_strncmp(source + i, target, ft_strlen(target)) == 0 && !found) {
-            result = (char*)malloc(ft_strlen(source) + ft_strlen(replacement) - ft_strlen(target) + 1);
-            if (result == NULL)
-                return (NULL);
-            ft_strncpy(result, source, i);
-            strcpy(result + i, replacement);
-            strcpy(result + i + ft_strlen(replacement), source + i + ft_strlen(target));
-            found = 1;
-        }
-        i++;
-    }   
-    if (!found)
-        return strdup(source);
-    return (result);
+	i = 0;
+	while (str[++i] && (ft_isalnum(str[i]) || str[i] == '_'));
+	printf("SEARCH VAR = %s\n", ft_substr(str, 1, i));
+	return(ft_substr(str, 1, i-1));
 }
 
 char	**duplicate_env(t_all *all)

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/27 19:30:31 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:55:57 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,30 @@ int	arg_size(t_token *aux)
 	return (i);
 }
 
-char    *search_var(char *str)
+// str = string a buscar en el env
+char *search_env(char *str, char *env[])
 {
-	int i;
-
-	i = 0;
-	while (str[++i] && (ft_isalpha(str[i]) || str[i] == '_'));
-	printf("SEARCH VAR = %s\n", ft_substr(str, 1, i));
-	return(ft_substr(str, 1, i-1));
-}
-
-char *ft_charjoin(char *s, char c)
-{
-	size_t	len;
-	char	*str;
-	int		i;
+    int i;
+    char *new;
+    char *aux;
 
 	i = -1;
-	len = (s != NULL) ? strlen(s) : 0;
-	str = (char *) malloc(sizeof(char) * (len + 2));
-	if (!str)
-		return (NULL);
-	if (s != NULL)
+    new = ft_strdup(str);
+    aux = NULL;
+    if (new == NULL)
+        return NULL;
+    new = ft_charjoin(new, '=');
+    while (env[++i])
 	{
-		while (s[++i])
-			str[i] = s[i];
-	}
-	str[i] = c;
-	str[i+1] = '\0';
-	return (str);
+        aux = ft_strnstr(env[i], new, ft_strlen(new));
+        if (aux != NULL)
+		{
+            free(new);
+            return (split_env(aux));
+        }
+    }
+    free(new);
+    return (NULL);
 }
 
 char *expand_var(t_token *tkn, char **env)
@@ -72,10 +67,8 @@ char *expand_var(t_token *tkn, char **env)
 	aux = "";
 	var = NULL;
 	str = ft_strdup(tkn->wrd);
-	printf("Mi token es =  %s\n", str);
 	while (str[i])
 	{
-		printf("%c\n", str[i]);
 		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
 		{
 			if (str[i] == '\'')
@@ -91,9 +84,9 @@ char *expand_var(t_token *tkn, char **env)
 		}
 		else if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
 		{
-			printf("------- %d\n", flag);
 			var = search_var(&str[i]);
-			aux = ft_strjoin(aux, search_env(var, env));
+			if (search_env(var, env) != NULL)
+				aux = ft_strjoin(aux, search_env(var, env));
 			i += ft_strlen(var) + 1;
 		}
 		else {

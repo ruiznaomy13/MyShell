@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/28 18:31:27 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:42:24 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ char	*split_env(char *str);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char    *search_var(char *str);
 
+// utils 2
+void	count_process(t_all *all, char *str);
+
 // separadors
 int		check_cometes(char *str);
 int		delimiter(char c);
@@ -88,6 +91,7 @@ char	**duplicate_env(t_all *all);
 
 // Expansiones
 char	*search_env(char *str, char *env[]);
+char	*expand_var(t_token *tkn, char **env);
 
 // free de les llistes
 void	ft_free(t_all *all);

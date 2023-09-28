@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/28 18:31:39 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 21:00:06 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,100 +28,42 @@ int	arg_size(t_token *aux)
 	return (i);
 }
 
-// str = string a buscar en el env
-char *search_env(char *str, char *env[])
+void remove_tkn(t_all *all)
 {
-    int i;
-    char *new;
-    char *aux;
-
-	i = -1;
-    new = ft_strdup(str);
-    aux = NULL;
-    if (new == NULL)
-        return NULL;
-    new = ft_charjoin(new, '=');
-    while (env[++i])
-	{
-        aux = ft_strnstr(env[i], new, ft_strlen(new));
-        if (aux != NULL)
-		{
-            free(new);
-            return (split_env(aux));
-        }
-    }
-    free(new);
-    return (NULL);
+    t_token *next_token;
+	
+    if (all == NULL || all->token == NULL)
+        return;
+    next_token = all->token->next;
+    if (all->token->wrd != NULL)
+        free(all->token->wrd);
+    free(all->token);
+    all->token = next_token;
 }
 
-char *expand_var(t_token *tkn, char **env)
-{
-	int i;
-	int flag;
-	char *str;
-	char *aux;
-	char *var;
-
-	i = 0;
-	flag = 0;
-	aux = "";
-	var = NULL;
-	str = ft_strdup(tkn->wrd);
-	while (str[i])
-	{
-		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
-		{
-			if (str[i] == '\'')
-				flag = COMMA_S;
-			else
-				flag = COMMA_D;
-			i++;
-		}
-		else if ((str[i] == '\"' && flag == COMMA_D) || (str[i] == '\'' && flag == COMMA_S))
-		{
-			flag = 0;
-			i++;
-		}
-		else if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
-		{
-			var = search_var(&str[i]);
-			if (search_env(var, env) != NULL)
-				aux = ft_strjoin(aux, search_env(var, env));
-			i += ft_strlen(var) + 1;
-		}
-		else {
-			aux = ft_charjoin(aux, str[i]);
-			i++;
-		}
-	}
-	free(str);
-	return (aux);
-}
 
 char **save_arg(t_all *all)
 {
-	t_token *aux;
 	char    **str;
 	int     i;
 
-	aux = all->token;
-	i = arg_size(aux);
+	i = arg_size(all->token);
 	str = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!str)
 		return (NULL);
-	aux = all->token;
 	i = 0;
-	while (aux != NULL && aux->type != PIPE)
+	while (all->token != NULL && all->token->type != PIPE)
 	{
-		if (aux->type == RDOUT || aux->type == RDAP \
-			|| aux->type == RDIN || aux->type == RDHD)
-				aux = aux->next->next;
-		if (aux->wrd != NULL)
+		if (all->token->type == RDOUT || all->token->type == RDAP \
+			|| all->token->type == RDIN || all->token->type == RDHD)
+				all->token = all->token->next->next;
+		if (all->token->wrd != NULL)
 		{
-			aux->wrd = expand_var(aux, all->env);
-			str[i++] = aux->wrd;
+			all->token->wrd = expand_var(all->token, all->env);
+			str[i++] = all->token->wrd;
 		}
-		aux = aux->next;
+		all->token = all->token->next;
+		// remove_tkn(all);
 	}
 	return (str);
 }
@@ -138,6 +80,19 @@ void	create_process(t_all *all)
 	pcs->args = save_arg(all);
 	all->prcs = pcs;
 }
+
+// void	list_process(t_all *all)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (all->num_process <= i)
+// 	{
+// 		create_process(&all);
+// 		i++;
+// 	}
+	
+// }
 
 // 1. guardarm en el **char todo lo que no sea redirecccion ni su archivo
 //    es decir, el siguiente token. [> file.txt]

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/28 14:51:53 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:37:44 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	checker(t_all *all)
 	}
 	else
 	{
+		count_process(all, all->line);
 		lexer(all);
 		mostra_tokens(all);
 		create_process(all);

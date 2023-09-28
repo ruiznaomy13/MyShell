@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/28 20:37:44 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 23:05:08 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ void	add_token(t_token *tkn, t_all *all)
 {
 	t_token*	aux;
 
-	if (all->token == NULL)// Si la lista está vacía, el nuevo nodo se convierte en la cabeza de la lista
+	if (all->token == NULL)
 		all->token = tkn;
-	else// Si la lista no está vacía, agregamos el nuevo nodo al final
+	else
 	{
 		aux = all->token;
 		while (aux->next != NULL)

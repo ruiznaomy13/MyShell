@@ -6,64 +6,89 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/28 21:00:06 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 23:29:41 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-int	arg_size(t_token *aux)
+int	arg_size(t_token *tkn)
 {
 	int		i;
+	t_token	*aux;
 
 	i = 0;
+	aux = tkn;
 	while (aux != NULL && aux->type != PIPE)
 	{
 		if (aux->type == RDOUT || aux->type == RDAP \
 			|| aux->type == RDIN || aux->type == RDHD)
-			aux = aux->next->next;
+			aux = aux->next;
 		aux = aux->next;
 		i++;
 	}
 	return (i);
 }
 
-void remove_tkn(t_all *all)
+void	add_rd(t_token *rd, t_all *all)
 {
-    t_token *next_token;
-	
-    if (all == NULL || all->token == NULL)
-        return;
-    next_token = all->token->next;
-    if (all->token->wrd != NULL)
-        free(all->token->wrd);
-    free(all->token);
-    all->token = next_token;
+	t_token*	aux;
+
+	if (all->prcs->rd == NULL)
+		all->prcs->rd = rd;
+	else
+	{
+		aux = all->prcs->rd;
+		while (aux->next != NULL)
+			aux = aux->next;
+		aux->next = rd;
+	}
 }
 
+void list_redirection(t_all *all)
+{
+    t_token	*rd;
+	t_token	*aux;
+
+	aux = all->token;
+	rd = (t_token *)ft_calloc(sizeof(t_token), 1);
+	if (!rd)
+		return ;
+	while (aux != NULL)
+	{
+		if (aux->type == RDOUT || aux->type == RDAP \
+		 || aux->type == RDIN || aux->type == RDHD)
+		 {
+			rd->type = aux->type;
+			rd->wrd = aux->next->wrd;
+			aux = aux->next;
+		 }
+		 aux = aux->next;
+	}
+	add_rd(rd, all);
+}
 
 char **save_arg(t_all *all)
 {
 	char    **str;
+	t_token	*aux;
 	int     i;
 
-	i = arg_size(all->token);
-	str = (char **)malloc(sizeof(char *) * (i + 1));
+	aux = all->token;
+	str = (char **)malloc(sizeof(char *) * (arg_size(all->token) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (all->token != NULL && all->token->type != PIPE)
+	while (aux != NULL && aux->type != PIPE)
 	{
-		if (all->token->type == RDOUT || all->token->type == RDAP \
-			|| all->token->type == RDIN || all->token->type == RDHD)
-				all->token = all->token->next->next;
-		if (all->token->wrd != NULL)
+		if (aux->type == RDOUT || aux->type == RDAP || aux->type == RDIN || aux->type == RDHD)
+			aux = aux->next; 
+		else if (aux->wrd != NULL)
 		{
-			all->token->wrd = expand_var(all->token, all->env);
-			str[i++] = all->token->wrd;
+			aux->wrd = expand_var(aux, all->env);
+			str[i++] = aux->wrd;
 		}
-		all->token = all->token->next;
-		// remove_tkn(all);
+		aux = aux->next;
 	}
 	return (str);
 }
@@ -74,10 +99,11 @@ void	create_process(t_all *all)
 	t_process	*pcs = NULL;
 
 	i = -1;
-	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);//num_process
+	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
 	if (pcs == NULL)
 		return ;
 	pcs->args = save_arg(all);
+	list_redirection(all);
 	all->prcs = pcs;
 }
 

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/28 18:32:12 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:33:15 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,24 @@ void	mostra_tokens(t_all *all)
 		printf("%d = %s -> %d\n", i, aux->wrd, aux->type);
 		aux = aux->next;
 		i++;
+	}
+}
+
+void	mostra_rd(t_process *pcs)
+{
+	int			i;
+	t_token		*aux;
+
+	i = 1;
+	aux = pcs->rd;
+	printf("REDIRECCIONES =\n");
+	while (aux != NULL)
+	{
+		printf("%d = %s -> %d\n", i, aux->wrd, aux->type);
+		aux = aux->next;
+		i++;
+		if (i == 10)
+			return ;
 	}
 }
 

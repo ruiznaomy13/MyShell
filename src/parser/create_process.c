@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/28 23:29:41 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/30 02:54:26 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,43 +30,44 @@ int	arg_size(t_token *tkn)
 	return (i);
 }
 
-void	add_rd(t_token *rd, t_all *all)
+void	add_rd(t_token *rd, t_process *pcs)
 {
 	t_token*	aux;
 
-	if (all->prcs->rd == NULL)
-		all->prcs->rd = rd;
+	if (pcs->rd == NULL)
+		pcs->rd = rd;
 	else
 	{
-		aux = all->prcs->rd;
+		aux = pcs->rd;
 		while (aux->next != NULL)
 			aux = aux->next;
 		aux->next = rd;
 	}
 }
 
-void list_redirection(t_all *all)
+void list_redirection(t_process *pcs, t_all *all)
 {
-    t_token	*rd;
-	t_token	*aux;
+    t_token	*aux;
+	t_token	*rd;
 
-	aux = all->token;
-	rd = (t_token *)ft_calloc(sizeof(t_token), 1);
-	if (!rd)
-		return ;
-	while (aux != NULL)
-	{
-		if (aux->type == RDOUT || aux->type == RDAP \
-		 || aux->type == RDIN || aux->type == RDHD)
-		 {
-			rd->type = aux->type;
-			rd->wrd = aux->next->wrd;
-			aux = aux->next;
-		 }
-		 aux = aux->next;
-	}
-	add_rd(rd, all);
+    aux = all->token;
+    while (aux != NULL)
+    {
+        if (aux->type == RDOUT || aux->type == RDAP ||
+            aux->type == RDIN || aux->type == RDHD)
+        {
+            rd = (t_token *)ft_calloc(sizeof(t_token), 1);
+            if (!rd)
+                return;           
+            rd->type = aux->type;
+            rd->wrd = aux->next->wrd;
+            add_rd(rd, pcs);
+            aux = aux->next;
+        }
+        aux = aux->next;
+    }
 }
+
 
 char **save_arg(t_all *all)
 {
@@ -93,17 +94,37 @@ char **save_arg(t_all *all)
 	return (str);
 }
 
+void rm_prev_tkns(t_all *all)
+{
+	t_token *aux;
+	
+    while (all->token->next != NULL)
+    {
+        aux = all->token;
+        all->token = all->token->next;
+		if (aux->type == PIPE)
+		{
+			free(aux);
+			return ;
+		}
+        free(aux);
+    }
+}
+
 void	create_process(t_all *all)
 {
-	int			i;
 	t_process	*pcs = NULL;
 
-	i = -1;
-	pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
-	if (pcs == NULL)
-		return ;
-	pcs->args = save_arg(all);
-	list_redirection(all);
+	while (all->token != NULL)
+	{
+		pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
+		if (pcs == NULL)
+			return ;
+		pcs->args = save_arg(all);
+		list_redirection(pcs, all);
+		mostra_rd(pcs);
+		rm_prev_tkns(all);
+	}
 	all->prcs = pcs;
 }
 

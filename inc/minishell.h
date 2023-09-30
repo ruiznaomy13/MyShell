@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/28 21:16:05 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/30 02:49:20 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ typedef struct s_token
 {
 	int				type;
 	char			*wrd;
-	// int             len;
 	struct s_token	*next;
-	// struct s_token  *prev;
 }	t_token;
 
 typedef struct s_process
@@ -44,9 +42,8 @@ typedef struct s_process
 	int					pos_process;
 	char				**args; //lo que ejecutaremos
 	t_token				*rd; // la lista de tokens de la ejecució
-	struct s_process	*next;
-	t_token				*token;
 	char				*ruta;
+	struct s_process	*next;
 }	t_process;
 
 typedef struct s_all
@@ -62,6 +59,7 @@ typedef struct s_all
 // MOSTRA EL NODE ----- DELETE
 void	mostra_tokens(t_all *all);
 void	mostra_process(t_all *all);
+void	mostra_rd(t_process *pcs);
 
 //----------PARSER------------
 // lexer 

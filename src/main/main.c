@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/30 15:49:45 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/30 16:31:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,16 @@ void	mostra_process(t_all *all)
 	int			i;
 	t_process	*aux;
 
-	i = -1;
 	aux = all->process;
 	printf("ARGUMENTS =");
-	while (aux->args[++i] != NULL)
+	while (aux != NULL)
 	{
-		printf("<%s>", aux->args[i]);
+		i = -1;
+		while (aux->args[++i] != NULL)
+		{
+			printf("arg:<%s>", aux->args[i]);
+		}
+		aux = aux->next;
 	}
 	printf("\n");
 }

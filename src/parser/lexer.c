@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/30 15:48:23 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/30 16:25:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	checker(t_all *all)
 		lexer(all);
 		mostra_tokens(all);
 		create_process(all);
-		//mostra_process(all);
+		mostra_process(all);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/30 15:51:02 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/30 16:43:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,18 +116,26 @@ void	create_process(t_all *all)
 {
 	t_process	*pcs = NULL;
 
-	while (all->token != NULL)
+	while (all->num_process >= 0)
 	{
-		pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
-		if (pcs == NULL)
-			return ;
-		pcs->args = save_arg(all);
-		list_redirection(pcs, all);
-		mostra_rd(pcs);
-		rm_prev_tkns(all);
-		all->token = all->token->next;
+		while (all->token->next != NULL)
+		{
+			if (all->token->type == PIPE)
+				all->token = all->token->next;
+			pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
+			if (pcs == NULL)
+				return ;
+			pcs->args = save_arg(all);
+			list_redirection(pcs, all);
+			mostra_rd(pcs);
+			rm_prev_tkns(all);
+			all->token = all->token->next;
+		}
+		all->process = pcs;
+		all->process = all->process->next;
+		all->num_process--;
 	}
-	all->process = pcs;
+	printf("Num prosses fin: %i\n", all->num_process);
 }
 
 // void	list_process(t_all *all)

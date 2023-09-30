@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/30 02:54:26 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/30 05:32:34 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,42 +111,37 @@ void rm_prev_tkns(t_all *all)
     }
 }
 
+void add_prcs(t_all *all, t_process *pcs)
+{
+    t_process *aux;
+
+    if (all->prcs == NULL)
+        all->prcs = pcs;
+    else
+    {
+        aux = all->prcs;
+        while (aux->next != NULL)
+            aux = aux->next;
+        aux->next = pcs;
+    }
+}
+
 void	create_process(t_all *all)
 {
-	t_process	*pcs = NULL;
+	t_process	*pcs;
+	t_process	*aux;
 
-	while (all->token != NULL)
+	aux = all->prcs;
+	while (aux != NULL)
 	{
-		pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
+		pcs = (t_process *)ft_calloc(sizeof(t_process), 1);	
 		if (pcs == NULL)
 			return ;
 		pcs->args = save_arg(all);
 		list_redirection(pcs, all);
 		mostra_rd(pcs);
 		rm_prev_tkns(all);
+		add_prcs(all, pcs);
+		aux = aux->next;
 	}
-	all->prcs = pcs;
 }
-
-// void	list_process(t_all *all)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (all->num_process <= i)
-// 	{
-// 		create_process(&all);
-// 		i++;
-// 	}
-	
-// }
-
-// 1. guardarm en el **char todo lo que no sea redirecccion ni su archivo
-//    es decir, el siguiente token. [> file.txt]
-// 2. Guardar el tipo texto dentro de un **char
-// 3. Eliminamos los tokens que estan dentro del
-//    a medida que los añadimos a la *cadena
-// 4. Los demas tokens los guardamos dentro de una nueva lista con el tipo de
-//    redireccion y el nombre del texto.
-//     <<          hola             cat  -e  <    a      >     a      Makefile
-// RD_HERE_DOC  HERE_DOC_LIMITER    ARG ARG  RD RD_FILE  RD  RD_FILE    ARG

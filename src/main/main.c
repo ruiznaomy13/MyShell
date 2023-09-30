@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/27 17:35:00 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/30 15:49:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,24 @@ void	mostra_tokens(t_all *all)
 		aux = aux->next;
 		i++;
 	}
+}
+
+void    mostra_rd(t_process *pcs)
+{
+        int                     i;
+        t_token         *aux;
+
+        i = 1;
+        aux = pcs->rd;
+        while (aux != NULL)
+        {
+			printf("REDIRECCIONES =\n");
+            printf("%d = %s -> %d\n", i, aux->wrd, aux->type);
+            i++;
+            if (i == 10)
+            	return ;
+			aux = aux->next;
+        }
 }
 
 void	mostra_process(t_all *all)

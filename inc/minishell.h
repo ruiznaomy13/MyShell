@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/28 13:59:07 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/30 12:36:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_all
 
 // MOSTRA EL NODE ----- DELETE
 void	mostra_tokens(t_all *all);
+void    mostra_rd(t_process *pcs);
 void	mostra_process(t_all *all);
 
 //----------PARSER------------
@@ -74,9 +75,21 @@ int		arg_size(t_token *aux);
 void	*save_args(t_token *tkn, t_process *pcs);
 void	save_redirecions(t_token *tkn, t_process *pcs);
 
+// expansions
+char    *expand_var(t_token *tkn, char **env);
  
 // utils
 char	**duplicate_env(t_all *all);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
+char    *str_rep(char *source, char *target, char *replacement);
+char	*ft_charjoin(char *s, char c);
+char	*search_var(char *str);
+
+//utils2
+
+char	*split_env(char *str);
+char	**duplicate_env(t_all *all);
+char *search_env(char *str, char *env[]);
 
 // separadors
 char	*search_env(char *str, char *env[]);
@@ -93,6 +106,6 @@ char	*str_rep(char* source, char* target, char* replacement);
 
 // EXECUTOR
 void	executor(t_all *all);
-void	count_procesos(t_all *all, char *str);
+void	count_process(t_all *all, char *str);
 
 #endif

@@ -6,12 +6,11 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/28 14:06:28 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/30 15:48:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
-
 void	loop(t_all *all)
 {
 	while (42)
@@ -38,13 +37,11 @@ void	checker(t_all *all)
 	}
 	else
 	{
-		count_procesos(all, all->line);
+		count_process(all, all->line);
 		lexer(all);
 		mostra_tokens(all);
-		printf("abans create process\n");
 		create_process(all);
-		printf("després create process\n");
-		mostra_process(all);
+		//mostra_process(all);
 	}
 }
 
@@ -74,7 +71,6 @@ void	lexer(t_all *all)
 		else if (all->line[i] == '<')
 			i += create_token(all, &all->line[i], RDIN) - 1;
 	}
-	//create_process(all); //suposo que es el de les expacncions s'ha de dir diferent
 }
 
 int	create_token(t_all *all, char *str, int type)
@@ -111,9 +107,9 @@ void	add_token(t_token *tkn, t_all *all)
 {
 	t_token*	aux;
 
-	if (all->token == NULL)// Si la lista está vacía, el nuevo nodo se convierte en la cabeza de la lista
+	if (all->token == NULL)
 		all->token = tkn;
-	else// Si la lista no está vacía, agregamos el nuevo nodo al final
+	else
 	{
 		aux = all->token;
 		while (aux->next != NULL)
@@ -121,4 +117,3 @@ void	add_token(t_token *tkn, t_all *all)
 		aux->next = tkn;
 	}
 }
-

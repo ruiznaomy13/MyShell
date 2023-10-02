@@ -18,11 +18,9 @@ int	main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
-	all.env = env;
-	printf("\n\n aqui lego \n\n");
 	ft_bzero(&all, sizeof(t_all));
+	all.env = env;
 	loop(&all);
-	// printf("surt");
 	return (0);
 }
 

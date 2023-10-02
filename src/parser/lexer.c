@@ -20,7 +20,7 @@ void	loop(t_all *all)
 		add_history(all->line);
 		printf("%s\n", all->line);
 		checker(all);
-		// executor(all);
+		executor(all);
 		ft_free(all);
 	}
 }
@@ -39,7 +39,6 @@ void	checker(t_all *all)
 	{
 		count_process(all, all->line);
 		lexer(all);
-		mostra_tokens(all);
 		create_process(all);
 	}
 }

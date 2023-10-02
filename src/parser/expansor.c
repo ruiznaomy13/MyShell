@@ -24,9 +24,9 @@ char *search_env(char *str, char *env[])
     aux = NULL;
     if (new == NULL)
         return NULL;
-    new = ft_charjoin(new, '=');
     while (env[++i])
 	{
+    	new = ft_charjoin(new, '=');
         aux = ft_strnstr(env[i], new, ft_strlen(new));
         if (aux != NULL)
 		{

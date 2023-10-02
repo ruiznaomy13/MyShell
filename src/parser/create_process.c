@@ -51,7 +51,7 @@ void list_redirection(t_process *pcs, t_all *all)
 	t_token	*rd;
 
     aux = all->token;
-    while (aux != NULL)
+    while (aux != NULL && aux->type != PIPE)
     {
         if (aux->type == RDOUT || aux->type == RDAP ||
             aux->type == RDIN || aux->type == RDHD)
@@ -76,13 +76,14 @@ char **save_arg(t_all *all)
 	int     i;
 
 	aux = all->token;
-	str = (char **)malloc(sizeof(char *) * (arg_size(all->token) + 1));
+	str = (char **)ft_calloc(sizeof(char *), (arg_size(all->token) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
 	while (aux != NULL && aux->type != PIPE)
 	{
-		if (aux->type == RDOUT || aux->type == RDAP || aux->type == RDIN || aux->type == RDHD)
+		if (aux->type == RDOUT || aux->type == RDAP \
+		|| aux->type == RDIN || aux->type == RDHD)
 			aux = aux->next; 
 		else if (aux->wrd != NULL)
 		{
@@ -98,7 +99,7 @@ void rm_prev_tkns(t_all *all)
 {
 	t_token *aux;
 	
-    while (all->token->next != NULL)
+    while (all->token != NULL)
     {
         aux = all->token;
         all->token = all->token->next;
@@ -115,9 +116,9 @@ void add_prcs(t_all *all, t_process *pcs)
 {
     t_process *aux;
 
-    if (all->prcs == NULL)
+    if (all->prcs == NULL) {
         all->prcs = pcs;
-    else
+	} else
     {
         aux = all->prcs;
         while (aux->next != NULL)
@@ -126,22 +127,20 @@ void add_prcs(t_all *all, t_process *pcs)
     }
 }
 
-void	create_process(t_all *all)
+void create_process(t_all *all)
 {
-	t_process	*pcs;
-	t_process	*aux;
+    t_process *pcs;
 
-	aux = all->prcs;
-	while (aux != NULL)
-	{
-		pcs = (t_process *)ft_calloc(sizeof(t_process), 1);	
-		if (pcs == NULL)
-			return ;
-		pcs->args = save_arg(all);
-		list_redirection(pcs, all);
-		mostra_rd(pcs);
-		rm_prev_tkns(all);
-		add_prcs(all, pcs);
-		aux = aux->next;
-	}
+    while (all->token != NULL)
+    {
+        pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
+        if (pcs == NULL)
+            return ;
+        pcs->args = save_arg(all);
+        list_redirection(pcs, all);
+		printf("NEW FIRST TOKEN = %s\n", all->token->wrd);
+        rm_prev_tkns(all);
+        add_prcs(all, pcs);
+    }
+	mostra_process(all);
 }

@@ -34,6 +34,7 @@ typedef struct s_token
 {
 	int				type;
 	char			*wrd;
+	// int				fd;
 	struct s_token	*next;
 }	t_token;
 

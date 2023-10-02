@@ -20,8 +20,7 @@ void	loop(t_all *all)
 		add_history(all->line);
 		printf("%s\n", all->line);
 		checker(all);
-		// printf("%s\n", all->env[1]);
-		executor(all);
+		// executor(all);
 		ft_free(all);
 	}
 }
@@ -42,7 +41,6 @@ void	checker(t_all *all)
 		lexer(all);
 		mostra_tokens(all);
 		create_process(all);
-		mostra_process(all);
 	}
 }
 

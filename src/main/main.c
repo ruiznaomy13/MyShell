@@ -19,6 +19,8 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	all.env = env;
+	printf("\n\n aqui lego \n\n");
+	ft_bzero(&all, sizeof(t_all));
 	loop(&all);
 	// printf("surt");
 	return (0);
@@ -60,16 +62,22 @@ void	mostra_rd(t_process *pcs)
 void	mostra_process(t_all *all)
 {
 	int			i;
+	int			j;
 	t_process	*aux;
 
-	i = -1;
+	j = 1;
 	aux = all->prcs;
-	printf("ARGUMENTS =\n");
-	while (aux->args[++i] != NULL)
+	while (aux != NULL)
 	{
-		printf("[%s] \n", aux->args[i]);
+		i = -1;
+		printf("\n\nPROCESS %d =\n", j);
+		while (aux->args && aux->args[++i] != NULL)
+			printf("[%s] ", aux->args[i]);
+		printf("\n");
+		mostra_rd(aux);
+		j++;
+		aux = aux->next;
 	}
-	printf("\n");
 }
 
 void	ft_free(t_all *all)

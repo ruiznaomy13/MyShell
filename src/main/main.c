@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/30 16:31:55 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/03 12:17:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,42 +40,45 @@ void	mostra_tokens(t_all *all)
 	}
 }
 
-void    mostra_rd(t_process *pcs)
+void	mostra_rd(t_process *pcs)
 {
-        int                     i;
-        t_token         *aux;
+	int			i;
+	t_token		*aux;
 
-        i = 1;
-        aux = pcs->rd;
-        while (aux != NULL)
-        {
-			printf("REDIRECCIONES =\n");
-            printf("%d = %s -> %d\n", i, aux->wrd, aux->type);
-            i++;
-            if (i == 10)
-            	return ;
-			aux = aux->next;
-        }
+	i = 1;
+	aux = pcs->rd;
+	printf("REDIRECCIONES =\n");
+	while (aux != NULL)
+	{
+		printf("%d = %s -> %d\n", i, aux->wrd, aux->type);
+		aux = aux->next;
+		i++;
+		if (i == 10)
+			return ;
+	}
 }
 
 void	mostra_process(t_all *all)
 {
 	int			i;
+	int			j;
 	t_process	*aux;
 
-	aux = all->process;
-	printf("ARGUMENTS =");
+	j = 1;
+	aux = all->prcs;
 	while (aux != NULL)
 	{
 		i = -1;
-		while (aux->args[++i] != NULL)
-		{
-			printf("arg:<%s>", aux->args[i]);
-		}
+		printf("\n\nPROCESS %d =\n", j);
+		while (aux->args && aux->args[++i] != NULL)
+			printf("[%s] ", aux->args[i]);
+		printf("\n");
+		mostra_rd(aux);
+		j++;
 		aux = aux->next;
 	}
-	printf("\n");
 }
+
 
 void	ft_free(t_all *all)
 {
@@ -88,10 +91,10 @@ void	ft_free(t_all *all)
 		all->token = all->token->next;
 		free(tkn);
 	}
-	while (all->process != NULL)
+	while (all->prcs != NULL)
 	{
-		prc = all->process;
-		all->process = all->process->next;
+		prc = all->prcs;
+		all->prcs = all->prcs->next;
 		free(prc);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/30 16:23:31 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/03 12:14:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,17 @@ typedef struct s_token
 {
 	int				type;
 	char			*wrd;
-	// int             len;
+	// int				fd;
 	struct s_token	*next;
-	// struct s_token  *prev;
 }	t_token;
 
 typedef struct s_process
 {
-	int					pos_args;
+	int					pos_process;
 	char				**args; //lo que ejecutaremos
 	t_token				*rd; // la lista de tokens de la ejecució
-	struct s_process	*next;
 	char				*ruta;
+	struct s_process	*next;
 }	t_process;
 
 typedef struct s_all
@@ -54,14 +53,14 @@ typedef struct s_all
 	int			size;
 	char		**env;
 	t_token		*token;
-	t_process	*process;
+	t_process	*prcs;
 	int			num_process;
 }	t_all;
 
 // MOSTRA EL NODE ----- DELETE
 void	mostra_tokens(t_all *all);
-void    mostra_rd(t_process *pcs);
 void	mostra_process(t_all *all);
+void	mostra_rd(t_process *pcs);
 
 //----------PARSER------------
 // lexer 
@@ -71,32 +70,27 @@ void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
 void	create_process(t_all *all);
-int		arg_size(t_token *aux);
-void	*save_args(t_token *tkn, t_process *pcs);
-void	save_redirecions(t_token *tkn, t_process *pcs);
-
-// expansions
-char    *expand_var(t_token *tkn, char **env);
  
 // utils
 char	**duplicate_env(t_all *all);
-char	*ft_strncpy(char *dest, const char *src, size_t n);
-char    *str_rep(char *source, char *target, char *replacement);
 char	*ft_charjoin(char *s, char c);
-char	*search_var(char *str);
-
-//utils2
-
 char	*split_env(char *str);
-char	**duplicate_env(t_all *all);
-char *search_env(char *str, char *env[]);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
+char    *search_var(char *str);
+
+// utils 2
+void	count_process(t_all *all, char *str);
 
 // separadors
-char	*search_env(char *str, char *env[]);
 int		check_cometes(char *str);
 int		delimiter(char c);
 char	*is_text(char *str);
 char	*is_text_first(char *str);
+char	**duplicate_env(t_all *all);
+
+// Expansiones
+char	*search_env(char *str, char *env[]);
+char	*expand_var(t_token *tkn, char **env);
 
 // free de les llistes
 void	ft_free(t_all *all);
@@ -106,6 +100,5 @@ char	*str_rep(char* source, char* target, char* replacement);
 
 // EXECUTOR
 void	executor(t_all *all);
-void	count_process(t_all *all, char *str);
 
 #endif

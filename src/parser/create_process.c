@@ -6,12 +6,11 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/30 16:43:46 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/03 12:06:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
-
 
 int	arg_size(t_token *tkn)
 {
@@ -52,7 +51,7 @@ void list_redirection(t_process *pcs, t_all *all)
 	t_token	*rd;
 
     aux = all->token;
-    while (aux != NULL)
+    while (aux != NULL && aux->type != PIPE)
     {
         if (aux->type == RDOUT || aux->type == RDAP ||
             aux->type == RDIN || aux->type == RDHD)
@@ -77,13 +76,14 @@ char **save_arg(t_all *all)
 	int     i;
 
 	aux = all->token;
-	str = (char **)malloc(sizeof(char *) * (arg_size(all->token) + 1));
+	str = (char **)ft_calloc(sizeof(char *), (arg_size(all->token) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
 	while (aux != NULL && aux->type != PIPE)
 	{
-		if (aux->type == RDOUT || aux->type == RDAP || aux->type == RDIN || aux->type == RDHD)
+		if (aux->type == RDOUT || aux->type == RDAP \
+		|| aux->type == RDIN || aux->type == RDHD)
 			aux = aux->next; 
 		else if (aux->wrd != NULL)
 		{
@@ -98,8 +98,8 @@ char **save_arg(t_all *all)
 void rm_prev_tkns(t_all *all)
 {
 	t_token *aux;
-
-    while (all->token->next != NULL)
+	
+    while (all->token != NULL)
     {
         aux = all->token;
         all->token = all->token->next;
@@ -112,41 +112,35 @@ void rm_prev_tkns(t_all *all)
     }
 }
 
-void	create_process(t_all *all)
+void add_prcs(t_all *all, t_process *pcs)
 {
-	t_process	*pcs = NULL;
+    t_process *aux;
 
-	while (all->num_process >= 0)
-	{
-		while (all->token->next != NULL)
-		{
-			if (all->token->type == PIPE)
-				all->token = all->token->next;
-			pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
-			if (pcs == NULL)
-				return ;
-			pcs->args = save_arg(all);
-			list_redirection(pcs, all);
-			mostra_rd(pcs);
-			rm_prev_tkns(all);
-			all->token = all->token->next;
-		}
-		all->process = pcs;
-		all->process = all->process->next;
-		all->num_process--;
-	}
-	printf("Num prosses fin: %i\n", all->num_process);
+    if (all->prcs == NULL) {
+        all->prcs = pcs;
+	} else
+    {
+        aux = all->prcs;
+        while (aux->next != NULL)
+            aux = aux->next;
+        aux->next = pcs;
+    }
 }
 
-// void	list_process(t_all *all)
-// {
-// 	int	i;
+void create_process(t_all *all)
+{
+    t_process *pcs;
 
-// 	i = 0;
-// 	while (all->num_process <= i)
-// 	{
-// 		create_process(&all);
-// 		i++;
-// 	}
-	
-// }
+    while (all->token != NULL)
+    {
+        pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
+        if (pcs == NULL)
+            return ;
+        pcs->args = save_arg(all);
+        list_redirection(pcs, all);
+		printf("NEW FIRST TOKEN = %s\n", all->token->wrd);
+        rm_prev_tkns(all);
+        add_prcs(all, pcs);
+    }
+	mostra_process(all);
+}

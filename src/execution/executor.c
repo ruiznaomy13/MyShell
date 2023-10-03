@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/27 17:02:04 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/03 12:11:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*get_ruta(t_all *all)
 	while (path[i])
 	{
 		tmp = ft_strjoin(path[i], "/");
-		join = ft_strjoin(tmp, all->process->args[0]);
+		join = ft_strjoin(tmp, all->prcs->args[0]);
 		printf("\n%s\n", join);
 		if (access(join, F_OK) == 0 && access(join, X_OK) == 0)
 			return (join);
@@ -44,12 +44,12 @@ void	executor(t_all *all)
 {
 	// int i;
 
-	all->process->ruta = get_ruta(all);
-	printf("ruta = %s\n", all->process->ruta);
-	// for (i = 0; all->process->args[i]; i++)
-	// 	printf("%s, ", all->process->args[i]);
+	all->prcs->ruta = get_ruta(all);
+	printf("ruta = %s\n", all->prcs->ruta);
+	// for (i = 0; all->prcs->args[i]; i++)
+	// 	printf("%s, ", all->prcs->args[i]);
 	// printf("\n");
-	execve(all->process->ruta, all->process->args, all->env);
+	execve(all->prcs->ruta, all->prcs->args, all->env);
 	perror("execve");
 }
 //execve("/bin/ls", {ls, -la, src/}, env);

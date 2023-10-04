@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/04 20:34:16 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/04 21:33:57 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int syntax_checker(t_all *all)
     }
     return (1);
 }
-
 
 int	check_cometes(char *str)
 {

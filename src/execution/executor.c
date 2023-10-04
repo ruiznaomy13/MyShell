@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/04 21:32:49 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/04 21:33:54 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,3 @@ void	executor(t_all *all)
 	printf("\n");
 	execve(all->prcs->ruta, all->prcs->args, all->env);
 }
-

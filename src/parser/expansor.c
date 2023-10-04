@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:00:46 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/28 20:42:27 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/04 21:30:37 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ char *search_env(char *str, char *env[])
     aux = NULL;
     if (new == NULL)
         return NULL;
+    new = ft_charjoin(new, '=');
     while (env[++i])
 	{
-    	new = ft_charjoin(new, '=');
         aux = ft_strnstr(env[i], new, ft_strlen(new));
         if (aux != NULL)
 		{
@@ -69,6 +69,7 @@ char    *expand_var(t_token *tkn, char **env)
 		else if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
 		{
 			var = search_var(&str[i]);
+			printf("SEARCHED VAR = %s\n", search_env(var, env));
 			if (search_env(var, env) != NULL)
 				aux = ft_strjoin(aux, search_env(var, env));
 			i += ft_strlen(var) + 1;

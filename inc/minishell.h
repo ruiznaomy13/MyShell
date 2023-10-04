@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/30 02:49:20 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:22:40 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,16 @@ void	mostra_rd(t_process *pcs);
 //----------PARSER------------
 // lexer 
 void	loop(t_all *all);
-void	checker(t_all *all);
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
 void	create_process(t_all *all);
+
+/* ------- CHECKER -------*/
+int		checker(t_all *all);
+int		check_cometes(char *str);
+void	parser(t_all *all);
+int		syntax_checker(t_all *all);
  
 // utils
 char	**duplicate_env(t_all *all);
@@ -80,9 +85,9 @@ char    *search_var(char *str);
 
 // utils 2
 void	count_process(t_all *all, char *str);
+int		is_rd(int type);
 
 // separadors
-int		check_cometes(char *str);
 int		delimiter(char c);
 char	*is_text(char *str);
 char	*is_text_first(char *str);

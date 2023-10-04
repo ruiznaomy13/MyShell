@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/30 05:32:34 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/04 21:30:24 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,13 @@ void list_redirection(t_process *pcs, t_all *all)
             if (!rd)
                 return;           
             rd->type = aux->type;
-            rd->wrd = aux->next->wrd;
+            rd->wrd = expand_var(aux->next, all->env);
             add_rd(rd, pcs);
             aux = aux->next;
         }
         aux = aux->next;
     }
 }
-
 
 char **save_arg(t_all *all)
 {
@@ -84,7 +83,9 @@ char **save_arg(t_all *all)
 	{
 		if (aux->type == RDOUT || aux->type == RDAP \
 		|| aux->type == RDIN || aux->type == RDHD)
-			aux = aux->next; 
+		{
+			aux = aux->next;
+		}
 		else if (aux->wrd != NULL)
 		{
 			aux->wrd = expand_var(aux, all->env);
@@ -138,7 +139,6 @@ void create_process(t_all *all)
             return ;
         pcs->args = save_arg(all);
         list_redirection(pcs, all);
-		printf("NEW FIRST TOKEN = %s\n", all->token->wrd);
         rm_prev_tkns(all);
         add_prcs(all, pcs);
     }

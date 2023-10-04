@@ -4,7 +4,7 @@ FILES = main/main.c \
 		parser/expansor.c \
 		parser/lexer.c parser/separadors.c parser/create_process.c \
 		parser/utils.c parser/utils2.c \
-		checker/errors.c \
+		checker/errors.c checker/checker.c\
 		builthings/echo.c \
 		execution/executor.c
 

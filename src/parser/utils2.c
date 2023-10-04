@@ -6,11 +6,18 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/30 02:49:12 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:22:28 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
+int	is_rd(int type)
+{
+	if (type == RDHD || type == RDIN || type == RDAP || type == RDOUT)
+		return (1);
+	return (0);
+}
 
 void	count_process(t_all *all, char *str)
 {

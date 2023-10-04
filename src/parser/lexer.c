@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/09/30 05:23:59 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:47:07 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,38 @@ void	loop(t_all *all)
 		all->line = readline("myshell🌞> ");
 		add_history(all->line);
 		printf("%s\n", all->line);
-		checker(all);
-		executor(all);
-		ft_free(all);
+        if (check_cometes(all->line) > 30) {
+            ft_free(all);
+            continue;
+        }
+        lexer(all);
+        if (!checker(all)) {
+            ft_free(all);
+            continue;
+        }
+        parser(all);
+        executor(all);
+        ft_free(all);
+        printf ("\n");
 	}
 }
 
-void	checker(t_all *all)
+int	checker(t_all *all)
 {
-	int			coma;
+    if (ft_strlen(all->line) < 1)
+        return (0);
+    else if (!syntax_checker(all))
+    {
+        ft_error(5);
+        return (0);
+    }
+    return (1);
+}
 
-	coma = check_cometes(all->line);
-	if (coma == 34 || coma == 39)
-	{
-		ft_error(coma);
-		exit (1);
-	}
-	else
-	{
-		count_process(all, all->line);
-		lexer(all);
-		create_process(all);
-	}
+void	parser(t_all *all)
+{
+    count_process(all, all->line);
+    create_process(all);
 }
 
 void	lexer(t_all *all)
@@ -52,12 +62,6 @@ void	lexer(t_all *all)
 	{
 		if (!delimiter(all->line[i]))
 			i += create_token(all, &all->line[i], TEXT) - 1;
-		// if (all->line[i] == '\'')
-		// 	i += create_token(all, &all->line[i], COMMA_S) + 1;
-		// else if (all->line[i] == '\"')
-		// 	i += create_token(all, &all->line[i], COMMA_D) + 1;
-		// else if (all->line[i] == '$')
-		// 	i += create_token(all, &all->line[i], EXP) - 1;
 		else if (all->line[i] == '|')
 			i += create_token(all, &all->line[i], PIPE) - 1;
 		else if (all->line[i] == '>' && all->line[i + 1] == '>')
@@ -78,9 +82,6 @@ int	create_token(t_all *all, char *str, int type)
 	tkn = (t_token *)ft_calloc(sizeof(t_token), 1);
 	if (!tkn)
 		return (0);
-	// Crea el token segun el tipo de dato que ha encontrado
-	// if (type == COMMA_S || type == COMMA_D)
-	// 	tkn->wrd = is_comma(str, str[0]);
 	if (type == TEXT || type == EXP)
 		tkn->wrd = is_text_first(str);
 	else if (type == PIPE)
@@ -93,17 +94,14 @@ int	create_token(t_all *all, char *str, int type)
 		tkn->wrd = ">";
 	else if (type == RDIN)
 		tkn->wrd = "<";
-	// if (tkn->wrd == NULL)
-	// 	return (0);
 	tkn->type = type;
-	// printf("[ ADDRES ] all -> %p\n", all);
 	add_token(tkn, all);
 	return (ft_strlen(tkn->wrd));
 }
 
 void	add_token(t_token *tkn, t_all *all)
 {
-	t_token*	aux;
+	t_token	*aux;
 
 	if (all->token == NULL)
 		all->token = tkn;
@@ -115,4 +113,3 @@ void	add_token(t_token *tkn, t_all *all)
 		aux->next = tkn;
 	}
 }
-

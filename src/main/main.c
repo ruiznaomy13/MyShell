@@ -18,8 +18,8 @@ int	main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
-	all.env = env;
 	ft_bzero(&all, sizeof(t_all));
+	all.env = env;
 	loop(&all);
 	// printf("surt");
 	return (0);
@@ -48,6 +48,10 @@ void	mostra_rd(t_process *pcs)
 	i = 1;
 	aux = pcs->rd;
 	printf("REDIRECCIONES =\n");
+	if (!aux){
+		printf("no hi ha redi\n");
+		return ;
+	}
 	while (aux != NULL)
 	{
 		printf("%d = %s -> %d\n", i, aux->wrd, aux->type);
@@ -73,7 +77,7 @@ void	mostra_process(t_all *all)
 		while (aux->args && aux->args[++i] != NULL)
 			printf("[%s] ", aux->args[i]);
 		printf("\n");
-		mostra_rd(aux);
+		//mostra_rd(aux);
 		j++;
 		aux = aux->next;
 	}

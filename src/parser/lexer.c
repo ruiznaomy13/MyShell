@@ -11,16 +11,16 @@
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
 void	loop(t_all *all)
 {
 	while (42)
 	{
 		all->line = readline("myshell🌞> ");
 		add_history(all->line);
-		printf("%s\n", all->line);
+		//printf("%s\n", all->line);
 		checker(all);
-		// printf("%s\n", all->env[1]);
-		//executor(all);
+		executor(all);
 		ft_free(all);
 	}
 }

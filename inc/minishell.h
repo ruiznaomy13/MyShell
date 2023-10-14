@@ -70,8 +70,8 @@ char	*get_ruta(t_all *all);//find cmd
 //utils executor
 void	count_process(t_all *all, char *str);
 char	**duplicate_env(t_all *all);
-int		find_routes(t_process *prcs, char **env);
-char	*find_path(char **env, int *found);
+int		find_routes(t_all *all, t_process *prcs);
+char	*find_path(t_all *all, int *found);
 void    close_pipes(t_process *prcs);
 
 

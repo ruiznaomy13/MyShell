@@ -18,19 +18,11 @@ void	ft_error(int error)
 		printf("syntax error near unexpected token %c\n", error);
 }
 
-void	count_procesos(t_all *all, char *str)
+/*
+int i = 0;
+while (all->env[i] != NULL)
 {
-	int	i;
-	int	n_proces;
-
-	i = 0;
-	n_proces = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '|')
-			n_proces++;
-		i++;
-	}
-	n_proces += 1;
-	all->num_process = n_proces;
+	printf("%s\n", all->env[i]);
+	i++;
 }
+*/

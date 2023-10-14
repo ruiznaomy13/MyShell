@@ -1,5 +1,5 @@
 
-#include "../inc/minishell.h"
+#include "inc/minishell.h"
 
 void	count_process(t_all *all, char *str)
 {
@@ -37,11 +37,11 @@ char	**duplicate_env(t_all *all)
 	return (new_env);
 }
 
-int	find_routes(t_process *prcs, char **env)
+int	find_routes(t_all *all, t_process *prcs)
 {
 	int	found;
 
-	prcs->routes = ft_split(find_path(env, &found), ':');
+	prcs->routes = ft_split(find_path(all, &found), ':');
 	if (!found)
 		return (1);
 	if (!prcs->routes)
@@ -50,26 +50,29 @@ int	find_routes(t_process *prcs, char **env)
 	return (0);
 }
 
-char	*find_path(char **env, int *found)
+char	*find_path(t_all *all, int *found)
 {
 	int	i;
 
 	i = 0;
-	if (!env)
+	if (!all->env)
+	{
+		printf("env no existeix \n");
 		return (NULL);
-	while (env[i] && ft_strncmp(envp[i], "PATH=", 5))
+	}
+	while (all->env[i] && ft_strncmp(all->env[i], "PATH=", 5))
 		i++;
-	if (!env[i])
+	if (!all->env[i])
 	{
 		*found = 0;
 		return (NULL);
 	}
 	*found = 1;
-	return (env[i] + 5);
+	return (all->env[i] + 5);
 }
 
 void    close_pipes(t_process *prcs)
 {
-    colse(prcs.fd[0]);
-    colse(prcs.fd[1]);
+    close(prcs->fd[0]);
+    close(prcs->fd[1]);
 }

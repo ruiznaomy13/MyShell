@@ -12,18 +12,57 @@
 
 #include "inc/minishell.h"
 
-char	*get_ruta(t_all *all)
+void	executor(t_all *all)
+{
+	int		i;//cal donar-li el valor de la quantitat d'arxius(redirecions) hi ha 
+
+	i = 0;//count_process nomes conta entre |, no redi, pt no posar arxius
+	while (all->prcs)
+	{
+		if (find_routes(all->prcs, all->env) == 1)
+			exit(1);
+		while (i < all->prcs->pos_process)// numero de prcs que s'han dexecutar
+		{
+			if (i < all->prcs->pos_process - 1 && pipe(all->prcs->fd))//
+				exit (1);
+			all->prcs->pid_prc = fork();
+            if (all->prcs->pid_prc == 0)
+                child(all, all->prcs, i);
+			i++;
+		}
+		all->prcs = all->prcs->next;
+	}
+}
+
+void child(t_all *all, t_process *prcs, int i)
+{
+	if (!prcs->rd)
+	{
+		dup2(prcs->fd[1], STDOUT_FILENO);
+		close_pipes(prcs);
+	}
+	else
+		printf("hi ha redirecions pt arxius\n");
+	printf("i: %i\n", i);
+	//all->prcs->ruta = get_ruta(all);
+	pipex.ruta = find_cmd(pipex.routes, pipex.args[0]);
+    if (!all->prcs->ruta)
+        exit(127);
+	//printf("ruta = %s\n", all->prcs->ruta);
+	execve(all->prcs->ruta, all->prcs->args, all->env);
+	perror("execve");
+}
+
+char	*get_ruta(t_all *all)//find cmd
 {
 	char	**path;
 	char	*join;
 	char	*tmp;
 	int		i;
 
-	i = 0;
-	path = ft_split(getenv("PATH"), ':');
+	path = all->prcs->routes;
 	join = (char *)malloc(sizeof(char) * (2 + 1));//num de processos
-	printf("hola\n");
-	if (path == NULL)
+	if (path == NULL)//mirar funcio errors per retornar l'error adecuat si path no existeix
 	{
 		fprintf(stderr, "Error al dividir PATH\n");//funcion prohibida. Usa write.
 		exit(1);
@@ -40,16 +79,4 @@ char	*get_ruta(t_all *all)
 	}
 	return (NULL);
 }
-void	executor(t_all *all)
-{
-	// int i;
 
-	all->prcs->ruta = get_ruta(all);
-	printf("ruta = %s\n", all->prcs->ruta);
-	// for (i = 0; all->prcs->args[i]; i++)
-	// 	printf("%s, ", all->prcs->args[i]);
-	// printf("\n");
-	execve(all->prcs->ruta, all->prcs->args, all->env);
-	perror("execve");
-}
-//execve("/bin/ls", {ls, -la, src/}, env);

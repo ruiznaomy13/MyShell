@@ -16,46 +16,11 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+# include "../lib/readline/readline.h"
+# include "../lib/readline/history.h"
 # include "../lib/libft/libft.h"
+# include "structs.h"
 
-# define TEXT 00
-# define PIPE 01
-# define COMMA_S 21
-# define COMMA_D 22
-# define RDOUT 31
-# define RDAP 32
-# define RDIN 41
-# define RDHD 42
-# define EXP 05
-
-typedef struct s_token
-{
-	int				type;
-	char			*wrd;
-	// int				fd;
-	struct s_token	*next;
-}	t_token;
-
-typedef struct s_process
-{
-	int					pos_process;
-	char				**args; //lo que ejecutaremos
-	t_token				*rd; // la lista de tokens de la ejecució
-	char				*ruta;
-	struct s_process	*next;
-}	t_process;
-
-typedef struct s_all
-{
-	char		*line;
-	int			size;
-	char		**env;
-	t_token		*token;
-	t_process	*prcs;
-	int			num_process;
-}	t_all;
 
 // MOSTRA EL NODE ----- DELETE
 void	mostra_tokens(t_all *all);
@@ -72,14 +37,13 @@ void	add_token(t_token *tkn, t_all *all);
 void	create_process(t_all *all);
  
 // utils
-char	**duplicate_env(t_all *all);
 char	*ft_charjoin(char *s, char c);
-char	*split_env(char *str);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char    *search_var(char *str);
 
 // utils 2
-void	count_process(t_all *all, char *str);
+char	*split_env(char *str);
+
 
 // separadors
 int		check_cometes(char *str);
@@ -100,5 +64,15 @@ char	*str_rep(char* source, char* target, char* replacement);
 
 // EXECUTOR
 void	executor(t_all *all);
+void 	child(t_all *all, t_process *prcs, int i);
+char	*get_ruta(t_all *all);//find cmd
+
+//utils executor
+void	count_process(t_all *all, char *str);
+char	**duplicate_env(t_all *all);
+int		find_routes(t_process *prcs, char **env);
+char	*find_path(char **env, int *found);
+void    close_pipes(t_process *prcs);
+
 
 #endif

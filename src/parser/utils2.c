@@ -12,25 +12,7 @@
 
 #include "inc/minishell.h"
 
-
-void	count_process(t_all *all, char *str)
-{
-	int	i;
-	int	n_proces;
-
-	i = 0;
-	n_proces = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '|')
-			n_proces++;
-		i++;
-	}
-	n_proces += 1;
-	all->num_process = n_proces;
-}
-
-char	*split_env(char *str)
+char	*split_env(char *str)//entenc que es per l'expansor
 {
 	int		j;
 	char	**sep;
@@ -47,24 +29,4 @@ char	*split_env(char *str)
 		return (value);
 	}
 	return (NULL);
-}
-
-
-char	**duplicate_env(t_all *all)
-{
-	char	**new_env;
-	int		i;
-
-	i = 0;
-	while (all->env[i++])
-		;
-	new_env = (char **)malloc(sizeof(char *) * i + 1);
-	i = 0;
-	while (all->env[i])
-	{
-		new_env[i] = ft_strdup(all->env[i]);
-		i++;
-	}
-	new_env[i] = NULL;
-	return (new_env);
 }

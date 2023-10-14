@@ -32,7 +32,7 @@ datadir = ${datarootdir}
 
 top_srcdir = ..
 #BUILD_DIR = .
-BUILD_DIR = /Users/mmonpeat/Desktop/myShell/lib/readline
+BUILD_DIR = /home/maria/MyShell/lib/readline
 installdir = $(datadir)/readline
 
 INSTALL = /usr/bin/install -c
@@ -55,7 +55,7 @@ INCLUDES = -I$(srcdir) -I$(top_srcdir) -I..
 
 CCFLAGS  = $(ASAN_CFLAGS) $(DEFS) $(LOCAL_CFLAGS) $(INCLUDES) $(CPPFLAGS) \
 	$(CFLAGS)
-LDFLAGS = -g -L..  $(ASAN_LDFLAGS)
+LDFLAGS = -g -L..  -L./lib/termcap $(ASAN_LDFLAGS)
 
 ASAN_XCFLAGS = -fsanitize=address -fno-omit-frame-pointer
 ASAN_XLDFLAGS = -fsanitize=address

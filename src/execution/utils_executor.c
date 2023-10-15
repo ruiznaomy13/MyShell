@@ -1,23 +1,6 @@
 
 #include "inc/minishell.h"
 
-void	count_process(t_all *all, char *str)
-{
-	int	i;
-	int	n_proces;
-
-	i = 0;
-	n_proces = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '|')
-			n_proces++;
-		i++;
-	}
-	n_proces += 1;
-	all->num_process = n_proces;
-}
-
 char	**duplicate_env(t_all *all)
 {
 	char	**new_env;
@@ -37,42 +20,33 @@ char	**duplicate_env(t_all *all)
 	return (new_env);
 }
 
-int	find_routes(t_all *all, t_process *prcs)
-{
-	int	found;
-
-	prcs->routes = ft_split(find_path(all, &found), ':');
-	if (!found)
-		return (1);
-	if (!prcs->routes)
-		printf("error al no fer split \n");
-		//return (ft_error(1, ERR_MC, NULL));
-	return (0);
-}
-
-char	*find_path(t_all *all, int *found)
+void	count_process(t_all *all, char *str)
 {
 	int	i;
+	int	n_proces;
 
 	i = 0;
-	if (!all->env)
+	n_proces = 0;
+	while (str[i] != '\0')
 	{
-		printf("env no existeix \n");
-		return (NULL);
-	}
-	while (all->env[i] && ft_strncmp(all->env[i], "PATH=", 5))
+		if (str[i] == '|')
+			n_proces++;
 		i++;
-	if (!all->env[i])
-	{
-		*found = 0;
-		return (NULL);
 	}
-	*found = 1;
-	return (all->env[i] + 5);
+	n_proces += 1;
+	all->num_process = n_proces;
 }
 
-void    close_pipes(t_process *prcs)
+int	wait_forks(t_all *all)
 {
-    close(prcs->fd[0]);
-    close(prcs->fd[1]);
+	int	status;
+	int	exit_code;
+
+	while (all->prcs->pos_process > 0)//all->prcs->pos_process > 2 + pipex->here_doc i que si hi ha redirecions
+	{
+		if (wait(&status) == all->prcs->pid_prc)
+			exit_code = status;
+		all->prcs->pos_process--;
+	}
+	return (exit_code);
 }

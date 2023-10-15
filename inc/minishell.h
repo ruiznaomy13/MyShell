@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/wait.h>
+# include <fcntl.h>
 # include "../lib/readline/readline.h"
 # include "../lib/readline/history.h"
 # include "../lib/libft/libft.h"
@@ -67,12 +69,15 @@ void	executor(t_all *all);
 void 	child(t_all *all, t_process *prcs, int i);
 char	*get_ruta(t_all *all);//find cmd
 
-//utils executor
-void	count_process(t_all *all, char *str);
-char	**duplicate_env(t_all *all);
+//finds
 int		find_routes(t_all *all, t_process *prcs);
 char	*find_path(t_all *all, int *found);
 void    close_pipes(t_process *prcs);
+void	last_pipe(t_all *all);
 
+//utils executor
+char	**duplicate_env(t_all *all);
+void	count_process(t_all *all, char *str);
+int	    wait_forks(t_all *all);
 
 #endif

@@ -15,12 +15,13 @@
 void	executor(t_all *all)
 {
 	int		i;//cal donar-li el valor de la quantitat d'arxius(redirecions) hi ha 
+	int		exit_code;
 
 	i = 0;//count_process nomes conta entre |, no redi, pt no posar arxius
 	all->prcs->pos_process = 0;
 	while (all->prcs && all->num_process > i)
 	{
-		if (all->prcs = NULL)
+		if (all->prcs == NULL)
 			return ;
 		if (find_routes(all, all->prcs) == 1)
 			exit(1);
@@ -30,12 +31,23 @@ void	executor(t_all *all)
 				exit (1);
 			all->prcs->pid_prc = fork();
             if (all->prcs->pid_prc == 0)
-                child(all, all->prcs, all->prcs->pos_process);//crec que no cal
+                child(all, all->prcs, all->prcs->pos_process);//crec que no cal pos_process
+			last_pipe(all);
 			all->prcs->pos_process++;
 		}
 		i++;
+		printf("abans de prcs->next\n");
 		all->prcs = all->prcs->next;
 	}
+	printf("abans de wait forks\n");
+	if (all->prcs->pos_process == all->num_process)
+	{
+		exit_code = wait_forks(all);
+		if (WIFEXITED(exit_code))
+			exit(WEXITSTATUS(exit_code));
+		exit(1);
+	}
+	printf("ERROR\n");
 }
 
 void child(t_all *all, t_process *prcs, int i)
@@ -47,14 +59,15 @@ void child(t_all *all, t_process *prcs, int i)
 	}
 	else
 		printf("hi ha redirecions pt arxius\n");
-	printf("all->prcs->pos_process: %i\n", i);
+	printf("\nall->prcs->pos_process: %i\n", i);
 	all->prcs->ruta = get_ruta(all);
 	//printf("ruta = %s\n", all->prcs->ruta);
     if (!all->prcs->ruta) {
     	exit(127);
 	}
 	execve(all->prcs->ruta, all->prcs->args, all->env);
-	perror("execve");
+	//perror("execve");
+	exit(1);
 }
 
 char	*get_ruta(t_all *all)//find cmd

@@ -77,7 +77,8 @@ void	mostra_process(t_all *all)
 		while (aux->args && aux->args[++i] != NULL)
 			printf("[%s] ", aux->args[i]);
 		printf("\n");
-		//mostra_rd(aux);
+		if (aux->rd)
+			mostra_rd(aux);
 		j++;
 		aux = aux->next;
 	}

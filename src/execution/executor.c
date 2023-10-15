@@ -52,13 +52,20 @@ void	executor(t_all *all)
 
 void child(t_all *all, t_process *prcs, int i)
 {
-	if (!prcs->rd)
+	if (prcs->rd)
+	{
+		while (prcs->rd)
+		{
+			printf("hola redi\n");
+			redi_type(all, all->prcs);
+			prcs->rd = prcs->rd->next;
+		}
+	}
+	else
 	{
 		dup2(prcs->fd[1], STDOUT_FILENO);
 		close_pipes(prcs);
 	}
-	else
-		printf("hi ha redirecions pt arxius\n");
 	printf("\nall->prcs->pos_process: %i\n", i);
 	all->prcs->ruta = get_ruta(all);
 	//printf("ruta = %s\n", all->prcs->ruta);

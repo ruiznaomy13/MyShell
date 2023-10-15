@@ -6,15 +6,16 @@
 # define PIPE 01
 # define COMMA_S 21
 # define COMMA_D 22
-# define RDOUT 31
-# define RDAP 32
-# define RDIN 41
-# define RDHD 42
+# define RDOUT 31//>
+# define RDAP 32//>>
+# define RDIN 41//<
+# define RDHD 42//<<
 # define EXP 05
 
 typedef struct s_token
 {
 	int				type;
+	int				open;//serveix per infile, outfile, here doc, apendd
 	char			*wrd;
 	// int				fd;
 	struct s_token	*next;

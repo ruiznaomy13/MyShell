@@ -38,6 +38,7 @@ void	executor(t_all *all)
 		printf("exit_code: %i \n", exit_code);
 		//close_pipes(all->prcs);
 		all->prcs = all->prcs->next;
+		all->pos_process = 0;
 	}
 	/*if (WIFEXITED(exit_code))
 		exit(WEXITSTATUS(exit_code));*/
@@ -66,11 +67,10 @@ void child(t_all *all, t_process *prcs, int i)
 	//printf("all->prcs->pos_process: %i\n", i);
 	all->prcs->ruta = get_ruta(all);
 	//printf("ruta = %s\n", all->prcs->ruta);
-    if (!all->prcs->ruta) {
-    	exit(127);
-	}
-	execve(all->prcs->ruta, all->prcs->args, all->env);
-	perror("execve");
+    if (!all->prcs->ruta)
+		exit(127);
+	if (execve(all->prcs->ruta, all->prcs->args, all->env) == -1)
+		perror("execve");
 	//exit(1);
 }
 

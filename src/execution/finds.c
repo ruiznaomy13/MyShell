@@ -44,8 +44,7 @@ void    close_pipes(t_process *prcs)
 
 void	last_pipe(t_all *all)
 {
-    printf("in last pipe\n");
-	if (all->prcs->pos_process < all->num_process)
+	if (all->pos_process < all->num_process)
 	{
 		dup2(all->prcs->fd[0], STDIN_FILENO);
 		close_pipes(all->prcs);

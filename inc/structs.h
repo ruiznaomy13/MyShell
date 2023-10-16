@@ -23,7 +23,6 @@ typedef struct s_token
 
 typedef struct s_process
 {
-	int					pos_process;
 	int					fd[2];
 	pid_t				pid_prc;
 	char				**args; //lo que ejecutaremos
@@ -41,6 +40,7 @@ typedef struct s_all
 	t_token		*token;
 	t_process	*prcs;
 	int			num_process;
+	int			pos_process;
 }	t_all;
 
 #endif

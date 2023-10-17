@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/28 18:41:05 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/17 22:42:08 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,19 @@ char	*search_var(char *str)
 	return (ft_substr(str, 1, --i));
 }
 
-char	**duplicate_env(t_all *all)
+char	**duplicate_env(char **env)
 {
 	char	**new_env;
 	int		i;
 
 	i = 0;
-	while (all->env[i++])
+	while (env[i++])
 		;
 	new_env = (char **)malloc(sizeof(char *) * i + 1);
 	i = 0;
-	while (all->env[i])
+	while (env[i])
 	{
-		new_env[i] = ft_strdup(all->env[i]);
+		new_env[i] = ft_strdup(env[i]);
 		i++;
 	}
 	new_env[i] = NULL;

@@ -6,7 +6,7 @@ FILES = main/main.c \
 		parser/utils.c parser/utils2.c \
 		checker/errors.c checker/checker.c\
 		builthings/echo.c \
-		execution/executor.c
+		execution/executor.c execution/executor2.c
 
 SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(FILES))

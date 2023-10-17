@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/04 20:22:40 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/17 22:46:38 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_token
 {
 	int				type;
 	char			*wrd;
-	// int				fd;
+	int				fd[2];
 	struct s_token	*next;
 }	t_token;
 
@@ -77,7 +77,7 @@ void	parser(t_all *all);
 int		syntax_checker(t_all *all);
  
 // utils
-char	**duplicate_env(t_all *all);
+char	**duplicate_env(char **env);
 char	*ft_charjoin(char *s, char c);
 char	*split_env(char *str);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
@@ -91,7 +91,6 @@ int		is_rd(int type);
 int		delimiter(char c);
 char	*is_text(char *str);
 char	*is_text_first(char *str);
-char	**duplicate_env(t_all *all);
 
 // Expansiones
 char	*search_env(char *str, char *env[]);
@@ -105,5 +104,5 @@ char	*str_rep(char* source, char* target, char* replacement);
 
 // EXECUTOR
 void	executor(t_all *all);
-
+void	executor_builting(t_all *all);
 #endif

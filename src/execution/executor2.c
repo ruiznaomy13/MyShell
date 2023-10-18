@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/18 19:55:10 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/18 22:17:05 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,22 @@ int exec_builting(t_process *pcs, char **env)
     (void)env;
     if (ft_strcmp(pcs->args[0], "echo") == 0)
         ft_echo(pcs->args);
+    if (ft_strcmp(pcs->args[0], "env") == 0)
+        ft_env(env);
     return (0);
 }
 
 int is_builting(char *cmd)
 {
-    if (ft_strcmp(cmd, "echo") == 0)
+    if (!ft_strcmp(cmd, "echo"))
+        return (1);
+    else if (!ft_strcmp(cmd, "env"))
         return (1);
     return (0);
 }
 
 void executor_builting(t_all *all)
 {
-	printf("EJECTUTOR\n");
     if (all->prcs->args && is_builting(all->prcs->args[0]))
         exec_builting(all->prcs, all->env);
 }

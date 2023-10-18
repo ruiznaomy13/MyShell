@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/18 19:24:03 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/18 22:16:04 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,5 @@ void	executor_builting(t_all *all);
 
 // BUILTINS
 int 	ft_echo(char **argv);
+int 	ft_env(char **env);
 #endif

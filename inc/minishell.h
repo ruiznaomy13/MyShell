@@ -65,7 +65,7 @@ void	ft_error(int error);
 char	*str_rep(char* source, char* target, char* replacement);
 
 // EXECUTOR
-void	executor(t_all *all);
+void 	executor(t_all *all);
 void 	child(t_all *all, t_process *prcs, int i);
 char	*get_ruta(t_all *all);//find cmd
 
@@ -86,6 +86,6 @@ void	apendd(t_process *prcs);
 //utils executor
 char	**duplicate_env(t_all *all);
 void	count_process(t_all *all, char *str);
-int	    wait_forks(t_all *all);
+int	    get_exit_code(t_all *all);
 
 #endif

@@ -14,14 +14,25 @@
 
 void	loop(t_all *all)
 {
-	while (42)
+	while (1)
 	{
-		all->line = readline("myshell🌞> ");
+		//all->line es null al tornar a entrar al loop
+		while(all->line == NULL){
+			all->line = readline("myshell🌞> ");
+		}
+		printf("\nhola line: %s\n", all->line);
 		add_history(all->line);
-		//printf("%s\n", all->line);
+		printf("%s\n", all->line);
+		//ft_bzero(&all->token, sizeof(t_token));//no cal crec
+		//ft_bzero(&all->prcs, sizeof(t_process));
 		checker(all);
 		executor(all);
+		printf("2222222222222222\n");
 		ft_free(all);
+		printf("33333333333\n");
+
+		ft_bzero(all->line, sizeof(char));
+		//exit(0);
 	}
 }
 

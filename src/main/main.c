@@ -88,13 +88,14 @@ void	mostra_process(t_all *all)
 void	ft_free(t_all *all)
 {
 	t_token		*tkn;
+	t_token		*rd;
 	t_process	*prc;
 
-	while (all->token != NULL)
+	while (all->prcs !=NULL && all->prcs->rd != NULL)
 	{
-		tkn = all->token;
-		all->token = all->token->next;
-		free(tkn);
+		rd = all->prcs->rd;
+		all->prcs->rd = all->prcs->rd->next;
+		free(rd);
 	}
 	while (all->prcs != NULL)
 	{
@@ -102,4 +103,12 @@ void	ft_free(t_all *all)
 		all->prcs = all->prcs->next;
 		free(prc);
 	}
+	while (all->token != NULL)
+	{
+		tkn = all->token;
+		all->token = all->token->next;
+		free(tkn);
+	}
+
+	printf("Free hecho.\n");
 }

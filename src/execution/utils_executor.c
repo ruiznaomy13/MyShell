@@ -37,12 +37,11 @@ void	count_process(t_all *all, char *str)
 	all->num_process = n_proces;
 }
 
-int	wait_forks(t_all *all)
+int	get_exit_code(t_all *all)
 {
 	int	status;
 	int	exit_code;
 
-	//all->pos_process == all->num_process
 	while (all->pos_process > 0)//all->prcs->pos_process > 2 + pipex->here_doc i que si hi ha redirecions
 	{
 		if (wait(&status) == all->prcs->pid_prc)

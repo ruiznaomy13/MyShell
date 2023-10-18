@@ -21,7 +21,7 @@ void	executor(t_all *all)
 	while (all->prcs && all->num_process > i++)
 	{
 		if (all->prcs == NULL)
-			return ;
+			return ;//error
 		if (find_routes(all, all->prcs) == 1)
 			exit(1);
 		while (all->pos_process < all->num_process)// numero de prcs que s'han dexecutar
@@ -34,17 +34,11 @@ void	executor(t_all *all)
 			last_pipe(all);
 			all->pos_process++;
 		}
-		exit_code = wait_forks(all);
-		printf("exit_code: %i \n", exit_code);
-		//close_pipes(all->prcs);
 		all->prcs = all->prcs->next;
 		all->pos_process = 0;
 	}
-	/*if (WIFEXITED(exit_code))
-		exit(WEXITSTATUS(exit_code));*/
-	printf("despres de wait_forks\n");
-	printf("ERROR\n");
-	//exit(1);
+	exit_code = get_exit_code(all);
+	printf("exitcode:%i\n", exit_code);
 }
 
 void child(t_all *all, t_process *prcs, int i)

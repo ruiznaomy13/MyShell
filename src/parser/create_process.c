@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/06 15:47:24 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:31:31 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,7 @@ char **save_arg(t_all *all)
 	{
 		if (aux->type == RDOUT || aux->type == RDAP \
 		|| aux->type == RDIN || aux->type == RDHD)
-		{
 			aux = aux->next;
-		}
 		else if (aux->wrd != NULL)
 		{
 			aux->wrd = expand_var(aux, all->env);
@@ -93,6 +91,7 @@ char **save_arg(t_all *all)
 		}
 		aux = aux->next;
 	}
+	str[i] = NULL;
 	return (str);
 }
 

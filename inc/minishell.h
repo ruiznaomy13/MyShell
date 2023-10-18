@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/17 22:46:38 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:24:03 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ char    *search_var(char *str);
 // utils 2
 void	count_process(t_all *all, char *str);
 int		is_rd(int type);
+int 	ft_arr_len(void **ptr);
 
 // separadors
 int		delimiter(char c);
@@ -105,4 +106,7 @@ char	*str_rep(char* source, char* target, char* replacement);
 // EXECUTOR
 void	executor(t_all *all);
 void	executor_builting(t_all *all);
+
+// BUILTINS
+int 	ft_echo(char **argv);
 #endif

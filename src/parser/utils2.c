@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/04 20:22:28 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:30:56 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,12 @@ void	count_process(t_all *all, char *str)
 	}
 	n_proces += 1;
 	all->num_process = n_proces;
+}
+
+int ft_arr_len(void **ptr)
+{
+    int i = 0;
+    while (ptr[i])
+        i++;
+    return (i);
 }

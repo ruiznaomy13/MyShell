@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/17 22:53:13 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:55:10 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,11 @@ int ft_strcmp(const char *s1, const char *s2)
     return (unsigned char)(s1[i]) - (unsigned char)(s2[i]);
 }
 
-void builting_echo(char **av, char **env)
-{
-    (void)env;
-    int i = 0;
-    while (av[++i])
-        printf("%s ", av[i]);
-}
-
 int exec_builting(t_process *pcs, char **env)
 {
+    (void)env;
     if (ft_strcmp(pcs->args[0], "echo") == 0)
-        builting_echo(pcs->args, env);
+        ft_echo(pcs->args);
     return (0);
 }
 

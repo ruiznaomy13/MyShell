@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/04 15:43:48 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:58:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,3 +19,12 @@ void	ft_error(int error)
 	else if (error == 5)
 		printf("syntax error near unexpected token `newline'\n");
 }
+
+/*
+int i = 0;
+while (all->env[i] != NULL)
+{
+	printf("%s\n", all->env[i]);
+	i++;
+}
+*/

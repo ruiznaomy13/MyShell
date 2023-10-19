@@ -3,14 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/17 22:42:08 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/09/30 12:27:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
+/* CREAR FUNCIONES DE LIBFT <<<<<<<<<< IMPORTANT! >>>>>>>>>>>> */
+char    *str_rep(char *source, char *target, char *replacement)
+{
+    size_t		i;
+	char		*result;
+	int			found;
+
+    i = 0;
+    result = NULL;
+    found = 0;
+    while (i < ft_strlen(source))
+    {
+        if (ft_strncmp(source + i, target, ft_strlen(target)) == 0 && !found) {
+            result = (char*)malloc(ft_strlen(source) + ft_strlen(replacement) - ft_strlen(target) + 1);
+            if (result == NULL)
+                return (NULL);
+            ft_strncpy(result, source, i);
+            strcpy(result + i, replacement);
+            strcpy(result + i + ft_strlen(replacement), source + i + ft_strlen(target));
+            found = 1;
+        }
+        i++;
+    }   
+    if (!found)
+        return strdup(source);
+    return (result);
+}
 
 char	*ft_charjoin(char *s, char c)
 {
@@ -56,24 +84,6 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 	return (dest);
 }
 
-char	*split_env(char *str)
-{
-	int		j;
-	char	**sep;
-	char	*value;
-
-	sep = ft_split(str, '=');
-	if (sep != NULL)
-	{
-		value = ft_strdup(sep[1]);
-		j = -1;
-		while (sep[++j] != NULL)
-			free(sep[j]);
-		free(sep);
-		return (value);
-	}
-	return (NULL);
-}
 
 char	*search_var(char *str)
 {
@@ -83,23 +93,4 @@ char	*search_var(char *str)
 	while (str[++i] && (ft_isalnum(str[i]) || str[i] == '_'))
 		;
 	return (ft_substr(str, 1, --i));
-}
-
-char	**duplicate_env(char **env)
-{
-	char	**new_env;
-	int		i;
-
-	i = 0;
-	while (env[i++])
-		;
-	new_env = (char **)malloc(sizeof(char *) * i + 1);
-	i = 0;
-	while (env[i])
-	{
-		new_env[i] = ft_strdup(env[i]);
-		i++;
-	}
-	new_env[i] = NULL;
-	return (new_env);
 }

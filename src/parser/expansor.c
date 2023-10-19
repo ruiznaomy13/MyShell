@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 20:00:46 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/04 21:30:37 by ncastell         ###   ########.fr       */
+/*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
+/*   Updated: 2023/09/30 12:18:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ char    *expand_var(t_token *tkn, char **env)
 		else if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
 		{
 			var = search_var(&str[i]);
-			printf("SEARCHED VAR = %s\n", search_env(var, env));
 			if (search_env(var, env) != NULL)
 				aux = ft_strjoin(aux, search_env(var, env));
 			i += ft_strlen(var) + 1;

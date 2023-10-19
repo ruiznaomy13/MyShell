@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/17 22:38:20 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:17:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	ft_bzero(&all, sizeof(t_all));
-	all.env = duplicate_env(env);
+	all.env = env;
 	loop(&all);
 	return (0);
 }
@@ -47,6 +47,10 @@ void	mostra_rd(t_process *pcs)
 	i = 1;
 	aux = pcs->rd;
 	printf("REDIRECCIONES =\n");
+	if (!aux){
+		printf("no hi ha redi\n");
+		return ;
+	}
 	while (aux != NULL)
 	{
 		printf("%d = %s -> %d\n", i, aux->wrd, aux->type);
@@ -72,22 +76,25 @@ void	mostra_process(t_all *all)
 		while (aux->args && aux->args[++i] != NULL)
 			printf("[%s] ", aux->args[i]);
 		printf("\n");
-		mostra_rd(aux);
+		if (aux->rd)
+			mostra_rd(aux);
 		j++;
 		aux = aux->next;
 	}
 }
 
+
 void	ft_free(t_all *all)
 {
 	t_token		*tkn;
+	t_token		*rd;
 	t_process	*prc;
 
-	while (all->token != NULL)
+	while (all->prcs !=NULL && all->prcs->rd != NULL)
 	{
-		tkn = all->token;
-		all->token = all->token->next;
-		free(tkn);
+		rd = all->prcs->rd;
+		all->prcs->rd = all->prcs->rd->next;
+		free(rd);
 	}
 	while (all->prcs != NULL)
 	{
@@ -95,4 +102,12 @@ void	ft_free(t_all *all)
 		all->prcs = all->prcs->next;
 		free(prc);
 	}
+	while (all->token != NULL)
+	{
+		tkn = all->token;
+		all->token = all->token->next;
+		free(tkn);
+	}
+
+	printf("Free hecho.\n");
 }

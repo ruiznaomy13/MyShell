@@ -1,6 +1,1 @@
 PARSER
-- Hem de parlar de com et passaré els arxius que nous que facio i que tu els puguis afegir al treball complet.
-
--
-
-TREURE LES COMETES ABANS D'EXPANDIR, noo s'expandeix si està entre cometes simples

@@ -14,25 +14,33 @@
 
 void	loop(t_all *all)
 {
-	while (1)
+	while (42)
 	{
-		//all->line es null al tornar a entrar al loop
-		while(all->line == NULL){
-			all->line = readline("myshell🌞> ");
-		}
+		all->line = readline("myshell🌞> ");
 		printf("\nhola line: %s\n", all->line);
 		add_history(all->line);
 		printf("%s\n", all->line);
+        if (check_cometes(all->line) > 30) 
+		{
+            ft_free(all);
+            continue;
+        }
 		//ft_bzero(&all->token, sizeof(t_token));//no cal crec
 		//ft_bzero(&all->prcs, sizeof(t_process));
-		checker(all);
-		executor(all);
-		printf("2222222222222222\n");
-		ft_free(all);
+        lexer(all);
+        if (!checker(all)) 
+		{
+            ft_free(all);
+            continue;
+        }
+        parser(all);
+        executor_builting(all);
+		//executor(all);
+		printf("222222222222222\n");
+        ft_free(all);
 		printf("33333333333\n");
-
-		ft_bzero(all->line, sizeof(char));
-		//exit(0);
+		//ft_bzero(all->line, sizeof(char));
+        printf ("\n");
 	}
 }
 
@@ -48,19 +56,10 @@ int	checker(t_all *all)
     return (1);
 }
 
-	coma = check_cometes(all->line);
-	if (coma == 34 || coma == 39)
-	{
-		ft_error(coma);
-		exit (1);
-	}
-	else
-	{
-		count_process(all, all->line);
-		lexer(all);
-		mostra_tokens(all);
-		create_process(all);
-	}
+void	parser(t_all *all)
+{
+    count_process(all, all->line);
+    create_process(all);
 }
 
 void	lexer(t_all *all)

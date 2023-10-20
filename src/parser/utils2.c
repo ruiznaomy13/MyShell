@@ -15,6 +15,15 @@
 int	is_rd(int type)
 {
 	if (type == RDHD || type == RDIN || type == RDAP || type == RDOUT)
+		return (1);
+	return (0);
+}
+
+
+char	*split_env(char *str)//entenc que es per l'expansor
+{
+	int		j;
+	char	**sep;
 	char	*value;
 
 	sep = ft_split(str, '=');
@@ -28,4 +37,12 @@ int	is_rd(int type)
 		return (value);
 	}
 	return (NULL);
+}
+
+int ft_arr_len(void **ptr)
+{
+    int i = 0;
+    while (ptr[i])
+        i++;
+    return (i);
 }

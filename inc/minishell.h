@@ -50,7 +50,8 @@ char    *search_var(char *str);
 
 // utils 2
 char	*split_env(char *str);
-
+int 	is_rd(int type);
+int     ft_arr_len(void **ptr);
 
 // separadors
 int		check_cometes(char *str);
@@ -63,20 +64,24 @@ char	**duplicate_env(t_all *all);
 char	*search_env(char *str, char *env[]);
 char	*expand_var(t_token *tkn, char **env);
 
-// Expansiones
-char	*search_env(char *str, char *env[]);
-char	*expand_var(t_token *tkn, char **env);
-
 // free de les llistes
 void	ft_free(t_all *all);
 void	ft_error(int error);
 
 char	*str_rep(char* source, char* target, char* replacement);
 
+// BUILTINS
+int 	ft_echo(char **argv);
+int 	ft_env(char **env);
+
+
 // EXECUTOR
 void 	executor(t_all *all);
 void 	child(t_all *all, t_process *prcs, int i);
 char	*get_ruta(t_all *all);//find cmd
+
+//executor2
+void	executor_builting(t_all *all);
 
 //finds
 int		find_routes(t_all *all, t_process *prcs);

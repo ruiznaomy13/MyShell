@@ -24,26 +24,43 @@
 # include "structs.h"
 
 
+//------------------------MAIN-----------------------
+void	ft_free(t_all *all);
 // MOSTRA EL NODE ----- DELETE
 void	mostra_tokens(t_all *all);
 void	mostra_process(t_all *all);
 void	mostra_rd(t_process *pcs);
 
-//----------PARSER------------
-// lexer 
+//-----------------------PARSER--------------------------------
+
+// create_process.c
+void    rm_prev_tkns(t_all *all);
+void    add_prcs(t_all *all, t_process *pcs);
+void    create_process(t_all *all);
+void	parser(t_all *all);
+
+// create_redi.c
+int	    arg_size(t_token *tkn);
+char    **save_arg(t_all *all);
+void	add_rd(t_token *rd, t_process *pcs);
+void    list_redirection(t_process *pcs, t_all *all);
+// expansor.c
+char	*search_env(char *str, char *env[]);
+char	*expand_var(t_token *tkn, char **env);
+
+// lexer.c
 void	loop(t_all *all);
 void	lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
-void	create_process(t_all *all);
 
-/* ------- CHECKER -------*/
-int		checker(t_all *all);
-int		check_cometes(char *str);
-void	parser(t_all *all);
-int		syntax_checker(t_all *all);
- 
+// separators.c
+int	    delimiter(char c);
+char	*is_text(char *str);
+char	*is_text_first(char *str);
+
 // utils
+char    *str_rep(char *source, char *target, char *replacement);
 char	*ft_charjoin(char *s, char c);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char    *search_var(char *str);
@@ -53,34 +70,30 @@ char	*split_env(char *str);
 int 	is_rd(int type);
 int     ft_arr_len(void **ptr);
 
-// separadors
+/* --------------------------- CHECKER ---------------------*/
+// checker.c
+int		checker(t_all *all);
 int		check_cometes(char *str);
-int		delimiter(char c);
-char	*is_text(char *str);
-char	*is_text_first(char *str);
-char	**duplicate_env(t_all *all);
+int		syntax_checker(t_all *all);
 
-// Expansiones
-char	*search_env(char *str, char *env[]);
-char	*expand_var(t_token *tkn, char **env);
-
-// free de les llistes
-void	ft_free(t_all *all);
+// errors.c
 void	ft_error(int error);
 
-char	*str_rep(char* source, char* target, char* replacement);
-
-// BUILTINS
+/* --------------------------- BUILTINS ---------------------*/
 int 	ft_echo(char **argv);
 int 	ft_env(char **env);
+int     ft_exit(t_all *all);
 
-
-// EXECUTOR
+/* --------------------------- EXECUTOR ---------------------*/
+//executor.c
 void 	executor(t_all *all);
 void 	child(t_all *all, t_process *prcs, int i);
 char	*get_ruta(t_all *all);//find cmd
 
 //executor2
+int     ft_strcmp(const char *s1, const char *s2);
+int     exec_builting(t_process *pcs, char **env);
+int     is_builting(char *cmd);
 void	executor_builting(t_all *all);
 
 //finds

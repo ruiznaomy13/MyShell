@@ -2,7 +2,7 @@ NAME = minishell
 CFLAGS = -Wall -Wextra -Werror -MMD -fsanitize=address
 FILES = main/main.c \
 		parser/lexer.c parser/separadors.c parser/create_process.c parser/utils.c \
-		parser/utils2.c parser/expansor.c \
+		parser/utils2.c parser/expansor.c parser/create_redi.c \
 		checker/errors.c checker/checker.c \
 		execution/executor2.c builtins/echo.c builtins/env.c builtins/exit.c \
 		execution/executor.c execution/finds.c execution/utils_executor.c execution/redi.c

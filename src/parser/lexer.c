@@ -44,23 +44,6 @@ void	loop(t_all *all)
 	}
 }
 
-int	checker(t_all *all)
-{
-    if (ft_strlen(all->line) < 1)
-        return (0);
-    else if (!syntax_checker(all))
-    {
-        ft_error(5);
-        return (0);
-    }
-    return (1);
-}
-
-void	parser(t_all *all)
-{
-    count_process(all, all->line);
-    create_process(all);
-}
 
 void	lexer(t_all *all)
 {

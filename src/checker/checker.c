@@ -11,6 +11,17 @@
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+int	checker(t_all *all)
+{
+    if (ft_strlen(all->line) < 1)
+        return (0);
+    else if (!syntax_checker(all))
+    {
+        ft_error(5);
+        return (0);
+    }
+    return (1);
+}
 
 int syntax_checker(t_all *all)
 {

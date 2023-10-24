@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/01 00:59:25 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/24 13:04:12 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,37 @@ void	loop(t_all *all)
 		printf("\nhola line: %s\n", all->line);
 		add_history(all->line);
 		printf("%s\n", all->line);
-        if (check_cometes(all->line) > 30) 
+        if (check_cometes(all->line) > 30)
 		{
             ft_free(all);
             continue;
         }
 		//ft_bzero(&all->token, sizeof(t_token));//no cal crec
 		//ft_bzero(&all->prcs, sizeof(t_process));
-        lexer(all);
+        if (!lexer(all))
+			continue;
+		// built_env(all);
         if (!checker(all)) 
 		{
             ft_free(all);
             continue;
         }
         parser(all);
-        executor_builting(all);
-		//executor(all);
-		printf("222222222222222\n");
+        // executor_builting(all);
+		executor(all);
         ft_free(all);
-		printf("33333333333\n");
 		//ft_bzero(all->line, sizeof(char));
         printf ("\n");
 	}
 }
 
-
-void	lexer(t_all *all)
+int	lexer(t_all *all)
 {
 	int		i;
 
 	i = -1;
+	if (all->line == NULL)
+		return (0);
 	while (all->line[++i])
 	{
 		if (!delimiter(all->line[i]))
@@ -65,6 +66,7 @@ void	lexer(t_all *all)
 		else if (all->line[i] == '<')
 			i += create_token(all, &all->line[i], RDIN) - 1;
 	}
+	return (1);
 }
 
 int	create_token(t_all *all, char *str, int type)

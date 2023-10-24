@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/03 12:11:48 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/24 13:04:29 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ void	executor(t_all *all)
 	int		i;//cal donar-li el valor de la quantitat d'arxius(redirecions) hi ha 
 	int		exit_code;
 
-	i = -1;//count_process nomes conta entre |, no redi, pt no posar arxius
-	while (all->prcs && all->num_process > i++)
+	i = 0;//count_process nomes conta entre |, no redi, pt no posar arxius
+	printf("entro aqui\n");
+	while (all->prcs && all->num_process > ++i)
 	{
 		if (all->prcs == NULL)
 			return ;//error

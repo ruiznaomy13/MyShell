@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/03 12:14:29 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/24 12:55:27 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*expand_var(t_token *tkn, char **env);
 
 // lexer.c
 void	loop(t_all *all);
-void	lexer(t_all *all);
+int		lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
 
@@ -61,7 +61,8 @@ char	*is_text_first(char *str);
 
 // utils
 char    *str_rep(char *source, char *target, char *replacement);
-char	*ft_charjoin(char *s, char c);
+// char	*ft_charjoin(char *s, char c);
+char	*ft_charjoin(char *s, char c, int *iter);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char    *search_var(char *str);
 
@@ -114,5 +115,6 @@ void	apendd(t_process *prcs);
 char	**duplicate_env(t_all *all);
 void	count_process(t_all *all, char *str);
 int	    get_exit_code(t_all *all);
+int		built_env(t_all *all);
 
 #endif

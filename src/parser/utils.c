@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/09/30 12:27:39 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/21 20:50:18 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char    *str_rep(char *source, char *target, char *replacement)
     return (result);
 }
 
-char	*ft_charjoin(char *s, char c)
+char	*ft_charjoin(char *s, char c, int *iter)
 {
 	size_t	len;
 	char	*str;
@@ -61,6 +61,8 @@ char	*ft_charjoin(char *s, char c)
 	}
 	str[i] = c;
 	str[++i] = '\0';
+	if (iter != NULL)
+		*iter += 1;
 	return (str);
 }
 

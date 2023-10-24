@@ -1,1 +1,3 @@
 PARSER
+parser/expansor/expand_var
+parser/separadors/is_first_text

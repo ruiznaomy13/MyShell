@@ -6,15 +6,14 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/18 22:28:39 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/10/21 21:04:21 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-int ft_exit(t_all *all)
+int	ft_exit(t_all *all)
 {
-    (void)all;
-    
-    return (0);
+	(void)all;
+	return (0);
 }

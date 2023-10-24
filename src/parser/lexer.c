@@ -18,6 +18,8 @@ void	loop(t_all *all)
 	{
 		all->line = readline("myshell🌞> ");
 		printf("\nhola line: %s\n", all->line);
+
+
 		add_history(all->line);
 		printf("%s\n", all->line);
         if (check_cometes(all->line) > 30)
@@ -25,6 +27,7 @@ void	loop(t_all *all)
             ft_free(all);
             continue;
         }
+
 		//ft_bzero(&all->token, sizeof(t_token));//no cal crec
 		//ft_bzero(&all->prcs, sizeof(t_process));
         if (!lexer(all))

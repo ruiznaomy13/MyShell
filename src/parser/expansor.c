@@ -58,15 +58,15 @@ int	set_exp_flag(char c, int *flag)
 
 char    *expand_var(t_token *tkn, char **env)
 {
-	int i;
-	int flag;
+	int i = 0;
+	int flag = 0;
 	char *str;
 	char *aux;
-	char *var;
+	char *var = NULL;
 
 	aux = "";
 	str = ft_strdup(tkn->wrd);
-	(0 || (i = 0) || (flag = 0) || (var = NULL));
+	//(0 || (i = 0) || (flag = 0) || (var = NULL));
 	while (str[i])
 	{
 		set_exp_flag(str[i], &flag);

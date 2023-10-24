@@ -90,7 +90,7 @@ void	ft_free(t_all *all)
 	t_token		*rd;
 	t_process	*prc;
 
-	while (all->prcs !=NULL && all->prcs->rd != NULL)
+	while (all->prcs != NULL && all->prcs->rd != NULL)
 	{
 		rd = all->prcs->rd;
 		all->prcs->rd = all->prcs->rd->next;

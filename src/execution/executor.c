@@ -14,36 +14,44 @@
 
 void	executor(t_all *all)
 {
-	int		i;//cal donar-li el valor de la quantitat d'arxius(redirecions) hi ha 
-	int		exit_code;
-
+	int		i;
+	//int		exit_code;
 	i = 0;//count_process nomes conta entre |, no redi, pt no posar arxius
-	printf("entro aqui\n");
-	while (all->prcs && all->num_process > ++i)
+	while (all->prcs && all->num_process > i++)
 	{
+		printf("entro aqui\n");
 		if (all->prcs == NULL)
 			return ;//error
 		if (find_routes(all, all->prcs) == 1)
 			exit(1);
 		while (all->pos_process < all->num_process)// numero de prcs que s'han dexecutar
-		{//crec que pos_process i i s'han de canviar, o posar num_proces
+		{
 			if (i < all->num_process - 1 && pipe(all->prcs->fd))
 				exit (1);
 			all->prcs->pid_prc = fork();
-            if (all->prcs->pid_prc == 0)
+			printf("pid:%i\n", all->prcs->pid_prc);
+			if (all->prcs->pid_prc < 0)
+				printf("ERROR, el fork no funka 1");
+            else if (all->prcs->pid_prc == 0) {
+			
                 child(all, all->prcs, all->pos_process);//crec que no cal pos_process
-			last_pipe(all);
+			}
+			wait(NULL);
+			//last_pipe(all);
 			all->pos_process++;
 		}
 		all->prcs = all->prcs->next;
 		all->pos_process = 0;
 	}
-	exit_code = get_exit_code(all);
-	printf("exitcode:%i\n", exit_code);
+
+	// exit_code = get_exit_code(all);
+	// printf("exitcode:%i\n", exit_code);
 }
 
 void child(t_all *all, t_process *prcs, int i)
 {
+	
+	printf("HOLA MARIA\n");
 	(void)i;
 	if (prcs->rd)
 	{
@@ -59,14 +67,17 @@ void child(t_all *all, t_process *prcs, int i)
 		dup2(prcs->fd[1], STDOUT_FILENO);
 		close_pipes(prcs);
 	}
+	
 	//printf("all->prcs->pos_process: %i\n", i);
 	all->prcs->ruta = get_ruta(all);
 	//printf("ruta = %s\n", all->prcs->ruta);
     if (!all->prcs->ruta)
 		exit(127);
-	if (execve(all->prcs->ruta, all->prcs->args, all->env) == -1)
-		perror("execve");
-	//exit(1);
+	if (execve(all->prcs->ruta, all->prcs->args, all->env) == -1) {
+		printf("EEEERROR\n");
+		exit(1);
+	}
+	exit(0);
 }
 
 char	*get_ruta(t_all *all)//find cmd

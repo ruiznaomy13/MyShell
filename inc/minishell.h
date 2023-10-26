@@ -88,7 +88,7 @@ int     ft_exit(t_all *all);
 /* --------------------------- EXECUTOR ---------------------*/
 //executor.c
 void 	executor(t_all *all);
-void 	child(t_all *all, t_process *prcs, int i);
+void 	child(t_all *all, t_process *prcs);
 char	*get_ruta(t_all *all);//find cmd
 
 //executor2
@@ -101,7 +101,6 @@ void	executor_builting(t_all *all);
 int		find_routes(t_all *all, t_process *prcs);
 char	*find_path(t_all *all, int *found);
 void    close_pipes(t_process *prcs);
-void	last_pipe(t_all *all);
 
 //redi
 void    redi_type(t_all *all, t_process *prcs);
@@ -114,7 +113,6 @@ void	apendd(t_process *prcs);
 //utils executor
 char	**duplicate_env(t_all *all);
 void	count_process(t_all *all, char *str);
-int	    get_exit_code(t_all *all);
 int		built_env(t_all *all);
 
 #endif

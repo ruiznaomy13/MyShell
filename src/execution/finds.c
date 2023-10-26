@@ -41,12 +41,3 @@ void    close_pipes(t_process *prcs)
     close(prcs->fd[0]);
     close(prcs->fd[1]);
 }
-
-void	last_pipe(t_all *all)
-{
-	if (all->pos_process < all->num_process)
-	{
-		dup2(all->prcs->fd[0], STDIN_FILENO);
-		close_pipes(all->prcs);
-	}
-}

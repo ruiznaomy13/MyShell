@@ -53,17 +53,11 @@ void child(t_all *all, t_process *prcs)
 		dup2(prcs->fd[1], STDOUT_FILENO);
 		close_pipes(prcs);
 	}
-	
-	//printf("all->prcs->pos_process: %i\n", i);
 	all->prcs->ruta = get_ruta(all);
-	//printf("ruta = %s\n", all->prcs->ruta);
     if (!all->prcs->ruta){
 		printf("ERROR 127: No hay ruta");
 		exit(127);
 	}
-
-	printf("%s\n", (char*)prcs->args);
-
 	if (execve(all->prcs->ruta, all->prcs->args, all->env) == -1) {
 		printf("EEEERROR\n");
 		exit(1);
@@ -71,7 +65,7 @@ void child(t_all *all, t_process *prcs)
 	exit(0);
 }
 
-char	*get_ruta(t_all *all)//find cmd
+char	*get_ruta(t_all *all)
 {
 	char	**path;
 	char	*ruta;
@@ -80,7 +74,6 @@ char	*get_ruta(t_all *all)//find cmd
 	path = all->prcs->routes;
 	if (!path)
 		printf("ERROR, no existeix all->prcs->routes\n");
-	//pipex.ruta = find_cmd(pipex.routes, pipex.args[0]);
 	while (*path)
 	{
 		tmp = ft_strjoin(*path, "/");

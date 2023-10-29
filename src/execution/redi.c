@@ -17,9 +17,10 @@ void redi_type(t_all *all, t_process *prcs)
 void	open_infile(t_process *prcs)
 {
     printf("i'm in open infile\n");
+	exit(1);
     if (access(prcs->rd->wrd, F_OK) == -1)
 	{
-		close_pipes(prcs);
+		//close_pipes(prcs);
         printf("ERROR, redi infile\n");
         exit(1);
 		//exit(ft_error(1, ERR_NFD, prcs->rd->wrd));
@@ -27,37 +28,39 @@ void	open_infile(t_process *prcs)
 	prcs->rd->open = open(prcs->rd->wrd, O_RDONLY);
 	if (access(prcs->rd->wrd, R_OK) == -1)
 	{
-		close_pipes(prcs);
+		//close_pipes(prcs);
         printf("ERROR, redi infile\n");
         exit(1);
 		//exit(ft_error(1, ERR_PERM, prcs->rd->wrd));
 	}
 	dup2(prcs->rd->open, STDIN_FILENO);
-	dup2(prcs->fd[1], STDOUT_FILENO);
-	close_pipes(prcs);
+	//dup2(prcs->fd[1], STDOUT_FILENO);
+	//close_pipes(prcs);
 	close(prcs->rd->open);
 }
 
 void	open_outfile(t_process *prcs)
 {
+	printf("i'm in open outfile\n");
+	exit(1);
 	prcs->rd->open = open(prcs->rd->wrd, O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	if (prcs->rd->open == -1)
 	{
-		close_pipes(prcs);
+		//close_pipes(prcs);
         printf("ERROR, redi outfile\n");
         exit(1);
 		//exit(ft_error(1, ERR_NFD, outfile));
 	}
 	if (access(prcs->rd->wrd, W_OK) == -1)
 	{
-		close_pipes(prcs);
+		//close_pipes(prcs);
         printf("ERROR, redi outfile\n");
         exit(1);
 		//exit(ft_error(1, ERR_PERM, outfile));
 	}
 	dup2(prcs->rd->open, STDOUT_FILENO);
     //pq no dup2 de fd[0]
-    close_pipes(prcs);
+    //close_pipes(prcs);
 	close(prcs->rd->open);
 }
 

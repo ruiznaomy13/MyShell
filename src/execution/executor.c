@@ -15,30 +15,33 @@
 void	executor(t_all *all)
 {
 	int		i;
+	int		input_pipe[2];
+	int		output_pipe[2];
 
 	i = 0;
 	if (all->prcs == NULL)
-			return ;//error
+		return ;//error
+	init_pipes(input_pipe);
 	while (all->prcs && all->num_process > i++)
 	{
-		if (find_routes(all, all->prcs) == 1)
-			exit(1);
-		if (i < all->num_process - 1 && pipe(all->prcs->fd))
-			exit (1);
+		routes_pipe(all, i, output_pipe);
 		all->prcs->pid_prc = fork();
 		if (all->prcs->pid_prc < 0)
-			printf("ERROR, el fork no funka 1");
+			exit(1);//printf("ERROR, el fork no funka 1");
         else if (all->prcs->pid_prc == 0)
-			child(all, all->prcs);
-		wait(NULL);
+			child(all, all->prcs, input_pipe, output_pipe);
+		input_pipe[0] = output_pipe[0];
+		input_pipe[1] = output_pipe[1];
 		all->pos_process++;
 		all->prcs = all->prcs->next;
-		all->pos_process = 0;
 	}
+	close_pipes(input_pipe);
+	wait_pipes(all->num_process);
 }
 
-void child(t_all *all, t_process *prcs)
+void child(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2])
 {
+	check_pipes(input_pipe, output_pipe);
 	if (prcs->rd)
 	{
 		while (prcs->rd)
@@ -48,20 +51,11 @@ void child(t_all *all, t_process *prcs)
 			prcs->rd = prcs->rd->next;
 		}
 	}
-	else
-	{
-		dup2(prcs->fd[1], STDOUT_FILENO);
-		close_pipes(prcs);
-	}
-	all->prcs->ruta = get_ruta(all);
-    if (!all->prcs->ruta){
-		printf("ERROR 127: No hay ruta");
-		exit(127);
-	}
-	if (execve(all->prcs->ruta, all->prcs->args, all->env) == -1) {
-		printf("EEEERROR\n");
-		exit(1);
-	}
+	prcs->ruta = get_ruta(all);
+    if (!prcs->ruta)
+		exit(127);//fer funcio d'error que printeji l'error i faci exit(127);
+	if (execve(prcs->ruta, prcs->args, all->env) == -1)
+		exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
 	exit(0);
 }
 

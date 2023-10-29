@@ -55,7 +55,7 @@ void create_process(t_all *all)
             return ;
         pcs->args = save_arg(all);
         list_redirection(pcs, all);
-		printf("NEW FIRST TOKEN = %s\n", all->token->wrd);
+		//printf("NEW FIRST TOKEN = %s\n", all->token->wrd);
         rm_prev_tkns(all);
         add_prcs(all, pcs);
     }

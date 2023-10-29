@@ -32,7 +32,6 @@ typedef struct s_token
 
 typedef struct s_process
 {
-	int					fd[2];
 	pid_t				pid_prc;
 	char				**args; //lo que ejecutaremos
 	t_token				*rd; // la lista de redirecciones

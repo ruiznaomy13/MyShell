@@ -34,10 +34,3 @@ char	*find_path(t_all *all, int *found)
 	*found = 1;
 	return (all->env[i] + 5);
 }
-
-
-void    close_pipes(t_process *prcs)
-{
-    close(prcs->fd[0]);
-    close(prcs->fd[1]);
-}

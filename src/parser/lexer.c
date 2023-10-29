@@ -26,14 +26,15 @@ void	loop(t_all *all)
         }
         if (!lexer(all))
 			continue;
-		// built_env(all);
+		//printf("abans built env");
+		//built_env(all);
         if (!checker(all)) 
 		{
             ft_free(all);
             continue;
         }
         parser(all);
-        // executor_builting(all);
+        //executor_builting(all);
 		executor(all);
         ft_free(all);
         printf ("\n");

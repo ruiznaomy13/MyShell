@@ -47,7 +47,7 @@ void child(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2])
 		while (prcs->rd)
 		{
 			printf("hola redi\n");
-			redi_type(all, all->prcs);
+			redi_type(all, all->prcs, input_pipe, output_pipe);
 			prcs->rd = prcs->rd->next;
 		}
 	}

@@ -108,11 +108,11 @@ int		find_routes(t_all *all, t_process *prcs);
 char	*find_path(t_all *all, int *found);
 
 //redi
-void    redi_type(t_all *all, t_process *prcs);
-void	open_infile(t_process *prcs);
-void	open_outfile(t_process *prcs);
-void	here_doc(t_process *prcs);
-void	apendd(t_process *prcs);
+void    redi_type(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2]);
+void	open_infile(t_process *prcs, int input_pipe[2], int output_pipe[2]);
+void	open_outfile(t_process *prcs, int input_pipe[2], int output_pipe[2]);
+void	here_doc(t_process *prcs, int input_pipe[2], int output_pipe[2]);
+void	apendd(t_process *prcs, int input_pipe[2], int output_pipe[2]);
 
 
 //utils executor

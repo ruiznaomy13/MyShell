@@ -24,7 +24,7 @@ void	executor(t_all *all)
 	init_pipes(input_pipe);
 	while (all->prcs && all->num_process > i++)
 	{
-		routes_pipe(all, i, output_pipe);
+		routes_and_pipe(all, i, output_pipe);
 		all->prcs->pid_prc = fork();
 		if (all->prcs->pid_prc < 0)
 			exit(1);//printf("ERROR, el fork no funka 1");
@@ -32,10 +32,12 @@ void	executor(t_all *all)
 			child(all, all->prcs, input_pipe, output_pipe);
 		input_pipe[0] = output_pipe[0];
 		input_pipe[1] = output_pipe[1];
+		printf("\n\n\nIGUALTATS:\ninput_pipe[0]: %i\ninput_pipe[1]: %i\n", input_pipe[0], input_pipe[1]);
 		all->pos_process++;
 		all->prcs = all->prcs->next;
 	}
 	close_pipes(input_pipe);
+	close_pipes(output_pipe);
 	wait_pipes(all->num_process);
 }
 

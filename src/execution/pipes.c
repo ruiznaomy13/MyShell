@@ -26,6 +26,7 @@ void wait_pipes(int num_process)
 
 void check_pipes(int input_pipe[2], int output_pipe[2])
 {
+	printf("\n\n\nCHECK_PIPES:\ninput_pipe: %i\noutput_pipe:%i\n", input_pipe[0], output_pipe[1]);
     if (input_pipe[0] != -1)
 	{
 		close(0);

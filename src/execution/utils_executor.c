@@ -49,6 +49,4 @@ void    routes_and_pipe(t_all *all, int i, int output_pipe[2])
 	}
 	else
 		init_pipes(output_pipe);
-	printf("output[0]: %i\n", output_pipe[0]);
-	printf("output[1]: %i\n", output_pipe[1]);
 }

@@ -20,21 +20,23 @@ void wait_pipes(int num_process)
 	int 	status;
 
 	i = 0;
-    while (i++ < num_process)
+    while (num_process > i++)
         wait(&status);
 }
 
 void check_pipes(int input_pipe[2], int output_pipe[2])
 {
-	printf("\n\n\nCHECK_PIPES:\ninput_pipe: %i\noutput_pipe:%i\n", input_pipe[0], output_pipe[1]);
+	printf("\n\n\nCHECK_PIPES:\ninput_pipe[0]: %i\ninput_pipe[1]: %i\noutput_pipe[0]: %i\noutput_pipe[1]: %i\n", input_pipe[0], input_pipe[1], output_pipe[0], output_pipe[1]);
     if (input_pipe[0] != -1)
 	{
+		printf("\ninput_pipe[0] != -1:\ninput_pipe[0]: %i\ninput_pipe[1]: %i\noutput_pipe[0]: %i\noutput_pipe[1]: %i\n", input_pipe[0], input_pipe[1], output_pipe[0], output_pipe[1]);
 		close(0);
 		dup2(input_pipe[0], STDIN_FILENO);
 		close(input_pipe[0]);
 	}
 	if (output_pipe[1] != -1)
 	{
+		printf("\noutput_pipe[1] != -1:\ninput_pipe[0]: %i\ninput_pipe[1]: %i\noutput_pipe[0]: %i\noutput_pipe[1]: %i\n", input_pipe[0], input_pipe[1], output_pipe[0], output_pipe[1]);
 		close(1);
 		dup2(output_pipe[1], STDOUT_FILENO);
 		close(output_pipe[1]);

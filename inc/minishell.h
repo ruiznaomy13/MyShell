@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/15 19:22:50 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/15 21:32:25 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ typedef struct s_process
 	struct s_process	*next;
 }	t_process;
 
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	int				equal;
+	struct s_env	*next;
+}	t_env;
+
 typedef struct s_all
 {
 	char		*line;
@@ -55,6 +63,7 @@ typedef struct s_all
 	char		**env;
 	t_token		*token;
 	t_process	*prcs;
+	t_env		*w_env;
 	int			num_process;
 }	t_all;
 
@@ -101,7 +110,6 @@ char	*expand_var(t_token *tkn, char **env);
 // free de les llistes
 void	ft_free(t_all *all);
 void	ft_error(int error);
-
 char	*str_rep(char* source, char* target, char* replacement);
 
 // EXECUTOR
@@ -110,5 +118,9 @@ void	executor_builting(t_all *all);
 
 // BUILTINS
 int 	ft_echo(char **argv);
-int 	ft_env(char **env);
+int 	ft_env(t_all *all, char **env);
+int		list_env(t_all *all, char **env);
+
+// SIGNALS
+void	signals(void);
 #endif

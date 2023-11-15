@@ -7,7 +7,7 @@ READLINE = -L$(HOME)/.brew/opt/readline/lib -lreadline
 SRCDIR = src/
 OBJDIR = obj/
 
-SRC_L = main/main.c \
+SRC_L = main/main.c main/signals.c \
 		parser/expansor.c \
 		parser/lexer.c parser/separadors.c parser/create_process.c \
 		parser/utils.c parser/utils2.c \

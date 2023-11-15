@@ -31,7 +31,11 @@ PACKAGE_TARNAME = readline
 srcdir = .
 
 top_srcdir = .
+<<<<<<< HEAD
 BUILD_DIR = /System/Volumes/Data/sgoinfre/Perso/ncastell/Minishell/lib/readline
+=======
+BUILD_DIR = /home/maria/minishell/lib/readline
+>>>>>>> 51463283a8536a51b3da4b2d62a787a70218bdf3
 
 INSTALL = /usr/bin/install -c
 INSTALL_PROGRAM = ${INSTALL}

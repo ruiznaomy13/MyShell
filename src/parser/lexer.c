@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/29 01:49:08 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:15:24 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	loop(t_all *all)
 	while (42)
 	{
 		all->line = readline("myshell🌞> ");
-		printf("\nhola line: %s\n", all->line);
 		add_history(all->line);
 		printf("%s\n", all->line);
         if (check_cometes(all->line) > 30)
@@ -25,21 +24,19 @@ void	loop(t_all *all)
             ft_free(all);
             continue;
         }
-		//ft_bzero(&all->token, sizeof(t_token));//no cal crec
-		//ft_bzero(&all->prcs, sizeof(t_process));
         if (!lexer(all))
 			continue;
-		// built_env(all);
+		//printf("abans built env");
+		//built_env(all);
         if (!checker(all)) 
 		{
             ft_free(all);
             continue;
         }
         parser(all);
-        executor_builting(all);
-		// executor(all);
+        // executor_builting(all);
+		executor(all);
         ft_free(all);
-		//ft_bzero(all->line, sizeof(char));
         printf ("\n");
 	}
 }

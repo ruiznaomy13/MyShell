@@ -14,62 +14,52 @@
 
 void	executor(t_all *all)
 {
-	int		i;//cal donar-li el valor de la quantitat d'arxius(redirecions) hi ha 
-	int		exit_code;
+	int		i;
+	int		input_pipe[2];
+	int		output_pipe[2];
 
-	i = 0;//count_process nomes conta entre |, no redi, pt no posar arxius
-	printf("entro aqui\n");
-	while (all->prcs && all->num_process > ++i)
+	i = 0;
+	if (all->prcs == NULL)
+		return ;//error
+	init_pipes(input_pipe);
+	while (all->prcs && all->num_process > i++)
 	{
-		if (all->prcs == NULL)
-			return ;//error
-		if (find_routes(all, all->prcs) == 1)
-			exit(1);
-		while (all->pos_process < all->num_process)// numero de prcs que s'han dexecutar
-		{//crec que pos_process i i s'han de canviar, o posar num_proces
-			if (i < all->num_process - 1 && pipe(all->prcs->fd))
-				exit (1);
-			all->prcs->pid_prc = fork();
-            if (all->prcs->pid_prc == 0)
-                child(all, all->prcs, all->pos_process);//crec que no cal pos_process
-			last_pipe(all);
-			all->pos_process++;
-		}
+		routes_pipe(all, i, output_pipe);
+		all->prcs->pid_prc = fork();
+		if (all->prcs->pid_prc < 0)
+			exit(1);//printf("ERROR, el fork no funka 1");
+        else if (all->prcs->pid_prc == 0)
+			child(all, all->prcs, input_pipe, output_pipe);
+		input_pipe[0] = output_pipe[0];
+		input_pipe[1] = output_pipe[1];
+		all->pos_process++;
 		all->prcs = all->prcs->next;
-		all->pos_process = 0;
 	}
-	exit_code = get_exit_code(all);
-	printf("exitcode:%i\n", exit_code);
+	close_pipes(input_pipe);
+	wait_pipes(all->num_process);
 }
 
-void child(t_all *all, t_process *prcs, int i)
+void child(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2])
 {
-	(void)i;
+	check_pipes(input_pipe, output_pipe);
 	if (prcs->rd)
 	{
 		while (prcs->rd)
 		{
 			printf("hola redi\n");
-			redi_type(all, all->prcs);
+			redi_type(all, all->prcs, input_pipe, output_pipe);
 			prcs->rd = prcs->rd->next;
 		}
 	}
-	else
-	{
-		dup2(prcs->fd[1], STDOUT_FILENO);
-		close_pipes(prcs);
-	}
-	//printf("all->prcs->pos_process: %i\n", i);
-	all->prcs->ruta = get_ruta(all);
-	//printf("ruta = %s\n", all->prcs->ruta);
-    if (!all->prcs->ruta)
-		exit(127);
-	if (execve(all->prcs->ruta, all->prcs->args, all->env) == -1)
-		perror("execve");
-	//exit(1);
+	prcs->ruta = get_ruta(all);
+    if (!prcs->ruta)
+		exit(127);//fer funcio d'error que printeji l'error i faci exit(127);
+	if (execve(prcs->ruta, prcs->args, all->env) == -1)
+		exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
+	exit(0);
 }
 
-char	*get_ruta(t_all *all)//find cmd
+char	*get_ruta(t_all *all)
 {
 	char	**path;
 	char	*ruta;
@@ -78,7 +68,6 @@ char	*get_ruta(t_all *all)//find cmd
 	path = all->prcs->routes;
 	if (!path)
 		printf("ERROR, no existeix all->prcs->routes\n");
-	//pipex.ruta = find_cmd(pipex.routes, pipex.args[0]);
 	while (*path)
 	{
 		tmp = ft_strjoin(*path, "/");

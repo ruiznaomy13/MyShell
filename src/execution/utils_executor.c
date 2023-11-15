@@ -1,59 +1,6 @@
 
 #include "inc/minishell.h"
 
-void	add_var_env(t_all *all, t_env *env)
-{
-	t_env	*aux;
-
-	if (all->env == NULL)
-		all->blt_env = env;
-	else
-	{
-		aux = all->blt_env;
-		while (aux->next != NULL)
-			aux = aux->next;
-		aux->next = env;
-	}
-}
-
-int create_env_var(t_all *all, char *str)
-{
-	t_env	*env;
-	char	**parts;
-	int		i;
-
-	i = -1;
-	env = (t_env *)ft_calloc(sizeof(t_env), 1);
-	if (!env)
-		return (-1);
-	env->key = NULL;
-	env->value = NULL;
-	parts = ft_split(str, '=');
-	if (parts[0])
-		env->key = ft_strdup(parts[0]);
-	if (parts[1])
-		env->value = ft_strdup(parts[1]);
-	if(ft_strchr(str, '=') != NULL)
-		env->equal = 1;
-	while (parts[++i])
-		free(parts[i]);
-	free(parts);
-	add_var_env(all, env);
-	return (0);
-}
-
-int	built_env(t_all *all)
-{
-	int	i;
-
-	i = -1;
-	if (!all->env)
-		return (-1);
-	while (all->env[++i])
-		create_env_var(all, all->env[i]);
-	return (0);
-}
-
 char	**duplicate_env(t_all *all)
 {
 	char	**new_env;
@@ -90,16 +37,15 @@ void	count_process(t_all *all, char *str)
 	all->num_process = n_proces;
 }
 
-int	get_exit_code(t_all *all)
+void    routes_pipe(t_all *all, int i, int output_pipe[2])
 {
-	int	status;
-	int	exit_code;
-
-	while (all->pos_process > 0)//all->prcs->pos_process > 2 + pipex->here_doc i que si hi ha redirecions
+	if (find_routes(all, all->prcs) == 1)
+		exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
+	if (i < all->num_process)
 	{
-		if (wait(&status) == all->prcs->pid_prc)
-			exit_code = status;
-		all->pos_process--;
+		if (pipe(output_pipe) == -1)
+			exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
 	}
-	return (exit_code);
+	else
+		init_pipes(output_pipe);
 }

@@ -49,7 +49,11 @@ RM = rm -f
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 
+<<<<<<< HEAD
 BUILD_DIR = /System/Volumes/Data/sgoinfre/Perso/ncastell/Minishell/lib/readline
+=======
+BUILD_DIR = /home/maria/minishell/lib/readline
+>>>>>>> 51463283a8536a51b3da4b2d62a787a70218bdf3
 TEXINPUTDIR = $(srcdir)
 
 MAKEINFO    = LANGUAGE= makeinfo

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:06:05 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/15 12:53:59 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:54:47 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int ft_echo(char **argv)
             printf(" ");
         printf("%s", argv[i]);
     }
-    if (!skip_newline)
+    if (!n_flag(argv[1]))
         printf("\n");
     return (0);
 }

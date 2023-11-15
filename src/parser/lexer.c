@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/18 18:35:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:06:07 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@ void	loop(t_all *all)
 	{
 		all->line = readline("myshell🌞> ");
 		add_history(all->line);
-        if (check_cometes(all->line) > 30) {
+        if (check_cometes(all->line) > 30)
+		{
             ft_free(all);
             continue;
         }
         lexer(all);
-        if (!checker(all)) {
+        if (!checker(all))
+		{
             ft_free(all);
             continue;
         }
         parser(all);
         executor_builting(all);
         ft_free(all);
-        printf ("\n");
 	}
 }
 

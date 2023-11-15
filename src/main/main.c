@@ -6,21 +6,44 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/17 22:38:20 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:56:47 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
+void	ft_sig_ctr_c(int sig)
+{
+	if (sig == SIGINT)
+	{
+		printf("\n");
+		rl_on_new_line();
+		rl_replace_line("",0);
+		rl_redisplay();
+	}
+}
+
+void	signals(void)
+{
+	rl_catch_signals = 0;
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, ft_sig_ctr_c);
+	
+}
+
 int	main(int ac, char **av, char **env)
 {
+	signals();
+	
 	t_all		all;
 
 	(void)ac;
 	(void)av;
+	//signals();
 	ft_bzero(&all, sizeof(t_all));
 	all.env = duplicate_env(env);
 	loop(&all);
+	ft_free(&all);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/18 22:16:04 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:22:50 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../lib/libft/libft.h"

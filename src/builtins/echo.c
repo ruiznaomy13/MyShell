@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:06:05 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/18 22:06:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:53:59 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,17 @@ int ft_echo(char **argv)
 {
     int skip_newline;
     int i;
+	
+	skip_newline = 1;
+	i = 0;
     if (!argv[1])
         return (1);
-    skip_newline = n_flag(argv[1]);
-    i = skip_newline;
+	while (n_flag(argv[skip_newline++]))
+		i++;
+	printf("new line = %d == %d\n", i, skip_newline);
     while (argv[++i])
     {
-        if (i != skip_newline + 1)
+        if (i != skip_newline - 1)
             printf(" ");
         printf("%s", argv[i]);
     }

@@ -1,5 +1,5 @@
 NAME = minishell
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g #-fsanitize=address
 
 INCS = -I./ -I./lib/Libft -I$(HOME)/.brew/opt/readline/include
 LIBFTA = -L./lib/libft -lft

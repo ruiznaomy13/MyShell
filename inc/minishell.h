@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/15 21:32:25 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:31:02 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,11 @@ char	*str_rep(char* source, char* target, char* replacement);
 
 // EXECUTOR
 void	executor(t_all *all);
-void	executor_builting(t_all *all);
+void	executor_builting(t_all *all, t_process *process);
 
 // BUILTINS
 int 	ft_echo(char **argv);
-int 	ft_env(t_all *all, char **env);
+int 	ft_env(t_all *all);
 int		list_env(t_all *all, char **env);
 
 // SIGNALS

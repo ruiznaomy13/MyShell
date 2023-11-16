@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:06:16 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/16 17:19:18 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/16 20:25:40 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void add_to_env(t_all *all, t_env *env)
 		while (aux->next != NULL)
 			aux = aux->next;
 		aux->next = env;
-		printf("entro aqui 4_2\n");
 	}
 }
 
@@ -50,7 +49,6 @@ int	list_env(t_all *all, char **env)
 	i = -1;
 	while (env[++i])
 	{
-		// env_node();
 		aux_env = ft_calloc(sizeof(t_env), 1);
 		if (!aux_env)
 			return (-1);
@@ -61,7 +59,6 @@ int	list_env(t_all *all, char **env)
 		if (ft_strchr(env[i], '='))
 			aux_env->equal = 1;
 		aux_env->next = NULL;
-		printf("%d ===> KEY = %s = VALUE = %s\n", i, aux_env->key, aux_env->value);
 		add_to_env(all, aux_env);
 		free_char_array(aux);
 	}

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/16 20:33:13 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/17 22:57:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	loop(t_all *all)
 {
 	while (42)
 	{
-		all->line = readline(" myshell 🌞 > ");
+		all->line = readline(" myshell🌞 > ");
 		add_history(all->line);
         if (check_cometes(all->line) > 30)
 		{

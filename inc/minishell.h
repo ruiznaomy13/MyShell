@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/16 16:31:02 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:31:16 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ char    *search_var(char *str);
 void	count_process(t_all *all, char *str);
 int		is_rd(int type);
 int 	ft_arr_len(void **ptr);
+int		ft_strcmp(const char *s1, const char *s2);
 
 // separadors
 int		delimiter(char c);
@@ -104,8 +105,8 @@ char	*is_text(char *str);
 char	*is_text_first(char *str);
 
 // Expansiones
-char	*search_env(char *str, char *env[]);
-char	*expand_var(t_token *tkn, char **env);
+char	*search_env(char *str, t_env *env);
+char	*expand_var(t_all *all, t_token *tkn);
 
 // free de les llistes
 void	ft_free(t_all *all);

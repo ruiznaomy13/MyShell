@@ -6,82 +6,84 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:00:46 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/16 20:36:33 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:34:34 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
 // str = string a buscar en el env
-char *search_env(char *str, char *env[])
+char *search_env(char *str, t_env *env)
 {
-    int i;
-    char *new;
-    char *aux;
+	int 	i;
+	char 	*str_aux;
+	char 	*aux;
+	t_env	*node_iter;
 
 	i = -1;
-    new = ft_strdup(str);
-    aux = NULL;
-    if (new == NULL)
-        return NULL;
-    new = ft_charjoin(new, '=');
-    while (env[++i])
+	node_iter = env;
+	str_aux = ft_strdup(str);
+	aux = NULL;
+	if (str_aux == NULL)
+		return NULL;
+	while (node_iter)
 	{
-        aux = ft_strnstr(env[i], new, ft_strlen(new));
-        if (aux != NULL)
+		if (!ft_strcmp(node_iter->key, str_aux))
 		{
-            free(new);
-            return (split_env(aux));
-        }
-    }
-    free(new);
-    return (NULL);
+			free(str_aux);
+			return (node_iter->value);
+		}
+		node_iter = node_iter->next;
+	}
+	free(str_aux);
+	return (NULL);
 }
 
-char    *expand_var(t_token *tkn, char **env)
+int	asign_var(t_all *all, char *str, char **aux, int i)
+{
+	char	*var;
+
+	var = search_var(str);
+	if (search_env(var, all->w_env) != NULL)
+	{
+		*aux = ft_strjoin(*aux, search_env(var, all->w_env));
+		i += ft_strlen(var);
+		printf("ENTRO \n");
+	}
+	else
+		*aux = ft_charjoin(*aux, '$');
+	return (i);
+}
+
+int	save_comma(char c)
+{
+	if (c == '\'')
+		return (COMMA_S);
+	return (COMMA_D);
+}
+
+char	*expand_var(t_all *all, t_token *tkn)
 {
 	int i;
 	int flag;
 	char *str;
 	char *aux;
-	char *var;
 
-	i = 0;
-	flag = 0;
 	aux = "";
-	var = NULL;
 	str = ft_strdup(tkn->wrd);
+	((0) || (i = 0) || (flag = 0));
 	while (str[i])
 	{
 		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
-		{
-			if (str[i] == '\'')
-				flag = COMMA_S;
-			else
-				flag = COMMA_D;
-			i++;
-		}
-		else if ((str[i] == '\"' && flag == COMMA_D) || (str[i] == '\'' && flag == COMMA_S))
-		{
+			flag = save_comma(str[i]);
+		else if ((str[i] == '\"' && flag == COMMA_D) \
+		|| (str[i] == '\'' && flag == COMMA_S))
 			flag = 0;
-			i++;
-		}
 		else if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
-		{
-			var = search_var(&str[i]);
-			if (search_env(var, env) != NULL)
-			{
-				aux = ft_strjoin(aux, search_env(var, env));
-				i += ft_strlen(var);
-			}
-			else
-				aux = ft_charjoin(aux, '$');
-			i++;
-		}
-		else {
+			i = asign_var(all, &str[i], &aux, i);
+		else
 			aux = ft_charjoin(aux, str[i]);
-			i++;
-		}
+		i++;
 	}
 	free(str);
 	return (aux);

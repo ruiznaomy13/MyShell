@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/18 19:31:31 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:17:24 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,14 @@ void list_redirection(t_process *pcs, t_all *all)
     aux = all->token;
     while (aux != NULL && aux->type != PIPE)
     {
-        if (aux->type == RDOUT || aux->type == RDAP ||
-            aux->type == RDIN || aux->type == RDHD)
+        if (is_rd(aux->type))
         {
             rd = (t_token *)ft_calloc(sizeof(t_token), 1);
             if (!rd)
-                return;           
+                return;
             rd->type = aux->type;
-            rd->wrd = expand_var(aux->next, all->env);
-            add_rd(rd, pcs);
+            rd->wrd = expand_var(all, aux->next);
+            add_rd(rd, pcs);	
             aux = aux->next;
         }
         aux = aux->next;
@@ -81,15 +80,14 @@ char **save_arg(t_all *all)
 	i = 0;
 	while (aux != NULL && aux->type != PIPE)
 	{
-		if (aux->type == RDOUT || aux->type == RDAP \
-		|| aux->type == RDIN || aux->type == RDHD)
+		if (is_rd(aux->type))
 			aux = aux->next;
 		else if (aux->wrd != NULL)
 		{
-			aux->wrd = expand_var(aux, all->env);
+			aux->wrd = expand_var(all, aux);
 			str[i++] = aux->wrd;
 		}
-		aux = aux->next;
+		aux = aux->next; 
 	}
 	str[i] = NULL;
 	return (str);

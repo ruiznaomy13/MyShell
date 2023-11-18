@@ -10,10 +10,10 @@ OBJDIR = obj/
 SRC_L = main/main.c main/signals.c \
 		parser/expansor.c \
 		parser/lexer.c parser/separadors.c parser/create_process.c \
-		parser/utils.c parser/utils2.c \
 		checker/errors.c checker/checker.c\
 		builtins/echo.c builtins/env.c \
-		execution/executor.c execution/executor2.c
+		execution/executor.c execution/executor2.c \
+		utils/utils.c utils/utils2.c
 
 SRC = $(addprefix $(SRCDIR), $(SRC_L))
 OBJECTS = $(addprefix $(OBJDIR), $(SRC:.c=.o))

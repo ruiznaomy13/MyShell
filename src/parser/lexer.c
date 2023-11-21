@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/17 22:57:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/18 21:49:55 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	loop(t_all *all)
 		{
             ft_free(all);
             continue;
-        }
+        } 
         parser(all);
         executor_builting(all, all->prcs);
         ft_free(all);

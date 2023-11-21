@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:00:46 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/18 17:34:34 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/18 22:00:26 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ int	asign_var(t_all *all, char *str, char **aux, int i)
 
 	var = search_var(str);
 	if (search_env(var, all->w_env) != NULL)
-	{
 		*aux = ft_strjoin(*aux, search_env(var, all->w_env));
-		i += ft_strlen(var);
-		printf("ENTRO \n");
-	}
 	else
-		*aux = ft_charjoin(*aux, '$');
+		*aux = ft_strjoin(*aux, "");
+	i += ft_strlen(var);
+	// }
+	// else
+	// 	*aux = ft_charjoin(*aux, '$');
 	return (i);
 }
 
@@ -85,6 +85,7 @@ char	*expand_var(t_all *all, t_token *tkn)
 			aux = ft_charjoin(aux, str[i]);
 		i++;
 	}
+	printf(" EXPAND VAR -> %s\n", aux);
 	free(str);
 	return (aux);
 }

@@ -25,7 +25,7 @@ void	executor(t_all *all)
 	while (all->prcs && all->num_process > i++)
 	{
 		routes_and_pipe(all, i, output_pipe);
-		printf("\n\n\nROUTES_AND_PIPES:\ninput_pipe[0]: %i\ninput_pipe[1]: %i\noutput_pipe[0]: %i\noutput_pipe[1]: %i\n", input_pipe[0], input_pipe[1], output_pipe[0], output_pipe[1]);
+		//printf("\n\n\nROUTES_AND_PIPES:\ninput_pipe[0]: %i\ninput_pipe[1]: %i\noutput_pipe[0]: %i\noutput_pipe[1]: %i\n", input_pipe[0], input_pipe[1], output_pipe[0], output_pipe[1]);
 		all->prcs->pid_prc = fork();
 		if (all->prcs->pid_prc < 0)
 			exit(1);//printf("ERROR, el fork no funka 1");
@@ -33,16 +33,30 @@ void	executor(t_all *all)
 			child(all, all->prcs, input_pipe, output_pipe);
 		input_pipe[0] = output_pipe[0];
 		input_pipe[1] = output_pipe[1];
-		printf("\n\n\nIGUALTATS:\ninput_pipe[0]: %i == output_pipe[0]: %i\ninput_pipe[1]: %i == output_pipe[1]: %i\n", input_pipe[0], output_pipe[0], input_pipe[1], output_pipe[1]);
+		//printf("\n\n\nIGUALTATS:\ninput_pipe[0]: %i == output_pipe[0]: %i\ninput_pipe[1]: %i == output_pipe[1]: %i\n", input_pipe[0], output_pipe[0], input_pipe[1], output_pipe[1]);
 		all->pos_process++;
 		all->prcs = all->prcs->next;
 	}
 	close_pipes(input_pipe);
-	printf("\ndesprés de close_pipes(input_pipe)\n");
+	//printf("\ndesprés de close_pipes(input_pipe)\n");
 	//close_pipes(output_pipe);
 	wait_pipes(all->num_process);
-	printf("\ndesprés de wait_pipes\n");
+	//printf("\ndesprés de wait_pipes\n");
 }
+
+/*
+void debug(char* file, char* content){
+	FILE* output_file = fopen(file, "a");
+	if (!output_file) {
+		perror("fopen");
+		exit(EXIT_FAILURE);
+	}
+
+	fwrite(content, 1, strlen(content), output_file);
+	fflush(output_file);
+
+  	fclose(output_file);
+}*/
 
 void child(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2])
 {
@@ -51,16 +65,20 @@ void child(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2])
 	{
 		while (prcs->rd)
 		{
-			printf("hola redi\n");
+			//printf("hola redi\n");
 			redi_type(all, all->prcs, input_pipe, output_pipe);
 			prcs->rd = prcs->rd->next;
 		}
 	}
 	prcs->ruta = get_ruta(all);
-    if (!prcs->ruta)
+	//printf("pcrs-ruta = %s\nprcs->args = %s\n", prcs->ruta, prcs->args[0]);
+
+    if (!prcs->ruta){
 		exit(127);//fer funcio d'error que printeji l'error i faci exit(127);
-	if (execve(prcs->ruta, prcs->args, all->env) == -1)
+	}
+	if (execve(prcs->ruta, prcs->args, all->env) == -1){
 		exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
+	}
 	exit(0);
 }
 

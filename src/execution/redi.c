@@ -17,7 +17,6 @@ void redi_type(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2
 void	open_infile(t_process *prcs, int input_pipe[2], int output_pipe[2])
 {
     printf("i'm in open infile\n");
-	//exit(1);
     if (access(prcs->rd->wrd, F_OK) == -1)
 	{
 		close_pipes(input_pipe);
@@ -33,36 +32,30 @@ void	open_infile(t_process *prcs, int input_pipe[2], int output_pipe[2])
 		//exit(ft_error(1, ERR_PERM, prcs->rd->wrd));
 	}
 	dup2(prcs->rd->open, STDIN_FILENO);
-	dup2(input_pipe[1], STDOUT_FILENO);
-	close_pipes(input_pipe);
 	close_pipes(output_pipe);
 	close(prcs->rd->open);
 }
 
 void	open_outfile(t_process *prcs, int input_pipe[2], int output_pipe[2])
 {
-	(void)input_pipe;
-	(void)output_pipe;
 	printf("i'm in open outfile\n");
-	exit(1);
 	prcs->rd->open = open(prcs->rd->wrd, O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	if (prcs->rd->open == -1)
 	{
-		//close_pipes(prcs);
+		close_pipes(input_pipe);
         printf("ERROR, redi outfile\n");
         exit(1);
 		//exit(ft_error(1, ERR_NFD, outfile));
 	}
 	if (access(prcs->rd->wrd, W_OK) == -1)
 	{
-		//close_pipes(prcs);
+		close_pipes(output_pipe);
         printf("ERROR, redi outfile\n");
         exit(1);
 		//exit(ft_error(1, ERR_PERM, outfile));
 	}
 	dup2(prcs->rd->open, STDOUT_FILENO);
-    //pq no dup2 de fd[0]
-    //close_pipes(prcs);
+    close_pipes(input_pipe);
 	close(prcs->rd->open);
 }
 

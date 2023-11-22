@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/16 16:39:26 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:03:13 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ int exec_builting(t_all *all, t_process *pcs, t_env *env)
     (void)env;
 	(void)all;
     if (ft_strcmp(pcs->args[0], "echo") == 0)
-        ft_echo(pcs->args);
+        return (ft_echo(pcs->args));
     if (ft_strcmp(pcs->args[0], "env") == 0)
-        ft_env(all);
+        return(ft_env(all));
+	if (ft_strcmp(pcs->args[0], "export") == 0)
+		return(ft_export(pcs, all));
     return (0);
 }
 
@@ -36,7 +38,7 @@ int is_builting(char *cmd)
 {
     if (!ft_strcmp(cmd, "echo"))
         return (1);
-    else if (!ft_strcmp(cmd, "env"))
+    else if (!ft_strcmp(cmd, "env") || !ft_strcmp(cmd, "export"))
         return (1);
     return (0);
 }

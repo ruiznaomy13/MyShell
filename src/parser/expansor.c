@@ -6,13 +6,12 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 20:00:46 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/18 22:00:26 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:51:13 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-// str = string a buscar en el env
 char *search_env(char *str, t_env *env)
 {
 	int 	i;
@@ -49,9 +48,6 @@ int	asign_var(t_all *all, char *str, char **aux, int i)
 	else
 		*aux = ft_strjoin(*aux, "");
 	i += ft_strlen(var);
-	// }
-	// else
-	// 	*aux = ft_charjoin(*aux, '$');
 	return (i);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/18 16:31:16 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:24:27 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	count_process(t_all *all, char *str);
 int		is_rd(int type);
 int 	ft_arr_len(void **ptr);
 int		ft_strcmp(const char *s1, const char *s2);
+void	free_char_array(char **arr);
 
 // separadors
 int		delimiter(char c);
@@ -117,10 +118,12 @@ char	*str_rep(char* source, char* target, char* replacement);
 void	executor(t_all *all);
 void	executor_builting(t_all *all, t_process *process);
 
-// BUILTINS
+/* ------- BUILTINS -------*/
 int 	ft_echo(char **argv);
 int 	ft_env(t_all *all);
 int		list_env(t_all *all, char **env);
+int		ft_export(t_process *pcs, t_all *all);
+void	add_to_env(t_all *all, t_env *env);
 
 // SIGNALS
 void	signals(void);

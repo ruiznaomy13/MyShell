@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:06:16 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/16 20:25:40 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:24:00 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	list_env(t_all *all, char **env)
 	char	**aux;
 	t_env	*aux_env;
 
-	(void)all;
 	i = -1;
 	while (env[++i])
 	{
@@ -53,9 +52,9 @@ int	list_env(t_all *all, char **env)
 		if (!aux_env)
 			return (-1);
 		aux = ft_split(env[i], '=');
-		aux_env->key = strdup(aux[0]);
+		aux_env->key = ft_strdup(aux[0]);
 		if (aux[1])
-			aux_env->value = strdup(aux[1]);
+			aux_env->value = ft_strdup(aux[1]);
 		if (ft_strchr(env[i], '='))
 			aux_env->equal = 1;
 		aux_env->next = NULL;
@@ -72,9 +71,9 @@ int	ft_env(t_all *all)
 	aux = all->w_env;
 	while (aux != NULL)
 	{
-		printf("%s", aux->key);
-		if (aux->equal)
-			printf("=");
+		if (!aux->equal)
+			continue ;
+		printf("%s=", aux->key);
 		if (aux->value)
 			printf("%s", aux->value);
 		printf("\n");

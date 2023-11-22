@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/18 21:51:37 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:58:15 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,10 @@ void create_process(t_all *all)
         pcs = (t_process *)ft_calloc(sizeof(t_process), 1);
         if (pcs == NULL)
             return ;
-        pcs->args = save_arg(all);
-        list_redirection(pcs, all);
-        rm_prev_tkns(all);
-        add_prcs(all, pcs);
+        pcs->args = save_arg(all); // 
+        list_redirection(pcs, all); // saved the redirections
+        rm_prev_tkns(all); // delete the tokens after been save in args
+        add_prcs(all, pcs); // add them to the all sructure
     }
 	mostra_process(all);
 }

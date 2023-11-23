@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:06:16 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/22 19:24:00 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:54:16 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,8 @@ int	ft_env(t_all *all)
 	t_env	*aux;
 
 	aux = all->w_env;
-	while (aux != NULL)
+	while (aux != NULL && aux->equal)
 	{
-		if (!aux->equal)
-			continue ;
 		printf("%s=", aux->key);
 		if (aux->value)
 			printf("%s", aux->value);

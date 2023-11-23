@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/22 19:39:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:58:04 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	show_exp(t_env *env)
 		printf("declare -x %s", aux->key);
 		if (aux->equal)
 			printf("=");
+		// printf("llego aqui\n");
 		if (aux->value)
 			printf("%s", aux->value);
 		printf("\n");
@@ -42,16 +43,14 @@ int	save_var_env(const char *src, t_all *all)
 	if (!aux_env)
 		return (free(dup_src), -1);
 	aux_env->key = ft_strdup(dup_src[0]);
-	if(dup_src[1])
-	{
+	if (ft_strchr(src, '='))
 		aux_env->equal = 1;
+	if(dup_src[1])
 		aux_env->value = ft_strdup(dup_src[1]);
-	}
 	else
 		aux_env->value = NULL;
 	add_to_env(all, aux_env);
 	free_char_array(dup_src);
-	printf("llego aqui\n");
 	return (0);
 }
 
@@ -62,7 +61,7 @@ int	ft_export(t_process *pcs, t_all *all)
 	i = -1;
 	if (!pcs->args[1]) // if there is just 1 arg
 		show_exp(all->w_env); // just show it
-	// else
+	else
 	// {
 	// 	while(pcs->args[++i])
 	// 	{

@@ -47,7 +47,7 @@ typedef struct s_all
 	char		**env;
 	t_token		*token;
 	t_process	*prcs;
-	t_env		*blt_env;
+	t_env		*w_env;
 	int			num_process;
 	int			pos_process;
 }	t_all;

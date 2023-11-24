@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/24 12:55:27 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:30:06 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	add_rd(t_token *rd, t_process *pcs);
 void    list_redirection(t_process *pcs, t_all *all);
 // expansor.c
 char	*search_env(char *str, char *env[]);
-char	*expand_var(t_token *tkn, char **env);
+char    *search_env2(char *str, t_env *env);
+char	*expand_var(t_all *all, t_token *tkn);
 
 // lexer.c
 void	loop(t_all *all);
@@ -61,8 +62,8 @@ char	*is_text_first(char *str);
 
 // utils
 char    *str_rep(char *source, char *target, char *replacement);
-// char	*ft_charjoin(char *s, char c);
 char	*ft_charjoin(char *s, char c, int *iter);
+char	*ft_charjoin2(char *s, char c);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char    *search_var(char *str);
 
@@ -82,7 +83,7 @@ void	ft_error(int error);
 
 /* --------------------------- BUILTINS ---------------------*/
 int 	ft_echo(char **argv);
-int 	ft_env(char **env);
+int 	ft_env(t_all *all);
 int     ft_exit(t_all *all);
 
 /* --------------------------- EXECUTOR ---------------------*/
@@ -95,7 +96,8 @@ char	*get_ruta(t_all *all);//find cmd
 int     ft_strcmp(const char *s1, const char *s2);
 int     exec_builting(t_process *pcs, char **env);
 int     is_builting(char *cmd);
-void	executor_builting(t_all *all);
+void	executor_builting(t_all *all, t_process *process);
+int	    list_env(t_all *all, char **env);
 
 //pipes
 void	init_pipes(int *pipe);

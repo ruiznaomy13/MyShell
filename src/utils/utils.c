@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/21 20:50:18 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:33:36 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,31 @@ char	*ft_charjoin(char *s, char c, int *iter)
 	return (str);
 }
 
+char	*ft_charjoin2(char *s, char c)
+{
+	size_t	len;
+	char	*str;
+	int		i;
+
+	i = -1;
+	if (s != NULL)
+		len = ft_strlen(s);
+	else
+		len = 0;
+	str = (char *) malloc(sizeof(char) * (len + 2));
+	if (!str)
+		return (NULL);
+	if (s != NULL)
+	{
+		while (s[++i])
+			str[i] = s[i];
+	}
+	str[i] = c;
+	str[++i] = '\0';
+	return (str);
+}
+
+
 /* Cambiar a funciones correctas IMPORTANTE*/
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
@@ -85,7 +110,6 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 	dest[i] = '\0';
 	return (dest);
 }
-
 
 char	*search_var(char *str)
 {

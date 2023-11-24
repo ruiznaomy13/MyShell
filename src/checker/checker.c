@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/10/24 13:03:37 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:09:13 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
 int	checker(t_all *all)
 {
     if (ft_strlen(all->line) < 1)

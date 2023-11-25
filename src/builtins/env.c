@@ -6,11 +6,12 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:06:16 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/24 18:45:13 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/11/25 10:49:45 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
 void free_char_array(char **arr)
 {
 	int	i;

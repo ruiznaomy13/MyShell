@@ -1,19 +1,19 @@
 
 #include "inc/minishell.h"
 
-char	**duplicate_env(t_all *all)
+char	**duplicate_env(char **env)
 {
 	char	**new_env;
 	int		i;
 
 	i = 0;
-	while (all->env[i++])
+	while (env[i++])
 		;
 	new_env = (char **)malloc(sizeof(char *) * i + 1);
 	i = 0;
-	while (all->env[i])
+	while (env[i])
 	{
-		new_env[i] = ft_strdup(all->env[i]);
+		new_env[i] = ft_strdup(env[i]);
 		i++;
 	}
 	new_env[i] = NULL;

@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/24 19:25:09 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/11/25 12:21:23 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int ac, char **av, char **env)
 	(void)av;
 	// signals();
 	ft_bzero(&all, sizeof(t_all));
-	all.env = duplicate_env(&all);
+	all.env = duplicate_env(env);
 	list_env(&all, env);
 	loop(&all);
 	return (0);

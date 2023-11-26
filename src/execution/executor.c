@@ -3,82 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/24 13:04:29 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:50:48 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
+void	ft_close(void)
+{
+	int i = 3;
+	while (i < OPEN_MAX)
+		close(i++);
+}
+//quan es faci exit s'ha de fer close de trm 
 void	executor(t_all *all)
 {
 	int		i;
-	int		input_pipe[2];
-	int		output_pipe[2];
+	int		fd_pipe[2];
+	int		fd_trm[2];
+	pid_t	pid;
 
 	i = 0;
 	if (all->prcs == NULL)
-		return ;//error
-	init_pipes(input_pipe);
+		return ;
+	fd_trm[0] = dup(0);
+	fd_trm[1] = dup(1);
 	while (all->prcs && all->num_process > i++)
 	{
-		routes_and_pipe(all, i, output_pipe);
-		//printf("\n\n\nROUTES_AND_PIPES:\ninput_pipe[0]: %i\ninput_pipe[1]: %i\noutput_pipe[0]: %i\noutput_pipe[1]: %i\n", input_pipe[0], input_pipe[1], output_pipe[0], output_pipe[1]);
-		all->prcs->pid_prc = fork();
-		if (all->prcs->pid_prc < 0)
-			exit(1);//printf("ERROR, el fork no funka 1");
-        else if (all->prcs->pid_prc == 0)
-			child(all, all->prcs, input_pipe, output_pipe);
-		input_pipe[0] = output_pipe[0];
-		input_pipe[1] = output_pipe[1];
-		//printf("\n\n\nIGUALTATS:\ninput_pipe[0]: %i == output_pipe[0]: %i\ninput_pipe[1]: %i == output_pipe[1]: %i\n", input_pipe[0], output_pipe[0], input_pipe[1], output_pipe[1]);
+		init_pipes(fd_pipe);
+		if (i != all->num_process && pipe(fd_pipe) == -1)
+			exit(1);
+		pid = fork();
+		if (pid < 0)
+			exit(1);
+		else if (pid == 0)//if ()//si hi ha builtings s'enva al executorde builtings && pid_prc > 0 (positiu)
+			child(all, all->prcs, fd_pipe);
+		if (i != all->num_process)
+			father_redirect_stdin(fd_pipe);
 		all->pos_process++;
 		all->prcs = all->prcs->next;
 	}
-	close_pipes(input_pipe);
-	//printf("\ndesprés de close_pipes(input_pipe)\n");
-	//close_pipes(output_pipe);
-	wait_pipes(all->num_process);
-	//printf("\ndesprés de wait_pipes\n");
+	dup2(fd_trm[0], STDIN_FILENO);
+	dup2(fd_trm[1], STDOUT_FILENO);
+	close_pipes(fd_trm);
+	wait_pipes(all->num_process, pid);
 }
 
-/*
-void debug(char* file, char* content){
-	FILE* output_file = fopen(file, "a");
-	if (!output_file) {
-		perror("fopen");
-		exit(EXIT_FAILURE);
-	}
 
-	fwrite(content, 1, strlen(content), output_file);
-	fflush(output_file);
-
-  	fclose(output_file);
-}*/
-
-void child(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2])
+void child(t_all *all, t_process *prcs, int fd_pipe[2])
 {
-	check_pipes(input_pipe, output_pipe);
+	if (fd_pipe[0] != -1)
+	{
+		close(fd_pipe[0]);
+		dup2(fd_pipe[1], STDOUT_FILENO);
+	}
 	if (prcs->rd)
 	{
 		while (prcs->rd)
 		{
-			//printf("hola redi\n");
-			redi_type(all, all->prcs, input_pipe, output_pipe);
+			redi_type(all, all->prcs, fd_pipe);
 			prcs->rd = prcs->rd->next;
 		}
 	}
+	if (find_routes(all, all->prcs) == 1)
+		exit(1);
 	prcs->ruta = get_ruta(all);
-	//printf("pcrs-ruta = %s\nprcs->args = %s\n", prcs->ruta, prcs->args[0]);
-
-    if (!prcs->ruta){
-		exit(127);//fer funcio d'error que printeji l'error i faci exit(127);
+    if (!prcs->ruta) {
+		exit(127);
 	}
-	if (execve(prcs->ruta, prcs->args, all->env) == -1){
-		exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
-	}
+	if (execve(prcs->ruta, prcs->args, all->env) == -1)
+		exit(1);
 	exit(0);
 }
 
@@ -112,6 +109,6 @@ char	*get_ruta(t_all *all)
 	else
 		printf("ERROR, NO TE ACCESS A all->prcs->args[0]");
 	//ft_error(127, ERR_CNF, all->prcs->args[0]);
+	
 	return (NULL);
 }
-

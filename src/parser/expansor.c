@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/24 19:29:18 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:17:30 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ char	*expand_var(t_all *all, t_token *tkn)
 			aux = ft_charjoin2(aux, str[i]);
 		i++;
 	}
-	printf(" EXPAND VAR -> %s\n", aux);
+	//printf(" EXPAND VAR -> %s\n", aux);
 	free(str);
 	return (aux);
 }

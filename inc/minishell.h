@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/25 12:21:05 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:43:11 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../lib/readline/history.h"
 # include "../lib/libft/libft.h"
 # include "structs.h"
+# include <limits.h>
 
 //------------------------MAIN-----------------------
 void	ft_free(t_all *all);
@@ -103,7 +104,7 @@ int		ft_export(t_process *pcs, t_all *all);
 /* --------------------------- EXECUTOR ---------------------*/
 //executor.c
 void	executor(t_all *all);
-void	child(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2]);
+void	child(t_all *all, t_process *prcs, int fd_pipe[2]);
 char	*get_ruta(t_all *all);//find cmd
 
 //executor2
@@ -114,26 +115,27 @@ void	executor_builting(t_all *all, t_process *process);
 int		list_env(t_all *all, char **env);
 
 //pipes
+void	dup_apunta_terminal(int fd_trm[2]);
 void	init_pipes(int *pipe);
 void	close_pipes(int *pipe);
-void	wait_pipes(int num_process);
-void	check_pipes(int input_pipe[2], int output_pipe[2]);
+void	father_redirect_stdin(int fd_pipe[2]);
+void	dup2_apunta_terminal(int fd_trm[2]);
+void	wait_pipes(int num_process, pid_t pid);
 
 //finds
 int		find_routes(t_all *all, t_process *prcs);
 char	*find_path(t_all *all, int *found);
 
 //redi
-void	redi_type(t_all *all, t_process *prcs, int input_pipe[2], int output_pipe[2]);
-void	open_infile(t_process *prcs, int input_pipe[2], int output_pipe[2]);
-void	open_outfile(t_process *prcs, int input_pipe[2], int output_pipe[2]);
-void	here_doc(t_process *prcs, int input_pipe[2], int output_pipe[2]);
-void	apendd(t_process *prcs, int input_pipe[2], int output_pipe[2]);
+void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2]);
+void	open_infile(t_process *prcs, int fd_pipe[2]);
+void	open_outfile(t_process *prcs, int fd_pipe[2]);
+void	here_doc(t_process *prcs, int fd_pipe[2]);
+void	apendd(t_process *prcs, int fd_pipe[2]);
 
 //utils executor
 char	**duplicate_env(char **env);
 void	count_process(t_all *all, char *str);
-void	routes_and_pipe(t_all *all, int i, int output_pipe[2]);
 
 //utils executor2
 void	add_var_env(t_all *all, t_env *env);

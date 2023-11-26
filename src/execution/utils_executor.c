@@ -36,17 +36,3 @@ void	count_process(t_all *all, char *str)
 	n_proces += 1;
 	all->num_process = n_proces;
 }
-
-void    routes_and_pipe(t_all *all, int i, int output_pipe[2])
-{
-	if (find_routes(all, all->prcs) == 1)
-		exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
-	printf("\n\n\ni: %i < num_prcs: %i\n", i, all->num_process);
-	if (i < all->num_process)
-	{
-		if (pipe(output_pipe) == -1)
-			exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
-	}
-	else
-		init_pipes(output_pipe);
-}

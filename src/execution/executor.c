@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/26 16:50:48 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/11/26 17:24:57 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	executor(t_all *all)
 	i = 0;
 	if (all->prcs == NULL)
 		return ;
-	fd_trm[0] = dup(0);
-	fd_trm[1] = dup(1);
+	dup_apunta_terminal(fd_trm);
 	while (all->prcs && all->num_process > i++)
 	{
 		init_pipes(fd_pipe);
@@ -46,14 +45,11 @@ void	executor(t_all *all)
 		all->pos_process++;
 		all->prcs = all->prcs->next;
 	}
-	dup2(fd_trm[0], STDIN_FILENO);
-	dup2(fd_trm[1], STDOUT_FILENO);
-	close_pipes(fd_trm);
+	dup2_apunta_terminal(fd_trm);
 	wait_pipes(all->num_process, pid);
 }
 
-
-void child(t_all *all, t_process *prcs, int fd_pipe[2])
+void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 {
 	if (fd_pipe[0] != -1)
 	{
@@ -71,9 +67,8 @@ void child(t_all *all, t_process *prcs, int fd_pipe[2])
 	if (find_routes(all, all->prcs) == 1)
 		exit(1);
 	prcs->ruta = get_ruta(all);
-    if (!prcs->ruta) {
+	if (!prcs->ruta)
 		exit(127);
-	}
 	if (execve(prcs->ruta, prcs->args, all->env) == -1)
 		exit(1);
 	exit(0);

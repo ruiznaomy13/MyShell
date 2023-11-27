@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/24 18:46:25 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:36:31 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,61 @@ int	save_var_env(const char *src, t_all *all)
 	return (0);
 }
 
+int	check_var(t_env *w_env, char *str)
+{
+	char	*aux;
+
+	aux = rm_value(str, '=');
+	printf("STR == %s\n", aux);
+	if (verify_rep_value(w_env, aux))
+	{
+		printf("Hay una variable repetida\n");
+		return (1);
+	}
+	free(aux);
+	return (0);
+}
+
+int delete_rep(t_env **env, const char *str)
+{
+    t_env *prev = NULL;
+    t_env *current = *env;
+	char	*aux;
+
+	aux = rm_value(str, '=');
+    while (current != NULL) {
+        if (!strcmp(current->key, aux)) {
+            if (prev != NULL) {
+                prev->next = current->next;
+            } else {
+                *env = current->next;
+            }
+            free(current->key);
+            free(current->value);
+            free(current);
+            return 1;
+        }
+        prev = current;
+        current = current->next;
+    }
+    
+    return 0;
+}
+
 int	ft_export(t_process *pcs, t_all *all)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (!pcs->args[1]) // if there is just 1 arg
 		show_exp(all->w_env); // just show it
 	else
-	// {
-	// 	while(pcs->args[++i])
-	// 	{
-			// if (check_var(pcs->args[i], all->env)) // if it exist
-			// 	delete_var(all->env); // we delete it
+	{
+		while(pcs->args[++i])
+		{
+			delete_rep(&all->w_env, pcs->args[i]); // we delete rep vars
 			save_var_env(pcs->args[1], all); // and save the new arg
-	// 	}
-	// }
+		}
+	}
 	return (0);
 }

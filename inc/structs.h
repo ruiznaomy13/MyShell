@@ -32,7 +32,8 @@ typedef struct s_token
 
 typedef struct s_process
 {
-	pid_t				pid_prc;
+	// int					fd_pipe[2];
+	// int					fd_trm[2];
 	char				**args; //lo que ejecutaremos
 	t_token				*rd; // la lista de redirecciones
 	char				**routes;//trobat PATH al envaiorment, fa un split del path :
@@ -47,7 +48,7 @@ typedef struct s_all
 	char		**env;
 	t_token		*token;
 	t_process	*prcs;
-	t_env		*blt_env;
+	t_env		*w_env;
 	int			num_process;
 	int			pos_process;
 }	t_all;

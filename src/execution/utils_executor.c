@@ -1,19 +1,19 @@
 
 #include "inc/minishell.h"
 
-char	**duplicate_env(t_all *all)
+char	**duplicate_env(char **env)
 {
 	char	**new_env;
 	int		i;
 
 	i = 0;
-	while (all->env[i++])
+	while (env[i++])
 		;
 	new_env = (char **)malloc(sizeof(char *) * i + 1);
 	i = 0;
-	while (all->env[i])
+	while (env[i])
 	{
-		new_env[i] = ft_strdup(all->env[i]);
+		new_env[i] = ft_strdup(env[i]);
 		i++;
 	}
 	new_env[i] = NULL;
@@ -35,17 +35,4 @@ void	count_process(t_all *all, char *str)
 	}
 	n_proces += 1;
 	all->num_process = n_proces;
-}
-
-void    routes_pipe(t_all *all, int i, int output_pipe[2])
-{
-	if (find_routes(all, all->prcs) == 1)
-		exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
-	if (i < all->num_process)
-	{
-		if (pipe(output_pipe) == -1)
-			exit(1);//fer funcio d'error que printeji l'error i faci exit(1);
-	}
-	else
-		init_pipes(output_pipe);
 }

@@ -1,6 +1,5 @@
 #include "inc/minishell.h"
 
-
 int	find_routes(t_all *all, t_process *prcs)
 {
 	int	found;
@@ -8,9 +7,11 @@ int	find_routes(t_all *all, t_process *prcs)
 	prcs->routes = ft_split(find_path(all, &found), ':');
 	if (!found)
 		return (1);
-	if (!prcs->routes)
+	if (!prcs->routes){
 		printf("error al no fer split \n");
+		return (1);
 		//return (ft_error(1, ERR_MC, NULL));
+	}
 	return (0);
 }
 
@@ -32,5 +33,6 @@ char	*find_path(t_all *all, int *found)
 		return (NULL);
 	}
 	*found = 1;
+	// printf("routes: %s\n", all->env[i] + 5);
 	return (all->env[i] + 5);
 }

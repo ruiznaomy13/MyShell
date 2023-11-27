@@ -32,10 +32,14 @@ srcdir = .
 
 top_srcdir = .
 <<<<<<< HEAD
+<<<<<<< HEAD
 BUILD_DIR = /System/Volumes/Data/sgoinfre/Perso/ncastell/Minishell/lib/readline
 =======
 BUILD_DIR = /home/maria/minishell/lib/readline
 >>>>>>> 51463283a8536a51b3da4b2d62a787a70218bdf3
+=======
+BUILD_DIR = /Users/mmonpeat/Desktop/myShell/lib/readline
+>>>>>>> origin/mmonpeat
 
 INSTALL = /usr/bin/install -c
 INSTALL_PROGRAM = ${INSTALL}

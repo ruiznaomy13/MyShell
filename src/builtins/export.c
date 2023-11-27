@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/27 17:38:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:36:55 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	show_exp(t_env *env)
 		printf("declare -x %s", aux->key);
 		if (aux->equal)
 			printf("=");
-		// printf("llego aqui\n");
 		if (aux->value)
 			printf("%s", aux->value);
 		printf("\n");
@@ -69,13 +68,13 @@ int	check_var(t_env *w_env, char *str)
 	return (0);
 }
 
-void	delete_rep(t_env **env, const char *str)
+void	delete_env_var(t_env **env, const char *str)
 {
 	t_env	*prev;
 	t_env	*current;
 	char	*aux;
 
-	prev = NULL
+	prev = NULL;
 	current = *env;
 	aux = rm_value(str, '=');
 	while (current != NULL)
@@ -87,12 +86,26 @@ void	delete_rep(t_env **env, const char *str)
 			else
 				*env = current->next;
 			free(current->key);
-			free(current->value);
+			if (current->value)
+				free(current->value);
 			free(current);
+			break ;
 		}
 		prev = current;
 		current = current->next;
 	}
+}
+
+int	ft_unset(t_process *pcs, t_all *all)
+{
+	int	i;
+
+	i = 0;
+	if (!pcs->args[1])
+		return (0);
+	while (pcs->args[++i])
+		delete_env_var(&all->w_env, pcs->args[i]);
+	return (1);
 }
 
 int	ft_export(t_process *pcs, t_all *all)
@@ -106,8 +119,8 @@ int	ft_export(t_process *pcs, t_all *all)
 	{
 		while(pcs->args[++i])
 		{
-			delete_rep(&all->w_env, pcs->args[i]); // we delete rep vars
-			save_var_env(pcs->args[1], all); // and save the new arg
+			delete_env_var(&all->w_env, pcs->args[i]);
+			save_var_env(pcs->args[i], all);
 		}
 	}
 	return (0);

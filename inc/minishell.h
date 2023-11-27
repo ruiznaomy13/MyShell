@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/27 17:16:27 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:07:55 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int		ft_exit(t_all *all);
 int		show_exp(t_env *env);
 int		save_var_env(const char *src, t_all *all);
 int		ft_export(t_process *pcs, t_all *all);
+int		ft_unset(t_process *pcs, t_all *all);
 
 /* --------------------------- EXECUTOR ---------------------*/
 //executor.c

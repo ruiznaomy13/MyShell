@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/27 17:36:31 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:38:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,30 +69,30 @@ int	check_var(t_env *w_env, char *str)
 	return (0);
 }
 
-int delete_rep(t_env **env, const char *str)
+void	delete_rep(t_env **env, const char *str)
 {
-    t_env *prev = NULL;
-    t_env *current = *env;
+	t_env	*prev;
+	t_env	*current;
 	char	*aux;
 
+	prev = NULL
+	current = *env;
 	aux = rm_value(str, '=');
-    while (current != NULL) {
-        if (!strcmp(current->key, aux)) {
-            if (prev != NULL) {
-                prev->next = current->next;
-            } else {
-                *env = current->next;
-            }
-            free(current->key);
-            free(current->value);
-            free(current);
-            return 1;
-        }
-        prev = current;
-        current = current->next;
-    }
-    
-    return 0;
+	while (current != NULL)
+	{
+		if (!strcmp(current->key, aux))
+		{
+			if (prev != NULL)
+				prev->next = current->next;
+			else
+				*env = current->next;
+			free(current->key);
+			free(current->value);
+			free(current);
+		}
+		prev = current;
+		current = current->next;
+	}
 }
 
 int	ft_export(t_process *pcs, t_all *all)

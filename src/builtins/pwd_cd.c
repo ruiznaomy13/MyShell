@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba.c                                           :+:      :+:    :+:   */
+/*   pwd_cd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 18:30:54 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/28 18:32:51 by ncastell         ###   ########.fr       */
+/*   Created: 2023/11/28 16:19:13 by ncastell          #+#    #+#             */
+/*   Updated: 2023/11/28 18:38:18 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "inc/minishell.h"
 
 char	*strrcut(char *cadena, char caracter)
 {
@@ -35,19 +33,27 @@ char	*strrcut(char *cadena, char caracter)
 	return (NULL);
 }
 
-int	main(void)
+int	ft_pwd()
 {
-	char	*texto = "/System/Volumes/Data/sgoinfre/Perso/ncastell/main_miniShell";
-	char	caracter = '/';
+	printf( "%s\n", getcwd( NULL, 0 ));
+	return (0);
+}
 
-	texto = strrcut(texto, caracter);
+int	ft_cd(t_process *pcs, t_all *all)
+{
+	char 	*aux;
+	char	*new_pwd;
 
-	if (substring != NULL) {
-		printf(" '%c': %s\n", caracter, substring);
-		free(substring); // Liberar la memoria asignada
-	} else {
-		printf("El caracter no fue encontrado en la cadena o hubo un error.\n");
-	}
-
-	return 0;
+	aux = getcwd(NULL, 0);
+	new_pwd = "PWD ->";
+	if (pcs->args[1][0] != '/')
+		chdir(ft_strjoin(ft_charjoin2(aux, '/'), pcs->args[1]));
+	else if (!ft_strcmp(pcs->args[1], ".."))
+		chdir(strrcut(pcs->args[1], '/'));
+	else
+		chdir(pcs->args[1]);
+	delete_env_var(&all->w_env, "PWD");
+	printf("NEW PWD = %s\n", ft_strjoin(new_pwd, getcwd(NULL, 0)));
+	save_var_env(ft_strjoin(new_pwd, getcwd(NULL, 0)), all);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/27 19:07:55 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:06:21 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	ft_error(int error);
 //echo.c
 int		ft_echo(char **argv);
 int		n_flag(char *s);
+
 //env.c
 int		ft_env(t_all *all);
 void	free_char_array(char **arr);
@@ -101,8 +102,14 @@ int		ft_exit(t_all *all);
 //export.c
 int		show_exp(t_env *env);
 int		save_var_env(const char *src, t_all *all);
+void	delete_env_var(t_env **env, const char *str);
+int		save_var_env(const char *src, t_all *all);
 int		ft_export(t_process *pcs, t_all *all);
 int		ft_unset(t_process *pcs, t_all *all);
+
+//pwd_cd.c
+int		ft_pwd();
+int		ft_cd(t_process *pcs, t_all *all);
 
 /* --------------------------- EXECUTOR ---------------------*/
 //executor.c

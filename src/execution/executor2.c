@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/27 19:16:34 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:09:50 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,20 @@ int	exec_builting(t_all *all, t_process *pcs, t_env *env)
 		return (ft_export(pcs, all));
 	if (ft_strcmp(pcs->args[0], "unset") == 0)
 		return (ft_unset(pcs, all));
+	if (ft_strcmp(pcs->args[0], "pwd") == 0)
+		return (ft_pwd());
+	if (ft_strcmp(pcs->args[0], "cd") == 0)
+		return (ft_cd(pcs, all));
 	return (0);
 }
 
 int	is_builting(char *cmd)
 {
-	if (!ft_strcmp(cmd, "echo"))
+	if (!ft_strcmp(cmd, "echo") || !ft_strcmp(cmd, "env"))
 		return (1);
-	else if (!ft_strcmp(cmd, "env") || !ft_strcmp(cmd, "export") || !ft_strcmp(cmd, "unset"))
+	else if (!ft_strcmp(cmd, "export") || !ft_strcmp(cmd, "unset"))
+		return (1);
+	else if (!ft_strcmp(cmd, "pwd") || !ft_strcmp(cmd, "cd"))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/28 17:09:50 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:58:37 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	exec_builting(t_all *all, t_process *pcs, t_env *env)
 		return (ft_pwd());
 	if (ft_strcmp(pcs->args[0], "cd") == 0)
 		return (ft_cd(pcs, all));
+	if (ft_strcmp(pcs->args[0], "exit") == 0)
+		return (ft_exit(pcs, all));
 	return (0);
 }
 
@@ -48,6 +50,8 @@ int	is_builting(char *cmd)
 	else if (!ft_strcmp(cmd, "export") || !ft_strcmp(cmd, "unset"))
 		return (1);
 	else if (!ft_strcmp(cmd, "pwd") || !ft_strcmp(cmd, "cd"))
+		return (1);
+	else if (!ft_strcmp(cmd, "exit"))
 		return (1);
 	return (0);
 }

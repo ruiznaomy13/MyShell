@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/28 17:06:21 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:57:54 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	add_to_env(t_all *all, t_env *env);
 int		list_env(t_all *all, char **env);
 
 //exit.c
-int		ft_exit(t_all *all);
+int		ft_exit(t_process *pcs, t_all *all);
 
 //export.c
 int		show_exp(t_env *env);

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/27 17:11:23 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:09:55 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,13 @@ int	asign_var(t_all *all, char *str, char **aux, int i)
 	char	*var;
 
 	var = search_var(str);
-	if (search_env(var, all->w_env) != NULL)
+	printf("STR = %s -->> VAR = %s\n", str, var);
+	if (var[0] == '?')
+	{
+		*aux = ft_strjoin(*aux, ft_itoa(all->error));
+		// return(i + ft_strlen(ft_itoa(all->error)));
+	}
+	else if (search_env(var, all->w_env) != NULL)
 		*aux = ft_strjoin(*aux, search_env(var, all->w_env));
 	else
 		*aux = ft_strjoin(*aux, "");

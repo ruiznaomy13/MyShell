@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/24 19:33:36 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:01:25 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ char	*search_var(char *str)
 	int	i;
 
 	i = 0;
-	while (str[++i] && (ft_isalnum(str[i]) || str[i] == '_'))
+	while (str[++i] && (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '?'))
 		;
 	return (ft_substr(str, 1, --i));
 }

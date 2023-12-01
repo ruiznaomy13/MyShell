@@ -6,12 +6,20 @@
 # define PIPE 01
 # define COMMA_S 21
 # define COMMA_D 22
+
 # define RDOUT 31 //>
 # define RDAP 32  //>>
 # define RDIN 41  //<
 # define RDHD 42  //<<
 # define EXP 05
 
+# define SUCCESS 0
+# define FALSE	 0
+# define TRUE	 1
+# define ERROR 	-1
+# define E_EXIT  1
+
+#define	CMD_NOT_FOUND	127
 
 typedef struct s_env
 {
@@ -46,6 +54,7 @@ typedef struct s_all
 	char		*line;
 	int			size;
 	char		**env;
+	int			error;
 	t_token		*token;
 	t_process	*prcs;
 	t_env		*w_env;

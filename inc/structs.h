@@ -26,7 +26,6 @@ typedef struct s_token
 	int				type;
 	int				open;//serveix per infile, outfile, here doc, apendd
 	char			*wrd;
-	// int				fd;
 	struct s_token	*next;
 }	t_token;
 
@@ -34,6 +33,7 @@ typedef struct s_process
 {
 	// int					fd_pipe[2];
 	// int					fd_trm[2];
+	//int					fd_read_hd;
 	char				**args; //lo que ejecutaremos
 	t_token				*rd; // la lista de redirecciones
 	char				**routes;//trobat PATH al envaiorment, fa un split del path :

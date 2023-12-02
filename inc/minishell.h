@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/26 16:43:11 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/02 17:46:58 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	rm_prev_tkns(t_all *all);
 void	add_prcs(t_all *all, t_process *pcs);
 void	create_process(t_all *all);
 void	parser(t_all *all);
+int     check_heredoc(t_all *all);
 
 // create_redi.c
 int		arg_size(t_token *tkn);
@@ -130,8 +131,11 @@ char	*find_path(t_all *all, int *found);
 void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2]);
 void	open_infile(t_process *prcs, int fd_pipe[2]);
 void	open_outfile(t_process *prcs, int fd_pipe[2]);
-void	here_doc(t_process *prcs, int fd_pipe[2]);
 void	apendd(t_process *prcs, int fd_pipe[2]);
+void	here_doc(t_process *prcs, int fd_pipe[2]);
+
+//here_doc
+void	save_hd_fd(t_process *prcs);
 
 //utils executor
 char	**duplicate_env(char **env);

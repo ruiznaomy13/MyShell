@@ -8,6 +8,7 @@ FILES = main/main.c main/signals.c \
 		builtins/echo.c builtins/env.c builtins/export.c builtins/exit.c \
 		execution/executor.c execution/executor2.c \
 		execution/finds.c execution/pipes.c execution/utils_executor.c execution/redi.c \
+		execution/here_doc.c \
 		utils/utils.c utils/utils2.c
 
 SRC_DIR = src/

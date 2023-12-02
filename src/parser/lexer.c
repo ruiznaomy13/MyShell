@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/25 14:22:40 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/02 17:05:07 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	loop(t_all *all)
 			continue ;
 		}
 		parser(all);
+		//funcio chose builtings o executor
 		//executor_builting(all, all->prcs);
 		executor(all);
 		ft_free(all);

@@ -59,13 +59,6 @@ void	open_outfile(t_process *prcs, int fd_pipe[2])
 	close(prcs->rd->open);
 }
 
-void	here_doc(t_process *prcs, int fd_pipe[2])
-{
-	(void)fd_pipe;
-	(void)prcs;
-    printf("redi de here doc\n");
-}
-
 void apendd(t_process *prcs, int fd_pipe[2])
 {
 	printf("redi de apendd\n");
@@ -87,4 +80,37 @@ void apendd(t_process *prcs, int fd_pipe[2])
 	dup2(prcs->rd->open, STDOUT_FILENO);
 	close_pipes(fd_pipe);
 	close(prcs->rd->open);
+}
+
+void	here_doc(t_process *prcs, int fd_pipe[2])
+{
+	char	*line;
+
+	line = NULL;
+	(void)fd_pipe;
+	// (void)prcs;
+    printf("redi de heardoc\n");
+	printf("redireció: %s\n", prcs->rd->wrd);
+	while (1)
+	{
+		line = readline("> ");
+		while (ft_strcmp(line, prcs->rd->wrd) != 0)
+		{
+			printf("dif\n");
+			prcs->rd->open = open(prcs->rd->wrd, O_WRONLY);
+			dup2(prcs->rd->open, STDOUT_FILENO);
+			close_pipes(fd_pipe);
+			close(prcs->rd->open);
+			exit(1);
+		}
+		if (ft_strcmp(line, prcs->rd->wrd) == 0)
+		{
+			printf("igual\n");
+			prcs->rd->open = open(prcs->rd->wrd, O_RDONLY);
+			dup2(prcs->rd->open, STDIN_FILENO);
+			close_pipes(fd_pipe);
+			close(prcs->rd->open);
+			// exit(1);
+		}
+	}
 }

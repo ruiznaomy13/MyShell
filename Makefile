@@ -1,5 +1,5 @@
 NAME = minishell
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g 	-fsanitize=address
 
 FILES = main/main.c main/signals.c \
 		parser/expansor.c parser/create_redi.c \

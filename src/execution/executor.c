@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/26 17:24:57 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/11/26 18:35:08 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	executor(t_all *all)
 		pid = fork();
 		if (pid < 0)
 			exit(1);
-		else if (pid == 0)//if ()//si hi ha builtings s'enva al executorde builtings && pid_prc > 0 (positiu)
+		//if ()//si hi ha builtings s'enva al executorde builtings && pid > 0 (positiu)
+		else if (pid == 0)
 			child(all, all->prcs, fd_pipe);
 		if (i != all->num_process)
 			father_redirect_stdin(fd_pipe);
@@ -51,6 +52,7 @@ void	executor(t_all *all)
 
 void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 {
+	//if prcs es un builting ha de executar-se a amb la funcio que hem fet encata que sigui un child
 	if (fd_pipe[0] != -1)
 	{
 		close(fd_pipe[0]);

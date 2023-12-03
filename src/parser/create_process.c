@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/02 17:47:44 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/03 12:37:23 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,6 @@ int	check_heredoc(t_all *all)
 		if (aux->type == RDHD)
 			return (1);
 		aux = aux->next;
-		// i++;
-		// if (i == 10)
-		// 	return ;
 	}
 	return (0);
 }

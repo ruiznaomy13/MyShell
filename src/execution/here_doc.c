@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/02 18:29:06 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/03 13:26:04 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	save_hd_fd(t_process *prcs)
 {
-	char	*line;
 	int		fd[2];
 
-	line = NULL;
     printf("save write pipe\n");
+	printf("1. fd_read_hd %i\n", prcs->fd_read_hd);
 	if (pipe(fd) == -1)
 		exit(1);
 	while (1)
 	{
-		line = readline("> ");
-		if (ft_strcmp(line, prcs->rd->wrd) == 0)
+		prcs->hd_line = readline("> ");
+		if (ft_strcmp(prcs->hd_line, prcs->rd->wrd) == 0)
 			break ;
-		dup2(fd[0], STDIN_FILENO);
+		write(fd[1], prcs->hd_line, ft_strlen(prcs->hd_line));
 	}
-	close(fd[0]);
-	int fd_read_hd = fd[1];
-	printf("fd_read_hd %i\n", fd_read_hd);
+	dup2(prcs->fd_read_hd, STDOUT_FILENO);
 	close(fd[1]);
+	prcs->fd_read_hd = fd[0];
+	printf("2. fd_read_hd %i\n", prcs->fd_read_hd);
+	// close(prcs->fd_read_hd);
 }

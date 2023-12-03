@@ -81,10 +81,17 @@ void apendd(t_process *prcs, int fd_pipe[2])
 	close_pipes(fd_pipe);
 	close(prcs->rd->open);
 }
+
 void	here_doc(t_process *prcs, int fd_pipe[2])
 {
 	printf("llegir el fd_read_hd");
-	(void)prcs;
-	(void)fd_pipe[2];
+	// (void)fd_pipe[2];
+	read(prcs->fd_read_hd, prcs->hd_line, ft_strlen(prcs->hd_line));
+	dup2(prcs->fd_read_hd, STDIN_FILENO);
+	close(prcs->fd_read_hd);
+
+	dup2(prcs->rd->open, STDIN_FILENO);
+	close_pipes(fd_pipe);
+	close(prcs->rd->open);
 }
 

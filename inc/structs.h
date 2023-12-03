@@ -32,7 +32,6 @@ typedef struct s_process
 {
 	// int					fd_pipe[2];
 	// int					fd_trm[2];
-	char				*hd_line;
 	int					fd_read_hd;
 	// int					hola;
 	char				**args; //lo que ejecutaremos

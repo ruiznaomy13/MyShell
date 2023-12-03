@@ -40,10 +40,8 @@ void apendd(t_process *prcs, int fd_pipe[2])
 
 void	here_doc(t_process *prcs, int fd_pipe[2])
 {
-	printf("llegir el fd_read_hd");
 	dup2(prcs->fd_read_hd, STDIN_FILENO);
 	close(prcs->fd_read_hd);
-	
 	// close(fd_pipe[1]);
 	dup2(fd_pipe[0], STDIN_FILENO);
 	close(fd_pipe[0]);

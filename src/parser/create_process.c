@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/03 12:37:23 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/03 16:11:08 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,12 @@ void	create_process(t_all *all)
 
 int	check_heredoc(t_all *all)
 {
-	int			i;
 	t_token		*aux;
 
-	i = 1;
 	aux = all->prcs->rd;
 	if (!aux)
 	{
-		printf("no hi ha redi\n");
+		printf("no hi ha redi(check heredoc)\n");
 		return (0);
 	}
 	while (aux != NULL)

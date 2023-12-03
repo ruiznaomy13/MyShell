@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/02 18:27:07 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/03 15:55:53 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	mostra_rd(t_process *pcs)
 	aux = pcs->rd;
 	printf("REDIRECCIONES =\n");
 	if (!aux){
-		printf("no hi ha redi\n");
+		printf("no hi ha redi(mostra redi)\n");
 		return ;
 	}
 	while (aux != NULL)

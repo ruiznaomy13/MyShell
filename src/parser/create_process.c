@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/03 16:11:08 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/03 16:46:29 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,21 @@ void	create_process(t_all *all)
 
 int	check_heredoc(t_all *all)
 {
-	t_token		*aux;
+	t_process	*prcs;
 
-	aux = all->prcs->rd;
-	if (!aux)
+	prcs = all->prcs;
+	while (prcs != NULL)
 	{
-		printf("no hi ha redi(check heredoc)\n");
-		return (0);
-	}
-	while (aux != NULL)
-	{
-		if (aux->type == RDHD)
-			return (1);
-		aux = aux->next;
+		if (prcs->rd)
+		{
+			while (prcs->rd != NULL)
+			{
+				if (prcs->rd->type == RDHD)
+					return (1);
+				prcs->rd = prcs->rd->next;
+			}
+		}
+		prcs = prcs->next;
 	}
 	return (0);
 }
@@ -85,6 +87,6 @@ void	parser(t_all *all)
 {
 	count_process(all, all->line);
 	create_process(all);
-	if (check_heredoc(all) == 1)//si hi ha un heredoc <<
+	if (check_heredoc(all) == 1)
 		save_hd_fd(all->prcs);
 }

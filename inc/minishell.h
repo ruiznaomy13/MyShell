@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/04 20:42:17 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:53:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <fcntl.h>
-# include "../lib/readline/readline.h"
-# include "../lib/readline/history.h"
+# include <readline/readline.h>
+# include <readline/history.h>
 # include "../lib/libft/libft.h"
 # include "structs.h"
 # include <limits.h>

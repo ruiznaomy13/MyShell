@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/24 19:02:59 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:01:29 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	create_process(t_all *all)
 			return ;
 		pcs->args = save_arg(all);
 		list_redirection(pcs, all);
-		//printf("NEW FIRST TOKEN = %s\n", all->token->wrd);
 		rm_prev_tkns(all);
 		add_prcs(all, pcs);
 	}

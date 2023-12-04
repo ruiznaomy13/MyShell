@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/27 17:22:43 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:15:14 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,3 @@ int ft_arr_len(void **ptr)
     return (i);
 }
 
-char	*rm_value(const char *str, char character)
-{
-    const char	*found;
-	size_t		length;
-	char		*newStr;
-	
-	found = ft_strchr(str, character);
-    if (found == NULL)
-    	return strdup(str);
-	length = found - str;
-	newStr = ft_calloc(length + 1, sizeof(char));
-	if (!newStr)
-		return (NULL);
-	ft_strncpy(newStr, str, length);
-	newStr[length] = '\0';
-	return (newStr);
-}

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/01 13:09:55 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:09:47 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int	set_exp_flag(char c, int *flag)
 			*flag = COMMA_D;
 		return (1);
 	}
-	else if ((c == '\"' && *flag == COMMA_D) || (c == '\'' && *flag == COMMA_S))
+	else if ((c == '\"' && *flag == COMMA_D) \
+	|| (c == '\'' && *flag == COMMA_S))
 	{
 		*flag = 0;
 		return (1);
@@ -79,7 +80,9 @@ int	save_comma(char c)
 {
 	if (c == '\'')
 		return (COMMA_S);
-	return (COMMA_D);
+	else if (c == '\"')
+		return (COMMA_D);
+	return (-1);
 }
 
 char	*expand_var(t_all *all, t_token *tkn)
@@ -89,9 +92,10 @@ char	*expand_var(t_all *all, t_token *tkn)
 	char	*str;
 	char	*aux;
 
+	i = 0;
+	flag = 0;
 	aux = "";
 	str = ft_strdup(tkn->wrd);
-	((0) || (i = 0) || (flag = 0));
 	while (str[i])
 	{
 		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)

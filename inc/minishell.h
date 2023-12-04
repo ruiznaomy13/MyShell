@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/01 11:57:54 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:42:17 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@
 # include "structs.h"
 # include <limits.h>
 
-//------------------------MAIN-----------------------
+/* ------------------------MAIN----------------------- */
 void	ft_free(t_all *all);
-// MOSTRA EL NODE ----- DELETE
+
+// MOSTRA EL NODE >>>>>> DELETE
 void	mostra_tokens(t_all *all);
 void	mostra_process(t_all *all);
 void	mostra_rd(t_process *pcs);
 
-//-----------------------PARSER--------------------------------
 
+/* -------------------- PARSER ------------------------- */
 // create_process.c
 void	rm_prev_tkns(t_all *all);
 void	add_prcs(t_all *all, t_process *pcs);
@@ -60,6 +61,7 @@ int		delimiter(char c);
 char	*is_text(char *str);
 char	*is_text_first(char *str);
 
+
 /* --------------------------- UTILS ---------------------*/
 // utils
 char	*str_rep(char *source, char *target, char *replacement);
@@ -72,11 +74,17 @@ char	*search_var(char *str);
 char	*split_env(char *str);
 int		is_rd(int type);
 int		ft_arr_len(void **ptr);
-char	*rm_value(const char *str, char character);
 int		verify_rep_value(t_env *env, const char *str);
 
+// built_utils.c
+int		save_var_env(const char *src, t_all *all);
+char	*rm_value(const char *str, char character);
+void	delete_env_var(t_env **env, const char *str);
+void	swap(t_env *a, t_env *b);
+void	order_exp(t_env *env);
 
-/* --------------------------- CHECKER ---------------------*/
+
+/* ------------------------- CHECKER ---------------------*/
 // checker.c
 int		checker(t_all *all);
 int		check_cometes(char *str);
@@ -85,7 +93,8 @@ int		syntax_checker(t_all *all);
 // errors.c
 void	ft_error(int error);
 
-/* --------------------------- BUILTINS ---------------------*/
+
+/* ------------------------- BUILTINS ---------------------*/
 //echo.c
 int		ft_echo(char **argv);
 int		n_flag(char *s);
@@ -100,9 +109,7 @@ int		list_env(t_all *all, char **env);
 int		ft_exit(t_process *pcs, t_all *all);
 
 //export.c
-int		show_exp(t_env *env);
-int		save_var_env(const char *src, t_all *all);
-void	delete_env_var(t_env **env, const char *str);
+void	show_sorted_exp(t_env *env);
 int		save_var_env(const char *src, t_all *all);
 int		ft_export(t_process *pcs, t_all *all);
 int		ft_unset(t_process *pcs, t_all *all);
@@ -111,7 +118,8 @@ int		ft_unset(t_process *pcs, t_all *all);
 int		ft_pwd();
 int		ft_cd(t_process *pcs, t_all *all);
 
-/* --------------------------- EXECUTOR ---------------------*/
+
+/* ------------------------ EXECUTOR --------------------*/
 //executor.c
 void	executor(t_all *all);
 void	child(t_all *all, t_process *prcs, int fd_pipe[2]);

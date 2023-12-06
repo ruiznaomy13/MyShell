@@ -20,6 +20,7 @@
 # define E_EXIT  1
 
 #define	CMD_NOT_FOUND	127
+#define	SYNTAX_ERROR	258
 
 typedef struct s_env
 {

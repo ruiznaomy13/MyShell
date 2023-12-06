@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/04 20:53:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:24:01 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include "../lib/libft/libft.h"
 # include "structs.h"
 # include <limits.h>
+
+// OUTP
 
 /* ------------------------MAIN----------------------- */
 void	ft_free(t_all *all);
@@ -91,7 +93,7 @@ int		check_cometes(char *str);
 int		syntax_checker(t_all *all);
 
 // errors.c
-void	ft_error(int error);
+int		ft_error(int error, char *msj);
 
 
 /* ------------------------- BUILTINS ---------------------*/

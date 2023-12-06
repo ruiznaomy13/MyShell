@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/24 19:09:13 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:27:47 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	checker(t_all *all)
         return (0);
     else if (!syntax_checker(all))
     {
-        ft_error(5);
+        ft_error(SYNTAX_ERROR, "");
         return (0);
     }
     return (1);
@@ -64,7 +64,7 @@ int	check_cometes(char *str)
 		i++;
 	}
 	if (flag == 1) {
-		ft_error(coma);
+		ft_error(coma, "");
 		return (coma);
 	}
 	else

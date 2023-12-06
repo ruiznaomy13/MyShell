@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/06 10:24:01 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/06 19:25:21 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include "structs.h"
 # include <limits.h>
 
-// OUTP
 
 /* ------------------------MAIN----------------------- */
 void	ft_free(t_all *all);
@@ -63,7 +62,6 @@ int		delimiter(char c);
 char	*is_text(char *str);
 char	*is_text_first(char *str);
 
-
 /* --------------------------- UTILS ---------------------*/
 // utils
 char	*str_rep(char *source, char *target, char *replacement);
@@ -89,11 +87,13 @@ void	order_exp(t_env *env);
 /* ------------------------- CHECKER ---------------------*/
 // checker.c
 int		checker(t_all *all);
-int		check_cometes(char *str);
+// int		check_cometes(char *str);
+int		check_cometes(t_all *all, char *str);
 int		syntax_checker(t_all *all);
 
 // errors.c
-int		ft_error(int error, char *msj);
+// int		ft_error(int error, char *msj);
+int		ft_error(t_all *all, int error, char *msj);
 
 
 /* ------------------------- BUILTINS ---------------------*/

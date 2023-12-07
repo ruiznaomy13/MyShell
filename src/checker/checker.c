@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/06 16:32:43 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:51:28 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 int	checker(t_all *all)
 {
-    if (ft_strlen(all->line) < 1)
-        return (1);
-    else if (syntax_checker(all))
-        return (1);
-    return (0);
+	if (ft_strlen(all->line) < 1)
+		return (1);
+	else if (syntax_checker(all))
+		return (1);
+	return (0);
 }
 
-int syntax_checker(t_all *all)
+int	syntax_checker(t_all *all)
 {
-    t_token *aux;
+	t_token *aux;
 
-    aux = all->token;
-    while (aux != NULL)
-    {
-        if (aux->type == PIPE && \
+	aux = all->token;
+	while (aux != NULL)
+	{
+		if (aux->type == PIPE && \
 		(aux->next == NULL || aux->next->type != TEXT || is_rd(aux->next->type)))
-            return (ft_error(all, SYNTAX_ERROR, aux->wrd));
+			return (ft_error(all, SYNTAX_ERROR, aux->wrd));
 		else if (is_rd(aux->type) && (aux->next == NULL || aux->next->type != TEXT))
-            return (ft_error(all, SYNTAX_ERROR, aux->wrd));
-        aux = aux->next;
-    }
-    return (0);
+			return (ft_error(all, SYNTAX_ERROR, aux->wrd));
+		aux = aux->next;
+	}
+	return (0);
 }
 
 int	check_cometes(t_all *all, char *str)

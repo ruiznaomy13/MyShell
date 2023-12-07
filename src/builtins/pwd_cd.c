@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 14:11:30 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:29:57 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*strrcut(char *cadena, char caracter)
 	return (NULL);
 }
 
-int	ft_pwd()
+int	ft_pwd(void)
 {
 	printf( "%s\n", getcwd( NULL, 0 ));
 	return (0);

@@ -1,9 +1,0 @@
-Makefile
-file.txt
-hola.txt
-inc
-lib
-minishell
-obj
-objects
-src

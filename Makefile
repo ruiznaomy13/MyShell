@@ -11,7 +11,7 @@ SRC_L = main/main.c main/signals.c \
 		parser/expansor.c parser/create_redi.c \
 		parser/lexer.c parser/separadors.c parser/create_process.c \
 		checker/errors.c checker/checker.c\
-		builtins/echo.c builtins/env.c builtins/export.c builtins/exit.c builtins/pwd_cd.c\
+		builtins/echo.c builtins/env.c builtins/export.c builtins/exit.c builtins/pwd_cd.c \
 		execution/executor.c execution/executor2.c \
 		execution/finds.c execution/pipes.c execution/utils_executor.c execution/redi.c \
 		execution/here_doc.c \

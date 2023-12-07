@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 14:10:29 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:53:51 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ void	loop(t_all *all)
 			ft_free(all);
 			continue ;
 		}
-		if (!lexer(all))
+		if (lexer(all))
 			continue ;
-		//on esta built env
-		//built_env(all);
-		if (!checker(all))
+		if (checker(all))
 		{
 			ft_free(all);
 			continue ;
 		}
 		parser(all);
 		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
+		{
+			printf("entra 1\n");
 			executor_builting(all, all->prcs);
-		else
+		}else
 			executor(all);
 		ft_free(all);
 	}
@@ -47,7 +47,7 @@ int	lexer(t_all *all)
 
 	i = -1;
 	if (all->line == NULL)
-		return (0);
+		return (1);
 	while (all->line[++i])
 	{
 		if (!delimiter(all->line[i]))
@@ -63,7 +63,7 @@ int	lexer(t_all *all)
 		else if (all->line[i] == '<')
 			i += create_token(all, &all->line[i], RDIN) - 1;
 	}
-	return (1);
+	return (0);
 }
 
 int	create_token(t_all *all, char *str, int type)

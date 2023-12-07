@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 14:07:22 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:29:50 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,13 @@ void	mostra_tokens(t_all *all);
 void	mostra_process(t_all *all);
 void	mostra_rd(t_process *pcs);
 
-
 /* -------------------- PARSER ------------------------- */
 // create_process.c
 void	rm_prev_tkns(t_all *all);
 void	add_prcs(t_all *all, t_process *pcs);
 void	create_process(t_all *all);
 void	parser(t_all *all);
-int     check_heredoc(t_all *all);
+int		check_heredoc(t_all *all);
 
 // create_redi.c
 int		arg_size(t_token *tkn);
@@ -117,7 +116,7 @@ int		ft_export(t_process *pcs, t_all *all);
 int		ft_unset(t_process *pcs, t_all *all);
 
 //pwd_cd.c
-int		ft_pwd();
+int		ft_pwd(void);
 int		ft_cd(t_process *pcs, t_all *all);
 
 /* ------------------------ EXECUTOR --------------------*/
@@ -128,7 +127,7 @@ char	*get_ruta(t_all *all);//find cmd
 
 //executor2
 int		ft_strcmp(const char *s1, const char *s2);
-int		exec_builting(t_all *all, t_process *pcs, t_env *env);
+int		exec_builting(t_all *all, t_process *pcs);
 int		is_builting(char *cmd);
 void	executor_builting(t_all *all, t_process *process);
 int		list_env(t_all *all, char **env);
@@ -162,6 +161,5 @@ void	count_process(t_all *all, char *str);
 //utils executor2
 void	add_var_env(t_all *all, t_env *env);
 int		create_env_var(t_all *all, char *str);
-int		built_env(t_all *all);
 
 #endif

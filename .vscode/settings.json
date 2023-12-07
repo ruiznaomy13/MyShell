@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"libft.h": "c",
-		"sstream": "c",
-		"__locale": "c",
-		"minishell.h": "c"
-	}
-}

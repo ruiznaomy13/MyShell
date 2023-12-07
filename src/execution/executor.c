@@ -6,11 +6,11 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 16:07:54 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 18:59:07 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/minishell.h"
+#include "minishell.h"
 
 //quan es faci exit s'ha de fer close de trm 
 void	executor(t_all *all)
@@ -39,8 +39,13 @@ void	executor(t_all *all)
 		all->pos_process++;
 		all->prcs = all->prcs->next;
 	}
+	aux_executor(all, pid, fd_trm);
+}
+
+void	aux_executor(t_all *all, pid_t pid, int fd_trm[2])
+{
 	dup2_apunta_terminal(fd_trm);
-	wait_pipes(all->num_process, pid);
+	wait_pipes(all, all->num_process, pid);
 }
 
 void	child(t_all *all, t_process *prcs, int fd_pipe[2])
@@ -50,8 +55,6 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		close(fd_pipe[0]);
 		dup2(fd_pipe[1], STDOUT_FILENO);
 	}
-	if (is_builting(prcs->args[0]))
-		executor_builting(all, all->prcs);
 	if (prcs->rd)
 	{
 		while (prcs->rd)
@@ -61,12 +64,14 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		}
 	}
 	if (find_routes(all, all->prcs) == 1)
-		exit(1);
+		exit(127);
 	prcs->ruta = get_ruta(all);
 	if (!prcs->ruta)
 		exit(127);
-	if (execve(prcs->ruta, prcs->args, all->env) == -1)
-		exit(1);
+	if (is_builting(prcs->args[0]))
+		executor_builting(all, all->prcs);
+	else if (execve(prcs->ruta, prcs->args, all->env) == -1)
+		exit(127);
 	exit(0);
 }
 
@@ -84,20 +89,42 @@ char	*get_ruta(t_all *all)
 		tmp = ft_strjoin(*path, "/");
 		ruta = ft_strjoin(tmp, all->prcs->args[0]);
 		if (!ruta)
-		{
-			printf("ERROR, NO TROBA LA RUTA DEL args[0] (executable)");
-			//ft_error(1, ERR_MC, NULL);
-			return (NULL);
-		}
+			ft_error(all, CMD_NOT_FOUND, "No such file or directory");
 		free(tmp);
 		if (access(ruta, F_OK | X_OK) == 0)
 			return (ruta);
 		free(ruta);
 		path++;
 	}
-	if (access(all->prcs->args[0], F_OK | X_OK) == 0 && ft_strchr(all->prcs->args[0], '/'))
+	if (access(all->prcs->args[0], F_OK | X_OK) == 0 \
+		&& ft_strchr(all->prcs->args[0], '/'))
 		return (all->prcs->args[0]);
 	else
 		ft_error(all, CMD_NOT_FOUND, all->prcs->args[0]);
 	return (NULL);
+}
+
+void	wait_pipes(t_all *all, int num_process, pid_t pid)
+{
+	int		i;
+	int		status;
+
+	i = 0;
+	while (num_process > i++)
+	{
+		if (pid == waitpid(-1, &status, 0))
+		{
+			return ;
+			if (WIFEXITED(status))
+				ft_error(all, WEXITSTATUS(status), "aaa ns");
+			else if (WIFSIGNALED(status))
+			{
+				if (WTERMSIG(status) == SIGINT)
+					ft_error(all, 130, "aaa ns2");
+				else if (WTERMSIG(status) == SIGQUIT)
+					(1 && (ft_error(all, 131, "aaa ns")) \
+						&& (printf("Quit: 3\n")));
+			}
+		}
+	}
 }

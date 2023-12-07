@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 18:39:02 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:11:34 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 
 /* ------------------------MAIN----------------------- */
-void	ft_free(t_all *all);
+void	ft_free_all(t_all *all);
 
 // MOSTRA EL NODE >>>>>> DELETE
 void	mostra_tokens(t_all *all);
@@ -124,6 +124,8 @@ int		ft_cd(t_process *pcs, t_all *all);
 void	executor(t_all *all);
 void	child(t_all *all, t_process *prcs, int fd_pipe[2]);
 char	*get_ruta(t_all *all);//find cmd
+void	wait_pipes(t_all *all, int num_process, pid_t pid);
+void	aux_executor(t_all *all, pid_t pid, int fd_trm[2]);
 
 //executor2
 int		ft_strcmp(const char *s1, const char *s2);
@@ -138,7 +140,6 @@ void	init_pipes(int *pipe);
 void	close_pipes(int *pipe);
 void	father_redirect_stdin(int fd_pipe[2]);
 void	dup2_apunta_terminal(int fd_trm[2]);
-void	wait_pipes(int num_process, pid_t pid);
 
 //finds
 int		find_routes(t_all *all, t_process *prcs);

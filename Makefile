@@ -1,7 +1,7 @@
 NAME = minishell
-CFLAGS = -Wall -Werror -Wextra -g 	-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g #-fsanitize=address
 
-INCS = -I./ -I./lib/Libft -I$(HOME)/.brew/opt/readline/include
+INCS = -I./inc -I./ -I./lib/Libft -I$(HOME)/.brew/opt/readline/include
 LIBFTA = -L./lib/libft -lft
 READLINE = -L$(HOME)/.brew/opt/readline/lib -lreadline
 SRCDIR = src/
@@ -20,20 +20,23 @@ SRC_L = main/main.c main/signals.c \
 SRC = $(addprefix $(SRCDIR), $(SRC_L))
 OBJECTS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-all: $(NAME)
+all:
+	@${MAKE} -C lib/libft/
+	@${MAKE} $(NAME)
 
 $(OBJDIR)%.o: %.c
 	@printf "Compiling objects\n"
 	@mkdir -p $(@D)
 	@gcc $(CFLAGS) $(INCS) -c $< -o $@
 
-$(NAME): $(OBJECTS) Makefile
+$(NAME): $(OBJECTS) Makefile lib/libft/libft.a
 	@mkdir -p $(@D)
 	@gcc $(CFLAGS) -o $@ $(OBJECTS) $(LIBFTA) $(READLINE)
 	@printf "\nCompiled successfully!\n"
 
 fclean: clean
 	@rm -rf $(NAME)
+	@${MAKE} fclean -C lib/libft/
 	@printf "\nAll cleaned!\n"
 
 clean:

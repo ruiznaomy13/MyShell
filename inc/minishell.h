@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 12:34:14 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:03:42 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,13 @@ char	*split_env(char *str);
 int		is_rd(int type);
 int		ft_arr_len(void **ptr);
 
+// built_utils.c
+int		save_var_env(const char *src, t_all *all);
+char	*rm_value(const char *str, char character);
+void	delete_env_var(t_env **env, const char *str);
+void	swap(t_env *a, t_env *b);
+void	order_exp(t_env *env);
+
 /* --------------------------- CHECKER ---------------------*/
 // checker.c
 int		checker(t_all *all);
@@ -88,6 +95,7 @@ void	ft_error(int error);
 //echo.c
 int		ft_echo(char **argv);
 int		n_flag(char *s);
+
 //env.c
 int		ft_env(t_all *all);
 void	free_char_array(char **arr);
@@ -95,12 +103,17 @@ void	add_to_env(t_all *all, t_env *env);
 int		list_env(t_all *all, char **env);
 
 //exit.c
-int		ft_exit(t_all *all);
+int		ft_exit(t_process *pcs, t_all *all);
 
 //export.c
-int		show_exp(t_env *env);
+void	show_sorted_exp(t_env *env);
 int		save_var_env(const char *src, t_all *all);
 int		ft_export(t_process *pcs, t_all *all);
+int		ft_unset(t_process *pcs, t_all *all);
+
+//pwd_cd.c
+int		ft_pwd();
+int		ft_cd(t_process *pcs, t_all *all);
 
 /* --------------------------- EXECUTOR ---------------------*/
 //executor.c

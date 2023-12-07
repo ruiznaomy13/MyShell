@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/07 13:53:25 by mmonpeat          #+#    #+#             */
+/*   Updated: 2023/12/07 13:54:02 by mmonpeat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
-
 
 # define TEXT 00
 # define PIPE 01
@@ -11,6 +22,15 @@
 # define RDIN 41  //<
 # define RDHD 42  //<<
 # define EXP 05
+
+# define SUCCESS 0
+# define FALSE	 0
+# define TRUE	 1
+# define ERROR 	-1
+# define E_EXIT  1
+
+# define CMD_NOT_FOUND	127
+# define SYNTAX_ERROR	258
 
 typedef struct s_env
 {

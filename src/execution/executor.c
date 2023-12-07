@@ -6,18 +6,18 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 13:41:34 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:47:12 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	ft_close(void)
-{
-	int i = 3;
-	while (i < OPEN_MAX)
-		close(i++);
-}
+// void	ft_close(void)
+// {
+// 	int i = 3;
+// 	while (i < OPEN_MAX)
+// 		close(i++);
+// }
 //quan es faci exit s'ha de fer close de trm 
 void	executor(t_all *all)
 {

@@ -9,7 +9,7 @@ FILES = main/main.c main/signals.c \
 		execution/executor.c execution/executor2.c \
 		execution/finds.c execution/pipes.c execution/utils_executor.c execution/redi.c \
 		execution/here_doc.c \
-		utils/utils.c utils/utils2.c
+		utils/utils.c utils/utils2.c utils/built_utils.c
 
 SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(FILES))

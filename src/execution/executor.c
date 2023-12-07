@@ -6,11 +6,11 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 17:00:51 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 18:04:27 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/minishell.h"
+#include "minishell.h"
 
 //quan es faci exit s'ha de fer close de trm 
 void	executor(t_all *all)

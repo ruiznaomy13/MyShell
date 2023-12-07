@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:50:26 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 17:39:44 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:44:28 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,12 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int		ft_dprintf(char const *str, ...);
+int		ft_put_char(int c);
+int		ft_put_str(char *str);
+int		ft_put_nums(long int num, int ln);
+int		ft_put_hex(unsigned int num, char type, int ln);
+int		ft_put_pointer(unsigned long num, int ln);
+
 #endif

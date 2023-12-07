@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:50:26 by mmonpeat          #+#    #+#             */
-/*   Updated: 2022/10/27 18:33:05 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:39:44 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {

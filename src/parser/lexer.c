@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 15:53:51 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:40:42 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ void	loop(t_all *all)
 			continue ;
 		}
 		parser(all);
+		ft_dprintf(2, "errorrr\n");
 		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
 		{
 			printf("entra 1\n");
 			executor_builting(all, all->prcs);
-		}else
+		}
+		else
 			executor(all);
 		ft_free(all);
 	}

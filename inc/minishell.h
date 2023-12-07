@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/02 17:46:58 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:34:14 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void	apendd(t_process *prcs, int fd_pipe[2]);
 void	here_doc(t_process *prcs, int fd_pipe[2]);
 
 //here_doc
-void	save_hd_fd(t_process *prcs);
+void	save_hd_fd(t_process *prcs, int i);
 
 //utils executor
 char	**duplicate_env(char **env);

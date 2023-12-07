@@ -33,7 +33,6 @@ typedef struct s_process
 	// int					fd_pipe[2];
 	// int					fd_trm[2];
 	int					fd_read_hd;
-	// int					hola;
 	char				**args; //lo que ejecutaremos
 	t_token				*rd; // la lista de redirecciones
 	char				**routes;//trobat PATH al envaiorment, fa un split del path :

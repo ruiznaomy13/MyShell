@@ -15,7 +15,7 @@ SRC_L = main/main.c main/signals.c \
 		execution/executor.c execution/executor2.c \
 		execution/finds.c execution/pipes.c execution/utils_executor.c execution/redi.c \
 		execution/here_doc.c \
-		utils/utils.c utils/utils2.c utils/built_utils.c
+		utils/utils.c utils/utils2.c utils/built_utils.c utils/built_utils2.c
 
 SRC = $(addprefix $(SRCDIR), $(SRC_L))
 OBJECTS = $(addprefix $(OBJDIR), $(SRC:.c=.o))

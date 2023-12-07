@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/01 13:01:25 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 20:00:51 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,7 @@ char    *str_rep(char *source, char *target, char *replacement)
     return (result);
 }
 
-char	*ft_charjoin(char *s, char c, int *iter)
-{
-	size_t	len;
-	char	*str;
-	int		i;
-
-	i = -1;
-	if (s != NULL)
-		len = ft_strlen(s);
-	else
-		len = 0;
-	str = (char *) malloc(sizeof(char) * (len + 2));
-	if (!str)
-		return (NULL);
-	if (s != NULL)
-	{
-		while (s[++i])
-			str[i] = s[i];
-	}
-	str[i] = c;
-	str[++i] = '\0';
-	if (iter != NULL)
-		*iter += 1;
-	return (str);
-}
-
-char	*ft_charjoin2(char *s, char c)
+char	*ft_charjoin(char *s, char c)
 {
 	size_t	len;
 	char	*str;

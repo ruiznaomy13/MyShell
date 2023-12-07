@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 19:11:34 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 20:17:17 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ char	*is_text_first(char *str);
 /* --------------------------- UTILS ---------------------*/
 // utils
 char	*str_rep(char *source, char *target, char *replacement);
-char	*ft_charjoin(char *s, char c, int *iter);
-char	*ft_charjoin2(char *s, char c);
+char	*ft_charjoin(char *s, char c);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*search_var(char *str);
 
@@ -82,6 +81,10 @@ char	*rm_value(const char *str, char character);
 void	delete_env_var(t_env **env, const char *str);
 void	swap(t_env *a, t_env *b);
 void	order_exp(t_env *env);
+
+// built_utils2.c
+void	actualize_env(t_all *all);
+int		count_env_tokens(t_env *env);
 
 /* ------------------------- CHECKER ---------------------*/
 // checker.c

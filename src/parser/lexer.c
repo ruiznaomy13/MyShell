@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 19:15:35 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:19:14 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void	loop(t_all *all)
 			ft_free_all(all);
 			continue ;
 		}
-		ft_dprintf("Hola %s\n", "Naomy");
 		parser(all);
-		ft_dprintf("errorrr\n");
 		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
 			executor_builting(all, all->prcs);
 		else

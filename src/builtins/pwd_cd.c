@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd_cd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 15:29:57 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 20:02:07 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_cd(t_process *pcs, t_all *all)
 	aux = getcwd(NULL, 0);
 	new_pwd = "PWD ->";
 	if (pcs->args[1][0] != '/')
-		chdir(ft_strjoin(ft_charjoin2(aux, '/'), pcs->args[1]));
+		chdir(ft_strjoin(ft_charjoin(aux, '/'), pcs->args[1]));
 	else if (!ft_strcmp(pcs->args[1], ".."))
 		chdir(strrcut(pcs->args[1], '/'));
 	else

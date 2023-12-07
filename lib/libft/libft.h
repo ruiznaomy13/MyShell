@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:50:26 by mmonpeat          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/12/07 17:44:28 by mmonpeat         ###   ########.fr       */
+=======
+/*   Updated: 2023/12/07 17:10:23 by ncastell         ###   ########.fr       */
+>>>>>>> 96ddb9b2a2962eea8a6a2c903156515cf4e3df1d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +81,8 @@ int		ft_put_str(char *str);
 int		ft_put_nums(long int num, int ln);
 int		ft_put_hex(unsigned int num, char type, int ln);
 int		ft_put_pointer(unsigned long num, int ln);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 96ddb9b2a2962eea8a6a2c903156515cf4e3df1d
 #endif

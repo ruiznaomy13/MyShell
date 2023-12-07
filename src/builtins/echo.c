@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 21:02:10 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 15:20:36 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:38:21 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	ft_echo(char **argv)
 		return (1);
 	while (n_flag(argv[skip_newline++]))
 		i++;
-	// printf("new line = %d == %d\n", i, skip_newline);
 	while (argv[++i])
 	{
 		if (i != skip_newline - 1)

@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 14:03:42 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:07:22 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,23 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <fcntl.h>
-# include "../lib/readline/readline.h"
-# include "../lib/readline/history.h"
+# include <readline/readline.h>
+# include <readline/history.h>
 # include "../lib/libft/libft.h"
 # include "structs.h"
 # include <limits.h>
 
-//------------------------MAIN-----------------------
+
+/* ------------------------MAIN----------------------- */
 void	ft_free(t_all *all);
-// MOSTRA EL NODE ----- DELETE
+
+// MOSTRA EL NODE >>>>>> DELETE
 void	mostra_tokens(t_all *all);
 void	mostra_process(t_all *all);
 void	mostra_rd(t_process *pcs);
 
-//-----------------------PARSER--------------------------------
 
+/* -------------------- PARSER ------------------------- */
 // create_process.c
 void	rm_prev_tkns(t_all *all);
 void	add_prcs(t_all *all, t_process *pcs);
@@ -47,8 +49,7 @@ void	add_rd(t_token *rd, t_process *pcs);
 void	list_redirection(t_process *pcs, t_all *all);
 
 // expansor.c
-char	*search_env(char *str, char *env[]);
-char	*search_env2(char *str, t_env *env);
+char	*search_env(char *str, t_env *env);
 char	*expand_var(t_all *all, t_token *tkn);
 
 // lexer.c
@@ -74,6 +75,7 @@ char	*search_var(char *str);
 char	*split_env(char *str);
 int		is_rd(int type);
 int		ft_arr_len(void **ptr);
+int		verify_rep_value(t_env *env, const char *str);
 
 // built_utils.c
 int		save_var_env(const char *src, t_all *all);
@@ -82,16 +84,19 @@ void	delete_env_var(t_env **env, const char *str);
 void	swap(t_env *a, t_env *b);
 void	order_exp(t_env *env);
 
-/* --------------------------- CHECKER ---------------------*/
+/* ------------------------- CHECKER ---------------------*/
 // checker.c
 int		checker(t_all *all);
-int		check_cometes(char *str);
+// int		check_cometes(char *str);
+int		check_cometes(t_all *all, char *str);
 int		syntax_checker(t_all *all);
 
 // errors.c
-void	ft_error(int error);
+// int		ft_error(int error, char *msj);
+int		ft_error(t_all *all, int error, char *msj);
 
-/* --------------------------- BUILTINS ---------------------*/
+
+/* ------------------------- BUILTINS ---------------------*/
 //echo.c
 int		ft_echo(char **argv);
 int		n_flag(char *s);
@@ -115,7 +120,7 @@ int		ft_unset(t_process *pcs, t_all *all);
 int		ft_pwd();
 int		ft_cd(t_process *pcs, t_all *all);
 
-/* --------------------------- EXECUTOR ---------------------*/
+/* ------------------------ EXECUTOR --------------------*/
 //executor.c
 void	executor(t_all *all);
 void	child(t_all *all, t_process *prcs, int fd_pipe[2]);

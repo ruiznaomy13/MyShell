@@ -3,42 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   expansor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/11/25 14:17:30 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:09:47 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-// str = string a buscar en el env
-char *search_env(char *str, char *env[])
-{
-	int		i;
-	char	*new;
-	char	*aux;
-
-	i = -1;
-	new = ft_strdup(str);
-	aux = NULL;
-	if (new == NULL)
-		return NULL;
-	new = ft_charjoin(new, '=', NULL);
-	while (env[++i])
-	{
-		aux = ft_strnstr(env[i], new, ft_strlen(new));
-		if (aux != NULL)
-		{
-			free(new);
-			return (split_env(aux));
-		}
-	}
-	free(new);
-	return (NULL);
-}
-
-char *search_env2(char *str, t_env *env)
+char *search_env(char *str, t_env *env)
 {
 	int 	i;
 	char 	*str_aux;
@@ -74,7 +48,8 @@ int	set_exp_flag(char c, int *flag)
 			*flag = COMMA_D;
 		return (1);
 	}
-	else if ((c == '\"' && *flag == COMMA_D) || (c == '\'' && *flag == COMMA_S))
+	else if ((c == '\"' && *flag == COMMA_D) \
+	|| (c == '\'' && *flag == COMMA_S))
 	{
 		*flag = 0;
 		return (1);
@@ -87,8 +62,14 @@ int	asign_var(t_all *all, char *str, char **aux, int i)
 	char	*var;
 
 	var = search_var(str);
-	if (search_env2(var, all->w_env) != NULL)
-		*aux = ft_strjoin(*aux, search_env2(var, all->w_env));
+	printf("STR = %s -->> VAR = %s\n", str, var);
+	if (var[0] == '?')
+	{
+		*aux = ft_strjoin(*aux, ft_itoa(all->error));
+		// return(i + ft_strlen(ft_itoa(all->error)));
+	}
+	else if (search_env(var, all->w_env) != NULL)
+		*aux = ft_strjoin(*aux, search_env(var, all->w_env));
 	else
 		*aux = ft_strjoin(*aux, "");
 	i += ft_strlen(var);
@@ -99,7 +80,9 @@ int	save_comma(char c)
 {
 	if (c == '\'')
 		return (COMMA_S);
-	return (COMMA_D);
+	else if (c == '\"')
+		return (COMMA_D);
+	return (-1);
 }
 
 char	*expand_var(t_all *all, t_token *tkn)
@@ -109,15 +92,15 @@ char	*expand_var(t_all *all, t_token *tkn)
 	char	*str;
 	char	*aux;
 
+	i = 0;
+	flag = 0;
 	aux = "";
 	str = ft_strdup(tkn->wrd);
-	((0) || (i = 0) || (flag = 0));
 	while (str[i])
 	{
 		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
 			flag = save_comma(str[i]);
-		else if ((str[i] == '\"' && flag == COMMA_D) \
-		|| (str[i] == '\'' && flag == COMMA_S))
+		else if (save_comma(str[i]) == flag)
 			flag = 0;
 		else if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
 			i = asign_var(all, &str[i], &aux, i);
@@ -125,7 +108,6 @@ char	*expand_var(t_all *all, t_token *tkn)
 			aux = ft_charjoin2(aux, str[i]);
 		i++;
 	}
-	//printf(" EXPAND VAR -> %s\n", aux);
 	free(str);
 	return (aux);
 }

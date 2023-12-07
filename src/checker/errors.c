@@ -6,18 +6,18 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/02 15:40:44 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:09:03 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	ft_error(int error)
+int	ft_error(t_all *all, int error, char *msj)
 {
-	if (error == '\'' || error == '\"')
-		printf("syntax error near unexpected token %c\n", error);
-	else if (error == 5)
-		printf("syntax error near unexpected token `newline'\n");
+	if (error == SYNTAX_ERROR)
+		printf("syntax error near unexpected token %s\n", msj);
+	all->error = error;
+	return (error);
 }
 
 /*

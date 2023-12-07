@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 13:41:54 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:10:29 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	loop(t_all *all)
 	{
 		all->line = readline("myshell🌞> ");
 		add_history(all->line);
-		printf("%s\n", all->line);
-		if (check_cometes(all->line) > 30)
+		if (check_cometes(all, all->line) > 30)
 		{
 			ft_free(all);
 			continue ;
@@ -39,7 +38,6 @@ void	loop(t_all *all)
 		else
 			executor(all);
 		ft_free(all);
-		//printf ("\n");
 	}
 }
 

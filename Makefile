@@ -1,54 +1,44 @@
 NAME = minishell
 CFLAGS = -Wall -Werror -Wextra -g 	-fsanitize=address
 
-FILES = main/main.c main/signals.c \
+INCS = -I./ -I./lib/Libft -I$(HOME)/.brew/opt/readline/include
+LIBFTA = -L./lib/libft -lft
+READLINE = -L$(HOME)/.brew/opt/readline/lib -lreadline
+SRCDIR = src/
+OBJDIR = obj/
+
+SRC_L = main/main.c main/signals.c \
 		parser/expansor.c parser/create_redi.c \
 		parser/lexer.c parser/separadors.c parser/create_process.c \
 		checker/errors.c checker/checker.c\
-		builtins/echo.c builtins/env.c builtins/export.c builtins/exit.c \
+		builtins/echo.c builtins/env.c builtins/export.c builtins/exit.c builtins/pwd_cd.c\
 		execution/executor.c execution/executor2.c \
 		execution/finds.c execution/pipes.c execution/utils_executor.c execution/redi.c \
 		execution/here_doc.c \
 		utils/utils.c utils/utils2.c utils/built_utils.c
 
-SRC_DIR = src/
-SRC = $(addprefix $(SRC_DIR), $(FILES))
-CC = cc
+SRC = $(addprefix $(SRCDIR), $(SRC_L))
+OBJECTS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-OBJ_DIR = objects/
-OBJS = $(addprefix $(OBJ_DIR), $(FILES:.c=.o))
-DEPS = $(addprefix $(OBJ_DIR), $(FILES:.c=.d))
-RM = rm -rf
-LIB = lib/libft/libft.a lib/readline/libreadline.a lib/readline/libhistory.a
+all: $(NAME)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
+$(OBJDIR)%.o: %.c
+	@printf "Compiling objects\n"
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -DREADLINE_LIBRARY=1 -I./ -I lib/readline -c $< -o $@
+	@gcc $(CFLAGS) $(INCS) -c $< -o $@
 
-all:
-	@$(MAKE) -C lib/libft --no-print-directory
-	@if ! [ -f lib/readline/libreadline.a ]; then \
-		cd ./lib/readline/ &> /dev/null && ./configure &> /dev/null && \
-		$(MAKE) --no-print-directory &> /dev/null; \
-	fi
-	@$(MAKE) $(NAME) --no-print-directory
-
-$(NAME):: $(OBJS)
-	@$(CC) -ltermcap $(CFLAGS) $(OBJS) $(LIB) -o $@
-
-$(NAME)::
-	@echo -n
-
-clean:
-	@$(RM) $(OBJ_DIR) --no-print-directory
-	@$(MAKE) clean -C lib/libft --no-print-directory 
-	@$(MAKE) clean -C lib/readline --no-print-directory &> /dev/null
+$(NAME): $(OBJECTS) Makefile
+	@mkdir -p $(@D)
+	@gcc $(CFLAGS) -o $@ $(OBJECTS) $(LIBFTA) $(READLINE)
+	@printf "\nCompiled successfully!\n"
 
 fclean: clean
-	@$(RM) $(NAME) $(LIB)
+	@rm -rf $(NAME)
+	@printf "\nAll cleaned!\n"
+
+clean:
+	@rm -rf $(OBJDIR)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
-
--include $(DEPS)
+.PHONY: all clean fclean re

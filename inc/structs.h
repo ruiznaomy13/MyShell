@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:53:25 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 13:54:02 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:09:39 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define PIPE 01
 # define COMMA_S 21
 # define COMMA_D 22
+
 # define RDOUT 31 //>
 # define RDAP 32  //>>
 # define RDIN 41  //<
@@ -29,8 +30,8 @@
 # define ERROR 	-1
 # define E_EXIT  1
 
-# define CMD_NOT_FOUND	127
-# define SYNTAX_ERROR	258
+# define CMD_NOT_FOUND 127
+# define SYNTAX_ERROR 258
 
 typedef struct s_env
 {
@@ -65,6 +66,7 @@ typedef struct s_all
 	char		*line;
 	int			size;
 	char		**env;
+	int			error;
 	t_token		*token;
 	t_process	*prcs;
 	t_env		*w_env;

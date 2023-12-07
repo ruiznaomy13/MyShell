@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 20:17:17 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 21:04:17 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ char	*is_text_first(char *str);
 
 /* --------------------------- UTILS ---------------------*/
 // utils
-char	*str_rep(char *source, char *target, char *replacement);
 char	*ft_charjoin(char *s, char c);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*search_var(char *str);
 
 // utils 2
+int		ft_strcmp(const char *s1, const char *s2);
 char	*split_env(char *str);
 int		is_rd(int type);
 int		ft_arr_len(void **ptr);
@@ -89,14 +89,11 @@ int		count_env_tokens(t_env *env);
 /* ------------------------- CHECKER ---------------------*/
 // checker.c
 int		checker(t_all *all);
-// int		check_cometes(char *str);
 int		check_cometes(t_all *all, char *str);
 int		syntax_checker(t_all *all);
 
 // errors.c
-// int		ft_error(int error, char *msj);
 int		ft_error(t_all *all, int error, char *msj);
-
 
 /* ------------------------- BUILTINS ---------------------*/
 //echo.c
@@ -131,7 +128,6 @@ void	wait_pipes(t_all *all, int num_process, pid_t pid);
 void	aux_executor(t_all *all, pid_t pid, int fd_trm[2]);
 
 //executor2
-int		ft_strcmp(const char *s1, const char *s2);
 int		exec_builting(t_all *all, t_process *pcs);
 int		is_builting(char *cmd);
 void	executor_builting(t_all *all, t_process *process);
@@ -159,7 +155,7 @@ void	here_doc(t_process *prcs, int fd_pipe[2]);
 void	save_hd_fd(t_process *prcs, int i);
 
 //utils executor
-char	**duplicate_env(char **env);
+// char	**duplicate_env(char **env);
 void	count_process(t_all *all, char *str);
 
 //utils executor2

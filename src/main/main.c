@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 19:11:47 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 21:02:04 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main(int ac, char **av, char **env)
 	(void)av;
 	// signals();
 	ft_bzero(&all, sizeof(t_all));
-	all.env = duplicate_env(env);
 	list_env(&all, env);
 	loop(&all);
 	// ft_free_all(&all);

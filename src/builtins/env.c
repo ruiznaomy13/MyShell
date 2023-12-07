@@ -6,11 +6,12 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:06:16 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 18:35:45 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 21:03:46 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
 void	free_char_array(char **arr)
 {
 	int	i;
@@ -60,6 +61,7 @@ int	list_env(t_all *all, char **env)
 		add_to_env(all, aux_env);
 		free_char_array(aux);
 	}
+	actualize_env(all);
 	return (0);
 }
 

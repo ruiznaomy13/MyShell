@@ -6,11 +6,21 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 18:36:58 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 20:52:43 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+}
 
 int	is_rd(int type)
 {
@@ -21,9 +31,9 @@ int	is_rd(int type)
 
 int	verify_rep_value(t_env *env, const char *str)
 {
-	int 	i;
-	char 	*str_aux;
-	char 	*aux;
+	int		i;
+	char	*str_aux;
+	char	*aux;
 	t_env	*node_iter;
 
 	i = -1;
@@ -64,11 +74,12 @@ char	*split_env(char *str)//entenc que es per l'expansor
 	return (NULL);
 }
 
-int ft_arr_len(void **ptr)
+int	ft_arr_len(void **ptr)
 {
-    int i = 0;
-    while (ptr[i])
-        i++;
-    return (i);
-}
+	int	i;
 
+	i = 0;
+	while (ptr[i])
+		i++;
+	return (i);
+}

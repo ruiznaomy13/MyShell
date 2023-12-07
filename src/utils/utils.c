@@ -6,38 +6,22 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 20:00:51 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 20:59:41 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-/* CREAR FUNCIONES DE LIBFT <<<<<<<<<< IMPORTANT! >>>>>>>>>>>> */
-char    *str_rep(char *source, char *target, char *replacement)
-{
-    size_t		i;
-	char		*result;
-	int			found;
+#include <stddef.h>
 
-    i = 0;
-    result = NULL;
-    found = 0;
-    while (i < ft_strlen(source))
-    {
-        if (ft_strncmp(source + i, target, ft_strlen(target)) == 0 && !found) {
-            result = (char*)malloc(ft_strlen(source) + ft_strlen(replacement) - ft_strlen(target) + 1);
-            if (result == NULL)
-                return (NULL);
-            ft_strncpy(result, source, i);
-            strcpy(result + i, replacement);
-            strcpy(result + i + ft_strlen(replacement), source + i + ft_strlen(target));
-            found = 1;
-        }
-        i++;
-    }   
-    if (!found)
-        return strdup(source);
-    return (result);
+size_t	ft_strnlen(const char *str, size_t maxlen)
+{
+	size_t	len;
+
+	len = 0;
+	while (len < maxlen && str[len] != '\0')
+		len++;
+	return (len);
 }
 
 char	*ft_charjoin(char *s, char c)
@@ -64,15 +48,13 @@ char	*ft_charjoin(char *s, char c)
 	return (str);
 }
 
-
-/* Cambiar a funciones correctas IMPORTANTE*/
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
 	size_t	src_len;
 	size_t	i;
 
 	i = 0;
-	src_len = strnlen(src, n);
+	src_len = ft_strnlen(src, n);
 	if (dest == NULL || src == NULL || n == 0)
 		return (dest);
 	while (i < n)

@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/12/07 18:37:17 by mmonpeat         ###   ########.fr       */
-=======
-/*   Updated: 2023/12/07 17:19:37 by ncastell         ###   ########.fr       */
->>>>>>> 96ddb9b2a2962eea8a6a2c903156515cf4e3df1d
+/*   Updated: 2023/12/07 18:50:52 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +38,6 @@ void	loop(t_all *all)
 		ft_dprintf("errorrr\n");
 		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
 			executor_builting(all, all->prcs);
-<<<<<<< HEAD
-		}
-=======
->>>>>>> 96ddb9b2a2962eea8a6a2c903156515cf4e3df1d
 		else
 			executor(all);
 		ft_free(all);

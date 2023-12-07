@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 14:08:57 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:11:30 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,13 @@ char	*strrcut(char *cadena, char caracter)
 
 int	ft_pwd()
 {
-<<<<<<< HEAD
-	printf("%s\n", getcwd(NULL, 0));
-=======
 	printf( "%s\n", getcwd( NULL, 0 ));
->>>>>>> 50cb2ea7aac4d1ca9910a1749da0adf6ca06d1d7
 	return (0);
 }
 
 int	ft_cd(t_process *pcs, t_all *all)
 {
-<<<<<<< HEAD
 	char    *aux;
-=======
-	char 	*aux;
->>>>>>> 50cb2ea7aac4d1ca9910a1749da0adf6ca06d1d7
 	char	*new_pwd;
 
 	aux = getcwd(NULL, 0);
@@ -64,8 +56,4 @@ int	ft_cd(t_process *pcs, t_all *all)
 	printf("NEW PWD = %s\n", ft_strjoin(new_pwd, getcwd(NULL, 0)));
 	save_var_env(ft_strjoin(new_pwd, getcwd(NULL, 0)), all);
 	return (0);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 50cb2ea7aac4d1ca9910a1749da0adf6ca06d1d7

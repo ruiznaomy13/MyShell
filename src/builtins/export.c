@@ -3,27 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/12/07 13:59:48 by mmonpeat         ###   ########.fr       */
-=======
-/*   Updated: 2023/12/04 20:41:01 by ncastell         ###   ########.fr       */
->>>>>>> 50cb2ea7aac4d1ca9910a1749da0adf6ca06d1d7
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "inc/minishell.h"
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/04 20:41:01 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:12:47 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +25,6 @@ void	show_sorted_exp(t_env *env)
 		printf("\n");
 		env = env->next;
 	}
-}
-
-int	ft_unset(t_process *pcs, t_all *all)
-{
-	int	i;
-
-	i = 0;
-	if (!pcs->args[1])
-		return (0);
-	while (pcs->args[++i])
-		delete_env_var(&all->w_env, pcs->args[i]);
-	return (1);
 }
 
 int	ft_unset(t_process *pcs, t_all *all)

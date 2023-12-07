@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 15:53:51 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:19:37 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	loop(t_all *all)
 			ft_free(all);
 			continue ;
 		}
+		ft_putstr_fd("HOLA FD\n", 2);
+		// ft_dprintf("Hola %s\n", "Naomy");
 		parser(all);
 		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
-		{
-			printf("entra 1\n");
 			executor_builting(all, all->prcs);
-		}else
+		else
 			executor(all);
 		ft_free(all);
 	}

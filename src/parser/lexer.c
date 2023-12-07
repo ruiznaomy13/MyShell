@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/18 21:49:55 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 18:35:26 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,46 +18,36 @@ void	loop(t_all *all)
 	{
 		all->line = readline(" myshell🌞 > ");
 		add_history(all->line);
-        if (check_cometes(all->line) > 30)
+		if (check_cometes(all, all->line) > 30)
 		{
-            ft_free(all);
-            continue;
-        }
-        lexer(all);
-        if (!checker(all))
+			ft_free(all);
+			continue ;
+		}
+		if (lexer(all))
+			continue ;
+		if (checker(all))
 		{
-            ft_free(all);
-            continue;
-        } 
-        parser(all);
-        executor_builting(all, all->prcs);
-        ft_free(all);
+			ft_free(all);
+			continue ;
+		}
+		ft_putstr_fd("HOLA FD\n", 2);
+		// ft_dprintf("Hola %s\n", "Naomy");
+		parser(all);
+		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
+			executor_builting(all, all->prcs);
+		else
+			executor(all);
+		ft_free(all);
 	}
 }
 
-int	checker(t_all *all)
-{
-    if (ft_strlen(all->line) < 1)
-        return (0);
-    else if (!syntax_checker(all))
-    {
-        ft_error(5);
-        return (0);
-    }
-    return (1);
-}
-
-void	parser(t_all *all)
-{
-    count_process(all, all->line);
-    create_process(all);
-}
-
-void	lexer(t_all *all)
+int	lexer(t_all *all)
 {
 	int		i;
 
 	i = -1;
+	if (all->line == NULL)
+		return (1);
 	while (all->line[++i])
 	{
 		if (!delimiter(all->line[i]))
@@ -73,6 +63,7 @@ void	lexer(t_all *all)
 		else if (all->line[i] == '<')
 			i += create_token(all, &all->line[i], RDIN) - 1;
 	}
+	return (0);
 }
 
 int	create_token(t_all *all, char *str, int type)

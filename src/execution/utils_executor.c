@@ -1,52 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   utils_executor.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/21 21:02:10 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 18:35:34 by ncastell         ###   ########.fr       */
+/*   Created: 2023/12/07 18:37:54 by ncastell          #+#    #+#             */
+/*   Updated: 2023/12/07 18:37:56 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-int	n_flag(char *s)
+char	**duplicate_env(char **env)
 {
-	int	i;
+	char	**new_env;
+	int		i;
 
-	i = 1;
-	if (s[0] == '-' && s[1] == 'n')
+	i = 0;
+	while (env[i++])
+		;
+	new_env = (char **)malloc(sizeof(char *) * i + 1);
+	i = 0;
+	while (env[i])
 	{
-		while (s[++i] != '\0')
-		{
-			if (s[i] != 'n')
-				return (0);
-		}
-		return (1);
+		new_env[i] = ft_strdup(env[i]);
+		i++;
 	}
-	return (0);
+	new_env[i] = NULL;
+	return (new_env);
 }
 
-int	ft_echo(char **argv)
+void	count_process(t_all *all, char *str)
 {
-	int	skip_newline;
 	int	i;
+	int	n_proces;
 
-	skip_newline = 1;
 	i = 0;
-	if (!argv[1])
-		return (1);
-	while (n_flag(argv[skip_newline++]))
-		i++;
-	while (argv[++i])
+	n_proces = 0;
+	while (str[i] != '\0')
 	{
-		if (i != skip_newline - 1)
-			printf(" ");
-		printf("%s", argv[i]);
+		if (str[i] == '|')
+			n_proces++;
+		i++;
 	}
-	if (!n_flag(argv[1]))
-		printf("\n");
-	return (0);
+	n_proces += 1;
+	all->num_process = n_proces;
 }

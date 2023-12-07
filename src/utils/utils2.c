@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/11/18 16:33:28 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 18:36:58 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,49 @@ int	is_rd(int type)
 	return (0);
 }
 
-void	count_process(t_all *all, char *str)
+int	verify_rep_value(t_env *env, const char *str)
 {
-	int	i;
-	int	n_proces;
+	int 	i;
+	char 	*str_aux;
+	char 	*aux;
+	t_env	*node_iter;
 
-	i = 0;
-	n_proces = 0;
-	while (str[i] != '\0')
+	i = -1;
+	node_iter = env;
+	str_aux = ft_strdup(str);
+	aux = NULL;
+	if (str_aux == NULL)
+		return (-1);
+	while (node_iter)
 	{
-		if (str[i] == '|')
-			n_proces++;
-		i++;
+		if (!ft_strcmp(node_iter->key, str_aux))
+		{
+			free(str_aux);
+			return (1);
+		}
+		node_iter = node_iter->next;
 	}
-	n_proces += 1;
-	all->num_process = n_proces;
+	free(str_aux);
+	return (0);
+}
+
+char	*split_env(char *str)//entenc que es per l'expansor
+{
+	int		j;
+	char	**sep;
+	char	*value;
+
+	sep = ft_split(str, '=');
+	if (sep != NULL)
+	{
+		value = ft_strdup(sep[1]);
+		j = -1;
+		while (sep[++j] != NULL)
+			free(sep[j]);
+		free(sep);
+		return (value);
+	}
+	return (NULL);
 }
 
 int ft_arr_len(void **ptr)
@@ -43,3 +71,4 @@ int ft_arr_len(void **ptr)
         i++;
     return (i);
 }
+

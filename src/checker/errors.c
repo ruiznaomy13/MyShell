@@ -6,16 +6,18 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/10/04 15:43:48 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:11:37 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	ft_error(int error)
+int	ft_error(t_all *all, int error, char *msj)
 {
-	if (error == '\'' || error == '\"')
-		printf("syntax error near unexpected token %c\n", error);
-	else if (error == 5)
-		printf("syntax error near unexpected token `newline'\n");
+	if (error == SYNTAX_ERROR)
+		printf("syntax error near unexpected token %s\n", msj);
+	else if (error == CMD_NOT_FOUND)
+		printf("myShell🌞> %s: command not found\n", msj);
+	all->error = error;
+	return (error);
 }

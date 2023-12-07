@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 12:33:38 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:08:36 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,10 @@ void	parser(t_all *all)
 
 	i = 0;
 	count_process(all, all->line);
+	printf("num processs %i\n", all->num_process);
 	create_process(all);
 	if (check_heredoc(all) != 0)
 	{
-		printf("numero de proces %i\n", check_heredoc(all));
 		i = check_heredoc(all);
 		save_hd_fd(all->prcs, i);
 	}

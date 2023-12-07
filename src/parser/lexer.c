@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/02 17:05:07 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:41:54 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	loop(t_all *all)
 		}
 		if (!lexer(all))
 			continue ;
-		//printf("abans built env");
+		//on esta built env
 		//built_env(all);
 		if (!checker(all))
 		{
@@ -34,9 +34,10 @@ void	loop(t_all *all)
 			continue ;
 		}
 		parser(all);
-		//funcio chose builtings o executor
-		//executor_builting(all, all->prcs);
-		executor(all);
+		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
+			executor_builting(all, all->prcs);
+		else
+			executor(all);
 		ft_free(all);
 		//printf ("\n");
 	}

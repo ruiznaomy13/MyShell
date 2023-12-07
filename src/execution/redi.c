@@ -30,7 +30,7 @@ void	open_outfile(t_process *prcs, int fd_pipe[2])
 	close(prcs->rd->open);
 }
 
-void apendd(t_process *prcs, int fd_pipe[2])
+void	apendd(t_process *prcs, int fd_pipe[2])
 {
 	prcs->rd->open = open(prcs->rd->wrd, O_WRONLY | O_APPEND | O_CREAT, 0666);
 	dup2(prcs->rd->open, STDOUT_FILENO);
@@ -42,8 +42,6 @@ void	here_doc(t_process *prcs, int fd_pipe[2])
 {
 	dup2(prcs->fd_read_hd, STDIN_FILENO);
 	close(prcs->fd_read_hd);
-
-	// close(fd_pipe[1]);
 	dup2(fd_pipe[0], STDIN_FILENO);
 	close(fd_pipe[0]);
 }

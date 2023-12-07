@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 18:04:27 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 18:59:07 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		close(fd_pipe[0]);
 		dup2(fd_pipe[1], STDOUT_FILENO);
 	}
-	if (is_builting(prcs->args[0]))
-		executor_builting(all, all->prcs);
 	if (prcs->rd)
 	{
 		while (prcs->rd)
@@ -70,7 +68,9 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	prcs->ruta = get_ruta(all);
 	if (!prcs->ruta)
 		exit(127);
-	if (execve(prcs->ruta, prcs->args, all->env) == -1)
+	if (is_builting(prcs->args[0]))
+		executor_builting(all, all->prcs);
+	else if (execve(prcs->ruta, prcs->args, all->env) == -1)
 		exit(127);
 	exit(0);
 }

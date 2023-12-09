@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/09 11:44:17 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:10:00 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		}
 	}
 	if (find_routes(all, all->prcs) == 1)
-		exit(127);
+		ft_error(all, 2, prcs->args[0]);
 	prcs->ruta = get_ruta(all);
 	if (!prcs->ruta)
-		exit(127);
+		ft_error(all, 2, prcs->args[0]);
 	if (execve(prcs->ruta, prcs->args, all->env) == -1)
-		exit(127);
+		exit(all, CMD_NOT_FOUND, prcs->args[0]);
 	exit(0);
 }
 

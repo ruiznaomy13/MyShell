@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 18:50:52 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:15:35 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,24 @@ void	loop(t_all *all)
 		add_history(all->line);
 		if (check_cometes(all, all->line) > 30)
 		{
-			ft_free(all);
+			ft_free_all(all);
 			continue ;
 		}
 		if (lexer(all))
 			continue ;
 		if (checker(all))
 		{
-			ft_free(all);
+			ft_free_all(all);
 			continue ;
 		}
-		ft_putstr_fd("HOLA FD\n", 2);
-		// ft_dprintf("Hola %s\n", "Naomy");
+		ft_dprintf("Hola %s\n", "Naomy");
 		parser(all);
 		ft_dprintf("errorrr\n");
 		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
 			executor_builting(all, all->prcs);
 		else
 			executor(all);
-		ft_free(all);
+		ft_free_all(all);
 	}
 }
 

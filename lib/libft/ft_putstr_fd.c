@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:30:38 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 17:18:56 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:16:15 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_putstr_fd(char *s, int fd)
 	i = 0;
 	while (s[i])
 	{
-		write(fd, "prueba\n", 7);
 		write(fd, &s[i], 1);
 		i++;
 	}

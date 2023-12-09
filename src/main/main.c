@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/03 15:55:53 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:11:47 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av, char **env)
 	all.env = duplicate_env(env);
 	list_env(&all, env);
 	loop(&all);
+	// ft_free_all(&all);
 	return (0);
 }
 
@@ -86,7 +87,7 @@ void	mostra_process(t_all *all)
 }
 
 
-void	ft_free(t_all *all)
+void	ft_free_all(t_all *all)
 {
 	t_token		*tkn;
 	t_token		*rd;

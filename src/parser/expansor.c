@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/04 18:09:47 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/07 18:39:25 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,9 @@ char	*expand_var(t_all *all, t_token *tkn)
 	char	*str;
 	char	*aux;
 
-	i = 0;
-	flag = 0;
 	aux = "";
 	str = ft_strdup(tkn->wrd);
+	((0) || (i = 0) || (flag = 0));
 	while (str[i])
 	{
 		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
@@ -108,6 +107,7 @@ char	*expand_var(t_all *all, t_token *tkn)
 			aux = ft_charjoin2(aux, str[i]);
 		i++;
 	}
+	printf(" EXPAND VAR -> %s\n", aux);
 	free(str);
 	return (aux);
 }

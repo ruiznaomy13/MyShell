@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 18:57:03 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:11:34 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 
 /* ------------------------MAIN----------------------- */
-void	ft_free(t_all *all);
+void	ft_free_all(t_all *all);
 
 // MOSTRA EL NODE >>>>>> DELETE
 void	mostra_tokens(t_all *all);

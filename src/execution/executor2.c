@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 18:37:25 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/09 16:32:28 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	is_builting(char *cmd)
 
 void	executor_builting(t_all *all, t_process *process)
 {
-	printf("builting\n");
 	if (process->args && is_builting(process->args[0]))
 		exec_builting(all, process);
 }

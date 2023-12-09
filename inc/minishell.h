@@ -6,7 +6,11 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/12/09 15:18:32 by mmonpeat         ###   ########.fr       */
+=======
+/*   Updated: 2023/12/09 16:22:30 by mmonpeat         ###   ########.fr       */
+>>>>>>> mmonpeat
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +27,16 @@
 # include "../lib/libft/libft.h"
 # include "structs.h"
 # include <limits.h>
-
+# include <signal.h>
 
 /* ------------------------MAIN----------------------- */
-void	ft_free_all(t_all *all);
+void	ft_free(t_all *all);
+void	clean_av(char *nom);
 
-//signals.c
+//senyals.c
 void	signals(void);
 void	ft_sig_ctr_c(int sig);
+void	sigint_handler(int signo);
 
 // MOSTRA EL NODE >>>>>> DELETE
 void	mostra_tokens(t_all *all);
@@ -56,7 +62,7 @@ char	*search_env(char *str, t_env *env);
 char	*expand_var(t_all *all, t_token *tkn);
 
 // lexer.c
-void	loop(t_all *all);
+void	loop(t_all *all, char *nom);
 int		lexer(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);

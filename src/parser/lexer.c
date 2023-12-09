@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 19:15:35 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/09 16:32:16 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/minishell.h"
+#include "minishell.h"
 
-void	loop(t_all *all)
+void	loop(t_all *all, char *nom)
 {
 	while (42)
 	{
-		all->line = readline("myshell🌞> ");
+		// printf("%s", nom);
+		all->line = readline("miniShell🌞> ");
 		if (!all->line)
 			return ;
 		add_history(all->line);
@@ -34,7 +35,6 @@ void	loop(t_all *all)
 		}
 		ft_dprintf("Hola %s\n", "Naomy");
 		parser(all);
-		ft_dprintf("errorrr\n");
 		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
 			executor_builting(all, all->prcs);
 		else

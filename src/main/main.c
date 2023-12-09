@@ -6,24 +6,34 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/09 15:19:19 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/09 16:32:34 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/minishell.h"
+#include "minishell.h"
 
 int	main(int ac, char **av, char **env)
 {
 	t_all		all;
+	char		*nom;
 
 	(void)ac;
-	printf("av:%s\n", av[0]);
+	(void)av;
+	// nom = "";
+	// nom = ft_strdup(av[0]);
+	// clean_av(nom);
 	signals();
 	ft_bzero(&all, sizeof(t_all));
 	all.env = duplicate_env(env);
 	list_env(&all, env);
-	loop(&all);
+	loop(&all, nom);
 	return (0);
+}
+
+void	clean_av(char *nom)
+{
+	if (strncmp(nom, "./", 2) == 0)
+		ft_memmove(nom, nom + 2, ft_strlen(nom) - 1);
 }
 
 void	mostra_tokens(t_all *all)

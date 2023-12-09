@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 18:04:27 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/09 11:44:17 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,17 +114,17 @@ void	wait_pipes(t_all *all, int num_process, pid_t pid)
 	{
 		if (pid == waitpid(-1, &status, 0))
 		{
-			return ;
 			if (WIFEXITED(status))
-				ft_error(all, WEXITSTATUS(status), "aaa ns");
+				ft_error(all, WEXITSTATUS(status), "Program exit");
 			else if (WIFSIGNALED(status))
 			{
 				if (WTERMSIG(status) == SIGINT)
-					ft_error(all, 130, "aaa ns2");
+					ft_error(all, 130, "Interrupted");
 				else if (WTERMSIG(status) == SIGQUIT)
-					(1 && (ft_error(all, 131, "aaa ns")) \
-						&& (printf("Quit: 3\n")));
+					(1 && (ft_error(all, 131, "Quit")) \
+						&& (ft_dprintf("Quit: 3\n")));
 			}
+			return ;
 		}
 	}
 }

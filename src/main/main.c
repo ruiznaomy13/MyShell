@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 19:11:47 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:19:19 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ int	main(int ac, char **av, char **env)
 	t_all		all;
 
 	(void)ac;
-	(void)av;
-	// signals();
+	printf("av:%s\n", av[0]);
+	signals();
 	ft_bzero(&all, sizeof(t_all));
 	all.env = duplicate_env(env);
 	list_env(&all, env);
 	loop(&all);
-	// ft_free_all(&all);
 	return (0);
 }
 

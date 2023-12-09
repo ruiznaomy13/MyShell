@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/09 16:32:16 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/09 16:33:30 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	loop(t_all *all, char *nom)
 			ft_free_all(all);
 			continue ;
 		}
-		ft_dprintf("Hola %s\n", "Naomy");
 		parser(all);
 		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
 			executor_builting(all, all->prcs);

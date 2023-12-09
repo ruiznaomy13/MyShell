@@ -6,17 +6,18 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 18:37:17 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/09 16:30:40 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/minishell.h"
+#include "minishell.h"
 
-void	loop(t_all *all)
+void	loop(t_all *all, char *nom)
 {
 	while (42)
 	{
-		all->line = readline("myshell🌞> ");
+		// printf("%s", nom);
+		all->line = readline("miniShell🌞> ");
 		if (!all->line)
 			return ;
 		add_history(all->line);
@@ -33,12 +34,8 @@ void	loop(t_all *all)
 			continue ;
 		}
 		parser(all);
-		ft_dprintf("errorrr\n");
 		if ((all->num_process == 1) && is_builting(all->prcs->args[0]))
-		{
-			printf("entra 1\n");
 			executor_builting(all, all->prcs);
-		}
 		else
 			executor(all);
 		ft_free(all);

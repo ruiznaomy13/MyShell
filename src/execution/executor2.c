@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 15:17:39 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:48:36 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	is_builting(char *cmd)
 
 void	executor_builting(t_all *all, t_process *process)
 {
-	printf("builting\n");
 	if (process->args && is_builting(process->args[0]))
 		exec_builting(all, process);
 }

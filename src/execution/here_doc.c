@@ -19,10 +19,10 @@ void	save_hd_fd(t_process *prcs, int i)
 	int		poss;
 
 	line = NULL;
-	poss = 1;
+	poss = 0;
 	if (pipe(fd) == -1)
 		exit(1);
-	while (poss++ < i)
+	while (++poss < i)
 		prcs = prcs->next;
 	init_signals(HEREDOC);
 	do_sigign(SIGQUIT);

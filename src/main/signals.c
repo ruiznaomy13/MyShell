@@ -6,50 +6,95 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:08:09 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/09 16:32:40 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:54:01 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	signals(void)
+int	init_signals(int mode)
 {
-	// struct sigaction	sa;
+	struct sigaction	signal;
 
-	// Configura el gestor de senyals per SIGQUIT per ignorar-lo
-	signal(SIGQUIT, SIG_IGN);
-	// Configura el gestor de senyals per SIGINT amb la funció ft_sig_ctr_c
-	signal(SIGINT, ft_sig_ctr_c);
-
-	// Configura el gestor de senyals per SIGINT amb la funció sigint_handler
-	// sa.sa_handler = sigint_handler;
-	// sa.sa_flags = SA_RESTART;
-	// sigemptyset(&sa.sa_mask);
-	// sigaction(SIGINT, &sa, NULL);
+	do_sigign(SIGINT);
+    do_sigign(SIGQUIT);
+	signal.sa_flags = SA_RESTART;
+	sigemptyset(&signal.sa_mask);
+	if (mode == NORM)
+		signal.sa_sigaction = norm_handler;
+	else if (mode == N_INTERACT)
+		signal.sa_sigaction = ninter_handler;
+	else if (mode == HEREDOC)
+		signal.sa_sigaction = heredoc_handler;
+	sigaction(SIGINT, &signal, NULL);
+	sigaction(SIGQUIT, &signal, NULL);
+	return (0);
 }
 
-void	signals(void)
+void	do_sigign(int signum)
 {
-	rl_catch_signals = 0;
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, ft_sig_ctr_c);
+	struct sigaction	signal;
+
+	signal.sa_handler = SIG_IGN;
+	signal.sa_flags = SA_RESTART;
+	sigemptyset(&signal.sa_mask);
+	if (sigaction(signum, &signal, NULL) < 0)
+		exit (1);
 }
 
-void	ft_sig_ctr_c(int sig)
+void	norm_handler(int sig, siginfo_t *data, void *non_used_data)
 {
+	(void) data;
+	(void) non_used_data;
 	if (sig == SIGINT)
 	{
 		printf("\n");
+		rl_replace_line("", 1);
 		rl_on_new_line();
-		rl_replace_line("", 0);
 		rl_redisplay();
+		g_sig = 1;
 	}
+	return ;
 }
 
-// void	sigint_handler(int signo)
+void	ninter_handler(int sig, siginfo_t *data, void *non_used_data)
+{
+	(void) data;
+	(void) non_used_data;
+	if (sig == SIGINT)
+	{
+		g_sig = 130;
+		exit(130);
+	}
+	else if (sig == SIGQUIT)
+	{
+		g_sig = 131;
+		exit(130);
+	}
+	return ;
+}
+
+void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data)
+{
+	(void) data;
+	(void) non_used_data;
+	if (sig == SIGINT)
+	{
+		g_sig = 1;
+		printf("\nHeredoc Ctrl+C caught\n");
+		rl_replace_line("", 1);
+		rl_on_new_line();
+		rl_redisplay();
+		printf("\n");
+		exit(1);
+	}
+	return ;
+}
+
+
+// void	signals(void)
 // {
-// 	(void)signo;
-// 	// Handler per SIGINT (Ctrl-C o Ctrl-D)
-// 	printf("Fi de l'entrada (Ctrl-D detectat).\n");
-// 	exit(0);
+// 	rl_catch_signals = 0;
+// 	signal(SIGQUIT, SIG_IGN);
+// 	signal(SIGINT, ft_sig_ctr_c);
 // }

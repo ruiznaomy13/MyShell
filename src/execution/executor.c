@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/09 14:54:00 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:27:12 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	executor(t_all *all)
 	if (all->prcs == NULL)
 		return ;
 	dup_apunta_terminal(fd_trm);
+	init_signals(N_INTERACT);
 	while (all->prcs && all->num_process > i++)
 	{
 		init_pipes(fd_pipe);
@@ -50,6 +51,7 @@ void	aux_executor(t_all *all, pid_t pid, int fd_trm[2])
 
 void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 {
+
 	if (fd_pipe[0] != -1)
 	{
 		close(fd_pipe[0]);
@@ -81,7 +83,7 @@ char	*get_ruta(t_all *all)
 
 	path = all->prcs->routes;
 	if (!path)
-		printf("ERROR, no existeix all->prcs->routes\n");
+		ft_error(all, 2, all->prcs->args[0]);
 	while (*path)
 	{
 		tmp = ft_strjoin(*path, "/");

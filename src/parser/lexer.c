@@ -6,20 +6,23 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/09 16:33:30 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:46:28 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	loop(t_all *all, char *nom)
+void	loop(t_all *all)
 {
 	while (42)
 	{
-		// printf("%s", nom);
-		all->line = readline("miniShell🌞> ");
-		if (!all->line)
-			return ;
+		g_sig = 0;
+		init_signals(NORM);
+		do_sigign(SIGQUIT);
+		all->line = readline("myShell🌞> ");
+		do_sigign(SIGINT);
+		// if (!all->line)
+		// 	return ;
 		add_history(all->line);
 		if (check_cometes(all, all->line) > 30)
 		{

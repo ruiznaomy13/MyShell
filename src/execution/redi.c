@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:37:49 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 18:37:51 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:02:37 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2])
 		here_doc(all->prcs, fd_pipe);
 	else if (prcs->rd->type == RDAP)
 		apendd(all->prcs, fd_pipe);
-	else
-		printf("hi ha redi pero ninguna del type que volem, so s'ha de mirar\n");
 }
 
 void	open_infile(t_process *prcs, int fd_pipe[2])

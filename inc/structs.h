@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:53:25 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 16:36:51 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/10 12:39:05 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@
 
 # define CMD_NOT_FOUND 127
 # define SYNTAX_ERROR 258
+
+# define NORM		1
+# define N_INTERACT	2
+# define HEREDOC	3
+
+//Ctrl C
+# define UNSET	0
+# define SET	1
+
+//variable global
+int				g_sig;
 
 typedef struct s_env
 {

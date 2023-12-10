@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/09 16:32:34 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/10 12:57:24 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,38 @@
 int	main(int ac, char **av, char **env)
 {
 	t_all		all;
-	char		*nom;
+	// char		*nom;
 
 	(void)ac;
 	(void)av;
+	g_sig = 0;
 	// nom = "";
 	// nom = ft_strdup(av[0]);
 	// clean_av(nom);
-	signals();
+	// signals();
 	ft_bzero(&all, sizeof(t_all));
 	all.env = duplicate_env(env);
 	list_env(&all, env);
-	loop(&all, nom);
+	loop(&all);
 	return (0);
 }
 
-void	clean_av(char *nom)
-{
-	if (strncmp(nom, "./", 2) == 0)
-		ft_memmove(nom, nom + 2, ft_strlen(nom) - 1);
-}
+// void	ft_sig_ctr_c(int sig)
+// {
+// 	if (sig == SIGINT)
+// 	{
+// 		printf("\n");
+// 		rl_on_new_line();
+// 		rl_replace_line("", 0);
+// 		rl_redisplay();
+// 	}
+// }
+
+// void	clean_av(char *nom)
+// {
+// 	if (strncmp(nom, "./", 2) == 0)
+// 		ft_memmove(nom, nom + 2, ft_strlen(nom) - 1);
+// }
 
 void	mostra_tokens(t_all *all)
 {

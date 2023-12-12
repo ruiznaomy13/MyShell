@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 21:04:17 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/09 17:21:01 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,17 @@
 # include "../lib/libft/libft.h"
 # include "structs.h"
 # include <limits.h>
-
+#include <signal.h>
 
 /* ------------------------MAIN----------------------- */
 void	ft_free_all(t_all *all);
+
+// Signals
+// void	signals(void);
+void	signals(int i);
+void	sig_handler(void (*handler)(int));
+void	sig_input(int signal);
+void	sig_exec(int signal);
 
 // MOSTRA EL NODE >>>>>> DELETE
 void	mostra_tokens(t_all *all);

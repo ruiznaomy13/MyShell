@@ -6,26 +6,55 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:08:09 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 18:37:15 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/09 17:21:04 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	ft_sig_ctr_c(int sig)
+// void	ft_sig_ctr_c(int sig)
+// {
+// 	if (sig == SIGINT)
+// 	{
+// 		printf("\n");
+// 		rl_on_new_line();
+// 		rl_replace_line("",0);
+// 		rl_redisplay();
+// 	}
+// }
+
+// void	signals(void)
+// {
+// 	rl_catch_signals = 0;
+// 	signal(SIGQUIT, SIG_IGN);
+// 	signal(SIGINT, ft_sig_ctr_c);
+// }
+
+void	sig_input(int signal)
 {
-	if (sig == SIGINT)
+	if (signal == SIGINT)
 	{
-		printf("\n");
+		write(STDOUT_FILENO, "\n", 1);
+		rl_replace_line("", 1);
 		rl_on_new_line();
-		rl_replace_line("",0);
 		rl_redisplay();
 	}
 }
 
-void	signals(void)
+// does nothing. The builtin functionality already handles this case
+// by propagating the signal down
+void	sig_exec(int signal)
 {
-	rl_catch_signals = 0;
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, ft_sig_ctr_c);
+	(void)signal;
+}
+
+void	sig_handler(void (handler)(int))
+{
+	struct sigaction	sa;
+
+	ft_memset(&sa, 0, sizeof(sa));
+	sa.sa_handler = handler;
+	sa.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &sa, NULL);
+	sigaction(SIGQUIT, &sa, NULL);
 }

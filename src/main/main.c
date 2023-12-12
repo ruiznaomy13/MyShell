@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 21:02:04 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/09 17:19:03 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	// signals();
+	sig_handler(sig_input);
 	ft_bzero(&all, sizeof(t_all));
 	list_env(&all, env);
 	loop(&all);

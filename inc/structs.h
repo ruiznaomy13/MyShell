@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:53:25 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/12 13:49:05 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:45:47 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@
 # define ERROR 	-1
 # define E_EXIT  1
 
-# define CMD_NOT_FOUND 127
-# define SYNTAX_ERROR 258
+# define CMD_NOT_FOUND	127
+# define SYNTAX_ERROR	258
+# define ACCESS_ERROR	1
 
 # define NORM		1
 # define N_INTERACT	2

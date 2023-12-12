@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   redi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:37:49 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/10 13:02:37 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:40:24 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2])
+void	
+redi_type(t_all *all, t_process *prcs, int fd_pipe[2])
 {
 	if (prcs->rd->type == RDIN)
 		open_infile(all->prcs, fd_pipe);

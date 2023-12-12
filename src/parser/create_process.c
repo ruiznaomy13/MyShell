@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/12 13:45:09 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:27:39 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	create_process(t_all *all)
 		rm_prev_tkns(all);
 		add_prcs(all, pcs);
 	}
-	mostra_process(all);
+	// mostra_process(all);
 }
 
 int	check_heredoc(t_all *all)
@@ -74,8 +74,12 @@ int	check_heredoc(t_all *all)
 		{
 			while (prcs->rd != NULL)
 			{
+				printf("REDIS %s == %d\n", prcs->rd->wrd, prcs->rd->type);
 				if (prcs->rd->type == RDHD)
+				{
+					printf("SOY HEREDOC\n");
 					return (i);
+				}
 				prcs->rd = prcs->rd->next;
 			}
 		}
@@ -92,7 +96,7 @@ void	parser(t_all *all)
 	i = 0;
 	count_process(all, all->line);
 	create_process(all);
-	if (check_heredoc(all) != 0)
+	if (check_heredoc(all))
 	{
 		i = check_heredoc(all);
 		save_hd_fd(all->prcs, i);

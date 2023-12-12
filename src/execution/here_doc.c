@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/10 13:14:33 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:20:49 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	save_hd_fd(t_process *prcs, int i)
 	do_sigign(SIGQUIT);
 	while (1)
 	{
-		if (g_sig == 1) {
+		if (g_sig == 1)
+		{
             // Handle heredoc interruption
             printf("Heredoc interrupted\n");
             break;

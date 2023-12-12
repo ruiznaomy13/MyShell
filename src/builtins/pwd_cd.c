@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 20:02:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/12 19:10:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,21 @@ int	ft_cd(t_process *pcs, t_all *all)
 	aux = getcwd(NULL, 0);
 	new_pwd = "PWD ->";
 	if (pcs->args[1][0] != '/')
-		chdir(ft_strjoin(ft_charjoin(aux, '/'), pcs->args[1]));
+	{
+		if (chdir(ft_strjoin(ft_charjoin(aux, '/'), pcs->args[1])) == -1)
+			ft_error(all, ACCESS_ERROR, "There was a problem accessing the directory");
+	}
 	else if (!ft_strcmp(pcs->args[1], ".."))
-		chdir(strrcut(pcs->args[1], '/'));
+	{
+		if (chdir(strrcut(pcs->args[1], '/')) == -1)
+			ft_error(all, ACCESS_ERROR, "There was a problem accessing the directory");
+	}
 	else
-		chdir(pcs->args[1]);
+	{
+		if(chdir(pcs->args[1]) == -1)
+			ft_error(all, ACCESS_ERROR, "There was a problem accessing the directory");
+	}
 	delete_env_var(&all->w_env, "PWD");
-	printf("NEW PWD = %s\n", ft_strjoin(new_pwd, getcwd(NULL, 0)));
 	save_var_env(ft_strjoin(new_pwd, getcwd(NULL, 0)), all);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/10 13:27:12 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:19:52 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	}
 	if (prcs->rd)
 	{
+		// printf("(child) entro aqui\n");
 		while (prcs->rd)
 		{
 			redi_type(all, all->prcs, fd_pipe);
@@ -70,7 +71,9 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	prcs->ruta = get_ruta(all);
 	if (!prcs->ruta)
 		ft_error(all, 2, prcs->args[0]);
-	if (execve(prcs->ruta, prcs->args, all->env) == -1)
+	if (prcs->args && is_builting(prcs->args[0]))
+		exec_builting(all, prcs);
+	else if (execve(prcs->ruta, prcs->args, all->env) == -1)
 		ft_error(all, CMD_NOT_FOUND, prcs->args[0]);
 	exit(0);
 }

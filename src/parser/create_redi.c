@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_redi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:00:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/11/24 19:00:58 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:22:24 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	list_redirection(t_process *pcs, t_all *all)
 	{
 		if (is_rd(aux->type))
 		{
+			// printf("REDIRECTION TYPE(list_redi) >> %d\n", aux->type);
 			rd = (t_token *)ft_calloc(sizeof(t_token), 1);
 			if (!rd)
 				return ;

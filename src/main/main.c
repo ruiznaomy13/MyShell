@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/12 13:27:13 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:00:42 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	ft_free_all(t_all *all)
 		free(tkn);
 	}
 
-	printf("Free hecho.\n");
+	// printf("Free hecho.\n");
 }
 
 // void	free_prcs(t_all *all)

@@ -6,11 +6,11 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/09 17:19:03 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:27:13 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/minishell.h"
+#include "minishell.h"
 
 int	main(int ac, char **av, char **env)
 {
@@ -18,13 +18,29 @@ int	main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
+	g_sig = 0;
 	// signals();
-	sig_handler(sig_input);
+	// sig_handler(sig_input);
 	ft_bzero(&all, sizeof(t_all));
 	list_env(&all, env);
 	loop(&all);
-	// ft_free_all(&all);
 	return (0);
+}
+
+char	*save_name(char *str)
+{
+	size_t	len;
+	
+	if (!str)
+		return NULL;
+	len = strlen(str);
+	char *name = (char *)malloc((len + 2) * sizeof(char));
+	if (!name)
+		return (NULL);
+	strcpy(name, str);
+	name[len] = '>';
+	name[++len] = '\0';
+	return (name);
 }
 
 void	mostra_tokens(t_all *all)
@@ -32,7 +48,7 @@ void	mostra_tokens(t_all *all)
 	int			i;
 	t_token		*aux;
 
-	i = 1;
+	i = 1;	
 	aux = all->token;
 	while (aux != NULL)
 	{

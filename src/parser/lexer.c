@@ -6,17 +6,21 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 21:07:59 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:48:08 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/minishell.h"
+#include "minishell.h"
 
 void	loop(t_all *all)
 {
 	while (42)
 	{
-		all->line = readline("myshell🌞> ");
+		g_sig = 0;
+		// init_signals(NORM);
+		// do_sigign(SIGQUIT);
+		all->line = readline(CYAN"myShell🌞> "WHITE);
+		// do_sigign(SIGINT);
 		if (!all->line)
 			return ;
 		add_history(all->line);

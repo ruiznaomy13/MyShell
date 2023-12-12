@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/07 18:59:07 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/10 13:27:12 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	executor(t_all *all)
 	if (all->prcs == NULL)
 		return ;
 	dup_apunta_terminal(fd_trm);
+	init_signals(N_INTERACT);
 	while (all->prcs && all->num_process > i++)
 	{
 		init_pipes(fd_pipe);
@@ -50,6 +51,7 @@ void	aux_executor(t_all *all, pid_t pid, int fd_trm[2])
 
 void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 {
+
 	if (fd_pipe[0] != -1)
 	{
 		close(fd_pipe[0]);
@@ -64,14 +66,12 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		}
 	}
 	if (find_routes(all, all->prcs) == 1)
-		exit(127);
+		ft_error(all, 2, prcs->args[0]);
 	prcs->ruta = get_ruta(all);
 	if (!prcs->ruta)
-		exit(127);
-	if (is_builting(prcs->args[0]))
-		executor_builting(all, all->prcs);
-	else if (execve(prcs->ruta, prcs->args, all->env) == -1)
-		exit(127);
+		ft_error(all, 2, prcs->args[0]);
+	if (execve(prcs->ruta, prcs->args, all->env) == -1)
+		ft_error(all, CMD_NOT_FOUND, prcs->args[0]);
 	exit(0);
 }
 
@@ -83,7 +83,7 @@ char	*get_ruta(t_all *all)
 
 	path = all->prcs->routes;
 	if (!path)
-		printf("ERROR, no existeix all->prcs->routes\n");
+		ft_error(all, 2, all->prcs->args[0]);
 	while (*path)
 	{
 		tmp = ft_strjoin(*path, "/");
@@ -114,17 +114,17 @@ void	wait_pipes(t_all *all, int num_process, pid_t pid)
 	{
 		if (pid == waitpid(-1, &status, 0))
 		{
-			return ;
 			if (WIFEXITED(status))
-				ft_error(all, WEXITSTATUS(status), "aaa ns");
+				ft_error(all, WEXITSTATUS(status), "Program exit");
 			else if (WIFSIGNALED(status))
 			{
 				if (WTERMSIG(status) == SIGINT)
-					ft_error(all, 130, "aaa ns2");
+					ft_error(all, 130, "Interrupted");
 				else if (WTERMSIG(status) == SIGQUIT)
-					(1 && (ft_error(all, 131, "aaa ns")) \
-						&& (printf("Quit: 3\n")));
+					(1 && (ft_error(all, 131, "Quit")) \
+						&& (ft_dprintf("Quit: 3\n")));
 			}
+			return ;
 		}
 	}
 }

@@ -6,22 +6,91 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:08:09 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/09 17:21:04 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:23:11 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/minishell.h"
+#include "minishell.h"
 
-// void	ft_sig_ctr_c(int sig)
-// {
-// 	if (sig == SIGINT)
-// 	{
-// 		printf("\n");
-// 		rl_on_new_line();
-// 		rl_replace_line("",0);
-// 		rl_redisplay();
-// 	}
-// }
+int	init_signals(int mode)
+{
+	struct sigaction	signal;
+
+	do_sigign(SIGINT);
+    do_sigign(SIGQUIT);
+	signal.sa_flags = SA_RESTART;
+	sigemptyset(&signal.sa_mask);
+	if (mode == NORM)
+		signal.sa_sigaction = norm_handler;
+	else if (mode == N_INTERACT)
+		signal.sa_sigaction = ninter_handler;
+	else if (mode == HEREDOC)
+		signal.sa_sigaction = heredoc_handler;
+	sigaction(SIGINT, &signal, NULL);
+	sigaction(SIGQUIT, &signal, NULL);
+	return (0);
+}
+
+void	do_sigign(int signum)
+{
+	struct sigaction	signal;
+
+	signal.sa_handler = SIG_IGN;
+	signal.sa_flags = SA_RESTART;
+	sigemptyset(&signal.sa_mask);
+	if (sigaction(signum, &signal, NULL) < 0)
+		exit (1);
+}
+
+void	norm_handler(int sig, siginfo_t *data, void *non_used_data)
+{
+	(void) data;
+	(void) non_used_data;
+	if (sig == SIGINT)
+	{
+		printf("\n");
+		rl_replace_line("", 1);
+		rl_on_new_line();
+		rl_redisplay();
+		g_sig = 1;
+	}
+	return ;
+}
+
+void	ninter_handler(int sig, siginfo_t *data, void *non_used_data)
+{
+	(void) data;
+	(void) non_used_data;
+	if (sig == SIGINT)
+	{
+		g_sig = 130;
+		exit(130);
+	}
+	else if (sig == SIGQUIT)
+	{
+		g_sig = 131;
+		exit(130);
+	}
+	return ;
+}
+
+void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data)
+{
+	(void) data;
+	(void) non_used_data;
+	if (sig == SIGINT)
+	{
+		g_sig = 1;
+		printf("\nHeredoc Ctrl+C caught\n");
+		rl_replace_line("", 1);
+		rl_on_new_line();
+		rl_redisplay();
+		printf("\n");
+		exit(1);
+	}
+	return ;
+}
+
 
 // void	signals(void)
 // {
@@ -29,32 +98,3 @@
 // 	signal(SIGQUIT, SIG_IGN);
 // 	signal(SIGINT, ft_sig_ctr_c);
 // }
-
-void	sig_input(int signal)
-{
-	if (signal == SIGINT)
-	{
-		write(STDOUT_FILENO, "\n", 1);
-		rl_replace_line("", 1);
-		rl_on_new_line();
-		rl_redisplay();
-	}
-}
-
-// does nothing. The builtin functionality already handles this case
-// by propagating the signal down
-void	sig_exec(int signal)
-{
-	(void)signal;
-}
-
-void	sig_handler(void (handler)(int))
-{
-	struct sigaction	sa;
-
-	ft_memset(&sa, 0, sizeof(sa));
-	sa.sa_handler = handler;
-	sa.sa_flags = SA_RESTART;
-	sigaction(SIGINT, &sa, NULL);
-	sigaction(SIGQUIT, &sa, NULL);
-}

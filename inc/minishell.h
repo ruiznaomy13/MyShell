@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/09 17:21:01 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/12 13:27:22 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,23 @@
 # include "../lib/libft/libft.h"
 # include "structs.h"
 # include <limits.h>
-#include <signal.h>
+# include <signal.h>
+// # include <term.h>
 
 /* ------------------------MAIN----------------------- */
 void	ft_free_all(t_all *all);
+char	*save_name(char *str);
+// void	ctrl_c(int mode);
+// void	ft_sig_ctr_c(int sig);
+// void	clean_av(char *nom);
+
+//senyals.c
+// void	signals(void);
+int		init_signals(int mode);
+void	do_sigign(int signum);
+void	norm_handler(int sig, siginfo_t *data, void *non_used_data);
+void	ninter_handler(int sig, siginfo_t *data, void *non_used_data);
+void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data);
 
 // Signals
 // void	signals(void);

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/14 15:59:43 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:38:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	}
 	if (prcs->rd)
 	{
-		// printf("(child) entro aqui\n");
 		while (prcs->rd)
 		{
 			redi_type(all, all->prcs, fd_pipe);
@@ -67,14 +66,14 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		}
 	}
 	if (find_routes(all, all->prcs) == 1)
-		ft_error(all, 2, prcs->args[0]);
+		exit (ft_error(all, 2, prcs->args[0]));
 	prcs->ruta = get_ruta(all);
 	if (!prcs->ruta)
-		ft_error(all, 2, prcs->args[0]);
+		exit (ft_error(all, 2, prcs->args[0]));
 	if (prcs->args && is_builting(prcs->args[0]))
 		exec_builting(all, prcs);
 	else if (execve(prcs->ruta, prcs->args, all->env) == -1)
-		ft_error(all, CMD_NOT_FOUND, prcs->args[0]);
+		exit (ft_error(all, CMD_NOT_FOUND, prcs->args[0]));
 	exit(0);
 }
 
@@ -86,13 +85,13 @@ char	*get_ruta(t_all *all)
 
 	path = all->prcs->routes;
 	if (!path)
-		ft_error(all, 2, all->prcs->args[0]);
+		exit (ft_error(all, 2, all->prcs->args[0]));
 	while (*path)
 	{
 		tmp = ft_strjoin(*path, "/");
 		ruta = ft_strjoin(tmp, all->prcs->args[0]);
 		if (!ruta)
-			ft_error(all, CMD_NOT_FOUND, "No such file or directory");
+			exit (ft_error(all, CMD_NOT_FOUND, "No such file or directory"));
 		free(tmp);
 		if (access(ruta, F_OK | X_OK) == 0)
 			return (ruta);
@@ -103,7 +102,7 @@ char	*get_ruta(t_all *all)
 		&& ft_strchr(all->prcs->args[0], '/'))
 		return (all->prcs->args[0]);
 	else
-		ft_error(all, CMD_NOT_FOUND, all->prcs->args[0]);
+		exit(ft_error(all, CMD_NOT_FOUND, all->prcs->args[0]));
 	return (NULL);
 }
 

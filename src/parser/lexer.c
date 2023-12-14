@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/14 16:08:09 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:30:31 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,24 @@ int	exec_parent(t_all *all)
 	return (0);
 }
 
+int	minishell_structure(t_all *all)
+{
+	if (check_cometes(all, all->line) > 30)
+	{
+		ft_free_all(all);
+		return (1);
+	}
+	if (lexer(all))
+		return (1);
+	if (checker(all))
+	{
+		ft_free_all(all);
+		return (1);
+	}
+	parser(all);
+	return (0);
+}
+
 void	loop(t_all *all)
 {
 	while (42)
@@ -35,24 +53,12 @@ void	loop(t_all *all)
 		if (!all->line)
 			return ;
 		add_history(all->line);
-		if (check_cometes(all, all->line) > 30)
-		{
-			ft_free_all(all);
+		if (minishell_structure(all))
 			continue ;
-		}
-		if (lexer(all))
-			continue ;
-		if (checker(all))
-		{
-			ft_free_all(all);
-			continue ;
-		}
-		parser(all);
 		if (exec_parent(all))
 			executor_builting(all, all->prcs);
 		else
 			executor(all);
-		printf("\n");
 		ft_free_all(all);
 	}
 }

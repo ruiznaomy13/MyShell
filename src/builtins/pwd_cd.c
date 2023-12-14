@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/12 19:10:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:42:57 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_cd(t_process *pcs, t_all *all)
 	char	*new_pwd;
 
 	aux = getcwd(NULL, 0);
-	new_pwd = "PWD ->";
+	new_pwd = "PWD=";
 	if (pcs->args[1][0] != '/')
 	{
 		if (chdir(ft_strjoin(ft_charjoin(aux, '/'), pcs->args[1])) == -1)

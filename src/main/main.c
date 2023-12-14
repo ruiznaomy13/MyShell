@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/14 16:01:16 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:06:10 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ int	main(int ac, char **av, char **env)
 char	*save_name(char *str)
 {
 	size_t	len;
+	char	*name;
 	
 	if (!str)
-		return NULL;
+		return (NULL);
 	len = strlen(str);
-	char *name = (char *)malloc((len + 2) * sizeof(char));
+	name = (char *)malloc((len + 2) * sizeof(char));
 	if (!name)
 		return (NULL);
 	strcpy(name, str);

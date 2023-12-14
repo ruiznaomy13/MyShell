@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:37:32 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 18:37:34 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:19:56 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 int	find_routes(t_all *all, t_process *prcs)
 {
-	int	found;
+	int		found;
+	char	*path_find;
 
-	prcs->routes = ft_split(find_path(all, &found), ':');
-	if (!found)
+	found = 0;
+	path_find = find_path(all, &found);
+	if (!path_find)
 		return (1);
-	if (!prcs->routes){
+	prcs->routes = ft_split(path_find, ':');
+	if (!prcs->routes)
+	{
 		printf("error al no fer split \n");
 		return (1);
 		//return (ft_error(1, ERR_MC, NULL));
 	}
+	if (!found)
+		return (1);
 	return (0);
 }
 
@@ -39,7 +45,7 @@ char	*find_path(t_all *all, int *found)
 	}
 	while (all->env[i] && ft_strncmp(all->env[i], "PATH=", 5))
 		i++;
-	if (!all->env[i])
+	if (i > 30)
 	{
 		*found = 0;
 		return (NULL);

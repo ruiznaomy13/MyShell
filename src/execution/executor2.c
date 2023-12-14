@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/12 19:03:23 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:03:49 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ void	executor_builting(t_all *all, t_process *process)
 {
 	if (process->args && is_builting(process->args[0]))
 		exec_builting(all, process);
+	actualize_env(all);
 }

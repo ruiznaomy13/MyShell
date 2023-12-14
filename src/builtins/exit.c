@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/09 17:37:21 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:49:44 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	print_error(char *msj, int otput)
 int	exit_prog(t_all *all, int output)
 {
 	(void)all;
+	clear_history();
+	ft_free_all(all);
 	exit(all->error);
 	return (output);
 }

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/14 17:38:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:21:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,18 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 			prcs->rd = prcs->rd->next;
 		}
 	}
-	if (find_routes(all, all->prcs) == 1)
-		exit (ft_error(all, 2, prcs->args[0]));
-	prcs->ruta = get_ruta(all);
-	if (!prcs->ruta)
-		exit (ft_error(all, 2, prcs->args[0]));
 	if (prcs->args && is_builting(prcs->args[0]))
 		exec_builting(all, prcs);
-	else if (execve(prcs->ruta, prcs->args, all->env) == -1)
-		exit (ft_error(all, CMD_NOT_FOUND, prcs->args[0]));
+	else
+	{
+		if (find_routes(all, all->prcs) == 1)
+			exit (ft_error(all, 2, prcs->args[0]));
+		prcs->ruta = get_ruta(all);
+		if (!prcs->ruta)
+			exit (ft_error(all, 2, prcs->args[0]));
+		if (execve(prcs->ruta, prcs->args, all->env) == -1)
+			exit (ft_error(all, CMD_NOT_FOUND, prcs->args[0]));
+	}
 	exit(0);
 }
 

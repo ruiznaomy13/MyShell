@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:37:54 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 21:04:43 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:41:39 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,15 @@
 
 void	count_process(t_all *all, char *str)
 {
-	int	i;
-	int	n_proces;
+	t_token	*aux;
 
-	i = 0;
-	n_proces = 0;
-	while (str[i] != '\0')
+	(void)str;
+	aux = all->token;
+	all->num_process = 1;
+	while (aux)
 	{
-		if (str[i] == '|')
-			n_proces++;
-		i++;
+		if (aux->type == PIPE)
+			all->num_process++;
+		aux = aux->next;
 	}
-	n_proces += 1;
-	all->num_process = n_proces;
 }

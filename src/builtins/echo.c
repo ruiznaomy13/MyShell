@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 21:02:10 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/12 20:19:49 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:30:05 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int	n_flag(char *s)
 
 int	ft_echo(char **argv)
 {
+	// while (*argv)
+	// {
+	// 	printf("%s\n", *argv);
+	// 	argv++;
+	// }
 	int	skip_newline;
 	int	i;
 

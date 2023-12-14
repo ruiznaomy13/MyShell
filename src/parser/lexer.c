@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/14 17:30:31 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:27:29 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ void	loop(t_all *all)
 		if (minishell_structure(all))
 			continue ;
 		if (exec_parent(all))
+		{
+			printf("ARGV = %s\n", all->prcs->args[1]);
 			executor_builting(all, all->prcs);
+		}
 		else
 			executor(all);
 		ft_free_all(all);

@@ -1,0 +1,935 @@
+Script started on Thu Dec 14 20:52:53 2023
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hbbash\ [?1l>[?2004l
+]2;bash]1;bash
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034hbash-3.2$ ./script
+Listado de carpetas en /System/Volumes/Data/sgoinfre/Perso/ncastell/myshell:
+/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/inc
+/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib
+/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/obj
+/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/src
+bash-3.2$ exit
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hbash./minishell[?1l>[?2004l
+]2;./minishell]1;./minishell[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mexit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004h./minishell[11Dbash       [?1l>[?2004l
+]2;bash]1;bash
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034hbash-3.2$ exit
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho ""["d"p"g"]"|"
+[?2004lTOKEN = echo
+TOKEN = "[dpg]|"
+[?2004h[96mmyShell🌞> [37mecho "[dpg]|"h"[dpg]|"o"[dpg]|"l"[dpg]|"a"[dpg]|"
+[?2004lTOKEN = echo
+TOKEN = hola"[dpg]|"
+[?2004h[96mmyShell🌞> [37mecho ====[K[K[K[K[K[K[K[K[Kexit
+[?2004lTOKEN = exit
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+[1msrc/checker/checker.c:38:3: [0m[0;1;31merror: [0m[1madd explicit braces to avoid dangling else
+      [-Werror,-Wdangling-else][0m
+                else if (is_rd(aux->type) && (aux->next == NULL || aux->...
+[0;1;32m                ^
+[0m1 error generated.
+make[1]: *** [Makefile:30: obj/src/checker/checker.o] Error 1
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+make: *** [Makefile:25: all] Error 2
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho hola""g"e"n"t"e"|"j"e"j"e"
+[?2004lTYPE = 0
+TYPE = 0
+
+[?2004h[96mmyShell🌞> [37m
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lTYPE = 0
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho hla""j"e"j"|"j"e"j"e"
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho hola"hoa|e[Kadios"
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""h""o""l""a""[Cj"e"j"e"j"|"j"e"j"e"
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho hola|jeje[C[C"a|jeje[C[C[C[C[C[C"
+[?2004lentro aqui
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lentro aqui
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho hola"jeje|jejej"
+[?2004lentro aqui
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lentro aqui
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho "hola"|"j"e"j"e"
+[?2004lentro aqui
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lentro aqui
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho hoa"jola|jbad"
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==9548==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000010 (pc 0x00010836e4d4 bp 0x7ffee7897420 sp 0x7ffee78973e0 T0)
+[1m[0m==9548==The signal is caused by a READ memory access.
+==9548==Hint: address points to the zero page.
+    #0 0x10836e4d4 in minishell_structure lexer.c:41
+    #1 0x10836efdf in loop lexer.c:57
+    #2 0x10836ae45 in main main.c:26
+    #3 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==9548==Register values:
+rax = 0x0000000000000010  rbx = 0x00007ffee7897520  rcx = 0x0000000000000010  rdx = 0x0000100000000002  
+rdi = 0x00007ffee78974a0  rsi = 0x0000100000000000  rbp = 0x00007ffee7897420  rsp = 0x00007ffee78973e0  
+ r8 = 0x0000000000000018   r9 = 0x0000000000000000  r10 = 0xffffffffffffffff  r11 = 0x00000fffffffffff  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV lexer.c:41 in minishell_structure
+==9548==ABORTING
+[1]    9548 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho hola"kd|kre"
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==9625==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x000101812504 bp 0x7ffeee3f3420 sp 0x7ffeee3f33f0 T0)
+[1m[0m==9625==The signal is caused by a READ memory access.
+==9625==Hint: address points to the zero page.
+    #0 0x101812504 in minishell_structure lexer.c:41
+    #1 0x101812fdf in loop lexer.c:57
+    #2 0x10180ee75 in main main.c:26
+    #3 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==9625==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffeee3f3520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x00007ffeee3f34a0  rsi = 0x0000100000000000  rbp = 0x00007ffeee3f3420  rsp = 0x00007ffeee3f33f0  
+ r8 = 0x0000000000000018   r9 = 0x0000000000000000  r10 = 0xffffffffffffffff  r11 = 0x00000fffffffffff  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV lexer.c:41 in minishell_structure
+==9625==ABORTING
+[1]    9625 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho hola"kjbdf|khfbd"
+[?2004lentro aqui echo
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lentro aqui exit
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho hola"hfd|khwfd"
+[?2004lentro aqui hola"hfd|khwfd"
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==9759==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x000106a214f5 bp 0x7ffee91e4420 sp 0x7ffee91e43e0 T0)
+[1m[0m==9759==The signal is caused by a READ memory access.
+==9759==Hint: address points to the zero page.
+    #0 0x106a214f5 in minishell_structure lexer.c:40
+    #1 0x106a21fdf in loop lexer.c:57
+    #2 0x106a1de35 in main main.c:26
+    #3 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==9759==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffee91e4520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x0000000000000000  rsi = 0x0000100000000000  rbp = 0x00007ffee91e4420  rsp = 0x00007ffee91e43e0  
+ r8 = 0x00000fffffffff05   r9 = 0x0000000002ee5c40  r10 = 0x00007ffee91e38d0  r11 = 0x0000000000000000  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV lexer.c:40 in minishell_structure
+==9759==ABORTING
+[1]    9759 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""h"o"l"a"[C|"j"e"
+[?2004lentro aqui "hola|je"
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==9874==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x00010b0463a1 bp 0x7ffee4bc13f0 sp 0x7ffee4bc13b0 T0)
+[1m[0m==9874==The signal is caused by a READ memory access.
+==9874==Hint: address points to the zero page.
+    #0 0x10b0463a1 in parser create_process.c:92
+    #1 0x10b04441f in minishell_structure lexer.c:40
+    #2 0x10b044edf in loop lexer.c:56
+    #3 0x10b040e05 in main main.c:26
+    #4 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==9874==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffee4bc1520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x00007ffee4bc14a0  rsi = 0x0000100000000000  rbp = 0x00007ffee4bc13f0  rsp = 0x00007ffee4bc13b0  
+ r8 = 0x00000fffffffff05   r9 = 0x00000000c6e1e067  r10 = 0x00007ffee4bc08f0  r11 = 0x0000000000000000  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV create_process.c:92 in parser
+==9874==ABORTING
+[1]    9874 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho hola"kjjsbd|krd"
+[?2004lentro aqui hola"kjjsbd|krd"
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==9943==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x00010a2c63e9 bp 0x7ffee59413f0 sp 0x7ffee59413a0 T0)
+[1m[0m==9943==The signal is caused by a READ memory access.
+==9943==Hint: address points to the zero page.
+    #0 0x10a2c63e9 in parser create_process.c:93
+    #1 0x10a2c441f in minishell_structure lexer.c:40
+    #2 0x10a2c4edf in loop lexer.c:56
+    #3 0x10a2c0e05 in main main.c:26
+    #4 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==9943==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffee5941520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x00007ffee5941400  rsi = 0x0000100000000000  rbp = 0x00007ffee59413f0  rsp = 0x00007ffee59413a0  
+ r8 = 0x00000fffffffff05   r9 = 0x00000000b7c829d1  r10 = 0x00007ffee59408f0  r11 = 0x0000000000000000  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV create_process.c:93 in parser
+==9943==ABORTING
+[1]    9943 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho "hla|ehkjw"
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==10005==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000010 (pc 0x00010c5813b8 bp 0x7ffee36863f0 sp 0x7ffee36863a0 T0)
+[1m[0m==10005==The signal is caused by a READ memory access.
+==10005==Hint: address points to the zero page.
+    #0 0x10c5813b8 in parser create_process.c:94
+    #1 0x10c57f41f in minishell_structure lexer.c:40
+    #2 0x10c57fedf in loop lexer.c:56
+    #3 0x10c57be05 in main main.c:26
+    #4 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==10005==Register values:
+rax = 0x0000000000000010  rbx = 0x00007ffee3686520  rcx = 0x0000000000000010  rdx = 0x0000100000000002  
+rdi = 0x00007ffee36864a0  rsi = 0x0000100000000000  rbp = 0x00007ffee36863f0  rsp = 0x00007ffee36863a0  
+ r8 = 0x0000000000000018   r9 = 0x0000000000000000  r10 = 0xffffffffffffffff  r11 = 0x00000fffffffffff  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV create_process.c:94 in parser
+==10005==ABORTING
+[1]    10005 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho "dsadwq\[K|dqw"
+[?2004lentro aqui "dsadwq|dqw"
+[?2004h[96mmyShell🌞> [37mecho "dsadwq|dqw"d"dsadwq|dqw"w"dsadwq|dqw"q"dsadwq|dqw"d"dsadwq|dqw"w"dsadwq|dqw"q"dsadwq|dqw"
+[?2004lentro aqui dwqdwq"dsadwq|dqw"
+[?2004h[96mmyShell🌞> [37mecho dwqdwq"dsadwq|dqw"[C[C[C[C[C[C[C[C[C
+[?2004lentro aqui dwqdwq"dsadwq|dqw"
+[?2004h[96mmyShell🌞> [37mecho dwqdwq"dsadwq|dqw"
+[?2004lentro aqui dwqdwq"dsadwq|dqw"
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==10924==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x000103eed128 bp 0x7ffeebd1a3b0 sp 0x7ffeebd1a360 T0)
+[1m[0m==10924==The signal is caused by a READ memory access.
+==10924==Hint: address points to the zero page.
+    #0 0x103eed128 in create_process create_process.c:56
+    #1 0x103eed403 in parser create_process.c:94
+    #2 0x103eeb40f in minishell_structure lexer.c:40
+    #3 0x103eebecf in loop lexer.c:56
+    #4 0x103ee7df5 in main main.c:26
+    #5 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==10924==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffeebd1a520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x0000604000000790  rsi = 0x0000100000000000  rbp = 0x00007ffeebd1a3b0  rsp = 0x00007ffeebd1a360  
+ r8 = 0x0000200000000000   r9 = 0x0000000000000000  r10 = 0xffffffffffffffff  r11 = 0x00000fffffffffff  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV create_process.c:56 in create_process
+==10924==ABORTING
+[1]    10924 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho "legfn|ejk"
+[?2004lentro aqui legfn|ejk argc=echo
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==11102==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x000103e80108 bp 0x7ffeebd873b0 sp 0x7ffeebd87340 T0)
+[1m[0m==11102==The signal is caused by a READ memory access.
+==11102==Hint: address points to the zero page.
+    #0 0x103e80108 in create_process create_process.c:57
+    #1 0x103e80403 in parser create_process.c:94
+    #2 0x103e7e39f in minishell_structure lexer.c:40
+    #3 0x103e7ee5f in loop lexer.c:56
+    #4 0x103e7ad85 in main main.c:26
+    #5 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==11102==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffeebd87520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x0000100000000000  rsi = 0x0000100000000000  rbp = 0x00007ffeebd873b0  rsp = 0x00007ffeebd87340  
+ r8 = 0x00001c040000078a   r9 = 0x0000100000000000  r10 = 0xffffffffffffffff  r11 = 0x00000fffffffffff  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV create_process.c:57 in create_process
+==11102==ABORTING
+[1]    11102 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[19Dbash               [15Dmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m3[Kecho "dqwdwq|dqwdwq"
+[?2004lentro aqui dqwdwq|dqwdwq argc=dqwdwq|dqwdwq
+[?2004h[96mmyShell🌞> [37mecho "dqwdwq|dqwdwq"[K[1Pdqwdwq|dqwdwq
+[?2004lentro aqui dqwdwq argc=dqwdwq
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==11234==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x000105dcc0f8 bp 0x7ffee9e3b3b0 sp 0x7ffee9e3b340 T0)
+[1m[0m==11234==The signal is caused by a READ memory access.
+==11234==Hint: address points to the zero page.
+    #0 0x105dcc0f8 in create_process create_process.c:57
+    #1 0x105dcc403 in parser create_process.c:94
+    #2 0x105dca38f in minishell_structure lexer.c:40
+    #3 0x105dcae4f in loop lexer.c:56
+    #4 0x105dc6d75 in main main.c:26
+    #5 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==11234==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffee9e3b520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x0000100000000000  rsi = 0x0000100000000000  rbp = 0x00007ffee9e3b3b0  rsp = 0x00007ffee9e3b340  
+ r8 = 0x00001c04000007de   r9 = 0x0000100000000000  r10 = 0xffffffffffffffff  r11 = 0x00000fffffffffff  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV create_process.c:57 in create_process
+==11234==ABORTING
+[1]    11234 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+make[1]: 'minishell' is up to date.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho "sdasd"
+[?2004lentro aqui sdasd argc=sdasd
+sdasd
+[?2004h[96mmyShell🌞> [37m
+[?2004l[?2004h[96mmyShell🌞> [37mecho "sdasd"[K|
+[?2004l[31msyntax error near unexpected token "
+[37m[?2004h[96mmyShell🌞> [37mecho "sdasd|"
+[?2004lentro aqui sdasd| argc=sdasd|
+[?2004h[96mmyShell🌞> [37mecho "sdasd|"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[Kagv[0] [K= [Kecho argv[1] [K=hoa[Kk[Kla|adios[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==11362==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x00010c0130f8 bp 0x7ffee3bf43b0 sp 0x7ffee3bf4340 T0)
+[1m[0m==11362==The signal is caused by a READ memory access.
+==11362==Hint: address points to the zero page.
+    #0 0x10c0130f8 in create_process create_process.c:57
+    #1 0x10c013403 in parser create_process.c:94
+    #2 0x10c01138f in minishell_structure lexer.c:40
+    #3 0x10c011e4f in loop lexer.c:56
+    #4 0x10c00dd75 in main main.c:26
+    #5 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==11362==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffee3bf4520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x0000100000000000  rsi = 0x0000100000000000  rbp = 0x00007ffee3bf43b0  rsp = 0x00007ffee3bf4340  
+ r8 = 0x00001c040000090e   r9 = 0x0000100000000000  r10 = 0xffffffffffffffff  r11 = 0x00000fffffffffff  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV create_process.c:57 in create_process
+==11362==ABORTING
+[1]    11362 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[19Dbash               [15D[?1l>[?2004l
+]2;bash]1;bash
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034hbash-3.2$ ee[Kxit
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hbashmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho "dqwdwq|dqwdw"
+[?2004lentro aqui dqwdwq|dqwdw argc=dqwdwq|dqwdw
+[?2004h[96mmyShell🌞> [37mexi
+[?2004lAddressSanitizer:DEADLYSIGNAL
+=================================================================
+[1m[31m==12066==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x0001005d72e8 bp 0x7ffeef6303b0 sp 0x7ffeef630340 T0)
+[1m[0m==12066==The signal is caused by a READ memory access.
+==12066==Hint: address points to the zero page.
+    #0 0x1005d72e8 in create_process create_process.c:57
+    #1 0x1005d75f3 in parser create_process.c:94
+    #2 0x1005d557f in minishell_structure lexer.c:40
+    #3 0x1005d603f in loop lexer.c:56
+    #4 0x1005d1f65 in main main.c:26
+    #5 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==12066==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffeef630520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x0000100000000000  rsi = 0x0000100000000000  rbp = 0x00007ffeef6303b0  rsp = 0x00007ffeef630340  
+ r8 = 0x00001c0400000796   r9 = 0x0000100000000000  r10 = 0xffffffffffffffff  r11 = 0x00000fffffffffff  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV create_process.c:57 in create_process
+==12066==ABORTING
+[1]    12066 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37meco [K[Kho "dwqdqwd|dqwdwq"
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""o"i"h"d"h"s"|"s"h"b"f"
+[?2004lARGV = oihdhs|shbf
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""k"w"e"j"f"|"h"e"h"g"f"g"d"
+[?2004lARGV = kwejf|hehgfgd
+[?2004h[96mmyShell🌞> [37mex[K[Kecho hola > adios
+[?2004lARGV = hola
+[?2004h[96mmyShell🌞> [37mcat adios 
+[?2004lARGV = adios
+echo
+hola
+[?2004h[96mmyShell🌞> [37mcat adios echo hola > adios s s[1Ps[1Ps[1@"[1@_[1@|[C[C[C[C[1@"
+[?2004lARGV = _|hola
+[?2004h[96mmyShell🌞> [37mcat adios 
+[?2004lARGV = adios
+echo
+_|hola
+[?2004h[96mmyShell🌞> [37mcat adios 
+[?2004lARGV = adios
+echo
+_|hola
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho hola > adios
+[?2004l[?2004h[96mmyShell🌞> [37mcat adios '[K
+[?2004lhola
+[?2004h[96mmyShell🌞> [37mecho ">|<" [K
+[?2004l[?2004h[96mmyShell🌞> [37mecho ">|<" > adios
+[?2004l[?2004h[96mmyShell🌞> [37mcat adios 
+[?2004l>|<
+[?2004h[96mmyShell🌞> [37mcta [K[K[Kar[Kt 
+.git/       .vscode/    adios       lib/        obj/        src/
+.gitignore  Makefile    inc/        minishell   script      typescript
+[96mmyShell🌞> [37mcat 
+.git/       .vscode/    adios       lib/        obj/        src/
+.gitignore  Makefile    inc/        minishell   script      typescript
+[96mmyShell🌞> [37mcat [K[K[K[Kexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""d"f"v"|"h"f"b"d"s"
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""h"o"l"a"
+[?2004lhola
+[?2004h[96mmyShell🌞> [37mecho "hola"|"s"l"f"d"
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[19Dbash               [15Dmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho "hola\"[K[K\jejej[K[K[K[K[K[K\[K|jejje"
+[?2004lnum process = 2
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+[1msrc/execution/utils_executor.c:34:38: [0m[0;1;31merror: [0m[1munused parameter 'str'
+      [-Werror,-Wunused-parameter][0m
+void    count_process(t_all *all, char *str)
+[0;1;32m                                        ^
+[0m1 error generated.
+make[1]: *** [Makefile:30: obj/src/execution/utils_executor.o] Error 1
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+make: *** [Makefile:25: all] Error 2
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho ""k"j"b"f"|"h"f"d"s"
+[?2004l  ^C^D^Z
+[1]  + 14733 suspended  ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho "erb|kfhj"
+[?2004lnum process = 0
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lnum process = 0
+[?2004h[96mmyShell🌞> [37mexitcho "erb|kfhj"xit[K
+[?2004lnum process = 0
+[?2004h[96mmyShell🌞> [37m[?2004l
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmmake[?1l>[?2004l
+]2;make]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004h[H[2J[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [Kmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+make[1]: 'minishell' is up to date.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho "ekrj|rjkgh"
+[?2004lnum process = 1
+ekrj|rjkgh
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmmake fcl     fclean[1m [0m[0m [?1l>[?2004l
+]2;make fclean]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+rm -rf ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_strdup.o ft_calloc.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_substr.o ft_strmapi.o ft_striteri.o ft_itoa.o ft_strjoin.o ft_strtrim.o ft_split.o ft_lstnew_bonus.o ft_lstadd_front_bonus.o ft_lstsize_bonus.o ft_lstlast_bonus.o ft_lstadd_back_bonus.o ft_lstdelone_bonus.o ft_lstclear_bonus.o ft_lstiter_bonus.o ft_lstmap_bonus.o ft_dprintf.o ft_format.o ft_isalpha.d ft_isdigit.d ft_isalnum.d ft_isascii.d ft_isprint.d ft_strlen.d ft_memset.d ft_bzero.d ft_memcpy.d ft_memmove.d ft_strlcpy.d ft_strlcat.d ft_toupper.d ft_tolower.d ft_strchr.d ft_strrchr.d ft_strncmp.d ft_memchr.d ft_memcmp.d ft_strnstr.d ft_atoi.d ft_strdup.d ft_calloc.d ft_putchar_fd.d ft_putstr_fd.d ft_putendl_fd.d ft_putnbr_fd.d ft_substr.d ft_strmapi.d ft_striteri.d ft_itoa.d ft_strjoin.d ft_strtrim.d ft_split.d ft_lstnew_bonus.d ft_lstadd_front_bonus.d ft_lstsize_bonus.d ft_lstlast_bonus.d ft_lstadd_back_bonus.d ft_lstdelone_bonus.d ft_lstclear_bonus.d ft_lstiter_bonus.d ft_lstmap_bonus.d ft_dprintf.d ft_format.d
+rm -rf libft.a
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+
+All cleaned!
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004h: SEGV on unknown address 0x000000000008 (pc 0x0001005d72e8 bp 0x7ffeef6303b0 sp 0x7ffeef630340 T0)
+[1m[0m==12066==The signal is caused by a READ memory access.
+==12066==Hint: address points to the zero page.
+    #0 0x1005d72e8 in create_process create_process.c:57
+    #1 0x1005d75f3 in parser create_process.c:94
+    #2 0x1005d557f in minishell_structure lexer.c:40
+    #3 0x1005d603f in loop lexer.c:56
+    #4 0x1005d1f65 in main main.c:26
+    #5 0x7fff6ef2ecc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+==12066==Register values:
+rax = 0x0000000000000008  rbx = 0x00007ffeef630520  rcx = 0x0000000000000008  rdx = 0x0000100000000001  
+rdi = 0x0000100000000000  rsi = 0x0000100000000000  rbp = 0x00007ffeef6303b0  rsp = 0x00007ffeef630340  
+ r8 = 0x00001c0400000796   r9 = 0x0000100000000000  r10 = 0xffffffffffffffff  r11 = 0x00000fffffffffff  
+r12 = 0x0000000000000000  r13 = 0x0000000000000000  r14 = 0x0000000000000000  r15 = 0x0000000000000000  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV create_process.c:57 in create_process
+==12066==ABORTING
+[1]    12066 abort      ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37meco [K[Kho "dwqdqwd|dqwdwq"
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""o"i"h"d"h"s"|"s"h"b"f"
+[?2004lARGV = oihdhs|shbf
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""k"w"e"j"f"|"h"e"h"g"f"g"d"
+[?2004lARGV = kwejf|hehgfgd
+[?2004h[96mmyShell🌞> [37mex[K[Kecho hola > adios
+[?2004lARGV = hola
+[?2004h[96mmyShell🌞> [37mcat adios 
+[?2004lARGV = adios
+echo
+hola
+[?2004h[96mmyShell🌞> [37mcat adios echo hola > adios s s[1Ps[1Ps[1@"[1@_[1@|[C[C[C[C[1@"
+[?2004lARGV = _|hola
+[?2004h[96mmyShell🌞> [37mcat adios 
+[?2004lARGV = adios
+echo
+_|hola
+[?2004h[96mmyShell🌞> [37mcat adios 
+[?2004lARGV = adios
+echo
+_|hola
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho hola > adios
+[?2004l[?2004h[96mmyShell🌞> [37mcat adios '[K
+[?2004lhola
+[?2004h[96mmyShell🌞> [37mecho ">|<" [K
+[?2004l[?2004h[96mmyShell🌞> [37mecho ">|<" > adios
+[?2004l[?2004h[96mmyShell🌞> [37mcat adios 
+[?2004l>|<
+[?2004h[96mmyShell🌞> [37mcta [K[K[Kar[Kt 
+.git/       .vscode/    adios       lib/        obj/        src/
+.gitignore  Makefile    inc/        minishell   script      typescript
+[96mmyShell🌞> [37mcat 
+.git/       .vscode/    adios       lib/        obj/        src/
+.gitignore  Makefile    inc/        minishell   script      typescript
+[96mmyShell🌞> [37mcat [K[K[K[Kexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""d"f"v"|"h"f"b"d"s"
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37mecho ""h"o"l"a"
+[?2004lhola
+[?2004h[96mmyShell🌞> [37mecho "hola"|"s"l"f"d"
+[?2004l[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[19Dbash               [15Dmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho "hola\"[K[K\jejej[K[K[K[K[K[K\[K|jejje"
+[?2004lnum process = 2
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+[1msrc/execution/utils_executor.c:34:38: [0m[0;1;31merror: [0m[1munused parameter 'str'
+      [-Werror,-Wunused-parameter][0m
+void    count_process(t_all *all, char *str)
+[0;1;32m                                        ^
+[0m1 error generated.
+make[1]: *** [Makefile:30: obj/src/execution/utils_executor.o] Error 1
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+make: *** [Makefile:25: all] Error 2
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho ""k"j"b"f"|"h"f"d"s"
+[?2004l  ^C^D^Z
+[1]  + 14733 suspended  ./minishell
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;31m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho "erb|kfhj"
+[?2004lnum process = 0
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lnum process = 0
+[?2004h[96mmyShell🌞> [37mexitcho "erb|kfhj"xit[K
+[?2004lnum process = 0
+[?2004h[96mmyShell🌞> [37m[?2004l
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmmake[?1l>[?2004l
+]2;make]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+Compiling objects
+
+Compiled successfully!
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004h[H[2J[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [Kmake && ./minishell[?1l>[?2004l
+]2;make && ./minishell]1;makemake[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell/lib/libft'
+make[1]: Entering directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+make[1]: 'minishell' is up to date.
+make[1]: Leaving directory '/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell'
+[?2004h[96mmyShell🌞> [37m[H[2J[96mmyShell🌞> [37mecho "ekrj|rjkgh"
+[?2004lnum process = 1
+ekrj|rjkgh
+[?2004h[96mmyShell🌞> [37mexit
+[?2004lARGV = (null)
+exit
+[1m[7m%[27m[1m[0m                                                                                ]2;ncastell@car10s3:/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell]1;..stell/myshell]7;file://car10s3.42barcelona.com/System/Volumes/Data/sgoinfre/Perso/ncastell/myshell\[0m[27m[24m[J[01;32m➜  [36mmyshell[00m [01;34mgit:([31mncastell[34m) [33m✗[00m [K[?1h=[?2004hmmake 

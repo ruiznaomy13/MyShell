@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/14 16:15:41 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:24:23 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	create_process(t_all *all)
 		if (pcs == NULL)
 			return ;
 		pcs->args = save_arg(all);
+		// printf("entro aqui %s argc=%s\n", all->token->next->wrd, pcs->args[1]);
 		list_redirection(pcs, all);
 		rm_prev_tkns(all);
 		add_prcs(all, pcs);

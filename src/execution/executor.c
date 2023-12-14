@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/14 19:21:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:36:20 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	executor(t_all *all)
 		return ;
 	dup_apunta_terminal(fd_trm);
 	init_signals(N_INTERACT);
+	printf("num process = %d\n", all->num_process);
 	while (all->prcs && all->num_process > i++)
 	{
 		init_pipes(fd_pipe);

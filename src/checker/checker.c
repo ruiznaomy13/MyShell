@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/14 16:44:47 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 21:05:13 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,20 @@ int	checker(t_all *all)
 int	syntax_checker(t_all *all)
 {
 	t_token *aux;
+	int		flag;
 
+	flag = 0;
 	aux = all->token;
 	while (aux != NULL)
 	{
 		if (aux->type == PIPE && \
-		(aux->next == NULL || aux->next->type != TEXT || is_rd(aux->next->type)))
+		(aux->next == NULL || aux->next->type != TEXT || is_rd(aux->next->type))){
+			printf("TYPE = %d\n", aux->type);
+			return (ft_error(all, SYNTAX_ERROR, aux->wrd));}
+		else if (is_rd(aux->type) && (aux->next == NULL || aux->next->type != TEXT)){
+			printf("TYPE = %d\n", aux->type);
 			return (ft_error(all, SYNTAX_ERROR, aux->wrd));
-		else if (is_rd(aux->type) && (aux->next == NULL || aux->next->type != TEXT))
-			return (ft_error(all, SYNTAX_ERROR, aux->wrd));
+		}
 		aux = aux->next;
 	}
 	return (0);

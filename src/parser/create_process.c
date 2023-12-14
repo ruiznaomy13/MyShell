@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/12 20:27:39 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:15:41 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,30 +63,25 @@ void	create_process(t_all *all)
 
 int	check_heredoc(t_all *all)
 {
-	t_process	*prcs;
-	int			i;
+    t_process	*current_prcs;
+	t_token		*current_rd;
+    int i;
 
-	prcs = all->prcs;
 	i = 1;
-	while (prcs != NULL)
+	current_prcs = all->prcs;
+    while (current_prcs != NULL)
 	{
-		if (prcs->rd)
+        current_rd = current_prcs->rd;
+        while (current_rd != NULL)
 		{
-			while (prcs->rd != NULL)
-			{
-				printf("REDIS %s == %d\n", prcs->rd->wrd, prcs->rd->type);
-				if (prcs->rd->type == RDHD)
-				{
-					printf("SOY HEREDOC\n");
-					return (i);
-				}
-				prcs->rd = prcs->rd->next;
-			}
-		}
-		i++;
-		prcs = prcs->next;
-	}
-	return (0);
+            if (current_rd->type == RDHD)
+                return (i);
+            current_rd = current_rd->next;
+        }
+        i++;
+        current_prcs = current_prcs->next;
+    }
+    return (0);
 }
 
 void	parser(t_all *all)

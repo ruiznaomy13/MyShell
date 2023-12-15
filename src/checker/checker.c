@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/14 21:05:13 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/15 20:58:03 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	checker(t_all *all)
 {
-	if (ft_strlen(all->line) < 1)
+	if (ft_strlen(all->line) < 1 || !all->token)
 		return (1);
 	else if (syntax_checker(all))
 		return (1);

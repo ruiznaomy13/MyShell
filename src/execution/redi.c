@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:37:49 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/16 11:46:26 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:06:27 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	open_infile(t_all *all, t_process *prcs, int fd_pipe[2])
 	prcs->rd->open = open(prcs->rd->wrd, O_RDONLY);
 	if (prcs->rd->open == -1)
 	{
+		printf("open_infile\n");
 		ft_error(all, 2, prcs->rd->wrd);
 		return ;
 	}
@@ -42,6 +43,7 @@ void	open_outfile(t_all *all, t_process *prcs, int fd_pipe[2])
 	prcs->rd->open = open(prcs->rd->wrd, O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	if (prcs->rd->open == -1)
 	{
+		printf("open_outfile\n");
 		ft_error(all, 2, prcs->rd->wrd);
 		return ;
 	}
@@ -55,6 +57,7 @@ void	apendd(t_all *all, t_process *prcs, int fd_pipe[2])
 	prcs->rd->open = open(prcs->rd->wrd, O_WRONLY | O_APPEND | O_CREAT, 0666);
 	if (prcs->rd->open == -1)
 	{
+		printf("append\n");
 		ft_error(all, 2, prcs->rd->wrd);
 		return ;
 	}

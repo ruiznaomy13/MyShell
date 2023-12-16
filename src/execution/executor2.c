@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/14 18:03:49 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/16 14:53:28 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	exec_builting(t_all *all, t_process *pcs)
 {
+	if (!all->prcs->args || !*all->prcs->args)
+		return (0);
 	if (ft_strcmp(pcs->args[0], "echo") == 0)
 		return (ft_echo(pcs->args));
 	if (ft_strcmp(pcs->args[0], "env") == 0)
@@ -33,6 +35,8 @@ int	exec_builting(t_all *all, t_process *pcs)
 
 int	is_builting(char *cmd)
 {
+	if (!cmd || !*cmd)
+		return (0);
 	if (!ft_strcmp(cmd, "echo") || !ft_strcmp(cmd, "env"))
 		return (1);
 	else if (!ft_strcmp(cmd, "export") || !ft_strcmp(cmd, "unset"))

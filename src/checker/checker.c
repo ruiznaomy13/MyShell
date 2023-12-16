@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/15 20:58:03 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/16 15:23:07 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ int	syntax_checker(t_all *all)
 	while (aux != NULL)
 	{
 		if (aux->type == PIPE && \
-		(aux->next == NULL || aux->next->type != TEXT || is_rd(aux->next->type))){
-			printf("TYPE = %d\n", aux->type);
+		(aux->next == NULL || (aux->next->type != TEXT  && !is_rd(aux->next->type)))){
+			printf("1 TYPE = %d\n", aux->type);
 			return (ft_error(all, SYNTAX_ERROR, aux->wrd));}
-		else if (is_rd(aux->type) && (aux->next == NULL || aux->next->type != TEXT)){
-			printf("TYPE = %d\n", aux->type);
+		else if (is_rd(aux->type) && (aux->next == NULL \
+			|| aux->next->type != TEXT ))
+		{
+			printf("2 TYPE = %d\n", aux->type);
 			return (ft_error(all, SYNTAX_ERROR, aux->wrd));
 		}
 		aux = aux->next;

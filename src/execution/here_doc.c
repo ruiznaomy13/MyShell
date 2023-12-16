@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/16 13:01:39 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/16 14:10:44 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	save_hd_fd(t_process *prcs, int i)
 	// 	exit (0);
 	while (1)
 	{
-		printf("22222 var gloval : %i\n", g_sig);
+		// printf("22222 var gloval : %i\n", g_sig);
 		if (g_sig == 1)
 			break ;
 		line = readline("> ");

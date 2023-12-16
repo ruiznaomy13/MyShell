@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/15 20:55:40 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/16 15:55:03 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	exec_parent(t_all *all)
 {
-	if (all->num_process != 1)
+	if (all->num_process != 1 || !all->prcs->args || !*all->prcs->args)
 		return (0);
 	if (!ft_strcmp(all->prcs->args[0], "export") || !ft_strcmp(all->prcs->args[0], "unset"))
 		return (1);
@@ -61,7 +61,9 @@ void	loop(t_all *all)
 			executor_builting(all, all->prcs);
 		}
 		else
+		{
 			executor(all);
+		}
 		ft_free_all(all);
 	}
 }

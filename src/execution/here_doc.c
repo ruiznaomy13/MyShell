@@ -6,13 +6,13 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/16 14:10:44 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:55:43 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	save_hd_fd(t_process *prcs, int i)
+void	save_hd_fd(t_all *all, t_process *prcs, int i)
 {
 	char	*line;
 	int		fd[2];
@@ -40,6 +40,8 @@ void	save_hd_fd(t_process *prcs, int i)
 			break ;
 		if (ft_strcmp(line, prcs->rd->wrd) == 0)
 			break ;
+		if (check_heredoc(all))
+			i = check_heredoc(all);
 		write(fd[1], line, ft_strlen(line));
 		write(fd[1], "\n", 1);
 		do_sigign(SIGQUIT);

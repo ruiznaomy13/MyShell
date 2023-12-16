@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/14 21:24:23 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:53:42 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ void	parser(t_all *all)
 	if (check_heredoc(all))
 	{
 		i = check_heredoc(all);
-		save_hd_fd(all->prcs, i);
+		save_hd_fd(all, all->prcs, i);
 	}
 }

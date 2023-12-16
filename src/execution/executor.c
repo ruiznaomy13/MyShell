@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/16 16:33:15 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:42:09 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	executor(t_all *all)
 		return ;
 	dup_apunta_terminal(fd_trm);
 	init_signals(N_INTERACT);
-	printf("num process = %d\n", all->num_process);
 	while (all->prcs && all->num_process > i++)
 	{
 		init_pipes(fd_pipe);
@@ -57,8 +56,6 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		close(fd_pipe[0]);
 		dup2(fd_pipe[1], STDOUT_FILENO);
 	}
-	printf("%d\n", prcs->rd->type);
-	printf("%p\n", prcs->rd->next);
 	if (prcs->rd)
 	{
 		while (prcs->rd)
@@ -71,7 +68,6 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		exec_builting(all, prcs);
 	else if (!prcs->args && !is_builting(prcs->args[0]))
 	{
-		printf("%s\n", *all->prcs->args);
 		if (find_routes(all, all->prcs) == 1)
 			exit (ft_error(all, 2, prcs->args[0]));
 		prcs->ruta = get_ruta(all);
@@ -92,10 +88,8 @@ char	*get_ruta(t_all *all)
 	char	*tmp;
 
 	path = all->prcs->routes;
-	if (!path){
-		printf("!path get ruta\n");
+	if (!path)
 		exit (ft_error(all, 2, all->prcs->args[0]));
-		}
 	while (*path)
 	{
 		if (!path || !*path || !all->prcs->args || !*all->prcs->args)
@@ -128,7 +122,7 @@ void	wait_pipes(t_all *all, int num_process, pid_t pid)
 	{
 		if (pid == waitpid(-1, &status, 0))
 		{
-			if (WIFEXITED(status))// entra al error quan fem echo holiii > a.txt | > b.txt
+			if (WIFEXITED(status))
 				ft_error(all, WEXITSTATUS(status), "Program exit");
 			else if (WIFSIGNALED(status))
 			{

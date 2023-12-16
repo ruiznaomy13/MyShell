@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/14 21:36:20 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/16 12:30:10 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	executor(t_all *all)
 	{
 		init_pipes(fd_pipe);
 		if (i != all->num_process && pipe(fd_pipe) == -1)
-			exit(1);
+			exit(1);//ft_error();
 		pid = fork();
 		if (pid < 0)
-			exit(1);
+			exit(1);//ft_error();
 		else if (pid == 0)
 			child(all, all->prcs, fd_pipe);
 		if (i != all->num_process)
@@ -52,7 +52,6 @@ void	aux_executor(t_all *all, pid_t pid, int fd_trm[2])
 
 void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 {
-
 	if (fd_pipe[0] != -1)
 	{
 		close(fd_pipe[0]);

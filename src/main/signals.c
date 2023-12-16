@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:08:09 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/12 13:23:11 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/16 12:53:27 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	init_signals(int mode)
 	struct sigaction	signal;
 
 	do_sigign(SIGINT);
-    do_sigign(SIGQUIT);
+	do_sigign(SIGQUIT);
 	signal.sa_flags = SA_RESTART;
 	sigemptyset(&signal.sa_mask);
 	if (mode == NORM)
@@ -81,20 +81,14 @@ void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data)
 	if (sig == SIGINT)
 	{
 		g_sig = 1;
-		printf("\nHeredoc Ctrl+C caught\n");
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
 		printf("\n");
-		exit(1);
+		// printf("\nHeredoc Ctrl+C caught\n");
+		// printf("11111 var gloval : %i\n", g_sig);
 	}
+	else if (sig == SIGQUIT)
+		exit(1);
 	return ;
 }
-
-
-// void	signals(void)
-// {
-// 	rl_catch_signals = 0;
-// 	signal(SIGQUIT, SIG_IGN);
-// 	signal(SIGINT, ft_sig_ctr_c);
-// }

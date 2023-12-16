@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/12 20:20:49 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/16 13:01:39 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,23 @@ void	save_hd_fd(t_process *prcs, int i)
 	line = NULL;
 	poss = 0;
 	if (pipe(fd) == -1)
-		exit(1);
+		exit(1);//ft_error();
 	while (++poss < i)
 		prcs = prcs->next;
 	init_signals(HEREDOC);
 	do_sigign(SIGQUIT);
+	// if (g_sig == 1)
+	// 	exit (0);
 	while (1)
 	{
+		printf("22222 var gloval : %i\n", g_sig);
 		if (g_sig == 1)
-		{
-            // Handle heredoc interruption
-            printf("Heredoc interrupted\n");
-            break;
-        }
+			break ;
 		line = readline("> ");
+		if (line == NULL)
+			break ;
+		if (prcs == NULL || prcs->rd == NULL || prcs->rd->wrd == NULL)
+			break ;
 		if (ft_strcmp(line, prcs->rd->wrd) == 0)
 			break ;
 		write(fd[1], line, ft_strlen(line));

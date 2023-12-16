@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/14 16:00:28 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/16 11:45:03 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,9 +166,9 @@ char	*find_path(t_all *all, int *found);
 
 //redi
 void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2]);
-void	open_infile(t_process *prcs, int fd_pipe[2]);
-void	open_outfile(t_process *prcs, int fd_pipe[2]);
-void	apendd(t_process *prcs, int fd_pipe[2]);
+void	open_infile(t_all *all, t_process *prcs, int fd_pipe[2]);
+void	open_outfile(t_all *all, t_process *prcs, int fd_pipe[2]);
+void	apendd(t_all *all, t_process *prcs, int fd_pipe[2]);
 void	here_doc(t_process *prcs, int fd_pipe[2]);
 
 //here_doc

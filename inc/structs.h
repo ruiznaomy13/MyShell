@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:53:25 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/12 18:45:47 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/17 11:51:56 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ typedef struct s_token
 	int				open;//serveix per infile, outfile, here doc, apendd
 	char			*wrd;
 	struct s_token	*next;
+	int				fd_read_hd;
 }	t_token;
 
 typedef struct s_process
 {
 	// int					fd_pipe[2];
 	// int					fd_trm[2];
-	int					fd_read_hd;
 	char				**args; //lo que ejecutaremos
 	t_token				*rd; // la lista de redirecciones
 	char				**routes;//trobat PATH al envaiorment, fa un split del path :

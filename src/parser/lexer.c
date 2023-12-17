@@ -6,40 +6,11 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/16 15:55:03 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/17 13:04:55 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	exec_parent(t_all *all)
-{
-	if (all->num_process != 1 || !all->prcs->args || !*all->prcs->args)
-		return (0);
-	if (!ft_strcmp(all->prcs->args[0], "export") || !ft_strcmp(all->prcs->args[0], "unset"))
-		return (1);
-	else if (!ft_strcmp(all->prcs->args[0], "cd") || !ft_strcmp(all->prcs->args[0], "exit"))
-		return (1);
-	return (0);
-}
-
-int	minishell_structure(t_all *all)
-{
-	if (check_cometes(all, all->line) > 30)
-	{
-		ft_free_all(all);
-		return (1);
-	}
-	if (lexer(all))
-		return (1);
-	if (checker(all))
-	{
-		ft_free_all(all);
-		return (1);
-	}
-	parser(all);
-	return (0);
-}
 
 void	loop(t_all *all)
 {
@@ -66,6 +37,24 @@ void	loop(t_all *all)
 		}
 		ft_free_all(all);
 	}
+}
+
+int	minishell_structure(t_all *all)
+{
+	if (check_cometes(all, all->line) > 30)
+	{
+		ft_free_all(all);
+		return (1);
+	}
+	if (lexer(all))
+		return (1);
+	if (checker(all))
+	{
+		ft_free_all(all);
+		return (1);
+	}
+	parser(all);
+	return (0);
 }
 
 int	lexer(t_all *all)
@@ -130,4 +119,17 @@ void	add_token(t_token *tkn, t_all *all)
 			aux = aux->next;
 		aux->next = tkn;
 	}
+}
+
+int	exec_parent(t_all *all)
+{
+	if (all->num_process != 1 || !all->prcs->args || !*all->prcs->args)
+		return (0);
+	if (!ft_strcmp(all->prcs->args[0], "export") \
+		|| !ft_strcmp(all->prcs->args[0], "unset"))
+		return (1);
+	else if (!ft_strcmp(all->prcs->args[0], "cd") \
+		|| !ft_strcmp(all->prcs->args[0], "exit"))
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/16 16:53:42 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/17 13:15:03 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,39 +62,16 @@ void	create_process(t_all *all)
 	// mostra_process(all);
 }
 
-int	check_heredoc(t_all *all)
-{
-    t_process	*current_prcs;
-	t_token		*current_rd;
-    int i;
-
-	i = 1;
-	current_prcs = all->prcs;
-    while (current_prcs != NULL)
-	{
-        current_rd = current_prcs->rd;
-        while (current_rd != NULL)
-		{
-            if (current_rd->type == RDHD)
-                return (i);
-            current_rd = current_rd->next;
-        }
-        i++;
-        current_prcs = current_prcs->next;
-    }
-    return (0);
-}
-
 void	parser(t_all *all)
 {
-	int	i;
+	// t_process	*current_prcs;
 
-	i = 0;
 	count_process(all, all->line);
 	create_process(all);
-	if (check_heredoc(all))
-	{
-		i = check_heredoc(all);
-		save_hd_fd(all, all->prcs, i);
-	}
+	// current_prcs = all->prcs;
+	// while (current_prcs != NULL)
+	// {
+	// 	check_heredoc(all);
+	// 	current_prcs = current_prcs->next;
+	// }
 }

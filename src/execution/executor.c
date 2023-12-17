@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/16 16:42:09 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:43:05 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		{
 			exit (ft_error(all, 2, prcs->args[0]));
 		}
+		printf("pos prcs: %i\nprocess: %s\n", all->pos_process, *all->prcs->args);
 		if (execve(prcs->ruta, prcs->args, all->env) == -1)
 			exit (ft_error(all, CMD_NOT_FOUND, prcs->args[0]));
 	}

@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/16 16:54:38 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:46:04 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	rm_prev_tkns(t_all *all);
 void	add_prcs(t_all *all, t_process *pcs);
 void	create_process(t_all *all);
 void	parser(t_all *all);
-int		check_heredoc(t_all *all);
 
 // create_redi.c
 int		arg_size(t_token *tkn);
@@ -74,8 +73,10 @@ char	*expand_var(t_all *all, t_token *tkn);
 // lexer.c
 void	loop(t_all *all);
 int		lexer(t_all *all);
+int		minishell_structure(t_all *all);
 int		create_token(t_all *all, char *str, int type);
 void	add_token(t_token *tkn, t_all *all);
+int		exec_parent(t_all *all);
 
 // separators.c
 int		delimiter(char c);
@@ -172,7 +173,10 @@ void	apendd(t_all *all, t_process *prcs, int fd_pipe[2]);
 void	here_doc(t_process *prcs, int fd_pipe[2]);
 
 //here_doc
-void	save_hd_fd(t_all *all, t_process *prcs, int i);
+void	check_heredoc(t_all *all);
+void	create_heredoc(t_all *all);
+void	save_hd_fd(t_all *all, t_process *prcs, int fd[2]);
+int		ft_close(int *fd);
 
 //utils executor
 // char	**duplicate_env(char **env);

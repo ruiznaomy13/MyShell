@@ -1,0 +1,6 @@
+while de prcs en parser() FET
+chaeck_heredoc() if RDHD save_hd_fd FET
+A save_hd_fd()
+    -guardar fd_lectura en rd (no en prcs) FET
+    -fer fork per solucionat control + c FET
+que funcioni el heredoc

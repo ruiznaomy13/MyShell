@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:08:09 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/16 12:53:27 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:38:32 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data)
 	(void) non_used_data;
 	if (sig == SIGINT)
 	{
-		g_sig = 1;
+		// g_sig = 1;
+		ft_error(all)
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
 		printf("\n");
-		// printf("\nHeredoc Ctrl+C caught\n");
-		// printf("11111 var gloval : %i\n", g_sig);
+		exit(1);
 	}
 	else if (sig == SIGQUIT)
 		exit(1);

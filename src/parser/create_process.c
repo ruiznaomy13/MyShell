@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/17 13:23:59 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:16:30 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	parser(t_all *all)
 	current_prcs = all->prcs;
 	while (current_prcs != NULL)
 	{
-		check_heredoc(all);
+		check_heredoc(all, current_prcs);
 		current_prcs = current_prcs->next;
 	}
 }

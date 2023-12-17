@@ -6,26 +6,26 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/17 13:36:00 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:22:01 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	check_heredoc(t_all *all)
+void	check_heredoc(t_all *all, t_process *prcs)
 {
 	t_token		*current_rd;
 
-	current_rd = all->prcs->rd;
+	current_rd = prcs->rd;
 	while (current_rd != NULL)
 	{
 		if (current_rd->type == RDHD)
-			create_heredoc(all);
+			create_heredoc(all, current_rd->wrd);
 		current_rd = current_rd->next;
 	}
 }
 
-void	create_heredoc(t_all *all)
+void	create_heredoc(t_all *all, char *wrd)
 {
 	pid_t	pid;
 	int		fd[2];
@@ -38,7 +38,7 @@ void	create_heredoc(t_all *all)
 	if (pid < 0)
 		exit(1);
 	else if (pid == 0)
-		save_hd_fd(all, all->prcs, fd);
+		save_hd_fd(all, wrd, fd);
 	if (ft_close(&fd[1]) == -1)
 		exit(kill(pid, SIGTERM));
 	if (waitpid(pid, &status, 0) == -1)
@@ -51,14 +51,41 @@ void	create_heredoc(t_all *all)
 		else if (err == 2)
 			ft_error(all, err, NULL);
 	}
-	// dprintf(0, "fd[1]: %i\n", fd[1]);
-	// close(fd[1]);
 	all->prcs->rd->fd_read_hd = fd[0];
 }
 
-void	save_hd_fd(t_all *all, t_process *prcs, int fd[2])
+void	save_hd_fd(t_all *all, char *wrd, int fd[2])
 {
 	char	*line;
+
+	(void)all;
+	init_signals(HEREDOC);
+	do_sigign(SIGQUIT);
+	line = readline("> ");
+	printf("delimitadors: %s\n", wrd);
+	while (line && ft_strncmp(line, wrd, ft_strlen(wrd)))
+	{
+		if (write(fd[1], line, ft_strlen(line)) == -1 \
+			|| write(fd[1], "\n", 1) == -1)
+		{
+			ft_free_hd(&line, 2);
+			ft_close(&fd[0]);
+			ft_close(&fd[1]);
+			exit(2);
+		}
+		ft_free_hd(&line, 2);
+		do_sigign(SIGQUIT);
+		line = readline("> ");
+	}
+	ft_free_hd(&line, 2);
+	if (ft_close(&fd[1]) == -1 || ft_close(&fd[0]) == -1)
+		exit(2);
+	exit(0);
+}
+/* //ABANS DE MIRAR DEL ERIC LA DESPERACIO FA MAL
+void save_hd_fd(t_all *all, t_process *prcs, int fd[2])
+{
+	char *line;
 
 	line = NULL;
 	(void)all;
@@ -67,11 +94,10 @@ void	save_hd_fd(t_all *all, t_process *prcs, int fd[2])
 	while (1)
 	{
 		line = readline("> ");
-		if (line == NULL || prcs == NULL || prcs->rd == NULL \
-			|| prcs->rd->wrd == NULL)
-			break ;
+		if (line == NULL || prcs == NULL || prcs->rd == NULL || wrd == NULL)
+			break;
 		if (ft_strcmp(line, prcs->rd->wrd) == 0)
-			break ;
+			break;
 		write(fd[1], line, ft_strlen(line));
 		write(fd[1], "\n", 1);
 		do_sigign(SIGQUIT);
@@ -79,7 +105,7 @@ void	save_hd_fd(t_all *all, t_process *prcs, int fd[2])
 	if (ft_close(&fd[1]) == -1 || ft_close(&fd[0]) == -1)
 		exit(2);
 	exit(0);
-}
+}*/
 
 int	ft_close(int *fd)
 {
@@ -90,4 +116,28 @@ int	ft_close(int *fd)
 	}
 	*fd = 0;
 	return (0);
+}
+
+void	*ft_free_hd(char **matrix, int option)
+{
+	int	i;
+
+	if (matrix && option == 1)
+	{
+		i = 0;
+		while (matrix[i])
+		{
+			free(matrix[i]);
+			matrix[i] = NULL;
+			i++;
+		}
+		free(matrix);
+	}
+	else if (matrix && *matrix && option == 2)
+	{
+		free(*matrix);
+		*matrix = NULL;
+	}
+	matrix = NULL;
+	return (NULL);
 }

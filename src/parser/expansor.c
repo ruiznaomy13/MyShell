@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/12 15:57:36 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:43:28 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,22 @@ int	set_exp_flag(char c, int *flag)
 int	asign_var(t_all *all, char *str, char **aux, int i)
 {
 	char	*var;
+	char	*empty;
 
+	empty = "";
 	var = search_var(str);
-	if (var[0] == '?')
+	printf("VAR = %s\n", var);
+	if (strcmp(var, "") == 0)
+		*aux = ft_strjoin(*aux, "$");
+	else if (var[0] == '$')
+	{
+		*aux = ft_strjoin(*aux, ft_itoa(getpid()));
+		return (1);
+	}
+	else if (var[0] == '?')
 	{
 		*aux = ft_strjoin(*aux, ft_itoa(all->error));
-		// return(i + ft_strlen(ft_itoa(all->error)));
+		return (1);
 	}
 	else if (search_env(var, all->w_env) != NULL)
 		*aux = ft_strjoin(*aux, search_env(var, all->w_env));

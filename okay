@@ -1,0 +1,16 @@
+total 328
+drwxr-xr-x  15 ncastell  2022_barcelona     480 Dec 18 17:22 .
+drwx------   4 ncastell  2022_barcelona     128 Dec 18 17:12 ..
+drwxr-xr-x  12 ncastell  2022_barcelona     384 Dec 18 17:20 .git
+-rw-r--r--   1 ncastell  2022_barcelona      39 Dec 18 17:20 .gitignore
+drwxr-xr-x   3 ncastell  2022_barcelona      96 Dec 18 17:20 .vscode
+-rw-r--r--   1 ncastell  2022_barcelona    1309 Dec 18 17:20 Makefile
+-rw-r--r--   1 ncastell  2022_barcelona      24 Dec 18 17:20 a
+-rw-r--r--   1 ncastell  2022_barcelona    2060 Dec 18 17:13 echo
+-rw-r--r--   1 ncastell  2022_barcelona       0 Dec 18 17:20 fer.txt
+drwxr-xr-x   4 ncastell  2022_barcelona     128 Dec 18 17:20 inc
+drwxr-xr-x   4 ncastell  2022_barcelona     128 Dec 18 17:12 lib
+-rwxr-xr-x   1 ncastell  2022_barcelona  148904 Dec 18 17:21 minishell
+drwxr-xr-x   3 ncastell  2022_barcelona      96 Dec 18 17:12 obj
+-rw-r--r--   1 ncastell  2022_barcelona       0 Dec 18 17:22 okay
+drwxr-xr-x   8 ncastell  2022_barcelona     256 Dec 18 17:12 src

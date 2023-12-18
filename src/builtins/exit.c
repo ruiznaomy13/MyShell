@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/14 17:49:44 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:29:20 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	exit_type(t_all *all, t_process *pcs)
 		return (exit_prog(all, CMD_NOT_FOUND));
 	else if (ft_atoi(pcs->args[1]) == 1)
 		return (exit_prog(all, E_EXIT));
-	return (0);
+	all->error = ft_atoi(pcs->args[1]);
+	return (exit_prog(all, all->error));
 }
 
 int	ft_exit(t_process *pcs, t_all *all)
@@ -41,9 +42,7 @@ int	ft_exit(t_process *pcs, t_all *all)
 	ft_putstr_fd("exit\n", 2);
 	if (!pcs->args[1])
 		exit_prog(all, SUCCESS);
-	else if (pcs->args[1])
-		return (exit_type(all, pcs));
-	else
+	else if (pcs->args[2])
 		return(print_error("Too many arguments", 1));
-	return (0);
+	return (exit_type(all, pcs));
 }

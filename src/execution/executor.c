@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/17 13:22:08 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:50:49 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	executor(t_all *all)
 		return ;
 	dup_apunta_terminal(fd_trm);
 	init_signals(N_INTERACT);
-	while (all->prcs && all->num_process > i++)
+	while (all->prcs && all->num_process >= i++)
 	{
 		init_pipes(fd_pipe);
 		if (i != all->num_process && pipe(fd_pipe) == -1)
@@ -123,7 +123,9 @@ void	wait_pipes(t_all *all, int num_process, pid_t pid)
 		if (pid == waitpid(-1, &status, 0))
 		{
 			if (WIFEXITED(status))
-				ft_error(all, WEXITSTATUS(status), "Program exit");
+				all->error = WEXITSTATUS(status);
+				// exit(WEXITSTATUS(status));
+				// ft_error(all, WEXITSTATUS(status), "Program exit");
 			else if (WIFSIGNALED(status))
 			{
 				if (WTERMSIG(status) == SIGINT)

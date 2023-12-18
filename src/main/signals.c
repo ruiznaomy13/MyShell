@@ -81,7 +81,7 @@ void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data)
 	if (sig == SIGINT)
 	{
 		// g_sig = 1;
-		ft_error(all)
+		//ft_error(all)
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();

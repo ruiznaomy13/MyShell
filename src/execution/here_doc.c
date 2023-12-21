@@ -33,7 +33,7 @@ void	create_heredoc(t_all *all, t_token *current_rd)
 	int		err;
 
 	if (pipe(fd) == -1)
-		exit(1);//ft_error(all, -1, NULL); ?
+		exit(1);
 	pid = fork();
 	if (pid < 0)
 		exit(1);

@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/21 15:57:46 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:49:18 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,6 @@ void	check_heredoc(t_all *all, t_process *prcs);
 void	create_heredoc(t_all *all, t_token *current_rd);
 void	save_hd_fd(t_all *all, char *wrd, int fd[2]);
 int		ft_close(int *fd);
-void	*ft_free_hd(char **matrix, int option);
 
 //utils executor
 // char	**duplicate_env(char **env);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/18 17:54:21 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:25:32 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,15 +124,12 @@ void	wait_pipes(t_all *all, int num_process, pid_t pid)
 		{
 			if (WIFEXITED(status))
 				all->error = WEXITSTATUS(status);
-				// exit(WEXITSTATUS(status));
-				// ft_error(all, WEXITSTATUS(status), "Program exit");
 			else if (WIFSIGNALED(status))
 			{
 				if (WTERMSIG(status) == SIGINT)
 					ft_error(all, 130, "Interrupted");
 				else if (WTERMSIG(status) == SIGQUIT)
-					(1 && (ft_error(all, 131, "Quit")) \
-						&& (ft_dprintf("Quit: 3\n")));
+					(1 && (ft_error(all, 131, "Quit: 3")));
 			}
 			return ;
 		}

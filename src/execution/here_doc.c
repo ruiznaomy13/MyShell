@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/17 16:22:01 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:06:40 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	create_heredoc(t_all *all, char *wrd)
 	int		err;
 
 	if (pipe(fd) == -1)
-		exit(1);
+		exit(1);//ft_error(all, -1, NULL); ?
 	pid = fork();
 	if (pid < 0)
 		exit(1);
@@ -52,6 +52,7 @@ void	create_heredoc(t_all *all, char *wrd)
 			ft_error(all, err, NULL);
 	}
 	all->prcs->rd->fd_read_hd = fd[0];
+	printf("1.fd[0]: %i\n", all->prcs->rd->fd_read_hd);
 }
 
 void	save_hd_fd(t_all *all, char *wrd, int fd[2])
@@ -61,18 +62,22 @@ void	save_hd_fd(t_all *all, char *wrd, int fd[2])
 	(void)all;
 	init_signals(HEREDOC);
 	do_sigign(SIGQUIT);
-	line = readline("> ");
-	printf("delimitadors: %s\n", wrd);
-	while (line && ft_strncmp(line, wrd, ft_strlen(wrd)))
+	int aa = fd[1];
+	line = readline(">> ");
+	printf("delimitadors: %s   line: %s fd[1]: %i aa: %i\n", wrd, line, fd[1], aa);
+	while (line && ft_strncmp(line, wrd, 0xFFFF))//ft_strlen(wrd)
 	{
-		if (write(fd[1], line, ft_strlen(line)) == -1 \
-			|| write(fd[1], "\n", 1) == -1)
-		{
-			ft_free_hd(&line, 2);
-			ft_close(&fd[0]);
-			ft_close(&fd[1]);
-			exit(2);
-		}
+		write(fd[1], line, ft_strlen(line));
+		write(fd[1], "\n", 1);
+		// dup2(fd[1], aa);
+		// if (write(fd[1], line, ft_strlen(line)) == -1 \
+		// 	|| write(fd[1], "\n", 1) == -1)
+		// {
+		// 	ft_free_hd(&line, 2);
+		// 	ft_close(&fd[0]);
+		// 	ft_close(&fd[1]);
+		// 	exit(2);
+		// }
 		ft_free_hd(&line, 2);
 		do_sigign(SIGQUIT);
 		line = readline("> ");
@@ -82,33 +87,10 @@ void	save_hd_fd(t_all *all, char *wrd, int fd[2])
 		exit(2);
 	exit(0);
 }
-/* //ABANS DE MIRAR DEL ERIC LA DESPERACIO FA MAL
-void save_hd_fd(t_all *all, t_process *prcs, int fd[2])
-{
-	char *line;
-
-	line = NULL;
-	(void)all;
-	init_signals(HEREDOC);
-	do_sigign(SIGQUIT);
-	while (1)
-	{
-		line = readline("> ");
-		if (line == NULL || prcs == NULL || prcs->rd == NULL || wrd == NULL)
-			break;
-		if (ft_strcmp(line, prcs->rd->wrd) == 0)
-			break;
-		write(fd[1], line, ft_strlen(line));
-		write(fd[1], "\n", 1);
-		do_sigign(SIGQUIT);
-	}
-	if (ft_close(&fd[1]) == -1 || ft_close(&fd[0]) == -1)
-		exit(2);
-	exit(0);
-}*/
 
 int	ft_close(int *fd)
 {
+	printf("entra a ft_colose fd: %i\n", *fd);
 	if (*fd > 0 && close(*fd) == -1)
 	{
 		*fd = 0;

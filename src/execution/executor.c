@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/21 13:25:32 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:22:53 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,13 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	}
 	if (prcs->args && is_builting(prcs->args[0]))
 		exec_builting(all, prcs);
-	else if (prcs->args || (!prcs->args && !is_builting(prcs->args[0])))
+	else if (prcs->args && *prcs->args)
 	{
 		if (find_routes(all, all->prcs) == 1)
 			exit (ft_error(all, 2, prcs->args[0]));
 		prcs->ruta = get_ruta(all);
 		if (!prcs->ruta)
-		{
 			exit (ft_error(all, 2, prcs->args[0]));
-		}
 		if (execve(prcs->ruta, prcs->args, all->env) == -1)
 			exit (ft_error(all, CMD_NOT_FOUND, prcs->args[0]));
 	}

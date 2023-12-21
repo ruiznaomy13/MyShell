@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:08:09 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/18 17:54:43 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:24:08 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ninter_handler(int sig, siginfo_t *data, void *non_used_data)
 	else if (sig == SIGQUIT)
 	{
 		g_sig = 131;
-		exit(130);
+		// exit(130);
 	}
 	return ;
 }
@@ -81,15 +81,11 @@ void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data)
 	if (sig == SIGINT)
 	{
 		g_sig = 1;
-		//ft_error(all)//no cal passar all per totes les funcions ns si es pot fer pero cada vegada que arribi una senyal ha de returnar un error 
-		//per tant agafar la variable global com error si es fa alguna senyal
 		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
 		printf("\n");
 		exit(1);
 	}
-	else if (sig == SIGQUIT)
-		exit(1);
 	return ;
 }

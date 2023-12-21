@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:37:49 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/17 12:05:00 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:44:16 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ void	apendd(t_all *all, t_process *prcs, int fd_pipe[2])
 
 void	here_doc(t_process *prcs, int fd_pipe[2])
 {
+	(void)fd_pipe;
 	dup2(prcs->rd->fd_read_hd, STDIN_FILENO);
 	close(prcs->rd->fd_read_hd);
-	dup2(fd_pipe[0], STDIN_FILENO);
-	close(fd_pipe[0]);
 }

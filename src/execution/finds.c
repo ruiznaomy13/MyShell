@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   finds.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:37:32 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/14 19:19:56 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:55:50 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int	find_routes(t_all *all, t_process *prcs)
 	prcs->routes = ft_split(path_find, ':');
 	if (!prcs->routes)
 	{
-		printf("error al no fer split \n");
+		ft_error(all, 2, prcs->args[0]);
 		return (1);
-		//return (ft_error(1, ERR_MC, NULL));
 	}
 	if (!found)
 		return (1);

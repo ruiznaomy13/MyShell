@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/17 16:16:30 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:54:45 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	parser(t_all *all)
 
 	count_process(all, all->line);
 	create_process(all);
+	//mostra_rd(all->prcs);
 	current_prcs = all->prcs;
 	while (current_prcs != NULL)
 	{

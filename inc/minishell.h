@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/12/21 20:05:53 by ncastell         ###   ########.fr       */
+/*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
+/*   Updated: 2023/12/21 20:14:55 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -43,16 +42,10 @@ void	ninter_handler(int sig, siginfo_t *data, void *non_used_data);
 void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data);
 
 // Signals
-// void	signals(void);
-void	signals(int i);
-void	sig_handler(void (*handler)(int));
-void	sig_input(int signal);
-void	sig_exec(int signal);
-
-// MOSTRA EL NODE >>>>>> DELETE
-void	mostra_tokens(t_all *all);
-void	mostra_process(t_all *all);
-void	mostra_rd(t_process *pcs);
+// void	signals(int i);
+// void	sig_handler(void (*handler)(int));
+// void	sig_input(int signal);
+// void	sig_exec(int signal);
 
 /* -------------------- PARSER ------------------------- */
 // create_process.c

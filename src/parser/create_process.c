@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/21 20:05:32 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:12:09 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	parser(t_all *all)
 
 	count_process(all, all->line);
 	create_process(all);
-	//mostra_rd(all->prcs);
 	current_prcs = all->prcs;
 	while (current_prcs != NULL)
 	{

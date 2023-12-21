@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/21 17:54:25 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:13:10 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	asign_var(t_all *all, char *str, char **aux, int i)
 
 	empty = "";
 	var = search_var(str);
-	printf("VAR = %s\n", var);
 	if (strcmp(var, "") == 0)
 		*aux = ft_strjoin(*aux, "$");
 	else if (var[0] == '$')
@@ -104,7 +103,6 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 	aux = "";
 	str = ft_strdup(tkn->wrd);
 	((0) || (i = 0) || (flag = 0));
-	printf("HEREDOC = %d\n", prev);
 	while (str[i])
 	{
 		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)

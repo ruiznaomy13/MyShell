@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_redi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:00:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/12 17:22:24 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:04:01 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	list_redirection(t_process *pcs, t_all *all)
 			if (!rd)
 				return ;
 			rd->type = aux->type;
+			// if ((rd->type) != RDHD)
 			rd->wrd = expand_var(all, aux->next);
 			add_rd(rd, pcs);
 			aux = aux->next;

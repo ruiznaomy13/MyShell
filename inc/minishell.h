@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/17 16:22:23 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:51:13 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	list_redirection(t_process *pcs, t_all *all);
 
 // expansor.c
 char	*search_env(char *str, t_env *env);
-char	*expand_var(t_all *all, t_token *tkn);
+char	*expand_var(t_all *all, t_token *tkn, int prev);
 
 // lexer.c
 void	loop(t_all *all);

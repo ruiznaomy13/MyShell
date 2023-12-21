@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/17 16:16:30 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:43:32 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,10 @@ void	create_process(t_all *all)
 		if (pcs == NULL)
 			return ;
 		pcs->args = save_arg(all);
-		// printf("entro aqui %s argc=%s\n", all->token->next->wrd, pcs->args[1]);
 		list_redirection(pcs, all);
 		rm_prev_tkns(all);
 		add_prcs(all, pcs);
 	}
-	// mostra_process(all);
 }
 
 void	parser(t_all *all)

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:00:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/12 17:22:24 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:53:45 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,11 @@ void	list_redirection(t_process *pcs, t_all *all)
 	{
 		if (is_rd(aux->type))
 		{
-			// printf("REDIRECTION TYPE(list_redi) >> %d\n", aux->type);
 			rd = (t_token *)ft_calloc(sizeof(t_token), 1);
 			if (!rd)
 				return ;
 			rd->type = aux->type;
-			rd->wrd = expand_var(all, aux->next);
+			rd->wrd = expand_var(all, aux->next, rd->type);
 			add_rd(rd, pcs);
 			aux = aux->next;
 		}
@@ -85,7 +84,7 @@ char	**save_arg(t_all *all)
 			aux = aux->next;
 		else if (aux->wrd != NULL)
 		{
-			aux->wrd = expand_var(all, aux);
+			aux->wrd = expand_var(all, aux, 0);
 			str[i++] = aux->wrd;
 		}
 		aux = aux->next;

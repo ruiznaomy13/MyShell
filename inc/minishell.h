@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/21 18:09:20 by ncastell         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/12/21 20:05:53 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -68,7 +69,7 @@ void	list_redirection(t_process *pcs, t_all *all);
 
 // expansor.c
 char	*search_env(char *str, t_env *env);
-char	*expand_var(t_all *all, t_token *tkn);
+char	*expand_var(t_all *all, t_token *tkn, int prev);
 
 // lexer.c
 void	loop(t_all *all);

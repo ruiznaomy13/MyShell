@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/18 18:43:28 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:54:25 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	save_comma(char c)
 	return (-1);
 }
 
-char	*expand_var(t_all *all, t_token *tkn)
+char	*expand_var(t_all *all, t_token *tkn, int prev)
 {
 	int		i;
 	int		flag;
@@ -104,13 +104,15 @@ char	*expand_var(t_all *all, t_token *tkn)
 	aux = "";
 	str = ft_strdup(tkn->wrd);
 	((0) || (i = 0) || (flag = 0));
+	printf("HEREDOC = %d\n", prev);
 	while (str[i])
 	{
 		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
 			flag = save_comma(str[i]);
 		else if (save_comma(str[i]) == flag)
 			flag = 0;
-		else if (str[i] == '$' && (flag == 0 || flag == COMMA_D))
+		else if ((str[i] == '$' && (flag == 0 || flag == COMMA_D)) \
+		&& prev != RDHD)
 			i = asign_var(all, &str[i], &aux, i);
 		else
 			aux = ft_charjoin(aux, str[i]);

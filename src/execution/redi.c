@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+⁷/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   redi.c                                             :+:      :+:    :+:   */
@@ -65,7 +65,8 @@ void	apendd(t_all *all, t_process *prcs, int fd_pipe[2])
 
 void	here_doc(t_process *prcs, int fd_pipe[2])
 {
-	(void)fd_pipe;
 	dup2(prcs->rd->fd_read_hd, STDIN_FILENO);
 	close(prcs->rd->fd_read_hd);
+ dup2(fd_pipe[0], STDIN_FILENO);
+ close_pipes(fd_pipe);
 }

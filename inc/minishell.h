@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/21 17:49:18 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 10:58:51 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,8 @@ int		ft_cd(t_process *pcs, t_all *all);
 void	executor(t_all *all);
 void	child(t_all *all, t_process *prcs, int fd_pipe[2]);
 char	*get_ruta(t_all *all);//find cmd
-void	wait_pipes(t_all *all, int num_process, pid_t pid);
-void	aux_executor(t_all *all, pid_t pid, int fd_trm[2]);
+void	wait_pipes(t_all *all, int num_process, pid_t *pid);
+void	aux_executor(t_all *all, pid_t *pid, int fd_trm[2]);
 
 //executor2
 int		exec_builting(t_all *all, t_process *pcs);

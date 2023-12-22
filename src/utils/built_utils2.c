@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 20:15:41 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/14 19:03:13 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:26:09 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,30 @@ int	count_env_tokens(t_env *env)
 		count++;
 	}
 	return (count);
+}
+
+void	save_key(char **env, int i, t_env *x)
+{
+	char	*temp;
+
+	if (!env[i])
+	{
+		free_char_array(env);
+		env[i] = ft_calloc(1, sizeof(char));
+	}
+	strcpy(env[i], x->key);
+	if (x->equal)
+	{
+		temp = env[i];
+		env[i] = ft_charjoin(temp, '=');
+		free(temp);
+	}
+	if (x->value)
+	{
+		temp = env[i];
+		env[i] = ft_strjoin(temp, x->value);
+		free(temp);
+	}
 }
 
 void	actualize_env(t_all *all)
@@ -46,11 +70,7 @@ void	actualize_env(t_all *all)
 		env[i] = ft_calloc(total_len + 1, sizeof(char));
 		if (!env[i])
 			return (free_char_array(env));
-		strcpy(env[i], x->key);
-		if (x->equal)
-			env[i] = ft_charjoin(env[i], '=');
-		if (x->value)
-			env[i] = ft_strjoin(env[i], x->value);
+		save_key(env, i, x);
 		x = x->next;
 		i++;
 	}

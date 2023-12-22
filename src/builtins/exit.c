@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/18 17:29:20 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:03:01 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ int	ft_exit(t_process *pcs, t_all *all)
 	if (!pcs->args[1])
 		exit_prog(all, SUCCESS);
 	else if (pcs->args[2])
-		return(print_error("Too many arguments", 1));
+		return (print_error("Too many arguments", 1));
 	return (exit_type(all, pcs));
 }

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/21 20:15:32 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:04:10 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	checker(t_all *all)
 
 int	syntax_checker(t_all *all)
 {
-	t_token *aux;
+	t_token	*aux;
 	int		flag;
 
 	flag = 0;
@@ -31,10 +31,11 @@ int	syntax_checker(t_all *all)
 	while (aux != NULL)
 	{
 		if (aux->type == PIPE && \
-		(aux->next == NULL || (aux->next->type != TEXT  && !is_rd(aux->next->type))))
+		(aux->next == NULL || (aux->next->type != TEXT \
+		&& !is_rd(aux->next->type))))
 			return (ft_error(all, SYNTAX_ERROR, aux->wrd));
 		else if (is_rd(aux->type) && (aux->next == NULL \
-			|| aux->next->type != TEXT ))
+			|| aux->next->type != TEXT))
 			return (ft_error(all, SYNTAX_ERROR, aux->wrd));
 		aux = aux->next;
 	}

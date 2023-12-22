@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 18:38:05 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:02:41 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_export(t_process *pcs, t_all *all)
 		show_sorted_exp(all->w_env);
 	else
 	{
-		while(pcs->args[++i])
+		while (pcs->args[++i])
 		{
 			delete_env_var(&all->w_env, pcs->args[i]);
 			save_var_env(pcs->args[i], all);

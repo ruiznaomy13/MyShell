@@ -6,17 +6,17 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/21 20:13:10 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:06:59 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-char *search_env(char *str, t_env *env)
+char	*search_env(char *str, t_env *env)
 {
-	int 	i;
-	char 	*str_aux;
-	char 	*aux;
+	int		i;
+	char	*str_aux;
+	char	*aux;
 	t_env	*node_iter;
 
 	i = -1;
@@ -24,7 +24,7 @@ char *search_env(char *str, t_env *env)
 	str_aux = ft_strdup(str);
 	aux = NULL;
 	if (str_aux == NULL)
-		return NULL;
+		return (NULL);
 	while (node_iter)
 	{
 		if (!ft_strcmp(node_iter->key, str_aux))

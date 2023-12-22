@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:53:25 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 11:17:26 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:34:38 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define PIPE 01
 # define COMMA_S 21
 # define COMMA_D 22
+
+# define TASTE all->num_process;
 
 # define RDOUT 31 //>
 # define RDAP 32  //>>

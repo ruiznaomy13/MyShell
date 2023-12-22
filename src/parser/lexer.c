@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/21 21:04:46 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:06:08 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,17 +116,4 @@ void	add_token(t_token *tkn, t_all *all)
 			aux = aux->next;
 		aux->next = tkn;
 	}
-}
-
-int	exec_parent(t_all *all)
-{
-	if (all->num_process != 1 || !all->prcs->args || !*all->prcs->args)
-		return (0);
-	if (!ft_strcmp(all->prcs->args[0], "export") \
-		|| !ft_strcmp(all->prcs->args[0], "unset"))
-		return (1);
-	else if (!ft_strcmp(all->prcs->args[0], "cd") \
-		|| !ft_strcmp(all->prcs->args[0], "exit"))
-		return (1);
-	return (0);
 }

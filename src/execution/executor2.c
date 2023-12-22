@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   executor2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/16 14:53:28 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:06:15 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
+int	exec_parent(t_all *all)
+{
+	if (all->num_process != 1 || !all->prcs->args || !*all->prcs->args)
+		return (0);
+	if (!ft_strcmp(all->prcs->args[0], "export") \
+		|| !ft_strcmp(all->prcs->args[0], "unset"))
+		return (1);
+	else if (!ft_strcmp(all->prcs->args[0], "cd") \
+		|| !ft_strcmp(all->prcs->args[0], "exit"))
+		return (1);
+	return (0);
+}
 
 int	exec_builting(t_all *all, t_process *pcs)
 {

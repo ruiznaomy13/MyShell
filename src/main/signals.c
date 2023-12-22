@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:08:09 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 11:17:11 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:04:53 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,9 @@ void	ninter_handler(int sig, siginfo_t *data, void *non_used_data)
 	(void) data;
 	(void) non_used_data;
 	if (sig == SIGINT)
-	{
 		g_sig = 130;
-		// exit(130);
-	}
 	else if (sig == SIGQUIT)
-	{
 		g_sig = 131;
-	}
 	return ;
 }
 

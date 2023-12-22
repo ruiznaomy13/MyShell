@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 16:26:28 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:03:44 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,60 @@ int	main(int ac, char **av, char **env)
 	return (0);
 }
 
-void	ft_free_all(t_all *all)
-{
-	t_token		*tkn;
-	t_token		*rd;
-	t_process	*prc;
-	// t_env		*env;
+// void	free_env_list(t_env *env)
+// {
+// 	t_env	*temp;
 
-	while (all->prcs != NULL && all->prcs->rd != NULL)
-	{
-		rd = all->prcs->rd;
-		all->prcs->rd = all->prcs->rd->next;
-		free(rd);
-	}
-	while (all->prcs != NULL)
-	{
-		prc = all->prcs;
-		all->prcs = all->prcs->next;
-		free(prc);
-	}
-	while (all->token != NULL)
-	{
-		tkn = all->token;
-		all->token = all->token->next;
-		free(tkn);
-	}
-}
+// 	while (env != NULL)
+// 	{
+// 		temp = env;
+// 		env = env->next;
+// 		free(temp->key);
+// 		free(temp->value);
+// 		free(temp);
+// 	}
+// }
+
+// void	free_token_list(t_token *token)
+// {
+// 	t_token	*temp;
+
+// 	while (token != NULL)
+// 	{
+// 		temp = token;
+// 		token = token->next;
+// 		free(temp->wrd);
+// 		free(temp);
+// 	}
+// }
+
+// void	free_rd(t_process *prc)
+// {
+// 	t_token	*aux_rd;
+
+// 	while (prc != NULL && prc->rd != NULL)
+// 	{
+// 		aux_rd = prc->rd;
+// 		prc->rd = prc->rd->next;
+// 		free(aux_rd);
+// 	}
+// 	prc->rd = NULL;
+// }
+
+// void	ft_free_all(t_all *all)
+// {
+// 	t_token		*tkn;
+// 	t_process	*prc;
+
+// 	while (all->prcs != NULL)
+// 	{
+// 		prc = all->prcs;
+// 		all->prcs = all->prcs->next;
+// 		free_rd(prc);
+// 		free(prc);
+// 		prc = NULL;
+// 	}
+// 	all->prcs = NULL;
+// 	all->token = NULL;
+// }
 

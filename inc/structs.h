@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:53:25 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 12:34:38 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:15:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define YELLOW		"\x1b[33m"
 
 //variable global
-int				g_sig;
+int			g_sig;
 
 typedef struct s_env
 {
@@ -82,7 +82,6 @@ typedef struct s_process
 typedef struct s_all
 {
 	char		*line;
-	char		*name;
 	int			size;
 	char		**env;
 	int			error;

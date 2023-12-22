@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 16:30:27 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:04:28 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	exit_prog(t_all *all, int output)
 {
 	(void)all;
 	clear_history();
-	ft_free_all(all);
+	ft_free_all(all, E_EXIT);
 	system("leaks minishell");
 	exit(all->error);
 	return (output);

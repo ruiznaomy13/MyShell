@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 13:33:43 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:14:29 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,14 @@
 
 /* ------------------------MAIN----------------------- */
 void	ft_free_all(t_all *all);
-char	*save_name(char *str);
-void	ctrl_c(int mode);
-void	ft_sig_ctr_c(int sig);
-void	clean_av(char *nom);
+void	free_env(t_all *all);
 
 //senyals.c
-// void	signals(void);
 int		init_signals(int mode);
 void	do_sigign(int signum);
 void	norm_handler(int sig, siginfo_t *data, void *non_used_data);
 void	ninter_handler(int sig, siginfo_t *data, void *non_used_data);
 void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data);
-
-// Signals
-// void	signals(void);
-void	signals(int i);
-void	sig_handler(void (*handler)(int));
-void	sig_input(int signal);
-void	sig_exec(int signal);
-
-// MOSTRA EL NODE >>>>>> DELETE
-void	mostra_tokens(t_all *all);
-void	mostra_process(t_all *all);
-void	mostra_rd(t_process *pcs);
 
 /* -------------------- PARSER ------------------------- */
 // create_process.c

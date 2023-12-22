@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 11:35:01 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:29:59 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,13 @@
 
 /* ------------------------MAIN----------------------- */
 void	ft_free_all(t_all *all);
-char	*save_name(char *str);
-void	ctrl_c(int mode);
-void	ft_sig_ctr_c(int sig);
-void	clean_av(char *nom);
 
 //senyals.c
-// void	signals(void);
 int		init_signals(int mode);
 void	do_sigign(int signum);
 void	norm_handler(int sig, siginfo_t *data, void *non_used_data);
 void	ninter_handler(int sig, siginfo_t *data, void *non_used_data);
 void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data);
-
-// Signals
-// void	signals(int i);
-// void	sig_handler(void (*handler)(int));
-// void	sig_input(int signal);
-// void	sig_exec(int signal);
 
 /* -------------------- PARSER ------------------------- */
 // create_process.c
@@ -138,9 +127,9 @@ int		ft_cd(t_process *pcs, t_all *all);
 //executor.c
 void	executor(t_all *all);
 void	child(t_all *all, t_process *prcs, int fd_pipe[2]);
-char	*get_ruta(t_all *all);//find cmd
+void	aux_executor1(t_all *all, int fd_pipe[2], int fd_trm[2]);
+void	aux_executor2(t_all *all, pid_t *pid, int fd_trm[2]);
 void	wait_pipes(t_all *all, int num_process, pid_t *pid);
-void	aux_executor(t_all *all, pid_t *pid, int fd_trm[2]);
 
 //executor2
 int		exec_builting(t_all *all, t_process *pcs);
@@ -158,6 +147,8 @@ void	dup2_apunta_terminal(int fd_trm[2]);
 //finds
 int		find_routes(t_all *all, t_process *prcs);
 char	*find_path(t_all *all, int *found);
+char	*get_ruta(t_all *all);//find cmd
+char	*aux_get_ruta(t_all *all, char **path, char *ruta, char *tmp);
 
 //redi
 void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2]);

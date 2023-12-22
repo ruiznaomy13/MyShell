@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 13:04:35 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:26:28 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_free_all(t_all *all)
 	t_token		*tkn;
 	t_token		*rd;
 	t_process	*prc;
+	// t_env		*env;
 
 	while (all->prcs != NULL && all->prcs->rd != NULL)
 	{
@@ -73,3 +74,4 @@ void	ft_free_all(t_all *all)
 		free(tkn);
 	}
 }
+

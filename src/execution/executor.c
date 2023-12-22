@@ -6,13 +6,12 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 11:14:50 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:41:02 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//quan es faci exit s'ha de fer close de trm 
 void	executor(t_all *all)
 {
 	int		i;
@@ -23,7 +22,6 @@ void	executor(t_all *all)
 
 	i = 0;
 	pi = 0;
-	printf("num process: %i\n", all->num_process);
 	if (all->prcs == NULL)
 		return ;
 	dup_apunta_terminal(fd_trm);
@@ -32,10 +30,10 @@ void	executor(t_all *all)
 	while (all->prcs && all->num_process >= i++)
 	{
 		if (i != all->num_process && pipe(fd_pipe) == -1)
-			exit(1);//ft_error();
+			exit(1);
 		pid[pi] = fork();
 		if (pid < 0)
-			exit(1);//ft_error();
+			exit(1);
 		else if (pid[pi] == 0)
 			child(all, all->prcs, fd_pipe);
 		if (i != all->num_process)
@@ -55,12 +53,8 @@ void	aux_executor(t_all *all, pid_t *pid, int fd_trm[2])
 
 void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 {
-	if (fd_pipe[0] != -1)
-	{
-		close(fd_pipe[0]);
-		dup2(fd_pipe[1], STDOUT_FILENO);
-		// close(fd_pipe[1]);
-	}
+	close(fd_pipe[0]);
+	dup2(fd_pipe[1], STDOUT_FILENO);
 	if (prcs->rd)
 	{
 		while (prcs->rd)
@@ -81,7 +75,6 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 		if (execve(prcs->ruta, prcs->args, all->env) == -1)
 			exit (ft_error(all, CMD_NOT_FOUND, prcs->args[0]));
 	}
-	// close(fd_pipe[1]);
 	exit(0);
 }
 

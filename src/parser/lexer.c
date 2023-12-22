@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/17 13:04:55 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/21 21:04:46 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	loop(t_all *all)
 {
 	while (42)
 	{
+		if (g_sig != 0)
+			all->error = g_sig;
 		g_sig = 0;
 		init_signals(NORM);
 		do_sigign(SIGQUIT);
@@ -27,14 +29,9 @@ void	loop(t_all *all)
 		if (minishell_structure(all))
 			continue ;
 		if (exec_parent(all))
-		{
-			printf("ARGV = %s\n", all->prcs->args[1]);
 			executor_builting(all, all->prcs);
-		}
 		else
-		{
 			executor(all);
-		}
 		ft_free_all(all);
 	}
 }

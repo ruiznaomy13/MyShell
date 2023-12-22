@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:08:09 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 10:15:05 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:17:11 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	ninter_handler(int sig, siginfo_t *data, void *non_used_data)
 	else if (sig == SIGQUIT)
 	{
 		g_sig = 131;
-		// exit(130);
 	}
 	return ;
 }

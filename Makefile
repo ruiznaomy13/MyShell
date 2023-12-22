@@ -21,8 +21,8 @@ SRC = $(addprefix $(SRCDIR), $(SRC_L))
 OBJECTS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 all:
-	@${MAKE} -C lib/libft/
-	@${MAKE} $(NAME)
+	@${MAKE} -C lib/libft/ --no-print-directory
+	@${MAKE} $(NAME) --no-print-directory
 
 $(OBJDIR)%.o: %.c
 	@printf "Compiling objects\n"
@@ -36,7 +36,7 @@ $(NAME): $(OBJECTS) Makefile lib/libft/libft.a
 
 fclean: clean
 	@rm -rf $(NAME)
-	@${MAKE} fclean -C lib/libft/
+	@${MAKE} fclean -C lib/libft/ --no-print-directory
 	@printf "\nAll cleaned!\n"
 
 clean:

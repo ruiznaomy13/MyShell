@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:53:25 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 10:52:21 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:17:26 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define WHITE		"\x1b[37m"
 # define RED		"\x1b[31m"
 # define CYAN		"\033[96m"
+# define YELLOW		"\x1b[33m"
 
 //variable global
 int				g_sig;

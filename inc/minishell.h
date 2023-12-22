@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 10:58:51 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:17:21 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,10 @@ void	ninter_handler(int sig, siginfo_t *data, void *non_used_data);
 void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data);
 
 // Signals
-// void	signals(void);
-void	signals(int i);
-void	sig_handler(void (*handler)(int));
-void	sig_input(int signal);
-void	sig_exec(int signal);
-
-// MOSTRA EL NODE >>>>>> DELETE
-void	mostra_tokens(t_all *all);
-void	mostra_process(t_all *all);
-void	mostra_rd(t_process *pcs);
+// void	signals(int i);
+// void	sig_handler(void (*handler)(int));
+// void	sig_input(int signal);
+// void	sig_exec(int signal);
 
 /* -------------------- PARSER ------------------------- */
 // create_process.c
@@ -68,7 +62,7 @@ void	list_redirection(t_process *pcs, t_all *all);
 
 // expansor.c
 char	*search_env(char *str, t_env *env);
-char	*expand_var(t_all *all, t_token *tkn);
+char	*expand_var(t_all *all, t_token *tkn, int prev);
 
 // lexer.c
 void	loop(t_all *all);

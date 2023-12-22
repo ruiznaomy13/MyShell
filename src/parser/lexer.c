@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/21 18:50:54 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 15:10:09 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	loop(t_all *all)
 		do_sigign(SIGINT);
 		if (!all->line)
 			return ;
-		add_history(all->line);
+		else if (*all->line)
+			add_history(all->line);
 		if (minishell_structure(all))
 			continue ;
 		if (exec_parent(all))

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 12:38:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:53:18 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,13 @@ void	executor(t_all *all)
 {
 	int		i;
 	int		pi;
+	pid_t	pid[all->num_process];
 	int		fd_pipe[2];
 	int		fd_trm[2];
-	pid_t	pid[all->num_process];
 
 	i = 0;
 	pi = 0;
-	if (all->prcs == NULL)
-		return ;
-	dup_apunta_terminal(fd_trm);
-	init_signals(N_INTERACT);
-	init_pipes(fd_pipe);
+	aux_executor1(all, fd_pipe, fd_trm);
 	while (all->prcs && all->num_process >= i++)
 	{
 		if (i != all->num_process && pipe(fd_pipe) == -1)
@@ -42,10 +38,19 @@ void	executor(t_all *all)
 		all->pos_process++;
 		all->prcs = all->prcs->next;
 	}
-	aux_executor(all, pid, fd_trm);
+	aux_executor2(all, pid, fd_trm);
 }
 
-void	aux_executor(t_all *all, pid_t *pid, int fd_trm[2])
+void	aux_executor1(t_all *all, int fd_pipe[2], int fd_trm[2])
+{
+	if (all->prcs == NULL)
+		return ;
+	dup_apunta_terminal(fd_trm);
+	init_signals(N_INTERACT);
+	init_pipes(fd_pipe);
+}
+
+void	aux_executor2(t_all *all, pid_t *pid, int fd_trm[2])
 {
 	dup2_apunta_terminal(fd_trm);
 	wait_pipes(all, all->num_process, pid);
@@ -78,37 +83,6 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	exit(0);
 }
 
-char	*get_ruta(t_all *all)
-{
-	char	**path;
-	char	*ruta;
-	char	*tmp;
-
-	path = all->prcs->routes;
-	if (!path)
-		exit (ft_error(all, 2, all->prcs->args[0]));
-	while (*path)
-	{
-		if (!path || !*path || !all->prcs->args || !*all->prcs->args)
-			return (NULL);
-		tmp = ft_strjoin(*path, "/");
-		ruta = ft_strjoin(tmp, all->prcs->args[0]);
-		if (!ruta)
-			exit (ft_error(all, CMD_NOT_FOUND, "No such file or directory"));
-		free(tmp);
-		if (access(ruta, F_OK | X_OK) == 0)
-			return (ruta);
-		free(ruta);
-		path++;
-	}
-	if (access(all->prcs->args[0], F_OK | X_OK) == 0 \
-		&& ft_strchr(all->prcs->args[0], '/'))
-		return (all->prcs->args[0]);
-	else
-		exit(ft_error(all, CMD_NOT_FOUND, all->prcs->args[0]));
-	return (NULL);
-}
-
 void	wait_pipes(t_all *all, int num_process, pid_t *pid)
 {
 	int		i;
@@ -119,7 +93,7 @@ void	wait_pipes(t_all *all, int num_process, pid_t *pid)
 	pi = 0;
 	while (i < num_process)
 	{
-		if (waitpid(pid[pi], &status, 0))
+		if (waitpid(pid[pi++], &status, 0))
 		{
 			printf("num  pross :%d\n", pid[pi++]);
 			if (WIFEXITED(status))

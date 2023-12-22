@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:21:08 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 13:31:46 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 15:03:17 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,27 @@
 void	executor(t_all *all)
 {
 	int		i;
-	int		pi;
-	pid_t	pid[all->num_process];
+	pid_t	pid;
 	int		fd_pipe[2];
 	int		fd_trm[2];
 
 	i = 0;
-	pi = 0;
 	aux_executor1(all, fd_pipe, fd_trm);
 	while (all->prcs && all->num_process >= i++)
 	{
 		if (i != all->num_process && pipe(fd_pipe) == -1)
 			exit(1);
-		pid[pi] = fork();
+		pid = fork();
 		if (pid < 0)
 			exit(1);
-		else if (pid[pi] == 0)
+		else if (pid == 0)
 			child(all, all->prcs, fd_pipe);
 		if (i != all->num_process)
 			father_redirect_stdin(fd_pipe);
-		pi++;
 		all->pos_process++;
 		all->prcs = all->prcs->next;
 	}
-	aux_executor2(all, pid, fd_trm);
+	aux_executor2(all, &pid, fd_trm);
 }
 
 void	aux_executor1(t_all *all, int fd_pipe[2], int fd_trm[2])
@@ -86,14 +83,12 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 void	wait_pipes(t_all *all, int num_process, pid_t *pid)
 {
 	int		i;
-	int		pi;
 	int		status;
 
 	i = 0;
-	pi = 0;
 	while (i < num_process)
 	{
-		if (waitpid(pid[pi++], &status, 0))
+		if (*pid == waitpid(-1, &status, 0))
 		{
 			if (WIFEXITED(status))
 				all->error = WEXITSTATUS(status);

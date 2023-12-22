@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 13:53:56 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:26:31 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 // # include <term.h>
 
 /* ------------------------MAIN----------------------- */
-void	ft_free_all(t_all *all);
+void	ft_free_all(t_all *all, int error);
 char	*save_name(char *str);
 void	ctrl_c(int mode);
 void	ft_sig_ctr_c(int sig);

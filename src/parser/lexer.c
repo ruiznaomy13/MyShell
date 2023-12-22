@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 13:06:08 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:29:48 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	loop(t_all *all)
 			executor_builting(all, all->prcs);
 		else
 			executor(all);
-		ft_free_all(all);
+		ft_free_all(all, SUCCESS);
 	}
 }
 
@@ -40,14 +40,14 @@ int	minishell_structure(t_all *all)
 {
 	if (check_cometes(all, all->line) > 30)
 	{
-		ft_free_all(all);
+		ft_free_all(all, 0);
 		return (1);
 	}
 	if (lexer(all))
 		return (1);
 	if (checker(all))
 	{
-		ft_free_all(all);
+		ft_free_all(all, 0);
 		return (1);
 	}
 	parser(all);

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:00:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/21 20:10:00 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:42:29 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	**save_arg(t_all *all)
 		else if (aux->wrd != NULL)
 		{
 			aux->wrd = expand_var(all, aux, 0);
-			str[i++] = aux->wrd;
+			str[i++] = ft_strdup(aux->wrd);
 		}
 		aux = aux->next;
 	}

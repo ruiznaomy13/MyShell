@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 17:05:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:48:47 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	lexer(t_all *all)
 		return (1);
 	while (all->line[++i])
 	{
+		ft_dprintf("lexer: i = %d |%s|\n", i, &all->line[i]);
 		if (!delimiter(all->line[i]))
 			i += create_token(all, &all->line[i], TEXT) - 1;
 		else if (all->line[i] == '|')
@@ -98,9 +99,10 @@ int	create_token(t_all *all, char *str, int type)
 	else if (type == RDOUT)
 		tkn->wrd = ">";
 	else if (type == RDIN)
-		tkn->wrd = "<";
+		tkn->wrd = ft_strdup("<");
 	tkn->type = type;
 	add_token(tkn, all);
+	ft_dprintf("create_token: |%s|\n", tkn->wrd);
 	return (ft_strlen(tkn->wrd));
 }
 

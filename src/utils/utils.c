@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 20:59:41 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 18:07:46 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	*ft_charjoin(char *s, char c)
 	int		i;
 
 	i = -1;
+	ft_dprintf("charjoin |%s|\n", s);
 	if (s != NULL)
 		len = ft_strlen(s);
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 16:26:50 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:40:20 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	rm_prev_tkns(t_all *all)
 			free(aux);
 			return ;
 		}
+		printf("all->wrd = %s\n", aux->wrd);
+		free(aux->wrd);
 		free(aux);
 	}
 }

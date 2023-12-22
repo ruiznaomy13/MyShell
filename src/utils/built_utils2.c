@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 20:15:41 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 13:26:09 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 18:07:09 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	save_key(char **env, int i, t_env *x)
 	if (x->equal)
 	{
 		temp = env[i];
-		env[i] = ft_charjoin(temp, '=');
+		//env[i] = ft_charjoin(temp, '=');
+		env[i] = ft_strjoin(temp, "=");
 		free(temp);
 	}
 	if (x->value)

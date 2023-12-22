@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 17:04:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:04:52 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@
 
 /* ------------------------MAIN----------------------- */
 void	ft_free_all(t_all *all, int error);
-char	*save_name(char *str);
-void	ctrl_c(int mode);
-void	ft_sig_ctr_c(int sig);
-void	clean_av(char *nom);
 
 //senyals.c
 int		init_signals(int mode);

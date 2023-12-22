@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:09:45 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 16:51:55 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 17:14:46 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	ft_free_all(t_all *all, int exit)
 {
 	free(all->line);
 	free_token_list(all->token);
+	clear_history();
 	if (exit)
 	{
 		free_char_array(all->env);

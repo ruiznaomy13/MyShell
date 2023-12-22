@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/22 18:09:27 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/22 23:57:59 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,9 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 	int		flag;
 	char	*str;
 	char	*aux;
+	char	*temp;
 
-	aux = "";
+	aux = ft_strdup("");
 	str = ft_strdup(tkn->wrd);
 	((0) || (i = 0) || (flag = 0));
 	while (str[i])
@@ -108,20 +109,15 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 		if ((str[i] == '\'' || str[i] == '\"') && flag == 0)
 			flag = save_comma(str[i]);
 		else if (save_comma(str[i]) == flag)
-		{
-			write(1, "exp_var\n", 8);
 			flag = 0;
-		}
 		else if ((str[i] == '$' && (flag == 0 || flag == COMMA_D)) \
 		&& prev != RDHD)
 			i = asign_var(all, &str[i], &aux, i);
 		else
 		{
-			write(1, "exp_var2\n", 9);
-			//aux = ft_charjoin(aux, str[i]);
-			aux = ft_strjoin(aux, &str[i]);
-			str[i + 1] = '\0';
-			ft_dprintf("expand var: |%s|\n", aux);
+			temp = ft_charjoin(aux, str[i]);
+			free(aux);
+			aux = temp;
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:09:45 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 17:14:46 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 00:03:03 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	free_process(t_process *prcs)
 		temp = prcs;
 		prcs = prcs->next;
 		free_token_list(temp->rd);
+		free_char_array(temp->args);
 		printf("entro 1\n");
 		free(temp->ruta);
 		free(temp);

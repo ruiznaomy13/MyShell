@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_redi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:00:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 17:42:29 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 13:46:08 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	**save_arg(t_all *all)
 			aux = aux->next;
 		else if (aux->wrd != NULL)
 		{
-			aux->wrd = expand_var(all, aux, 0);
+			aux->wrd = expand_var(all, aux, 0);//aqui comencen els leaks
 			str[i++] = ft_strdup(aux->wrd);
 		}
 		aux = aux->next;

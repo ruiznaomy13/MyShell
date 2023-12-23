@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:09:45 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 01:14:52 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 12:49:24 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	free_token_list(t_token *token)
 {
 	t_token	*temp;
 
+	printf("entra a free token\n");
 	while (token != NULL)
 	{
 		temp = token;

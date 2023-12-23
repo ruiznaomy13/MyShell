@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   create_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 02:02:17 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 12:56:21 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	rm_prev_tkns(t_all *all)
+void	rm_prev_tkns(t_all **all)
 {
 	t_token	*aux;
 
-	while (all->token != NULL)
+	while ((*all)->token != NULL)
 	{
-		aux = all->token;
-		all->token = all->token->next;
+		aux = (*all)->token;
+		(*all)->token = (*all)->token->next;
 		free(aux->wrd);
 		free(aux);
 		if (aux->type == PIPE)
@@ -53,7 +53,7 @@ void	create_process(t_all *all)
 			return ;
 		pcs->args = save_arg(all);
 		list_redirection(pcs, all);
-		rm_prev_tkns(all);
+		rm_prev_tkns(&all);
 		add_prcs(all, pcs);
 	}
 }

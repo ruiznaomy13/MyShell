@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 17:04:52 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 14:15:09 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ void	norm_handler(int sig, siginfo_t *data, void *non_used_data);
 void	ninter_handler(int sig, siginfo_t *data, void *non_used_data);
 void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data);
 
+//free_minishell.c
+void	free_token_list(t_token *token);
+
 /* -------------------- PARSER ------------------------- */
 // create_process.c
-void	rm_prev_tkns(t_all *all);
+void	rm_prev_tkns(t_all **all);
 void	add_prcs(t_all *all, t_process *pcs);
 void	create_process(t_all *all);
 void	parser(t_all *all);

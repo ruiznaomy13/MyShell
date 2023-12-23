@@ -6,22 +6,22 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:06:16 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 12:56:52 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 12:50:49 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	free_char_array(char **arr)
+void	free_char_array(char ***arr)
 {
 	int	i;
 
 	i = -1;
-	if (arr == NULL)
+	if (*arr == NULL)
 		return ;
-	while (arr[++i])
-		free(arr[i]);
-	free(arr);
+	while ((*arr)[++i])
+		free((*arr)[i]);
+	free(*arr);
 }
 
 void	add_to_env(t_all *all, t_env *env)
@@ -59,7 +59,7 @@ int	list_env(t_all *all, char **env)
 			aux_env->equal = 1;
 		aux_env->next = NULL;
 		add_to_env(all, aux_env);
-		free_char_array(aux);
+		free_char_array(&aux);
 	}
 	actualize_env(all);
 	return (0);

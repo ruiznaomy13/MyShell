@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:13:05 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 20:50:22 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 12:51:02 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	save_var_env(const char *src, t_all *all)
 	else
 		aux_env->value = NULL;
 	add_to_env(all, aux_env);
-	free_char_array(dup_src);
+	free_char_array(&dup_src);
 	return (0);
 }
 

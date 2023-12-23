@@ -1,9 +1,8 @@
 Makefile
-echo
-hola
 inc
 lib
 minishell
 obj
-saludo
+out
+out2
 src

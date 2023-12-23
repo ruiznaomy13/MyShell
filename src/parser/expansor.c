@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/23 01:20:40 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 02:02:59 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,5 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 		i++;
 	}
 	free(str);
-	free(tkn->wrd);
 	return (aux);
 }

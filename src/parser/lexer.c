@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 01:16:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 02:00:04 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ int	create_token(t_all *all, char *str, int type)
 	if (type == TEXT || type == EXP)
 		tkn->wrd = is_text_first(str);
 	else if (type == PIPE)
-		tkn->wrd = "|";
+		tkn->wrd = ft_strdup("|");
 	else if (type == RDAP)
-		tkn->wrd = ">>";
+		tkn->wrd = ft_strdup(">>");
 	else if (type == RDHD)
-		tkn->wrd = "<<";
+		tkn->wrd = ft_strdup("<<");
 	else if (type == RDOUT)
-		tkn->wrd = ">";
+		tkn->wrd = ft_strdup(">");
 	else if (type == RDIN)
 		tkn->wrd = ft_strdup("<");
 	tkn->type = type;

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/22 23:57:59 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 01:20:40 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 	int		flag;
 	char	*str;
 	char	*aux;
-	char	*temp;
+	// char	*temp;
 
 	aux = ft_strdup("");
 	str = ft_strdup(tkn->wrd);
@@ -115,12 +115,13 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 			i = asign_var(all, &str[i], &aux, i);
 		else
 		{
-			temp = ft_charjoin(aux, str[i]);
-			free(aux);
-			aux = temp;
+			aux = ft_charjoin(aux, str[i]);
+			// free(aux);
+			// aux = temp;
 		}
 		i++;
 	}
 	free(str);
+	free(tkn->wrd);
 	return (aux);
 }

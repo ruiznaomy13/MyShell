@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 17:40:20 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 01:21:52 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,9 @@ void	rm_prev_tkns(t_all *all)
 	{
 		aux = all->token;
 		all->token = all->token->next;
-		if (aux->type == PIPE)
-		{
-			free(aux);
-			return ;
-		}
-		printf("all->wrd = %s\n", aux->wrd);
-		free(aux->wrd);
 		free(aux);
+		if (aux->type == PIPE)
+			return ;
 	}
 }
 

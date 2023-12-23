@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:00:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 17:42:29 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 14:20:23 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	list_redirection(t_process *pcs, t_all *all)
 char	**save_arg(t_all *all)
 {
 	char	**str;
+	char	*str_aux;
 	t_token	*aux;
 	int		i;
 
@@ -84,8 +85,9 @@ char	**save_arg(t_all *all)
 			aux = aux->next;
 		else if (aux->wrd != NULL)
 		{
-			aux->wrd = expand_var(all, aux, 0);
-			str[i++] = ft_strdup(aux->wrd);
+			str_aux = expand_var(all, aux, 0);
+			str[i++] = ft_strdup(str_aux);
+			free(str_aux);
 		}
 		aux = aux->next;
 	}

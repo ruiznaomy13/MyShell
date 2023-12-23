@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 02:00:04 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 13:54:20 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int	create_token(t_all *all, char *str, int type)
 		tkn->wrd = ft_strdup("<");
 	tkn->type = type;
 	add_token(tkn, all);
-	ft_dprintf("create_token: |%s|\n", tkn->wrd);
 	return (ft_strlen(tkn->wrd));
 }
 

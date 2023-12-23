@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 13:06:15 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 13:05:39 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	exec_parent(t_all *all)
 {
-	if (all->num_process != 1 || !all->prcs->args || !*all->prcs->args)
+	if (all->num_process != 1 || !all->prcs->args || all->prcs->rd)
 		return (0);
 	if (!ft_strcmp(all->prcs->args[0], "export") \
 		|| !ft_strcmp(all->prcs->args[0], "unset"))

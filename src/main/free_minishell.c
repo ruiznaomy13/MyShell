@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:09:45 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 12:49:24 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/23 14:59:30 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	free_process(t_process *prcs)
 		temp = prcs;
 		prcs = prcs->next;
 		free_token_list(temp->rd);
-		free_char_array(temp->args);
+		free_char_array(&temp->args);
 		free(temp->ruta);
 		free(temp);
 	}
@@ -75,7 +75,7 @@ void	ft_free_all(t_all *all, int exit)
 	if (exit)
 	{
 		clear_history();
-		free_char_array(all->env);
+		free_char_array(&all->env);
 		free_env_list(all->w_env);
 	}
 	free_process(all->prcs);

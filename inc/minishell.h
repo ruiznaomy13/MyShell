@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 14:15:09 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/23 14:59:38 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int		n_flag(char *s);
 
 //env.c
 int		ft_env(t_all *all);
-void	free_char_array(char **arr);
+void	free_char_array(char ***arr);
 void	add_to_env(t_all *all, t_env *env);
 int		list_env(t_all *all, char **env);
 

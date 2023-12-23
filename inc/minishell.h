@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 12:49:38 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 15:17:36 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data);
 
 /* -------------------- PARSER ------------------------- */
 // create_process.c
-void	rm_prev_tkns(t_all *all);
+void	rm_prev_tkns(t_all **all);
 void	add_prcs(t_all *all, t_process *pcs);
 void	create_process(t_all *all);
 void	parser(t_all *all);

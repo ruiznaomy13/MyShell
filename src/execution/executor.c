@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:21:08 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/22 16:55:04 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 12:23:07 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	wait_pipes(t_all *all, int num_process, pid_t *pid)
 			else if (WIFSIGNALED(status))
 			{
 				if (WTERMSIG(status) == SIGINT)
-					ft_error(all, 130, "Interrupted");
+					ft_error(all, 130, "");
 				else if (WTERMSIG(status) == SIGQUIT)
 					(1 && (ft_error(all, 131, "Quit: 3")));
 			}

@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:21:08 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 18:05:37 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/24 12:45:18 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	executor(t_all *all)
 {
-	int		i;
-	pid_t	pid;
-	int		fd_pipe[2];
-	int		fd_trm[2];
+	int			i;
+	pid_t		pid;
+	int			fd_pipe[2];
+	int			fd_trm[2];
 	t_process	*aux_prcs;
 
 	i = 0;
-	ft_dprintf("(EXECUTOR)all: %p\nprcs: %p\nargs: %p\n", all, all->prcs, all->prcs->args);
 	aux_prcs = all->prcs;
 	aux_executor1(all, fd_pipe, fd_trm);
 	while (all->prcs && all->num_process >= i++)
@@ -39,33 +38,9 @@ void	executor(t_all *all)
 		all->prcs = all->prcs->next;
 	}
 	aux_executor2(all, &pid, fd_trm);
-	all->prcs = aux_prcs;
-	while (all && all->prcs && all->prcs->args)
-	{
-		int i = 0;
-		t_process *rm = all->prcs;
-		while (all->prcs->args && all->prcs->args[i])
-		{
-			free(all->prcs->args[i]);
-			i++;
-		}
-		free(all->prcs->args);
-		free(rm);
-		all->prcs = all->prcs->next;
-	}
+	free_args_and_rd(all, aux_prcs);
 }
-/*
-while (all && all->prcs && all->prcs->args)
-	{
-		int i = 0;
-		while (all->prcs->args && all->prcs->args[i])
-		{
-			free(all->prcs->args[i]);
-			i++;
-		}
-		all->prcs = all->prcs->next;
-	}
-*/
+
 void	aux_executor1(t_all *all, int fd_pipe[2], int fd_trm[2])
 {
 	if (all->prcs == NULL)
@@ -89,7 +64,7 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	{
 		while (prcs->rd)
 		{
-			redi_type(all, all->prcs, fd_pipe);
+			redi_type(all, prcs, fd_pipe);
 			prcs->rd = prcs->rd->next;
 		}
 	}

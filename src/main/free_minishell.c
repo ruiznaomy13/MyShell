@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:09:45 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 14:59:30 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/24 12:43:55 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	free_token_list(t_token *token)
 {
 	t_token	*temp;
 
-	printf("entra a free token\n");
 	while (token != NULL)
 	{
 		temp = token;
@@ -38,19 +37,6 @@ void	free_token_list(t_token *token)
 		free(temp->wrd);
 		free(temp);
 	}
-}
-
-void	free_rd(t_process *prc)
-{
-	t_token	*aux_rd;
-
-	while (prc != NULL && prc->rd != NULL)
-	{
-		aux_rd = prc->rd;
-		prc->rd = prc->rd->next;
-		free(aux_rd);
-	}
-	prc->rd = NULL;
 }
 
 void	free_process(t_process *prcs)
@@ -71,14 +57,12 @@ void	free_process(t_process *prcs)
 void	ft_free_all(t_all *all, int exit)
 {
 	free(all->line);
-	// free_token_list(all->token);
 	if (exit)
 	{
 		clear_history();
 		free_char_array(&all->env);
 		free_env_list(all->w_env);
 	}
-	free_process(all->prcs);
 	all->prcs = NULL;
 	all->token = NULL;
 }

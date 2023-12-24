@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 17:18:46 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/24 11:22:15 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	lexer(t_all *all)
 		return (1);
 	while (all->line[++i])
 	{
-		ft_dprintf("lexer: i = %d |%s|\n", i, &all->line[i]);
 		if (!delimiter(all->line[i]))
 			i += create_token(all, &all->line[i], TEXT) - 1;
 		else if (all->line[i] == '|')

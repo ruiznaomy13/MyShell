@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 14:59:38 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/24 11:44:01 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,8 +167,9 @@ void	save_hd_fd(t_all *all, char *wrd, int fd[2]);
 int		ft_close(int *fd);
 
 //utils executor
-// char	**duplicate_env(char **env);
 void	count_process(t_all *all, char *str);
+void	free_args_and_rd(t_all *all, t_process *aux_prcs);
+void	free_rd_execve(t_all *all, t_process *aux_prcs);
 
 //utils executor2
 void	add_var_env(t_all *all, t_env *env);

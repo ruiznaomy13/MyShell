@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 17:42:24 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/24 10:56:30 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	print_error(char *msj, int otput)
 
 int	exit_prog(t_all *all, int output)
 {
-	// (void)all;
-	// ft_dprintf("(EXIT)all: %p\nprcs: %p\nargs: %p\n", all, all->prcs, all->prcs->args);
 	clear_history();
-	// free_char_array(&all->prcs->args);
 	ft_free_all(all, E_EXIT);
 	system("leaks minishell");
 	exit(all->error);

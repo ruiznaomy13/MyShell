@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/24 11:22:15 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/24 18:05:11 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	create_token(t_all *all, char *str, int type)
 	t_token	*tkn;
 
 	tkn = (t_token *)ft_calloc(sizeof(t_token), 1);
+	printf("tkn :%p\n", tkn);//num pipes
 	if (!tkn)
 		return (0);
 	if (type == TEXT || type == EXP)

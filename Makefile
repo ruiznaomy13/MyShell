@@ -1,5 +1,5 @@
 NAME = minishell
-CFLAGS = -Wall -Werror -Wextra -g #-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 
 INCS = -I./inc -I./ -I./lib/Libft -I$(HOME)/.brew/opt/readline/include
 LIBFTA = -L./lib/libft -lft
@@ -24,12 +24,12 @@ all:
 	@${MAKE} -C lib/libft/ --no-print-directory
 	@${MAKE} $(NAME) --no-print-directory
 
-$(OBJDIR)%.o: %.c
+$(OBJDIR)%.o: %.c Makefile
 	@printf "Compiling objects\n"
 	@mkdir -p $(@D)
 	@gcc $(CFLAGS) $(INCS) -c $< -o $@
 
-$(NAME): $(OBJECTS) Makefile lib/libft/libft.a
+$(NAME): $(OBJECTS) lib/libft/libft.a
 	@mkdir -p $(@D)
 	@gcc $(CFLAGS) -o $@ $(OBJECTS) $(LIBFTA) $(READLINE)
 	@printf "\nCompiled successfully!\n"

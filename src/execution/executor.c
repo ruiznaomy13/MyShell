@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:21:08 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/24 12:45:18 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/24 18:05:54 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	executor(t_all *all)
 	aux_executor1(all, fd_pipe, fd_trm);
 	while (all->prcs && all->num_process >= i++)
 	{
+		ft_dprintf("\n\n\nEXECUTOR prcs:%p\n", all->prcs);
 		if (i != all->num_process && pipe(fd_pipe) == -1)
 			exit(1);
 		pid = fork();

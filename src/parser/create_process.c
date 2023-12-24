@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:35:19 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 12:56:21 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/24 18:10:21 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ void	rm_prev_tkns(t_all **all)
 		aux = (*all)->token;
 		(*all)->token = (*all)->token->next;
 		free(aux->wrd);
-		free(aux);
 		if (aux->type == PIPE)
+		{
+			free(aux);
 			return ;
+		}
+		free(aux);
 	}
 }
 

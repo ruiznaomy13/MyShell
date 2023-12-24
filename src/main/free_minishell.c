@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:09:45 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/24 12:43:55 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/24 12:47:27 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,6 @@ void	free_token_list(t_token *token)
 		temp = token;
 		token = token->next;
 		free(temp->wrd);
-		free(temp);
-	}
-}
-
-void	free_process(t_process *prcs)
-{
-	t_process	*temp;
-
-	while (prcs != NULL)
-	{
-		temp = prcs;
-		prcs = prcs->next;
-		free_token_list(temp->rd);
-		free_char_array(&temp->args);
-		free(temp->ruta);
 		free(temp);
 	}
 }

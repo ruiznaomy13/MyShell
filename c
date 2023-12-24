@@ -1,9 +1,0 @@
-Makefile
-a
-b
-c
-inc
-lib
-minishell
-obj
-src

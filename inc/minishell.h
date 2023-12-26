@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 15:17:36 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/26 15:55:11 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	do_sigign(int signum);
 void	norm_handler(int sig, siginfo_t *data, void *non_used_data);
 void	ninter_handler(int sig, siginfo_t *data, void *non_used_data);
 void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data);
+
+//free_minishell.c
+void	free_token_list(t_token *token);
 
 /* -------------------- PARSER ------------------------- */
 // create_process.c
@@ -164,8 +167,10 @@ void	save_hd_fd(t_all *all, char *wrd, int fd[2]);
 int		ft_close(int *fd);
 
 //utils executor
-// char	**duplicate_env(char **env);
 void	count_process(t_all *all, char *str);
+void	free_args_and_rd(t_all *all, t_process *aux_prcs);
+void	free_rd_execve(t_all *all);
+void	free_prcs_execve(t_all * all);
 
 //utils executor2
 void	add_var_env(t_all *all, t_env *env);

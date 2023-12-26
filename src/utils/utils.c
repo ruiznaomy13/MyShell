@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 01:08:48 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 14:18:26 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ char	*ft_charjoin(char *s, char c)
 	int		i;
 
 	i = -1;
+	len = 0;
 	if (s != NULL)
 		len = ft_strlen(s);
-	else
-		len = 0;
 	str = (char *) malloc(sizeof(char) * (len + 2));
 	if (!str)
 		return (NULL);

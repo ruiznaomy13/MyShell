@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:21:08 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 12:23:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/24 18:17:52 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	executor(t_all *all)
 {
-	int		i;
-	pid_t	pid;
-	int		fd_pipe[2];
-	int		fd_trm[2];
+	int			i;
+	pid_t		pid;
+	int			fd_pipe[2];
+	int			fd_trm[2];
+	t_process	*aux_prcs;
 
 	i = 0;
+	aux_prcs = all->prcs;
 	aux_executor1(all, fd_pipe, fd_trm);
 	while (all->prcs && all->num_process >= i++)
 	{
@@ -36,6 +38,7 @@ void	executor(t_all *all)
 		all->prcs = all->prcs->next;
 	}
 	aux_executor2(all, &pid, fd_trm);
+	free_args_and_rd(all, aux_prcs);
 }
 
 void	aux_executor1(t_all *all, int fd_pipe[2], int fd_trm[2])
@@ -61,7 +64,7 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	{
 		while (prcs->rd)
 		{
-			redi_type(all, all->prcs, fd_pipe);
+			redi_type(all, prcs, fd_pipe);
 			prcs->rd = prcs->rd->next;
 		}
 	}

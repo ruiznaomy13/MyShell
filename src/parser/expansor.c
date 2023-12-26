@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/23 02:02:59 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/23 14:15:07 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,31 +57,31 @@ int	set_exp_flag(char c, int *flag)
 	return (0);
 }
 
-int	asign_var(t_all *all, char *str, char **aux, int i)
+char	*asign_var(t_all *all, char *str, char **aux, int *i)
 {
 	char	*var;
-	char	*empty;
+	char	*tmp;
 
-	empty = "";
 	var = search_var(str);
 	if (strcmp(var, "") == 0)
-		*aux = ft_strjoin(*aux, "$");
+		tmp = ft_strjoin(*aux, "$");
 	else if (var[0] == '$')
 	{
-		*aux = ft_strjoin(*aux, ft_itoa(getpid()));
-		return (1);
+		tmp = ft_strjoin(*aux, ft_itoa(getpid()));
+		return (NULL);
 	}
 	else if (var[0] == '?')
 	{
-		*aux = ft_strjoin(*aux, ft_itoa(all->error));
-		return (1);
+		tmp = ft_strjoin(*aux, ft_itoa(all->error));
+		return (NULL);
 	}
 	else if (search_env(var, all->w_env) != NULL)
-		*aux = ft_strjoin(*aux, search_env(var, all->w_env));
+		tmp = ft_strjoin(*aux, search_env(var, all->w_env));
 	else
-		*aux = ft_strjoin(*aux, "");
-	i += ft_strlen(var);
-	return (i);
+		tmp = ft_strjoin(*aux, "");
+	*i += ft_strlen(var);
+	free(*aux);
+	return (tmp);
 }
 
 int	save_comma(char c)
@@ -99,7 +99,6 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 	int		flag;
 	char	*str;
 	char	*aux;
-	// char	*temp;
 
 	aux = ft_strdup("");
 	str = ft_strdup(tkn->wrd);
@@ -111,14 +110,10 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 		else if (save_comma(str[i]) == flag)
 			flag = 0;
 		else if ((str[i] == '$' && (flag == 0 || flag == COMMA_D)) \
-		&& prev != RDHD)
-			i = asign_var(all, &str[i], &aux, i);
+			&& prev != RDHD)
+			aux = asign_var(all, &str[i], &aux, &i);
 		else
-		{
 			aux = ft_charjoin(aux, str[i]);
-			// free(aux);
-			// aux = temp;
-		}
 		i++;
 	}
 	free(str);

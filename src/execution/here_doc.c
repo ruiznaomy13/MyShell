@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/21 17:53:09 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/26 15:52:32 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,8 @@ void	save_hd_fd(t_all *all, char *wrd, int fd[2])
 
 	(void)all;
 	init_signals(HEREDOC);
-	do_sigign(SIGQUIT);
 	line = readline("> ");
-	while (line && ft_strncmp(line, wrd, ft_strlen(line)))
+	while (ft_strncmp(line, wrd, ft_strlen(line)) || !ft_strlen(line))
 	{
 		if (write(fd[1], line, ft_strlen(line)) == -1 \
 			|| write(fd[1], "\n", 1) == -1)

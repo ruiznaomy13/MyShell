@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/21 11:43:49 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/26 17:11:43 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	ft_error(t_all *all, int error, char *msj)
 {
 	if (!all)
-		printf("all == NULL\n");
+		ft_dprintf("all == NULL\n");
 	if (!error)
-		printf("error == NULL\n");
+		ft_dprintf("error == NULL\n");
 	if (!msj)
-		printf("msj == NULL\n");
+		ft_dprintf("msj == NULL\n");
 	if (error == SYNTAX_ERROR)
 		ft_dprintf(RED"syntax error near unexpected token %s\n"WHITE, msj);
 	else if (error == ACCESS_ERROR)

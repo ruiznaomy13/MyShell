@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/24 18:21:52 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/26 17:13:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	print_error(char *msj, int otput)
 
 int	exit_prog(t_all *all, int output)
 {
+	ft_dprintf(YELLOW"BYE :D\n"WHITE);
 	clear_history();
 	ft_free_all(all, E_EXIT);
-	// system("leaks minishell");
 	exit(all->error);
 	return (output);
 }
@@ -39,7 +39,6 @@ int	exit_type(t_all *all, t_process *pcs)
 
 int	ft_exit(t_process *pcs, t_all *all)
 {
-	ft_putstr_fd("exit\n", 2);
 	if (!pcs->args[1])
 		exit_prog(all, SUCCESS);
 	else if (pcs->args[2])

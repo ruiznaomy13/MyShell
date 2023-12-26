@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/26 15:55:57 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/26 17:07:55 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	loop(t_all *all)
 		all->line = readline(CYAN"myShell🌞> "WHITE);
 		do_sigign(SIGINT);
 		if (!all->line)
-			return ;
+			exit_prog(all, 1);
 		else if (*all->line)
 			add_history(all->line);
 		if (minishell_structure(all))
@@ -85,7 +85,6 @@ int	create_token(t_all *all, char *str, int type)
 	t_token	*tkn;
 
 	tkn = (t_token *)ft_calloc(sizeof(t_token), 1);
-	printf("tkn :%p\n", tkn);//num pipes
 	if (!tkn)
 		return (0);
 	if (type == TEXT || type == EXP)

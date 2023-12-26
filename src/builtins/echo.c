@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 21:02:10 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 16:52:18 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/26 16:03:18 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	ft_echo(char **argv)
 
 	skip_newline = 1;
 	i = 0;
-	printf("SOY ECHO BLTN\n");
 	if (!argv[1])
 		return (printf("\n"));
 	while (n_flag(argv[skip_newline++]))

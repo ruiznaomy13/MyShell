@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 13:04:10 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/26 17:07:40 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	syntax_checker(t_all *all)
 
 	flag = 0;
 	aux = all->token;
+	if (aux->type == PIPE)
+		return (ft_error(all, SYNTAX_ERROR, aux->wrd));
 	while (aux != NULL)
 	{
 		if (aux->type == PIPE && \

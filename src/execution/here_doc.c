@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 15:10:31 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/28 15:16:24 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	save_hd_fd(t_all *all, char *wrd, int fd[2])
 	free(line);
 	if (ft_close(&fd[1]) == -1 || ft_close(&fd[0]) == -1)
 		exit(2);
-	exit(1);
+	exit(0);
 }
 
 int	ft_close(int *fd)

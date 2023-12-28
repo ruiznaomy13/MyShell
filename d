@@ -1,0 +1,10 @@
+Makefile
+a
+b
+c
+d
+inc
+lib
+minishell
+obj
+src

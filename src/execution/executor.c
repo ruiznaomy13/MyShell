@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:21:08 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 13:21:30 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/28 15:07:41 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	aux_executor2(t_all *all, pid_t *pid, int fd_trm[2])
 {
 	dup2_apunta_terminal(fd_trm);
 	wait_pipes(all, all->num_process, pid);
+	if (g_sig)
+		all->error = g_sig;
 }
 
 void	child(t_all *all, t_process *prcs, int fd_pipe[2])

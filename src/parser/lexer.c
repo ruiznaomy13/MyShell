@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 12:34:39 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/28 15:09:35 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	loop(t_all *all)
 		if (minishell_structure(all))
 			continue ;
 		if (g_sig)
-		{
 			all->error = g_sig;
-			// printf("error :%d\n", all->error);
-		}
 		if (exec_parent(all))
 			executor_builting(all, all->prcs);
 		else

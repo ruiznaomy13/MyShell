@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 13:32:20 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/28 15:10:31 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,9 @@ void	create_heredoc(t_all *all, t_token *current_rd)
 		exit(kill(pid, SIGTERM));
 	if (waitpid(pid, &status, 0) == -1)
 		close(fd[0]);
-	if (WIFSIGNALED(status))
-	{
-		printf("dins wifsignaled\n");
-		err = WTERMSIG(status);
-		if (err == SIGINT)
-			g_sig = 1;
-	}
 	if (WIFEXITED(status))
 	{
-		printf("dins wifexited\n");
 		err = WEXITSTATUS(status);
-		err = WTERMSIG(status);
 		if (err == 1)
 			g_sig = 1;
 		else if (err == 2)
@@ -87,7 +78,7 @@ void	save_hd_fd(t_all *all, char *wrd, int fd[2])
 	free(line);
 	if (ft_close(&fd[1]) == -1 || ft_close(&fd[0]) == -1)
 		exit(2);
-	exit(0);
+	exit(1);
 }
 
 int	ft_close(int *fd)

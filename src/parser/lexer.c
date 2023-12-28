@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/24 18:05:11 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/28 12:34:39 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,26 @@ void	loop(t_all *all)
 {
 	while (42)
 	{
-		if (g_sig != 0)
-			all->error = g_sig;
-		g_sig = 0;
 		init_signals(NORM);
 		do_sigign(SIGQUIT);
 		all->line = readline(CYAN"myShell🌞> "WHITE);
 		do_sigign(SIGINT);
 		if (!all->line)
-			return ;
+			exit_prog(all, 0);
 		else if (*all->line)
 			add_history(all->line);
 		if (minishell_structure(all))
 			continue ;
+		if (g_sig)
+		{
+			all->error = g_sig;
+			// printf("error :%d\n", all->error);
+		}
 		if (exec_parent(all))
 			executor_builting(all, all->prcs);
 		else
 			executor(all);
+		g_sig = 0;
 		ft_free_all(all, SUCCESS);
 	}
 }
@@ -85,7 +88,6 @@ int	create_token(t_all *all, char *str, int type)
 	t_token	*tkn;
 
 	tkn = (t_token *)ft_calloc(sizeof(t_token), 1);
-	printf("tkn :%p\n", tkn);//num pipes
 	if (!tkn)
 		return (0);
 	if (type == TEXT || type == EXP)

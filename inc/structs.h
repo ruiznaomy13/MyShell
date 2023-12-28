@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:53:25 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/24 12:55:18 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/28 20:08:54 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define TRUE	 1
 # define ERROR 	-1
 # define E_EXIT  1
+
+# define MAX_EXIT_CODE 255
 
 # define CMD_NOT_FOUND	127
 # define SYNTAX_ERROR	258

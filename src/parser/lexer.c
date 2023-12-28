@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/26 17:07:55 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/28 21:27:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	loop(t_all *all)
 		all->line = readline(CYAN"myShell🌞> "WHITE);
 		do_sigign(SIGINT);
 		if (!all->line)
-			exit_prog(all, 1);
+			exit_prog(all, 0);
 		else if (*all->line)
 			add_history(all->line);
 		if (minishell_structure(all))

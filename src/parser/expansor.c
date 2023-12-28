@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/23 14:15:07 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/28 19:47:58 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*asign_var(t_all *all, char *str, char **aux, int *i)
 	else if (var[0] == '?')
 	{
 		tmp = ft_strjoin(*aux, ft_itoa(all->error));
-		return (NULL);
+		// return (NULL);
 	}
 	else if (search_env(var, all->w_env) != NULL)
 		tmp = ft_strjoin(*aux, search_env(var, all->w_env));

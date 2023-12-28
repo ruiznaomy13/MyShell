@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/28 19:47:58 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/28 21:29:57 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ char	*asign_var(t_all *all, char *str, char **aux, int *i)
 	}
 	else if (var[0] == '?')
 	{
+		if (g_sig)
+			all->error = g_sig;
 		tmp = ft_strjoin(*aux, ft_itoa(all->error));
 		// return (NULL);
 	}

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/28 21:26:29 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/28 21:45:54 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	exit_prog(t_all *all, int output)
 	ft_dprintf(YELLOW"BYE :D\n"WHITE);
 	clear_history();
 	ft_free_all(all, E_EXIT);
+	// printf("output: %d\nerror: %d\n", output, all->error);
 	if (output)
 		exit(output);
 	exit (all->error);
@@ -64,7 +65,6 @@ int	exit_type(t_all *all, t_process *pcs)
 	int	error_num;
 
 	error_num = ft_exit_atoi(pcs->args[1]);
-	printf("error_num = %d\n", error_num);
 	if (error_num == -1)
 		exit_prog(all, 255);
 	if (error_num == CMD_NOT_FOUND)

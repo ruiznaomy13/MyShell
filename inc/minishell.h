@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 20:32:58 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/28 21:34:39 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int		ft_error(t_all *all, int error, char *msj);
 
 /* ------------------------- BUILTINS ---------------------*/
 //echo.c
+int		exit_prog(t_all *all, int output);
 int		ft_echo(char **argv);
 int		n_flag(char *s);
 
@@ -115,8 +116,6 @@ int		list_env(t_all *all, char **env);
 
 //exit.c
 int		ft_exit(t_process *pcs, t_all *all);
-int		exit_prog(t_all *all, int output);
-// long long int	ft_exit_atoi(const char *str);
 
 //export.c
 void	show_sorted_exp(t_env *env);

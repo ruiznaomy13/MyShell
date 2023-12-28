@@ -19,6 +19,7 @@ SRC_L = main/main.c main/signals.c main/free_minishell.c \
 
 SRC = $(addprefix $(SRCDIR), $(SRC_L))
 OBJECTS = $(addprefix $(OBJDIR), $(SRC:.c=.o))
+DEPS 	= $(addprefix $(OBJDIR), $(addsuffix .d, $(basename ${SRC})))
 
 all:
 	@${MAKE} -C lib/libft/ --no-print-directory
@@ -27,12 +28,14 @@ all:
 $(OBJDIR)%.o: %.c Makefile
 	@printf "Compiling objects\n"
 	@mkdir -p $(@D)
-	@gcc $(CFLAGS) $(INCS) -c $< -o $@
+	@gcc $(CFLAGS) $(INCS) -MMD -MP -c $< -o $@
 
 $(NAME): $(OBJECTS) lib/libft/libft.a
 	@mkdir -p $(@D)
 	@gcc $(CFLAGS) -o $@ $(OBJECTS) $(LIBFTA) $(READLINE)
 	@printf "\nCompiled successfully!\n"
+
+-include	${DEPS}
 
 fclean: clean
 	@rm -rf $(NAME)
@@ -40,7 +43,7 @@ fclean: clean
 	@printf "\nAll cleaned!\n"
 
 clean:
-	@rm -rf $(OBJDIR)
+	@rm -rf $(OBJDIR) $(DEPSDIR)
 
 re: fclean all
 

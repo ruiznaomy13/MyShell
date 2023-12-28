@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 21:27:19 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/28 21:29:19 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ void	loop(t_all *all)
 {
 	while (42)
 	{
-		if (g_sig != 0)
-			all->error = g_sig;
-		g_sig = 0;
 		init_signals(NORM);
 		do_sigign(SIGQUIT);
 		all->line = readline(CYAN"myShell🌞> "WHITE);
@@ -29,10 +26,13 @@ void	loop(t_all *all)
 			add_history(all->line);
 		if (minishell_structure(all))
 			continue ;
+		if (g_sig)
+			all->error = g_sig;
 		if (exec_parent(all))
 			executor_builting(all, all->prcs);
 		else
 			executor(all);
+		g_sig = 0;
 		ft_free_all(all, SUCCESS);
 	}
 }

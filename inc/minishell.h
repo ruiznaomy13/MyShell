@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 12:36:26 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/28 15:31:15 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ int		ft_close(int *fd);
 void	count_process(t_all *all, char *str);
 void	free_args_and_rd(t_all *all, t_process *aux_prcs);
 void	free_rd_execve(t_all *all);
-void	free_prcs_execve(t_all * all);
+void	free_prcs_execve(t_all *all);
 
 //utils executor2
 void	add_var_env(t_all *all, t_env *env);

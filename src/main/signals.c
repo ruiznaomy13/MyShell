@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 19:08:09 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/28 11:31:06 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/28 13:07:35 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,6 @@ void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data)
 		rl_redisplay();
 		printf("\n");
 		exit(1);
-	}
-	else if (sig == EOF)
-	{
-		printf("control + d\n");
-		exit(0);
 	}
 	return ;
 }

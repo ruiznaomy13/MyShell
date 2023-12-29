@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:27 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/23 12:11:06 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 19:37:24 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 void	sun_header(void)
 {
 	printf(YELLOW"\n");
-	printf("				           ¶\n");
-	printf("				     ¶      ¶      ¶\n");
-	printf("				      ¶¶   ¶¶¶   ¶¶\n");
-	printf("				      ¶¶¶       ¶¶¶\n");
-	printf("				 ¶     ¶  ¶¶¶¶¶  ¶     ¶\n");
-	printf("				 ¶¶¶¶¶  ¶¶¶¶¶¶¶¶¶  ¶¶¶¶¶\n");
-	printf("				   ¶¶  ¶¶¶¶¶¶¶¶¶¶¶  ¶¶\n");
-	printf("				      ¶¶¶¶¶¶¶¶¶¶¶¶¶\n");
-	printf("				¶¶¶¶ ¶¶¶¶¶¶¶¶¶¶¶¶¶¶  ¶¶¶¶\n");
-	printf("				      ¶¶¶¶¶¶¶¶¶¶¶¶¶\n");
-	printf("				   ¶¶  ¶¶¶¶¶¶¶¶¶¶¶  ¶¶\n");
-	printf("				  ¶¶¶   ¶¶¶¶¶¶¶¶¶  ¶¶¶¶\n");
-	printf("				 ¶        ¶¶¶¶¶        ¶\n");
-	printf("				      ¶¶¶       ¶¶¶\n");
-	printf("	 			     ¶¶   ¶¶¶   ¶¶\n");
-	printf("				     ¶¶     ¶     ¶¶\n");
-	printf("				            ¶\n\n"WHITE);
+	printf("			           ¶\n");
+	printf("			     ¶      ¶      ¶\n");
+	printf("			      ¶¶   ¶¶¶   ¶¶\n");
+	printf("			      ¶¶¶       ¶¶¶\n");
+	printf("			 ¶     ¶  ¶¶¶¶¶  ¶     ¶\n");
+	printf("			 ¶¶¶¶¶  ¶¶¶¶¶¶¶¶¶  ¶¶¶¶¶\n");
+	printf("			   ¶¶  ¶¶¶¶¶¶¶¶¶¶¶  ¶¶\n");
+	printf("			      ¶¶¶¶¶¶¶¶¶¶¶¶¶\n");
+	printf("			¶¶¶¶ ¶¶¶¶¶¶¶¶¶¶¶¶¶¶  ¶¶¶¶\n");
+	printf("			      ¶¶¶¶¶¶¶¶¶¶¶¶¶\n");
+	printf("			   ¶¶  ¶¶¶¶¶¶¶¶¶¶¶  ¶¶\n");
+	printf("			  ¶¶¶   ¶¶¶¶¶¶¶¶¶  ¶¶¶¶\n");
+	printf("			 ¶        ¶¶¶¶¶        ¶\n");
+	printf("			      ¶¶¶       ¶¶¶\n");
+	printf("	 		     ¶¶   ¶¶¶   ¶¶\n");
+	printf("			     ¶¶     ¶     ¶¶\n");
+	printf("			            ¶\n\n"WHITE);
 }
 
 int	main(int ac, char **av, char **env)

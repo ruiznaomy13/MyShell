@@ -6,11 +6,16 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/22 13:02:41 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 18:03:01 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
+// int	check_exp_var(char *str)
+// {
+	
+// }
 
 void	show_sorted_exp(t_env *env)
 {
@@ -18,9 +23,9 @@ void	show_sorted_exp(t_env *env)
 	while (env != NULL)
 	{
 		printf("declare -x %s", env->key);
-		if (env->equal)
+		if (env->equal && !env->value)
 			printf("=");
-		if (env->value)
+		if (env->value) 
 			printf("%s", env->value);
 		printf("\n");
 		env = env->next;
@@ -51,6 +56,7 @@ int	ft_export(t_process *pcs, t_all *all)
 		while (pcs->args[++i])
 		{
 			delete_env_var(&all->w_env, pcs->args[i]);
+			// check_exp_var(pcs->args[i]);
 			save_var_env(pcs->args[i], all);
 		}
 	}

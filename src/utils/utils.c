@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 14:18:26 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:15:45 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@ char	*search_var(char *str)
 	int	i;
 
 	i = 0;
-	while (str[++i] && (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '?'))
+	if (str[1] == '?')
+		return (ft_strdup("?"));
+	else if (str[1] == '$')
+		return (ft_strdup("$"));
+	while (str[++i] && (ft_isalnum(str[i]) || str[i] == '_'))
 		;
 	return (ft_substr(str, 1, --i));
 }

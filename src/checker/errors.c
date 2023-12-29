@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 21:30:12 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 17:44:38 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 int	ft_error(t_all *all, int error, char *msj)
 {
-	if (!all)
-		ft_dprintf("all == NULL\n");
-	if (!error)
-		ft_dprintf("error == NULL\n");
-	if (!msj)
-		ft_dprintf("msj == NULL\n");
 	if (error == SYNTAX_ERROR)
 		ft_dprintf(RED"syntax error near unexpected token %s\n"WHITE, msj);
 	else if (error == ACCESS_ERROR)
@@ -33,6 +27,7 @@ int	ft_error(t_all *all, int error, char *msj)
 	else if (error == 131)
 		ft_dprintf(RED"%s\n"WHITE, msj);
 	all->error = error;
+	printf("ERROR 1 = %d\n", all->error);
 	return (error);
 }
 /*

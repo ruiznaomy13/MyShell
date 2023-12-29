@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:13:05 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/23 12:51:02 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 18:09:18 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,13 @@ void	delete_env_var(t_env **env, const char *str)
 	aux = rm_value(str, '=');
 	while (current != NULL)
 	{
-		if (!strcmp(current->key, aux))
+		if (!ft_strcmp(current->key, aux))
 		{
 			if (prev != NULL)
 				prev->next = current->next;
 			else
 				*env = current->next;
+			printf("ENTRO %s\n", current->key);
 			free(current->key);
 			if (current->value)
 				free(current->value);
@@ -81,6 +82,29 @@ void	delete_env_var(t_env **env, const char *str)
 		current = current->next;
 	}
 }
+
+// int	save_var_env(const char *src, t_all *all)
+// {
+// 	char	**dup_src;
+// 	t_env	*aux_env;
+
+// 	dup_src = ft_split(src, '=');
+// 	if (!dup_src)
+// 		return (-1);
+// 	aux_env = ft_calloc(1, sizeof(t_env));
+// 	if (!aux_env)
+// 		return (free(dup_src), -1);
+// 	aux_env->key = ft_strdup(dup_src[0]);
+// 	if (ft_strchr(src, '='))
+// 		aux_env->equal = 1;
+// 	if (dup_src[1])
+// 		aux_env->value = ft_strdup(dup_src[1]);
+// 	else
+// 		aux_env->value = NULL;
+// 	add_to_env(all, aux_env);
+// 	free_char_array(&dup_src);
+// 	return (0);
+// }
 
 int	save_var_env(const char *src, t_all *all)
 {
@@ -97,7 +121,8 @@ int	save_var_env(const char *src, t_all *all)
 	if (ft_strchr(src, '='))
 		aux_env->equal = 1;
 	if (dup_src[1])
-		aux_env->value = ft_strdup(dup_src[1]);
+		aux_env->value = ft_substr(src, ft_strlen(aux_env->key), \
+		ft_strlen(src) - ft_strlen(aux_env->key));
 	else
 		aux_env->value = NULL;
 	add_to_env(all, aux_env);

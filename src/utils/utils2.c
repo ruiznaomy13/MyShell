@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/07 20:52:43 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:18:29 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,6 @@ int	verify_rep_value(t_env *env, const char *str)
 	}
 	free(str_aux);
 	return (0);
-}
-
-char	*split_env(char *str)//entenc que es per l'expansor
-{
-	int		j;
-	char	**sep;
-	char	*value;
-
-	sep = ft_split(str, '=');
-	if (sep != NULL)
-	{
-		value = ft_strdup(sep[1]);
-		j = -1;
-		while (sep[++j] != NULL)
-			free(sep[j]);
-		free(sep);
-		return (value);
-	}
-	return (NULL);
 }
 
 int	ft_arr_len(void **ptr)

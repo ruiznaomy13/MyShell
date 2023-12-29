@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 21:34:39 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 15:18:34 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ char	*search_var(char *str);
 
 // utils 2
 int		ft_strcmp(const char *s1, const char *s2);
-char	*split_env(char *str);
 int		is_rd(int type);
 int		ft_arr_len(void **ptr);
 int		verify_rep_value(t_env *env, const char *str);

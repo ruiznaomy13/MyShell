@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/29 13:28:26 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 13:30:07 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ long long int	ft_exit_atoi(const char *str)
 	i = 0;
 	res = 0;
 	sign = 1;
-	if ((str[i] < 48  || str[i] > 57) && (str[i] != 43 && str[i] != 45))
-		return(print_error(str, -1));
+	if ((str[i] < 48 || str[i] > 57) && (str[i] != 43 && str[i] != 45))
+		return (print_error(str, -1));
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
@@ -44,10 +44,9 @@ long long int	ft_exit_atoi(const char *str)
 		i++;
 	}
 	if ((res > LLONG_MAX && sign == 1) || (res - 1 > LLONG_MAX && sign == -1))
-		return(print_error(str, -1));
+		return (print_error(str, -1));
 	return (sign * res);
 }
-
 
 int	exit_prog(t_all *all, int output)
 {

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/29 16:42:38 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 20:07:02 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	loop(t_all *all)
 {
 	while (42)
 	{
-		printf("ERROR 2 = %d\n", all->error);
 		init_signals(NORM);
 		do_sigign(SIGQUIT);
 		all->line = readline(CYAN"myShell🌞> "WHITE);

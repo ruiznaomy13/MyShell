@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/29 19:07:07 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 20:10:58 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	show_sorted_exp(t_env *env)
 		printf("declare -x %s", env->key);
 		if (env->equal && !env->value)
 			printf("=");
-		if (env->value) 
+		if (env->value)
 			printf("%s", env->value);
 		printf("\n");
 		env = env->next;
@@ -63,8 +63,10 @@ int	ft_export(t_process *pcs, t_all *all)
 		while (pcs->args[++i])
 		{
 			delete_env_var(&all->w_env, pcs->args[i]);
-			check_exp_var(pcs->args[i]);
-			save_var_env(pcs->args[i], all);
+			if (check_exp_var(pcs->args[i]))
+				all->error = print_error(pcs->args[1], 2, 1);
+			else
+				save_var_env(pcs->args[i], all);
 		}
 	}
 	return (0);

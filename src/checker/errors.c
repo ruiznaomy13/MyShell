@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/29 18:14:17 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 20:06:04 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,5 @@ int	ft_error(t_all *all, int error, char *msj)
 	else if (error == 131)
 		ft_dprintf("%s\n", msj);
 	all->error = error;
-	printf("ERROR 1 = %d\n", all->error);
 	return (error);
 }
-/*
-	if (!all)
-		printf("all == NULL\n");
-	if (!error)
-		printf("error == NULL\n");
-	if (!msj)
-		printf("msj == NULL\n");
-*/

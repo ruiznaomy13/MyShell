@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/29 15:19:59 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 19:04:17 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,6 @@ char	*asign_var(t_all *all, char *str, char **aux, int *i)
 	var = search_var(str);
 	if (ft_strcmp(var, "") == 0)
 		tmp = ft_strjoin(*aux, "$");
-	// else if (var[0] == '$')
-	// {
-	// 	tmp = ft_strjoin(*aux, ft_itoa(getpid()));
-	// 	return ((*i)++, tmp);
-	// }
 	else if (var[0] == '?')
 	{
 		if (g_sig)

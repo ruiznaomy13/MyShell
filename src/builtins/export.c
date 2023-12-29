@@ -6,16 +6,23 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/29 18:03:01 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 19:07:07 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-// int	check_exp_var(char *str)
-// {
-	
-// }
+int	check_exp_var(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
+		i++;
+	if (i < ft_strlen(str))
+		return (1);
+	return (0);
+}
 
 void	show_sorted_exp(t_env *env)
 {
@@ -56,7 +63,7 @@ int	ft_export(t_process *pcs, t_all *all)
 		while (pcs->args[++i])
 		{
 			delete_env_var(&all->w_env, pcs->args[i]);
-			// check_exp_var(pcs->args[i]);
+			check_exp_var(pcs->args[i]);
 			save_var_env(pcs->args[i], all);
 		}
 	}

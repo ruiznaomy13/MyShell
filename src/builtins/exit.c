@@ -6,23 +6,32 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/28 21:45:54 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 13:28:26 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
+int	print_error(const char *msj, int otput)
+{
+	if (otput == -1)
+		ft_dprintf("myShell 🌞: exit: %s: numeric argument required\n", msj);
+	else
+		ft_dprintf("%s\n", msj);
+	return (otput);
+}
+
 long long int	ft_exit_atoi(const char *str)
 {
-	int	i;
-	int	sign;
+	int						i;
+	int						sign;
 	unsigned long long int	res;
 
 	i = 0;
-	sign = 1;
 	res = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
+	sign = 1;
+	if ((str[i] < 48  || str[i] > 57) && (str[i] != 43 && str[i] != 45))
+		return(print_error(str, -1));
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
@@ -33,27 +42,18 @@ long long int	ft_exit_atoi(const char *str)
 	{
 		res = (res * 10) + (str[i] - '0');
 		i++;
-	};
-	if ((res > LLONG_MAX && sign == 1) || (res - 1 > LLONG_MAX && sign == -1))
-	{
-		printf("2 -> %llu, %d\n", res, MAX_EXIT_CODE);
-		return (-1);
 	}
+	if ((res > LLONG_MAX && sign == 1) || (res - 1 > LLONG_MAX && sign == -1))
+		return(print_error(str, -1));
 	return (sign * res);
 }
 
-int	print_error(const char *msj, int otput)
-{
-	ft_dprintf("%s\n", msj);
-	return (otput);
-}
 
 int	exit_prog(t_all *all, int output)
 {
 	ft_dprintf(YELLOW"BYE :D\n"WHITE);
 	clear_history();
 	ft_free_all(all, E_EXIT);
-	// printf("output: %d\nerror: %d\n", output, all->error);
 	if (output)
 		exit(output);
 	exit (all->error);

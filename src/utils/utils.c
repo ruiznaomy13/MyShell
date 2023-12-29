@@ -6,13 +6,11 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/29 15:15:45 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/29 18:14:05 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
-
-#include <stddef.h>
 
 size_t	ft_strnlen(const char *str, size_t maxlen)
 {

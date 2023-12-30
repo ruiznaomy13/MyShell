@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/29 19:26:59 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 13:34:24 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int		syntax_checker(t_all *all);
 
 // errors.c
 int		ft_error(t_all *all, int error, char *msj);
+int		print_error(const char *msg, int type, int otput);
 
 /* ------------------------- BUILTINS ---------------------*/
 //echo.c
@@ -115,8 +116,6 @@ int		list_env(t_all *all, char **env);
 
 //exit.c
 int		ft_exit(t_process *pcs, t_all *all);
-// int		print_error(const char *msj, int otput);
-int		print_error(const char *msg, int type, int otput);
 
 //export.c
 void	show_sorted_exp(t_env *env);
@@ -131,7 +130,7 @@ int		ft_cd(t_process *pcs, t_all *all);
 /* ------------------------ EXECUTOR --------------------*/
 //executor.c
 void	executor(t_all *all);
-void	child(t_all *all, t_process *prcs, int fd_pipe[2]);
+void	child(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
 void	aux_executor1(t_all *all, int fd_pipe[2], int fd_trm[2]);
 void	aux_executor2(t_all *all, pid_t *pid, int fd_trm[2]);
 void	wait_pipes(t_all *all, int num_process, pid_t *pid);
@@ -156,10 +155,10 @@ char	*get_ruta(t_all *all);//find cmd
 char	*aux_get_ruta(t_all *all, char **path, char *ruta, char *tmp);
 
 //redi
-void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2]);
-void	open_infile(t_all *all, t_process *prcs, int fd_pipe[2]);
-void	open_outfile(t_all *all, t_process *prcs, int fd_pipe[2]);
-void	apendd(t_all *all, t_process *prcs, int fd_pipe[2]);
+void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
+void	open_infile(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
+void	open_outfile(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
+void	apendd(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
 void	here_doc(t_process *prcs, int fd_pipe[2]);
 
 //here_doc

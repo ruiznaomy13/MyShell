@@ -6,21 +6,24 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/29 20:33:44 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 13:01:11 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-int	print_error(const char *msg, int type, int otput)
+int	asign_sign(const char *str, int *i)
 {
-	if (type == 1)
-		ft_dprintf("myShell 🌞: exit: %s: numeric argument required\n", msg);
-	else if (type == 2)
-		ft_dprintf("myShell 🌞: export: `%s': not a valid identifier\n", msg);
-	else
-		ft_dprintf("myShell 🌞: %s\n", msg);
-	return (otput);
+	int	sign;
+
+	sign = 1;
+	if (str[*i] == '-' || str[*i] == '+')
+	{
+		if (str[*i] == '-')
+			sign = -1;
+		(*i)++;
+	}
+	return (sign);
 }
 
 int	ft_exit_atoi(const char *str, int type)
@@ -32,12 +35,12 @@ int	ft_exit_atoi(const char *str, int type)
 
 	i = 0;
 	n = 0;
-	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
+	sign = asign_sign(str, &i);
+	if ((str[i] < 48 || str[i] > 57))
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		if (type)
+			print_error(str, 1, -1);
+		return (-1);
 	}
 	if ((str[i] < 48 || str[i] > 57) && type)
 		return (print_error(str, 1, -1));
@@ -54,9 +57,14 @@ int	ft_exit_atoi(const char *str, int type)
 
 int	exit_prog(t_all *all, int output)
 {
+	t_process	*aux_prcs;
+
+	aux_prcs =  all->prcs;
 	ft_dprintf(YELLOW"BYE :D\n"WHITE);
 	clear_history();
+	free_args_and_rd(all,  aux_prcs);
 	ft_free_all(all, E_EXIT);
+	system("leaks minishell");
 	if (output)
 		exit(output);
 	exit (all->error);

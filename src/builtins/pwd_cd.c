@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd_cd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/29 16:40:09 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 10:38:03 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	ft_cd(t_process *pcs, t_all *all)
 	aux = getcwd(NULL, 0);
 	new_pwd = ft_strdup("PWD=");
 	current_dir = getcwd(NULL, 0);
-	printf("llego aqui\n");
 	if (!pcs->args[2] || search_dir(pcs, aux) == -1)
 	{
 		ft_error(all, ACCESS_ERROR, "Problem accessing the directory");

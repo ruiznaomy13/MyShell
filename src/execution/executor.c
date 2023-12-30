@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:21:08 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/29 18:14:12 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 12:20:13 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	}
 	if (prcs->args && is_builting(prcs->args[0]))
 		exec_builting(all, prcs);
-	else if (!g_sig && prcs->args && *prcs->args)
+else if (!g_sig && prcs->args && *prcs->args)
 	{
 		if (find_routes(all, all->prcs) == 1)
 			exit (ft_error(all, 2, prcs->args[0]));

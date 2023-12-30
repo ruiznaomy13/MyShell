@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:21:08 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 16:43:46 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 17:52:33 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	executor(t_all *all)
 		if (pid < 0)
 			exit(1);
 		else if (pid == 0)
-			child(all, all->prcs, fd_pipe, aux_prcs);
+			child(all, all->prcs, fd_pipe);
 		if (i != all->num_process)
 			father_redirect_stdin(fd_pipe);
 		all->pos_process++;
@@ -58,7 +58,7 @@ void	aux_executor2(t_all *all, pid_t *pid, int fd_trm[2])
 		all->error = g_sig;
 }
 
-void	child(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs)
+void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 {
 	close(fd_pipe[0]);
 	dup2(fd_pipe[1], STDOUT_FILENO);
@@ -66,7 +66,7 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs)
 	{
 		while (prcs->rd)
 		{
-			redi_type(all, prcs, fd_pipe, aux_prcs);
+			redi_type(all, prcs, fd_pipe);
 			prcs->rd = prcs->rd->next;
 		}
 	}

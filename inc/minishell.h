@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 18:41:27 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:50:53 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int		ft_cd(t_process *pcs, t_all *all);
 /* ------------------------ EXECUTOR --------------------*/
 //executor.c
 void	executor(t_all *all);
-void	child(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
+void	child(t_all *all, t_process *prcs, int fd_pipe[2]);
 void	aux_executor1(t_all *all, int fd_pipe[2], int fd_trm[2]);
 void	aux_executor2(t_all *all, pid_t *pid, int fd_trm[2]);
 void	wait_pipes(t_all *all, int num_process, pid_t *pid);
@@ -156,10 +156,10 @@ char	*get_ruta(t_all *all);//find cmd
 char	*aux_get_ruta(t_all *all, char **path, char *ruta, char *tmp);
 
 //redi
-void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
-void	open_infile(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
-void	open_outfile(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
-void	apendd(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs);
+void	redi_type(t_all *all, t_process *prcs, int fd_pipe[2]);
+void	open_infile(t_all *all, t_process *prcs, int fd_pipe[2]);
+void	open_outfile(t_all *all, t_process *prcs, int fd_pipe[2]);
+void	apendd(t_all *all, t_process *prcs, int fd_pipe[2]);
 void	here_doc(t_process *prcs, int fd_pipe[2]);
 
 //here_doc

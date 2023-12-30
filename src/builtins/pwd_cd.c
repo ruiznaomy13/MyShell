@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 17:43:04 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:42:06 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	search_dir(t_process *pcs, char	**aux)
 
 	if (pcs->args[1][0] != '/')
 	{
-		aux_wrd = ft_charjoin(*aux, '/');
+		aux_wrd = ft_charjoin(&*aux, '/');
 		aux_str = ft_strjoin(aux_wrd, pcs->args[1]);
 		if (chdir(aux_str) == -1)
 		{

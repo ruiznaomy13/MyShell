@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:28:29 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/29 18:14:05 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:42:22 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strnlen(const char *str, size_t maxlen)
 	return (len);
 }
 
-char	*ft_charjoin(char *s, char c)
+char	*ft_charjoin(char **s, char c)
 {
 	size_t	len;
 	char	*str;
@@ -30,19 +30,19 @@ char	*ft_charjoin(char *s, char c)
 
 	i = -1;
 	len = 0;
-	if (s != NULL)
-		len = ft_strlen(s);
+	if (*s != NULL)
+		len = ft_strlen(*s);
 	str = (char *) malloc(sizeof(char) * (len + 2));
 	if (!str)
 		return (NULL);
-	if (s != NULL)
+	if (*s != NULL)
 	{
-		while (s[++i])
-			str[i] = s[i];
+		while ((*s)[++i])
+			str[i] = (*s)[i];
 	}
 	str[i] = c;
 	str[++i] = '\0';
-	free(s);
+	free(*s);
 	return (str);
 }
 

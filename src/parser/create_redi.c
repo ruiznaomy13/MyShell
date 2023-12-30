@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_redi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:00:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/24 17:52:46 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:09:05 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char	**save_arg(t_all *all)
 			aux = aux->next;
 		else if (aux->wrd != NULL)
 		{
+			// printf("%p\n", str);
 			str_aux = expand_var(all, aux, 0);
 			str[i++] = ft_strdup(str_aux);
 			free(str_aux);

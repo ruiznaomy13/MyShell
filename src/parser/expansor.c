@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 12:18:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/12/29 19:04:17 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:48:35 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,16 @@ char	*asign_var(t_all *all, char *str, char **aux, int *i)
 		if (g_sig)
 			all->error = g_sig;
 		tmp = ft_strjoin(*aux, ft_itoa(all->error));
-		return ((*i)++, tmp);
+		free(var);
+		free(*aux);
+		return (++(*i), tmp);
 	}
 	else if (search_env(var, all->w_env) != NULL)
 		tmp = ft_strjoin(*aux, search_env(var, all->w_env));
 	else
 		tmp = ft_strjoin(*aux, "");
 	*i += ft_strlen(var);
+	free(var);
 	free(*aux);
 	return (tmp);
 }
@@ -97,6 +100,8 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 	char	*str;
 	char	*aux;
 
+	(void)prev;
+	(void)all;
 	aux = ft_strdup("");
 	str = ft_strdup(tkn->wrd);
 	((0) || (i = 0) || (flag = 0));
@@ -110,7 +115,7 @@ char	*expand_var(t_all *all, t_token *tkn, int prev)
 			&& prev != RDHD)
 			aux = asign_var(all, &str[i], &aux, &i);
 		else
-			aux = ft_charjoin(aux, str[i]);
+			aux = ft_charjoin(&aux, str[i]);
 		i++;
 	}
 	free(str);

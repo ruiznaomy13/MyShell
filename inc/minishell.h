@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 16:43:34 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 18:41:27 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char	*is_text_first(char *str);
 
 /* --------------------------- UTILS ---------------------*/
 // utils
-char	*ft_charjoin(char *s, char c);
+// char	*ft_charjoin(char *s, char c);
+char	*ft_charjoin(char **s, char c);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*search_var(char *str);
 

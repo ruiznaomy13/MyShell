@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:06:16 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/24 17:49:48 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/30 13:23:46 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	free_char_array(char ***arr)
 	while ((*arr)[++i])
 		free((*arr)[i]);
 	free(*arr);
+	*arr = NULL;
 }
 
 void	add_to_env(t_all *all, t_env *env)

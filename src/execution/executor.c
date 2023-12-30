@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:21:08 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 12:29:13 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 13:33:55 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	executor(t_all *all)
 		if (pid < 0)
 			exit(1);
 		else if (pid == 0)
-			child(all, all->prcs, fd_pipe);
+			child(all, all->prcs, fd_pipe, aux_prcs);
 		if (i != all->num_process)
 			father_redirect_stdin(fd_pipe);
 		all->pos_process++;
@@ -58,7 +58,7 @@ void	aux_executor2(t_all *all, pid_t *pid, int fd_trm[2])
 		all->error = g_sig;
 }
 
-void	child(t_all *all, t_process *prcs, int fd_pipe[2])
+void	child(t_all *all, t_process *prcs, int fd_pipe[2], t_process *aux_prcs)
 {
 	close(fd_pipe[0]);
 	dup2(fd_pipe[1], STDOUT_FILENO);
@@ -66,7 +66,7 @@ void	child(t_all *all, t_process *prcs, int fd_pipe[2])
 	{
 		while (prcs->rd)
 		{
-			redi_type(all, prcs, fd_pipe);
+			redi_type(all, prcs, fd_pipe, aux_prcs);
 			prcs->rd = prcs->rd->next;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 13:23:10 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 14:07:55 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	exec_parent(t_all *all)
 	{
 		if (all->prcs->rd)
 		{
+			printf("%p\n", all->prcs->rd);
 			exec_builting(all, all->prcs);
 			free_char_array(&all->prcs->args);
 			return (0);

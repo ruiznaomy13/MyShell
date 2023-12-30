@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:44:17 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/30 13:20:10 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 14:30:41 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	 check_exp_var(char *str)
 	while (str[i] && (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '='))
 		i++;
 	if (i < ft_strlen(str))
-	{
-		printf("ENTRO = %s\ni = %zu && len = %zu\n", str, i, ft_strlen(str));
 		return (1);
-	}
 	return (0);
 }
 

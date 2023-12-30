@@ -6,11 +6,22 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:59:20 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/29 20:06:04 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 11:55:31 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
+
+int	print_error(const char *msg, int type, int otput)
+{
+	if (type == 1)
+		ft_dprintf("myShell 🌞: exit: %s: numeric argument required\n", msg);
+	else if (type == 2)
+		ft_dprintf("myShell 🌞: export: `%s': not a valid identifier\n", msg);
+	else
+		ft_dprintf("myShell 🌞: %s\n", msg);
+	return (otput);
+}
 
 int	ft_error(t_all *all, int error, char *msj)
 {

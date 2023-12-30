@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd_cd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 10:38:03 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:09:44 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,12 @@ int	ft_cd(t_process *pcs, t_all *all)
 	aux = getcwd(NULL, 0);
 	new_pwd = ft_strdup("PWD=");
 	current_dir = getcwd(NULL, 0);
-	if (!pcs->args[2] || search_dir(pcs, aux) == -1)
+	if (!pcs->args[1] || search_dir(pcs, aux) == -1)
 	{
 		ft_error(all, ACCESS_ERROR, "Problem accessing the directory");
 		free(new_pwd);
 		free(current_dir);
+		free(aux);
 		return (-1);
 	}
 	delete_env_var(&all->w_env, "PWD");

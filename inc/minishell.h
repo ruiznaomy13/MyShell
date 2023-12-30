@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 13:34:24 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 15:57:17 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,8 @@ void	aux_executor2(t_all *all, pid_t *pid, int fd_trm[2]);
 void	wait_pipes(t_all *all, int num_process, pid_t *pid);
 
 //executor2
-int		exec_builting(t_all *all, t_process *pcs);
+// int		exec_builting(t_all *all, t_process *pcs);
+int		exec_builting(t_all *all, t_process *pcs, int redi);
 int		is_builting(char *cmd);
 void	executor_builting(t_all *all, t_process *process);
 int		list_env(t_all *all, char **env);

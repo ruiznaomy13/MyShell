@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 13:23:10 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:44:03 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,18 @@ int	exec_parent(t_all *all)
 		return (0);
 	if (!ft_strcmp(all->prcs->args[0], "export") && !all->prcs->args[1])
 		return (0);
-	if (!ft_strcmp(all->prcs->args[0], "export")\
+	if (!ft_strcmp(all->prcs->args[0], "export") \
 	|| !ft_strcmp(all->prcs->args[0], "unset") \
 	|| !ft_strcmp(all->prcs->args[0], "cd") \
 	|| !ft_strcmp(all->prcs->args[0], "exit"))
 	{
 		if (all->prcs->rd)
 		{
+			printf("malloc_error_break: %p\n", all->prcs);
 			exec_builting(all, all->prcs);
 			free_char_array(&all->prcs->args);
+			all->prcs->args = malloc(1);
+			all->prcs->args[0] = NULL;
 			return (0);
 		}
 		return (1);
@@ -74,5 +77,7 @@ void	executor_builting(t_all *all, t_process *process)
 {
 	if (process->args && is_builting(process->args[0]))
 		exec_builting(all, process);
+	free_char_array(&all->prcs->args);
+	free_prcs_execve(all);
 	actualize_env(all);
 }

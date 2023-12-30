@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:13:05 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/29 20:07:26 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 14:33:22 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	delete_env_var(t_env **env, const char *str)
 		prev = current;
 		current = current->next;
 	}
+	free(aux);
 }
 
 int	save_var_env(const char *src, t_all *all)

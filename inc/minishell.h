@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/29 19:26:59 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 11:55:58 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int		syntax_checker(t_all *all);
 
 // errors.c
 int		ft_error(t_all *all, int error, char *msj);
+int		print_error(const char *msg, int type, int otput);
 
 /* ------------------------- BUILTINS ---------------------*/
 //echo.c
@@ -115,8 +116,6 @@ int		list_env(t_all *all, char **env);
 
 //exit.c
 int		ft_exit(t_process *pcs, t_all *all);
-// int		print_error(const char *msj, int otput);
-int		print_error(const char *msg, int type, int otput);
 
 //export.c
 void	show_sorted_exp(t_env *env);

@@ -6,24 +6,27 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/29 20:10:18 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 12:08:28 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-int	print_error(const char *msg, int type, int otput)
+int	asign_sign(const char *str, int *i)
 {
-	if (type == 1)
-		ft_dprintf("myShell 🌞: exit: %s: numeric argument required\n", msg);
-	else if (type == 2)
-		ft_dprintf("myShell 🌞: export: `%s': not a valid identifier\n", msg);
-	else
-		ft_dprintf("myShell 🌞: %s\n", msg);
-	return (otput);
+	int	sign;
+
+	sign = 1;
+	if (str[*i] == '-' || str[*i] == '+')
+	{
+		if (str[*i] == '-')
+			sign = -1;
+		(*i)++;
+	}
+	return (sign);
 }
 
-int	ft_exit_atoi(const char *str)
+int	ft_exit_atoi(const char *str, int type)
 {
 	int					i;
 	int					sign;
@@ -32,15 +35,13 @@ int	ft_exit_atoi(const char *str)
 
 	i = 0;
 	n = 0;
-	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
+	sign = asign_sign(str, &i);
+	if ((str[i] < 48 || str[i] > 57))
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		if (type)
+			print_error(str, 1, -1);
+		return (-1);
 	}
-	if (str[i] < 48 || str[i] > 57)
-		return (print_error(str, 1, -1));
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		b = str[i] - '0';
@@ -67,7 +68,7 @@ int	exit_type(t_all *all, t_process *pcs)
 {
 	int	error_num;
 
-	error_num = ft_exit_atoi(pcs->args[1]);
+	error_num = ft_exit_atoi(pcs->args[1], 1);
 	if (error_num == -1)
 		exit_prog(all, 255);
 	if (error_num == CMD_NOT_FOUND)
@@ -82,7 +83,9 @@ int	ft_exit(t_process *pcs, t_all *all)
 {
 	if (!pcs->args[1])
 		exit_prog(all, SUCCESS);
-	else if (pcs->args[2] && ft_exit_atoi(pcs->args[1]) != -1)
-		return (print_error("Too many arguments", 0, 1));
-	return (exit_type(all, pcs));
+	else if (pcs->args[2] && ft_exit_atoi(pcs->args[1], 0) != -1)
+		all->error = print_error("Too many arguments", 0, 1);
+	else
+		return (exit_type(all, pcs));
+	return (0);
 }

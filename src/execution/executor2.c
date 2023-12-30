@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 16:44:03 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 17:48:18 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	exec_parent(t_all *all)
 	{
 		if (all->prcs->rd)
 		{
-			printf("malloc_error_break: %p\n", all->prcs);
 			exec_builting(all, all->prcs);
 			free_char_array(&all->prcs->args);
 			all->prcs->args = malloc(1);

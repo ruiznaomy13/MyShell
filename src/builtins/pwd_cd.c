@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 16:09:44 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:39:29 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	ft_cd(t_process *pcs, t_all *all)
 		ft_error(all, ACCESS_ERROR, "Problem accessing the directory");
 		free(new_pwd);
 		free(current_dir);
-		free(aux);
+		if (!pcs->args[1])
+			free(aux);
 		return (-1);
 	}
 	delete_env_var(&all->w_env, "PWD");

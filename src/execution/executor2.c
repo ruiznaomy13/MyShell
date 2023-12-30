@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:35 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 16:05:54 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:44:03 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ int	exec_parent(t_all *all)
 	{
 		if (all->prcs->rd)
 		{
-			exec_builting(all, all->prcs, 1);
+			printf("malloc_error_break: %p\n", all->prcs);
+			exec_builting(all, all->prcs);
 			free_char_array(&all->prcs->args);
+			all->prcs->args = malloc(1);
+			all->prcs->args[0] = NULL;
 			return (0);
 		}
 		return (1);
@@ -34,13 +37,8 @@ int	exec_parent(t_all *all)
 	return (0);
 }
 
-int	exec_builting(t_all *all, t_process *pcs, int redi)
+int	exec_builting(t_all *all, t_process *pcs)
 {
-	if (redi)
-	{
-		// free_rd_execve(all);
-		free(pcs);	
-	}
 	if (!all->prcs->args || !*all->prcs->args)
 		return (0);
 	if (ft_strcmp(pcs->args[0], "echo") == 0)
@@ -78,7 +76,7 @@ int	is_builting(char *cmd)
 void	executor_builting(t_all *all, t_process *process)
 {
 	if (process->args && is_builting(process->args[0]))
-		exec_builting(all, process, 0);
+		exec_builting(all, process);
 	free_char_array(&all->prcs->args);
 	free_prcs_execve(all);
 	actualize_env(all);

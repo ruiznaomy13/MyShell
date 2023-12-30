@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:51:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 16:39:29 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 17:43:04 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int	ft_pwd(void)
 	return (0);
 }
 
-int	search_dir(t_process *pcs, char	*aux)
+int	search_dir(t_process *pcs, char	**aux)
 {
 	char	*aux_wrd;
 	char	*aux_str;
 
 	if (pcs->args[1][0] != '/')
 	{
-		aux_wrd = ft_charjoin(aux, '/');
+		aux_wrd = ft_charjoin(*aux, '/');
 		aux_str = ft_strjoin(aux_wrd, pcs->args[1]);
 		if (chdir(aux_str) == -1)
 		{
@@ -62,6 +62,7 @@ int	search_dir(t_process *pcs, char	*aux)
 	{
 		if (chdir(pcs->args[1]) == -1)
 			return (-1);
+		free(*aux);
 	}
 	return (0);
 }
@@ -76,7 +77,7 @@ int	ft_cd(t_process *pcs, t_all *all)
 	aux = getcwd(NULL, 0);
 	new_pwd = ft_strdup("PWD=");
 	current_dir = getcwd(NULL, 0);
-	if (!pcs->args[1] || search_dir(pcs, aux) == -1)
+	if (!pcs->args[1] || search_dir(pcs, &aux) == -1)
 	{
 		ft_error(all, ACCESS_ERROR, "Problem accessing the directory");
 		free(new_pwd);

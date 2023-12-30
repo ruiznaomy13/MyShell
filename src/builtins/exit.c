@@ -6,7 +6,7 @@
 /*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:28:07 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/30 15:45:52 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/30 17:45:15 by ncastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ int	exit_prog(t_all *all, int output)
 {
 	t_process	*aux_prcs;
 
-	aux_prcs =  all->prcs;
+	aux_prcs = all->prcs;
 	ft_dprintf(YELLOW"BYE :D\n"WHITE);
 	clear_history();
-	free_args_and_rd(all,  aux_prcs);
+	free_args_and_rd(all, aux_prcs);
 	ft_free_all(all, E_EXIT);
 	system("leaks minishell");
 	if (output)

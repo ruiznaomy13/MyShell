@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/31 11:48:58 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/31 14:29:41 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,14 @@ int	minishell_structure(t_all *all)
 		return (1);
 	}
 	parser(all);
+	if (g_sig)
+	{
+		all->error = g_sig;
+		g_sig = 0;
+		free_args_and_rd(all, all->prcs);
+		ft_free_all(all, 0);
+		return (1);
+	}
 	return (0);
 }
 

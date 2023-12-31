@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/28 18:13:36 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/31 14:18:55 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	check_heredoc(t_all *all, t_process *prcs)
 	current_rd = prcs->rd;
 	while (current_rd != NULL)
 	{
+		if (g_sig)
+			continue ;
 		if (current_rd->type == RDHD)
 			create_heredoc(all, current_rd);
 		current_rd = current_rd->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:37:04 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/26 17:07:40 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/31 15:31:59 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,25 @@ int	checker(t_all *all)
 
 int	syntax_checker(t_all *all)
 {
-	t_token	*aux;
+	t_token	*a;
 	int		flag;
 
 	flag = 0;
-	aux = all->token;
-	if (aux->type == PIPE)
-		return (ft_error(all, SYNTAX_ERROR, aux->wrd));
-	while (aux != NULL)
+	a = all->token;
+	if (a->type == PIPE)
+		return (ft_error(all, SYNTAX_ERROR, a->wrd));
+	while (a != NULL)
 	{
-		if (aux->type == PIPE && \
-		(aux->next == NULL || (aux->next->type != TEXT \
-		&& !is_rd(aux->next->type))))
-			return (ft_error(all, SYNTAX_ERROR, aux->wrd));
-		else if (is_rd(aux->type) && (aux->next == NULL \
-			|| aux->next->type != TEXT))
-			return (ft_error(all, SYNTAX_ERROR, aux->wrd));
-		aux = aux->next;
+		if (a->type == PIPE && \
+		(a->next == NULL || (a->next->type != TEXT \
+		&& !is_rd(a->next->type))))
+			return (free_token_list(all->token), \
+			ft_error(all, SYNTAX_ERROR, a->wrd));
+		else if (is_rd(a->type) && (a->next == NULL \
+			|| a->next->type != TEXT))
+			return (free_token_list(all->token), \
+			ft_error(all, SYNTAX_ERROR, a->wrd));
+		a = a->next;
 	}
 	return (0);
 }

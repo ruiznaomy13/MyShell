@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:06:15 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/31 14:48:13 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/31 15:22:37 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	loop(t_all *all)
 		else if (*all->line)
 			add_history(all->line);
 		if (minishell_structure(all))
+		{
+			ft_free_all(all, 0);
 			continue ;
+		}
 		if (g_sig)
 			all->error = g_sig;
 		if (exec_parent(all))
@@ -40,23 +43,16 @@ void	loop(t_all *all)
 int	minishell_structure(t_all *all)
 {
 	if (check_cometes(all, all->line) > 30)
-	{
-		ft_free_all(all, 0);
 		return (1);
-	}
 	if (lexer(all))
 		return (1);
 	if (checker(all))
-	{
-		ft_free_all(all, 0);
 		return (1);
-	}
 	if (parser(all))
 	{
 		all->error = g_sig;
 		g_sig = 0;
 		free_args_and_rd(all, all->prcs);
-		ft_free_all(all, 0);
 		return (1);
 	}
 	return (0);

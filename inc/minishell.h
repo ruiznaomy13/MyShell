@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/30 18:50:53 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/31 13:32:37 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void	list_redirection(t_process *pcs, t_all *all);
 
 // expansor.c
 char	*search_env(char *str, t_env *env);
+int		set_exp_flag(char c, int *flag);
+char	*asign_var(t_all *all, char *str, char **aux, int *i);
+int		save_comma(char c);
 char	*expand_var(t_all *all, t_token *tkn, int prev);
 
 // lexer.c
@@ -81,6 +84,7 @@ int		ft_strcmp(const char *s1, const char *s2);
 int		is_rd(int type);
 int		ft_arr_len(void **ptr);
 int		verify_rep_value(t_env *env, const char *str);
+void	aux_asign_var(char *var, char **aux, char *ita);
 
 // built_utils.c
 int		save_var_env(const char *src, t_all *all);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncastell <ncastell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 19:49:51 by ncastell          #+#    #+#             */
-/*   Updated: 2023/12/29 15:18:29 by ncastell         ###   ########.fr       */
+/*   Updated: 2023/12/31 13:33:07 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,11 @@ int	ft_arr_len(void **ptr)
 	while (ptr[i])
 		i++;
 	return (i);
+}
+
+void	aux_asign_var(char *var, char **aux, char *ita)
+{
+	free(ita);
+	free(var);
+	free(*aux);
 }

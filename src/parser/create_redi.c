@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:00:55 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/31 12:19:19 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/31 13:26:06 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,17 +86,11 @@ char	**save_arg(t_all *all)
 		else if (aux->wrd != NULL)
 		{
 			str_aux = expand_var(all, aux, 0);
-			system("leaks minishell");
 			str[i++] = ft_strdup(str_aux);
 			free(str_aux);
 		}
-		// ft_dprintf("all: %p\nall->prcs: %p\nall->token: %p\n");
-		// ft_dprintf("aux: %p\naux->next: %p\naux->wrd:%p\n", aux, aux->next, aux->wrd);
-		// ft_dprintf("*str: %p\nstr: %p\n", *str, str);
 		aux = aux->next;
 	}
-	// system("leaks minishell");
-	// exit (1);
 	str[i] = NULL;
 	return (str);
 }

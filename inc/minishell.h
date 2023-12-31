@@ -6,7 +6,7 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:39:56 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/31 13:32:37 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/31 14:39:35 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	free_token_list(t_token *token);
 void	rm_prev_tkns(t_all **all);
 void	add_prcs(t_all *all, t_process *pcs);
 void	create_process(t_all *all);
-void	parser(t_all *all);
+int 	parser(t_all *all);
 
 // create_redi.c
 int		arg_size(t_token *tkn);
@@ -167,7 +167,7 @@ void	apendd(t_all *all, t_process *prcs, int fd_pipe[2]);
 void	here_doc(t_process *prcs, int fd_pipe[2]);
 
 //here_doc
-void	check_heredoc(t_all *all, t_process *prcs);
+int		check_heredoc(t_all *all, t_process *prcs);
 void	create_heredoc(t_all *all, t_token *current_rd);
 void	save_hd_fd(t_all *all, char *wrd, int fd[2]);
 int		ft_close(int *fd);

@@ -6,13 +6,13 @@
 /*   By: mmonpeat <mmonpeat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:46:40 by mmonpeat          #+#    #+#             */
-/*   Updated: 2023/12/31 14:18:55 by mmonpeat         ###   ########.fr       */
+/*   Updated: 2023/12/31 14:39:39 by mmonpeat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/minishell.h"
 
-void	check_heredoc(t_all *all, t_process *prcs)
+int	check_heredoc(t_all *all, t_process *prcs)
 {
 	t_token		*current_rd;
 
@@ -20,11 +20,12 @@ void	check_heredoc(t_all *all, t_process *prcs)
 	while (current_rd != NULL)
 	{
 		if (g_sig)
-			continue ;
+			return (1);
 		if (current_rd->type == RDHD)
 			create_heredoc(all, current_rd);
 		current_rd = current_rd->next;
 	}
+	return (0);
 }
 
 void	create_heredoc(t_all *all, t_token *current_rd)

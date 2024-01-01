@@ -54,7 +54,7 @@ void	aux_executor2(t_all *all, pid_t *pid, int fd_trm[2])
 {
 	dup2_apunta_terminal(fd_trm);
 	wait_pipes(all, all->num_process, pid);
-	if (g_sig)
+	if (g_sig)// no borrar
 		all->error = g_sig;
 }
 
